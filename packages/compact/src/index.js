@@ -9,7 +9,8 @@
   one-var,
   prefer-const,
   no-unused-vars,
-  one-var-declaration-per-line
+  one-var-declaration-per-line,
+  no-continue,
 */
 
 /**
@@ -25,8 +26,5 @@ function compact(array) {
   }
   return arr;
 }
-
-console.log(compact());
-console.log(compact([0, 1, [], {}, undefined, 16, null, 'hello', '']));
 
 module.exports = compact;

@@ -1,9 +1,14 @@
-/* eslint-disable
-  no-bitwise, no-array-constructor, one-var-declaration-per-line, one-var, prefer-const
+/*
+  eslint-disable
+  no-bitwise,
+  no-array-constructor,
+  one-var-declaration-per-line,
+  one-var,
+  prefer-const
 */
 
 /**
- * Shallow clones an array
+ * Shallow clones an array.
  * @param {Array} arr - the array to clone
  * @returns {Array} - the newly cloned array
  */
@@ -16,9 +21,9 @@ export function cloneArray(arr) {
 }
 
 /**
- * Implements the Fisher-Yates" shuffle algorithm
- * @param {Array} arr - the array to be shifted
- * @returns {Array} - the newly shifted array
+ * Implements the "Fisher-Yates" shuffle algorithm.
+ * @param {Array} arr - The array to be shifted.
+ * @returns {Array} - The newly shifted array.
  */
 export function implementShuffle(arr) {
   let dupe = cloneArray(arr), top = arr.length, rand = top, curr = top;
@@ -32,9 +37,16 @@ export function implementShuffle(arr) {
 }
 
 /**
- * Shuffle function which implements the "Fisher-Yates" shuffle algorithm
- * @param {array} arr - the array to be shuffled
- * @returns {array} - a shuffled array
+ * Shuffles an array using the "Fisher-Yates" shuffle algorithm.
+ * @param {array} arr - The array to be shuffled.
+ * @returns {array} - A shuffled array.
+ * @category array
+ * @memberof foldr
+ * @since v0.0.0
+ * @export
+ * @example
+ * shuffle([1, 2, 3, 4]); // => [2, 4, 3, 1]
+ * shuffle([1, 2, 3, 4]); // => [3, 4, 1, 2]
  */
 function shuffle(arr) {
   const size = arr && arr.length;

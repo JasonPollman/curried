@@ -36,4 +36,4 @@ export function isIntegerPolyfill(x) {
  * @since v0.0.0
  * @export
  */
-export default Number.isInteger || /* istabul ignore next */ isIntegerPolyfill;
+export default Number.isInteger || /* istanbul ignore next */ isIntegerPolyfill;

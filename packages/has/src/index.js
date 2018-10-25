@@ -1,28 +1,20 @@
-/**
- * Exports the `has` function.
- * @since 10/13/18
- * @file
- */
-
-import curry from '@foldr/curry';
 
 const { hasOwnProperty } = Object.prototype;
 
 /**
- * A functional version of Object.prototype.hasOwnProperty.
- * @param {*} property The property to assert membership.
- * @param {*} thing The thing to determine membership of `property`.
+ * Checks that `thing` contains it's own property `property`.
+ * A variant of Object.prototype.hasOwnProperty.
+ * @param {any} thing The thing to determine membership of `property`.
+ * @param {string} property The property to assert membership.
  * @returns {boolean} True if `thing` has it's own property `property`.
+ * @category utility
+ * @memberof foldr
+ * @since v0.0.0
+ * @export
  * @example
- * has('foo', { foo: 1 });  // true
- * has('foo', { bar: 1 });  // false
- *
- * const hasName = has('name');
- * hasName({ name: 'John' }); // true
- * hasName({});               // false
+ * has({ foo: 1 }, 'foo');  // true
+ * has({ bar: 1 }, 'bar');  // false
  */
-function has(property, thing) {
-  return hasOwnProperty.call(thing, property);
+export default function has(thing, property) {
+  return !!thing && hasOwnProperty.call(thing, property);
 }
-
-export default curry(has);

@@ -1,16 +1,15 @@
 /**
- * Exports a function to get Symbol values in a platform agnostic way.
- * @since 10/11/18
- * @file
- */
-
-/**
  * The prefix to apply to *all* symbols.
  * @type {string}
  */
 const prefix = '@@foldr/';
 
-const SafeSymbol = typeof Symbol === 'function' ? Symbol : (function PseudoSymbol() {
+/**
+ * Makes a "Symbol-like" polyfill used for internal use only.
+ * Exporting this for testing purposes only.
+ * @returns {function} A "SafeSymbol" factory function.
+ */
+export function MakeSafeSymbol() {
   let counter = 0;
   const registry = {};
 
@@ -23,8 +22,17 @@ const SafeSymbol = typeof Symbol === 'function' ? Symbol : (function PseudoSymbo
    */
   function Symbol(label) {
     const id = '000000000'.concat((Date.now() + counter++).toString(36)).slice(-9);
-    const value = `${prefix}/${id}/${label}`;
-    return { toString: () => value };
+
+    /* eslint-disable require-jsdoc */
+    return {
+      valueOf() {
+        return `${prefix}/${id}/${label}`;
+      },
+      toString() {
+        return this.valueOf();
+      },
+    };
+    /* eslint-enable require-jsdoc */
   }
 
   /**
@@ -38,12 +46,14 @@ const SafeSymbol = typeof Symbol === 'function' ? Symbol : (function PseudoSymbo
   };
 
   return Symbol;
-}());
+}
+
+const SafeSymbol = typeof Symbol === 'function' ? Symbol : MakeSafeSymbol();
 
 /**
- * Calls Sym.for to create and register a Symbol, or in the event
- * it's IE11, a "PseudoSymbol".
- * @param {string} label The symbol's label
+ * Calls Safeymbol.for to create and register a Symbol that
+ * will always contain the label prefix "@@foldr/".
+ * @param {string} label The symbol's label.
  * @returns {Symbol|string} The symbol or pseudo symbol.
  * @export
  */

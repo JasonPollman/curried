@@ -1,24 +1,30 @@
 {
   "private": true,
   "scripts": {
-    "build": "./scripts/build",
-    "clean": "rimraf packages/**/dist",
-    "link": "lerna link",
+    "bench": "NODE_ENV=production ./scripts/bench",
+    "build": "npm run clean && npm run transpile",
+    "clean": "npx rimraf ./packages/**/dist",
+    "link": "npx lerna link",
     "lint": "npx eslint packages/**/src",
-    "test": "NODE_ENV=test jest",
-    "test:cover": "NODE_ENV=test jest --coverage",
-    "bench": "./scripts/bench",
-    "prepare": "npm run lint && npm run test && npm run clean && npm run build"
+    "prepare": "npm run lint && npm run test && npm run build",
+    "test": "NODE_ENV=test npx jest ./packages/${PKG:-**}/**/*.test.js",
+    "test:cover": "npm run test -- --coverage",
+    "transpile": "npx babel-node ./scripts/transpile.js"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
-    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-2": "^6.24.1",
+    "babel-jest": "^23.6.0",
+    "babel-preset-minify": "^0.5.0",
     "benchmark": "^2.1.4",
-    "eslint": "^5.6.1",
+    "bluebird": "^3.5.2",
+    "chalk": "^2.4.1",
+    "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
@@ -26,26 +32,8 @@
     "jest": "^23.6.0",
     "lerna": "^3.4.3",
     "lodash": "^4.17.11",
-    "rambda": "^1.2.2",
+    "p-compose": "^1.0.1",
+    "rambda": "^1.2.6",
     "rimraf": "^2.6.2"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text"
-    ],
-    "collectCoverageFrom": [
-      "packages/**/src/**"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "lines": 99,
-        "statements": 99,
-        "functions": 99,
-        "branches": 99
-      }
-    }
   }
 }

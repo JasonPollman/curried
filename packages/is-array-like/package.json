@@ -1,13 +1,7 @@
 {
   "name": "@foldr/is-array-like",
+  "description": "Determines is an object is array-like (has a length and is non-falsy).",
   "version": "0.0.0",
   "license": "ISC",
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JasonPollman/foldr.git"
-  },
-  "dependencies": {
-    "@foldr/curry": "^0.0.0"
-  }
+  "main": "dist/index.js"
 }

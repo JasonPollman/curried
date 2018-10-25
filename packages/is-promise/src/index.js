@@ -4,7 +4,6 @@
  * @file
  */
 
-import curry from '@foldr/curry';
 import toStringTag from '@foldr/to-string-tag';
 
 /**
@@ -16,13 +15,14 @@ const isThenable = x => typeof x.then === 'function' && typeof x.catch === 'func
 
 /**
  * Determines if the given item is a Promise object.
- * That is, if it is a native Promise, or it's `thenable` (contains .then and .catch functions).
+ * That is, if it is a native Promise or it's `thenable` (contains `.then` and `.catch` functions).
  * @param {any} x The value to determine whether or not it's a Promise.
  * @returns {boolean} True if `x` is a Promise, false otherwise.
+ * @category types
+ * @memberof foldr
+ * @since v0.0.0
  * @export
  */
-function isPromise(x) {
+export default function isPromise(x) {
   return !!x && typeof x === 'object' && (toStringTag(x) === '[object Promise]' || isThenable(x));
 }
-
-export default curry(isPromise);

@@ -10,6 +10,9 @@
  * Determines if the given item is either undefined or null.
  * @param {any} x The value to assert nil-ness.
  * @returns {boolean} True if `x` is nil, false otherwise.
+ * @category types
+ * @memberof foldr
+ * @since v0.0.0
  * @export
  */
 export default function isNil(x) {

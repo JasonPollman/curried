@@ -1,24 +1,39 @@
 /**
  * Exports the `isInteger` function.
- * This is based on the polyfill from MDN:
- * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger#Polyfill
- * @since 9/25/18
+ * @since 10/23/18
  * @file
  */
 
 /* eslint-disable no-bitwise */
 
-import curry from '@foldr/curry';
 import isFinite from '@foldr/is-finite';
+
+// Use Math.trunc if it's available, since
+// it behaves more like a bitwise operation
+// but work for both 32 and 64 bit numbers.
+
+/* istanbul ignore next */
+const floor = Math.trunc || Math.floor;
+
+/**
+ * Determines if the given item is an integer.
+ * This is based on the `Number.isInteger` polyfill from
+ * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger#Polyfill).
+ * @param {any} x The value to assert.
+ * @returns {boolean} True if `x` is an integer, false otherwise.
+ * @export
+ */
+export function isIntegerPolyfill(x) {
+  return isFinite(x) && floor(x) === x;
+}
 
 /**
  * Determines if the given item is an integer.
  * @param {any} x The value to assert.
  * @returns {boolean} True if `x` is an integer, false otherwise.
+ * @category types
+ * @memberof foldr
+ * @since v0.0.0
  * @export
  */
-const isInteger = Number.isInteger || function isInteger(x) {
-  return isFinite(x) && (x | 0) === x;
-};
-
-export default curry(isInteger);
+export default Number.isInteger || /* istabul ignore next */ isIntegerPolyfill;

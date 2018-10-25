@@ -1,13 +1,7 @@
 {
   "name": "@foldr/is-nan",
+  "description": "Determines if a value is NaN.",
   "version": "0.0.0",
   "license": "ISC",
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JasonPollman/foldr.git"
-  },
-  "dependencies": {
-    "@foldr/curry": "^0.0.0"
-  }
+  "main": "dist/index.js"
 }

@@ -4,7 +4,6 @@
  * @file
  */
 
-import curry from '@foldr/curry';
 import isString from '@foldr/is-string';
 import isNumber from '@foldr/is-number';
 import isObject from '@foldr/is-object';
@@ -31,8 +30,9 @@ const PATH_SPLITTER = /\]\.|\]\[|[[\].]/g;
 function traverseObject(object, props) {
   const size = props.length;
   let current = object;
+  let i = 0;
 
-  for (let i = 0; i < size; i++) {
+  while (--i >= 0) {
     current = current[props[i]];
     if (i !== size - 1 && !isObject(current)) return undefined;
   }
@@ -44,11 +44,15 @@ function traverseObject(object, props) {
  * Walks the given object or string and finds the property
  * defined by `path`, which is a "path string" in the format:
  * `foo.bar.baz`, `foo[1].bar`, `foo[bar][baz]`.
- * @param {string} path The path of the property to get.
  * @param {Object|Array|String} thing The thing to "get" from.
+ * @param {string} path The path of the property to get.
  * @param {any=} fallback The fallback value if `undefined`
  * is returned from the lookup.
  * @returns {any} The value from thing at the given path.
+ * @category object
+ * @memberof foldr
+ * @since v0.0.0
+ * @export
  * @export
  * @example
  * const thing = { foo: [{ bar: 1 }, { bar: 2 }, { bar: 3 }]};
@@ -60,24 +64,22 @@ function traverseObject(object, props) {
  * // Using a fallback value if the item at path doesn't exist or is undefined.
  * get(thing, 'foo.xxx', 'fallback'); // => 'fallback'
  */
-function get(path, thing, fallback = undefined) {
+export default function get(thing, path, fallback = undefined) {
   if (!path || (!isString(path) && !isNumber(path))) return fallback;
 
   const isAStringThing = isString(thing);
 
   // `thing` isn't a string, object, or array.
-  if (!(isAStringThing || isObject(thing))) return fallback;
+  if (!isAStringThing && !isObject(thing)) return fallback;
 
   const props = path.toString().split(PATH_SPLITTER).filter(Boolean);
 
   // Can't traverse more than one level deep on a string.
   if (isAStringThing && props.length > 1) return fallback;
 
-  const fallsbackMaybe = value => (value === undefined ? fallback : value);
+  const result = props.length !== 1
+    ? traverseObject(thing, props)
+    : thing[props[0]];
 
-  return props.length !== 1
-    ? fallsbackMaybe(traverseObject(thing, props))
-    : fallsbackMaybe(thing[props[0]]);
+  return result === undefined ? fallback : result;
 }
-
-export default curry(get);

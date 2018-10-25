@@ -1,10 +1,22 @@
 /**
- * Exports current environment settings.
- * @since 10/13/18
+ * This file exports various constants that reveal
+ * information about the current runtime environment.
+ * @since 10/23/18
  * @file
  */
 
-export default {
-  global: typeof window === 'undefined' ? global : window,
-  isNode: typeof process !== 'undefined' && typeof (process.versions || {}).node === 'string',
-};
+
+/**
+ * The "global" context.
+ * That is, `global` in node and `window` in the browser.
+ * @type {Object}
+ */
+export const GLOBAL = typeof window === 'undefined' ? global : window;
+
+/**
+ * True if running in Node.js, false otherwise.
+ * @type {boolean}
+ */
+export const IS_NODE = typeof process !== 'undefined'
+  && typeof process.versions === 'object'
+  && typeof process.versions.node === 'string';

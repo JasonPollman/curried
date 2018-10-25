@@ -1,14 +1,10 @@
 {
   "name": "@foldr/is-promise",
+  "description": "Determines if a value is a Promise instance.",
   "version": "0.0.0",
   "license": "ISC",
   "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JasonPollman/foldr.git"
-  },
   "dependencies": {
-    "@foldr/curry": "^0.0.0",
     "@foldr/to-string-tag": "^0.0.0"
   }
 }

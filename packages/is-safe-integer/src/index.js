@@ -1,22 +1,27 @@
 /**
  * Exports the `isSafeInteger` function.
  * This is based off the MDN polyfill:
- * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger
  * @since 9/25/18
  * @file
  */
 
-import curry from '@foldr/curry';
 import isInteger from '@foldr/is-integer';
 
-const isSafeInteger = Number.isSafeInteger || function isSafeInteger(x) {
+/**
+ * This is based on the polyfill from
+ * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger).
+ * @param {any} x The value to check.
+ * @returns {boolean} True if `x` is a safe integer, false otherwise.
+ */
+export function isSafeIntegerPolyfill(x) {
   return isInteger(x) && Math.abs(x) <= Number.MAX_SAFE_INTEGER;
-};
+}
 
 /**
- * Determines if the given item is an integer.
- * @param {any} x The value to assert.
- * @returns {boolean} True if `x` is an integer, false otherwise.
+ * Checks if `value` is a safe integer. An integer is safe if it's an IEEE-754
+ * double precision number which isn't the result of a rounded unsafe integer.
+ * @param {any} x The value to check.
+ * @returns {boolean} True if `x` is a safe integer, false otherwise.
  * @export
  */
-export default curry(isSafeInteger);
+export default Number.isSafeInteger || /* istanbul ignore next */ isSafeIntegerPolyfill;

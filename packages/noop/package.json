@@ -1,10 +1,7 @@
 {
   "name": "@foldr/noop",
   "version": "0.0.0",
+  "description": "A no-operation utility function",
   "license": "ISC",
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JasonPollman/foldr.git"
-  }
+  "main": "dist/index.js"
 }

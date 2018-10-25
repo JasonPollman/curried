@@ -1,0 +1,7 @@
+{
+  "name": "@foldr/compose",
+  "version": "0.0.0",
+  "description": "A function composition utility function.",
+  "license": "ISC",
+  "main": "dist/index.js"
+}

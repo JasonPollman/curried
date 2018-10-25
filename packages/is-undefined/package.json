@@ -1,10 +1,7 @@
 {
   "name": "@foldr/is-undefined",
+  "description": "Determines is a value is exactly undefined.",
   "version": "0.0.0",
   "license": "ISC",
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JasonPollman/foldr.git"
-  }
+  "main": "dist/index.js"
 }

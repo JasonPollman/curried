@@ -1,14 +1,11 @@
 /**
- * Exports the "noop" function.
- * @since 10/13/18
- * @file
- */
-
-/**
  * A function that returns nothing. A "no operation".
  * @returns {undefined}
+ * @category utility
+ * @memberof foldr
+ * @since v0.0.0
  * @export
  * @example
- * noop() => `undefined`
+ * noop() => undefined
  */
 export default function noop() {}

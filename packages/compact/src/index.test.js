@@ -1,4 +1,4 @@
-const compact = require('./');
+import compact from '.';
 
 describe('compact', () => {
   it('should remove falsy values from an array', () => {

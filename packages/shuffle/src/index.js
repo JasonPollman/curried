@@ -51,7 +51,7 @@ export function implementShuffle(arr) {
 function shuffle(arr) {
   const size = arr && arr.length;
   if (size > 1) return implementShuffle(arr);
-  return (size && size > 1) ? new Array(1).fill(arr[0]) : new Array();
+  return (size && size === 1) ? new Array(1).fill(arr[0]) : new Array();
 }
 
 export default shuffle;

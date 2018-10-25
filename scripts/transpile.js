@@ -117,7 +117,7 @@ function transpilePackage(cwd) {
   return Promise.all([
     exec(getBabelCommand({ environment: 'cjs', destination: './dist' }), { cwd }),
     exec(getBabelCommand({ environment: 'esm', destination: './temp' }), { cwd }).then(move(cwd)),
-  ]);
+  ]).catch(f => f);
 }
 
 /**

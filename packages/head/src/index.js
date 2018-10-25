@@ -1,3 +1,4 @@
+
 /**
  * Returns the first index of a proven array.
  * @param {Array} array - The array that will provide the first index.

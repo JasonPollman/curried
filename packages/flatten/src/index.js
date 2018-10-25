@@ -13,17 +13,12 @@
 */
 
 /**
- * Flattens an array one level deep.
- * @param {Array} array - The array to flatten.
- * @returns {Array} A newly flattened array.
+ * Flattens an array one level deep
+ * @param {Array} array - the array to flatten
  * @category array
  * @memberof foldr
  * @since v0.0.0
- * @export
- * @example
- * flatten([1, 2, 3, 4]);       // => [1, 2, 3, 4]
- * flatten([1, [2, 3], 4]);     // => [1, 2, 3, 4]
- * flatten([[1], [2], [3], 4]); // => [1, 2, 3, 4]
+ * @returns {Array} a newly flattened array
  */
 function flatten(array) {
   if (!array || !array.length) return new Array();

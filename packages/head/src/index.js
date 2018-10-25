@@ -1,16 +1,12 @@
 /**
- * Returns the first index of a proven array.
- * @param {Array} array - The array that will provide the first index.
- * @returns {Array} - The value at the first index of an array.
- * @category array
+ * Head function, which returns the first index of a proven array
  * @memberof foldr
  * @since v0.0.0
- * @export
- * @example
- * head([1, 2, 3, 4]); // => 1
- * head([]);           // => undefined
+ * @param {Array} array - the array that will provide the first index
+ * @returns {Array} - the value at the first index of an array
  */
-export default function head(array) {
+function head(array) {
   if (array && array.length) return array[0];
   return undefined;
 }
+module.exports = head;

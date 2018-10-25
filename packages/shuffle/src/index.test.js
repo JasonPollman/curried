@@ -1,10 +1,8 @@
-const shuffle = require('./').default;
-const { implementShuffle, cloneArray } = require('./');
+import shuffle, { implementShuffle, cloneArray } from '.';
 
 describe('shuffle', () => {
   it('should shuffle an array', () => {
     const ogArray = [1, 2, 3, 4, 5];
-
     const shuffled = shuffle(ogArray);
 
     expect(shuffled.length).toBe(ogArray.length);

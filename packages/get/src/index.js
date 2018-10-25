@@ -29,8 +29,9 @@ const PATH_SPLITTER = /\]\.|\]\[|[[\].]/g;
  */
 function traverseObject(object, props) {
   const size = props.length;
+
   let current = object;
-  let i = 0;
+  let i = size;
 
   while (--i >= 0) {
     current = current[props[i]];

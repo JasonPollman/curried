@@ -1,6 +1,11 @@
 /**
- * Creates a function that returns the result of invoking
- * the provided functions in successive order from right to left.
+ * Function composition.
+ *
+ * Creates a new function that returns the result of invoking
+ * the given functions in successive order from right to left
+ * passing the results of the previous invocation to the next
+ * function.
+ *
  * Each function will be invoked with the `this` binding available
  * to the newly created function.
  *

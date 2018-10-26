@@ -1,10 +1,18 @@
 /**
+ * No operation
+ * @returns {void}
+ */
+function noop() {}
+
+/**
  * Wraps a function and calls it. If fn is invoked more than once,
  * it returns the first value.
- * @param {function} fn - the function to once
+ * @param {function} fn - the function to "once"
  * @returns {*} - whatever is returned from fn
  */
 function once(fn) {
+  if (typeof fn !== 'function') return noop;
+
   let amt = 0;
   let res;
 

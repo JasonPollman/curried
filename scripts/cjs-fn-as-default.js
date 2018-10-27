@@ -1,4 +1,6 @@
 /**
+ * This is used as a babel plugin in `babel.config.js`.
+ *
  * Converts `exports.default = fn` to `module.exports = fn`.
  * This will assign all named exports to the default function export
  * and provides support for both `const x = require('y')` and

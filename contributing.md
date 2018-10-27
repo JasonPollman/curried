@@ -21,6 +21,7 @@ The exception to this rule is the `all` directory which is an automatically gene
 |- scripts                   # Houses internally used CI/CD scripts
 |- packages                  # Stores each package (library function)
 |  |- xxx                    # The library function `xxx`.
+|  |  |- package.json        # The package.json for the xxx package.
 |  |  |- src                 # Source files for xxx.
 |  |  |  |- index.js         # Contains xxx's main export.
 |  |  |  |- index.test.js    # Unit test file for xxx.
@@ -76,6 +77,7 @@ be included on exposed library functions:
  * @since v0.0.0
  * @export
  * @example
+ *
  * function add(a, b) {
  *   return a + b;
  * }
@@ -116,3 +118,48 @@ your best not to break lint rules first and optimize later.
 ```bash
 npm run lint
 ```
+
+## Library Consumption
+This project's build/publish process emits various "consumable" packages:
+- Each package is published independently to npm as `@foldr/[package]`.
+  - Each of these packages supports both CJS (`dist/index.js`) and ESMs (`dist/index.mjs`).
+  - Each package is also aggregated into a package called `@foldr/all` which imports all other packages.
+- Each package is bundled into a "fully independent" UMD artifact in `dist/[package].min.js`.
+  - A "full" build (`@foldr/all`) is also built to `dist/foldr.min.js`.
+
+## Scripts
+
+### build
+```bash
+$ npm run build
+```
+
+**Builds the *entire* project by:**
+
+- Cleaning the project (removing all `dist` directories).
+- Building the `@foldr/all` package and updating its `package.json` dependencies.
+- Transpiling all of the `packages/**` modules creating:
+  - `packages/[package]/dist/index.js`.
+  - `packages/[package]/dist/index.mjs`.
+  - `packages/[package]/dist/index.js.map`.
+- Bundling all of the `packages/**` packages, creating full UMD versions of each, making:
+  - `dist/[package].min.js`
+  - `dist/[package].min.js.map`
+
+### test
+```bash
+$ npm run test
+```
+**Runs `jest` to execute all unit tests.**    
+You can specify the `PKG=[name]` environment variable to run tests only for the specified package.
+
+```bash
+$ PKG=compact npm run test
+```
+
+### test:cover
+```bash
+$ npm run test:cover
+```
+**Runs `npm run test` and generates a LCOV test coverage report.**    
+You can also use the `PKG` environment variable with the script.

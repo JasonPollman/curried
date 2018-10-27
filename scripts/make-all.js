@@ -1,17 +1,15 @@
 /**
- * Transpiles all packages to a `dist` directory local to it's package root.
- * Currently this will output two formats: CommonJS (.js) and ESMs (.mjs).
- * This will also ouput a source map that is referenced by both.
+ * Creates the `@foldr/all` aggregate package by creating an all/index.js file
+ * that imports all of the non-internal packages in the /packages directory.
+ * This is basically the "full" build of all foldr packages.
  * @since 10/24/18
  * @file
  */
 
-import os from 'os';
-import fs from 'fs';
 import path from 'path';
 import Promise from 'bluebird';
 import compose from 'p-compose';
-import ChildProcess from 'child_process';
+import fs from 'fs-extra-promise';
 
 import {
   red,
@@ -20,123 +18,176 @@ import {
   green,
 } from 'chalk';
 
+import {
+  log,
+  logTap,
+  getBasename,
+  MAP_CONCURRENCY,
+  PACKAGES_DIRECTORY,
+  getPackageFilelist,
+  getPackageDirectories,
+  filterIgnoredAndInternalPackages,
+} from './utils';
+
 /**
- * This project's root directory.
+ * The path to /packages/all.
  * @type {string}
  */
-const PROJECT_ROOT = path.join(__dirname, '..');
+const FOLDR_ALL_PACKAGE_ROOT = path.join(PACKAGES_DIRECTORY, 'all');
 
 /**
- * This absolute path to the /packages directory.
+ * The path to /packages/all/src/index.js.
  * @type {string}
  */
-const PACKAGES_DIRECTORY = path.join(PROJECT_ROOT, 'packages');
+const FOLDR_ALL_INDEX_DESTINATION = path.join(FOLDR_ALL_PACKAGE_ROOT, 'src', 'index.js');
+
+const EXTRAS = ({ packageJson }) => ({
+  variables: [
+    // 'const _ = curry._',
+    `const VERSION = '${packageJson.version}'`,
+  ],
+  exports: [
+    // '_',
+    'VERSION',
+  ],
+});
 
 /**
- * This absolute path to the /.babelrc file.
- * @type {string}
+ * A weak implementation of camel casing a string.
+ * @param {string} string The string to camel case.
+ * @returns {string} The camel cased string.
  */
-const BABEL_RC_PATH = path.join(PROJECT_ROOT, 'babel.config.js');
+function camelize(string) {
+  return string
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, ($0, i) => (i === 0 ? $0.toLowerCase() : $0.toUpperCase()))
+    .replace(/\s+/g, '')
+    .replace(/[^a-z]/ig, '');
+}
 
 /**
- * The maximum number of files to babel concurrently.
- * @type {number}
+ * Gets the package.json contents for the /packages/all package.
+ * @returns {Promise<Object>} The package.json contents.
  */
-const BUILD_CONCURRENCY = os.cpus().length - 1;
-
-const exec = Promise.promisify(ChildProcess.exec);
-const lstatAsync = Promise.promisify(fs.lstat);
-const readdirAsync = Promise.promisify(fs.readdir);
-
-const { log } = console;
-const nth = n => x => x[n];
-
-const toStatsTuple = pkg => lstatAsync(pkg).then(stat => [pkg, stat]);
-const statsTupleIsDirectory = data => nth(1)(data).isDirectory();
+function getFoldrAllPackageJson() {
+  const foldrAllPackageJsonSource = path.join(FOLDR_ALL_PACKAGE_ROOT, 'package.json');
+  return fs.readJsonAsync(foldrAllPackageJsonSource);
+}
 
 /**
- * Builds the babel command to execute.
- * @param {Object} options Babel command options.
- * @returns {string} A babel command for passing to `exec`.
+ * Generates the contents for the /packages/all/src/index.js file.
+ * @param {Object<Object>} packageJsons An object containing all of the package.json files
+ * this package is dependent on (keyed by package name).
+ * @returns {Proimse<string>} Resolves with the generated contents for /packages/all/src/index.js.
  */
-function getBabelCommand(options) {
-  const {
-    source = './src',
-    ignore = '**/*.test.js',
-    babelrc = BABEL_RC_PATH,
-    destination,
-    environment = 'production',
-  } = options;
+async function generateFoldrAllIndexContent(packageJsons) {
+  const modules = Object.keys(packageJsons);
+  const symbols = modules.map(module => module.replace(/^@foldr\//, '')).map(camelize);
 
-  return `NODE_ENV=${environment} npx babel ${source} \
-    --out-dir ${destination}    \
-    --source-maps               \
-    --ignore=${ignore}          \
-    --config-file="${babelrc}"  \
+  // All of the `import x from 'y';` statements.
+  const imports = modules.map((module, i) => `import ${symbols[i]} from '${module}';`).join('\n');
+  const extras = EXTRAS({ packageJson: await getFoldrAllPackageJson() });
+
+  // An { x, y, z } like statement.
+  // Will be prepended with `export` and `export default` below.
+  const exported = `{
+    ${extras.exports.join(',\n    ')},
+    ${symbols.join(',\n    ')},
+  }`;
+
+  const rendered = `
+  /**
+   * The @foldr library.
+   * This is an automatically generated file that aggregates all of the individual
+   * packages in the @foldr mono-repo and exports them as a single requirable module.
+   * Only "non-internal" packages and some other useful things (such as the curry/partial
+   * placeholder symbol) are exposed via this module.
+   * @since ${new Date().toLocaleDateString()}
+   * @file
+   */
+
+  ${imports}
+
+  ${extras.variables.join(';\n  ')};
+
+  export ${exported};
+
+  export default ${exported};
   `;
+
+  return rendered.trim().replace(/^ {2}/gm, '').concat('\n');
 }
 
 /**
- * Reads the /packages directory and returns a list of absolute paths contained within.
- * @param {string} [basepath=PACKAGES_DIRECTORY] The basepath of the directory to read.
- * @returns {Array<string>} An array of absolute filepaths contained in `basepath`.
+ * Generates the /packages/all/src/index.js file.
+ * @param {Object<Object>} packageJsons An object containing all of the package.json files
+ * this package is dependent on (keyed by package name).
+ * @returns {Proimse<string>} Resolves with the generated contents for /packages/all/src/index.js.
  */
-function getPackageFilelist(basepath = PACKAGES_DIRECTORY) {
-  log(cyan.bold('Getting package file list...'));
-  return readdirAsync(basepath).map(pkg => path.join(basepath, pkg));
+async function generateFoldrAllPackageIndexFile(packageJsons) {
+  const rendered = await generateFoldrAllIndexContent(packageJsons);
+  await fs.outputFileAsync(FOLDR_ALL_INDEX_DESTINATION, rendered);
+  log(green.bold('Index file for `@foldr/all` generated successfully!'));
 }
 
 /**
- * Filters a list of filepaths to only include directories using `Stat#isDirectory`.
- * @param {Array<string>} filepaths The list of filepaths to filter.
- * @returns {Array<string>} The filtered filepaths.
+ * Updates the package.json for the `@foldr/all` package by updating the
+ * `dependencies` with the latest version of each dependent package.
+ * @param {Object<Object>} packageJsons An object containing all of the package.json files
+ * this package is dependent on (keyed by package name).
+ * @returns {Proimse<void>} Resolves when the package.json has been updated.
  */
-function getPackageDirectories(filepaths) {
-  log(cyan.bold('Filtering package file list...'));
-  return Promise.map(filepaths, toStatsTuple).filter(statsTupleIsDirectory).map(nth(0));
+async function updateFoldrAllPackageDependencies(packageJsons) {
+  const foldrAllPackageJsonSource = path.join(FOLDR_ALL_PACKAGE_ROOT, 'package.json');
+  const foldrAllPackageJsonContents = await fs.readJsonAsync(foldrAllPackageJsonSource);
+
+  foldrAllPackageJsonContents.dependencies = {};
+
+  Object.keys(packageJsons).forEach((key) => {
+    const { name, version } = packageJsons[key];
+    foldrAllPackageJsonContents.dependencies[name] = `^${version}`;
+  });
+
+  await fs.outputJsonAsync(foldrAllPackageJsonSource, Object.assign(foldrAllPackageJsonContents, {
+    packageJsons,
+  }));
+
+  log(green.bold('Package.json file for `@foldr/all` updated successfully!'));
 }
 
 /**
- * Moves the temp ESM files to the dist directory and then deletes the `./temp`
- * directory for the package at `cwd`.
- * @param {string} cwd The absolute path of the current package.
- * @returns {function} A callback function that will execute the command.
+ * Loads the package json files for all the non-internal packages in
+ * the /packages library.
+ * @param {*} packages The absolute filepaths to all the non-internal packages.
+ * @returns {Promise<Object<Object>>} An object containing all of the packages
+ * keyed by the package name.
  */
-function move(cwd) {
-  return () => exec('mv ./temp/index.js ./dist/index.mjs && rm -r ./temp', { cwd });
+async function getLibraryPackageJsonFiles(packages) {
+  const results = {};
+
+  const getPackageJson = async (pkg) => {
+    log(dim('Loading package.json for package %s'), getBasename(pkg));
+    const packageJson = await fs.readJsonAsync(path.join(pkg, 'package.json'));
+    results[packageJson.name] = packageJson;
+  };
+
+  await Promise.map(packages, getPackageJson, { concurrency: MAP_CONCURRENCY });
+  return results;
 }
 
-/**
- * Builds a single package.
- * @param {string} cwd The current working directory for the package.
- * @returns {Promise} Resolves once the package has been transpiled.
- */
-function transpilePackage(cwd) {
-  log(dim('Transpiling %s'), path.basename(cwd));
-
-  return Promise.all([
-    exec(getBabelCommand({ environment: 'cjs', destination: './dist' }), { cwd }),
-    exec(getBabelCommand({ environment: 'esm', destination: './temp' }), { cwd }).then(move(cwd)),
-  ]);
-}
-
-/**
- * Builds all packages by transpiling the CJS format, then the ESM format.
- * Since babel doesn't provide an easy way to rename things, we'll be transpiling
- * to CJS first in the ../dist directory, then to the ./temp directory for ESM
- * versions. Then we'll use `mv` to move the ESM versions to ./dist and rename the extension.
- * @param {Array<string>} packages The list of packages to build (absolute filepaths).
- * @returns {Promise} Resolves once all packages have been transpiled.
- */
-async function transpilePackages(packages) {
-  await Promise.map(packages, transpilePackage, { concurrency: BUILD_CONCURRENCY });
-  log(green.bold('Transpilation Complete!'));
-}
-
-const transpile = compose(
-  transpilePackages,
+const setup = compose(
+  getLibraryPackageJsonFiles,
+  filterIgnoredAndInternalPackages(['all']),
   getPackageDirectories,
   getPackageFilelist,
+  logTap(cyan.bold('Building @foldr/all package')),
 );
 
-transpile(PACKAGES_DIRECTORY).catch(e => log(red.bold(e.stack)));
+const build = dependencies => Promise.all([
+  updateFoldrAllPackageDependencies(dependencies),
+  generateFoldrAllPackageIndexFile(dependencies),
+]);
+
+setup(PACKAGES_DIRECTORY).then(build).catch((e) => {
+  log(red.bold(e.stack));
+  process.exit(1);
+});

@@ -1,13 +1,11 @@
 /**
- * Transpiles all packages to a `dist` directory local to it's package root.
+ * Transpiles all packages to a `dist` directory local to the package's root.
  * Currently this will output two formats: CommonJS (.js) and ESMs (.mjs).
  * This will also ouput a source map that is referenced by both.
  * @since 10/24/18
  * @file
  */
 
-import os from 'os';
-import fs from 'fs';
 import path from 'path';
 import Promise from 'bluebird';
 import compose from 'p-compose';
@@ -20,39 +18,23 @@ import {
   green,
 } from 'chalk';
 
-/**
- * This project's root directory.
- * @type {string}
- */
-const PROJECT_ROOT = path.join(__dirname, '..');
+import {
+  log,
+  logTap,
+  PROJECT_ROOT,
+  MAP_CONCURRENCY,
+  PACKAGES_DIRECTORY,
+  getPackageFilelist,
+  getPackageDirectories,
+} from './utils';
 
-/**
- * This absolute path to the /packages directory.
- * @type {string}
- */
-const PACKAGES_DIRECTORY = path.join(PROJECT_ROOT, 'packages');
+const exec = Promise.promisify(ChildProcess.exec);
 
 /**
  * This absolute path to the /.babelrc file.
  * @type {string}
  */
 const BABEL_RC_PATH = path.join(PROJECT_ROOT, 'babel.config.js');
-
-/**
- * The maximum number of files to babel concurrently.
- * @type {number}
- */
-const BUILD_CONCURRENCY = os.cpus().length - 1;
-
-const exec = Promise.promisify(ChildProcess.exec);
-const lstatAsync = Promise.promisify(fs.lstat);
-const readdirAsync = Promise.promisify(fs.readdir);
-
-const { log } = console;
-const nth = n => x => x[n];
-
-const toStatsTuple = pkg => lstatAsync(pkg).then(stat => [pkg, stat]);
-const statsTupleIsDirectory = data => nth(1)(data).isDirectory();
 
 /**
  * Builds the babel command to execute.
@@ -69,31 +51,11 @@ function getBabelCommand(options) {
   } = options;
 
   return `NODE_ENV=${environment} npx babel ${source} \
-    --out-dir ${destination}    \
-    --source-maps               \
-    --ignore=${ignore}          \
-    --config-file="${babelrc}"  \
+    --out-dir "${destination}" \
+    --source-maps              \
+    --ignore="${ignore}"       \
+    --config-file="${babelrc}" \
   `;
-}
-
-/**
- * Reads the /packages directory and returns a list of absolute paths contained within.
- * @param {string} [basepath=PACKAGES_DIRECTORY] The basepath of the directory to read.
- * @returns {Array<string>} An array of absolute filepaths contained in `basepath`.
- */
-function getPackageFilelist(basepath = PACKAGES_DIRECTORY) {
-  log(cyan.bold('Getting package file list...'));
-  return readdirAsync(basepath).map(pkg => path.join(basepath, pkg));
-}
-
-/**
- * Filters a list of filepaths to only include directories using `Stat#isDirectory`.
- * @param {Array<string>} filepaths The list of filepaths to filter.
- * @returns {Array<string>} The filtered filepaths.
- */
-function getPackageDirectories(filepaths) {
-  log(cyan.bold('Filtering package file list...'));
-  return Promise.map(filepaths, toStatsTuple).filter(statsTupleIsDirectory).map(nth(0));
 }
 
 /**
@@ -114,10 +76,14 @@ function move(cwd) {
 function transpilePackage(cwd) {
   log(dim('Transpiling %s'), path.basename(cwd));
 
-  return Promise.all([
+  const promises = [
     exec(getBabelCommand({ environment: 'cjs', destination: './dist' }), { cwd }),
     exec(getBabelCommand({ environment: 'esm', destination: './temp' }), { cwd }).then(move(cwd)),
-  ]).catch(f => f);
+  ];
+
+  return Promise
+    .all(promises)
+    .catch(e => log(red.bold('Error transpiling package %s: %s'), path.basename(cwd), e.message));
 }
 
 /**
@@ -129,14 +95,18 @@ function transpilePackage(cwd) {
  * @returns {Promise} Resolves once all packages have been transpiled.
  */
 async function transpilePackages(packages) {
-  await Promise.map(packages, transpilePackage, { concurrency: BUILD_CONCURRENCY });
-  log(green.bold('Transpilation Complete!'));
+  return Promise.map(packages, transpilePackage, { concurrency: MAP_CONCURRENCY });
 }
 
 const transpile = compose(
+  logTap(green.bold('Transpilation Successful!')),
   transpilePackages,
+  logTap(cyan.bold('Transpiling %s packages...'), pkgs => pkgs.length),
   getPackageDirectories,
   getPackageFilelist,
 );
 
-transpile(PACKAGES_DIRECTORY).catch(e => log(red.bold(e.stack)));
+transpile(PACKAGES_DIRECTORY).catch((e) => {
+  log(red.bold(e.stack));
+  process.exit(1);
+});

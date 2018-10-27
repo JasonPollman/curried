@@ -1,7 +1,221 @@
 {
   "name": "@foldr/all",
   "version": "0.0.0",
-  "description": "The entire @foldr library.",
+  "description": "The complete @foldr library.",
   "license": "ISC",
-  "main": "dist/index.js"
+  "main": "dist/index.js",
+  "dependencies": {
+    "@foldr/compose": "^0.0.0",
+    "@foldr/flatten": "^0.0.0",
+    "@foldr/get": "^0.0.0",
+    "@foldr/has": "^0.0.0",
+    "@foldr/head": "^0.0.0",
+    "@foldr/identity": "^0.0.0",
+    "@foldr/is-array": "^0.0.0",
+    "@foldr/noop": "^0.0.0",
+    "@foldr/shuffle": "^0.0.0",
+    "@foldr/to-string-tag": "^0.0.0",
+    "@foldr/is-undefined": "^0.0.0",
+    "@foldr/is-safe-integer": "^0.0.0",
+    "@foldr/is-string": "^0.0.0",
+    "@foldr/is-promise": "^0.0.0",
+    "@foldr/is-object": "^0.0.0",
+    "@foldr/is-number": "^0.0.0",
+    "@foldr/is-null": "^0.0.0",
+    "@foldr/is-nil": "^0.0.0",
+    "@foldr/is-nan": "^0.0.0",
+    "@foldr/is-integer": "^0.0.0",
+    "@foldr/is-finite": "^0.0.0",
+    "@foldr/is-array-like": "^0.0.0"
+  },
+  "packageJsons": {
+    "@foldr/compose": {
+      "name": "@foldr/compose",
+      "version": "0.0.0",
+      "description": "A function composition utility function.",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/flatten": {
+      "name": "@foldr/flatten",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/get": {
+      "name": "@foldr/get",
+      "version": "0.0.0",
+      "license": "ISC",
+      "description": "Gets a value from an object specified by a path string.",
+      "main": "dist/index.js",
+      "dependencies": {
+        "@foldr/is-string": "^0.0.0",
+        "@foldr/is-number": "^0.0.0",
+        "@foldr/is-object": "^0.0.0"
+      }
+    },
+    "@foldr/has": {
+      "name": "@foldr/has",
+      "version": "0.0.0",
+      "description": "A utility function to test whether or not an object has a property.",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/head": {
+      "name": "@foldr/head",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/identity": {
+      "name": "@foldr/identity",
+      "version": "0.0.0",
+      "description": "The identity function.",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/is-array": {
+      "name": "@foldr/is-array",
+      "version": "0.0.0",
+      "description": "Determines if a value is an Array object.",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "dependencies": {
+        "@foldr/internal-env": "^0.0.0",
+        "@foldr/to-string-tag": "^0.0.0"
+      }
+    },
+    "@foldr/noop": {
+      "name": "@foldr/noop",
+      "version": "0.0.0",
+      "description": "A no-operation utility function",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/shuffle": {
+      "name": "@foldr/shuffle",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/JasonPollman/foldr.git"
+      }
+    },
+    "@foldr/to-string-tag": {
+      "name": "@foldr/to-string-tag",
+      "version": "0.0.0",
+      "description": "A convenience function for Object.toString.call",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/is-undefined": {
+      "name": "@foldr/is-undefined",
+      "description": "Determines is a value is exactly undefined.",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/is-safe-integer": {
+      "name": "@foldr/is-safe-integer",
+      "description": "Checks if a value is a safe integer.",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "dependencies": {
+        "@foldr/is-integer": "^0.0.0"
+      }
+    },
+    "@foldr/is-string": {
+      "name": "@foldr/is-string",
+      "description": "Determines if a value is a string.",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "dependencies": {
+        "@foldr/internal-env": "^0.0.0",
+        "@foldr/to-string-tag": "^0.0.0"
+      }
+    },
+    "@foldr/is-promise": {
+      "name": "@foldr/is-promise",
+      "description": "Determines if a value is a Promise instance.",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "dependencies": {
+        "@foldr/to-string-tag": "^0.0.0"
+      }
+    },
+    "@foldr/is-object": {
+      "name": "@foldr/is-object",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/JasonPollman/foldr.git"
+      }
+    },
+    "@foldr/is-number": {
+      "name": "@foldr/is-number",
+      "description": "Determines if a value is a number",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "dependencies": {
+        "@foldr/internal-env": "^0.0.0",
+        "@foldr/to-string-tag": "^0.0.0"
+      }
+    },
+    "@foldr/is-null": {
+      "name": "@foldr/is-null",
+      "description": "Determines is a value is exactly null.",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/is-nil": {
+      "name": "@foldr/is-nil",
+      "description": "Determines is a value is nil (null or undefined).",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/is-nan": {
+      "name": "@foldr/is-nan",
+      "description": "Determines if a value is NaN.",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js"
+    },
+    "@foldr/is-integer": {
+      "name": "@foldr/is-integer",
+      "description": "Determines if a number is an integer.",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "dependencies": {
+        "@foldr/is-finite": "^0.0.0"
+      }
+    },
+    "@foldr/is-finite": {
+      "name": "@foldr/is-finite",
+      "description": "Determines if a value is a finite number.",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js",
+      "dependencies": {
+        "@foldr/is-number": "^0.0.0",
+        "@foldr/internal-env": "^0.0.0"
+      }
+    },
+    "@foldr/is-array-like": {
+      "name": "@foldr/is-array-like",
+      "description": "Determines is an object is array-like (has a length and is non-falsy).",
+      "version": "0.0.0",
+      "license": "ISC",
+      "main": "dist/index.js"
+    }
+  }
 }

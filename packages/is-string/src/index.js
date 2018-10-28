@@ -14,7 +14,7 @@ import toStringTag from '@foldr/to-string-tag';
  * @returns {boolean} True if `thing` is a string, false otherwise.
  */
 export function isStringNode(x) {
-  return typeof x === 'string' || (!!x && x instanceof String);
+  return typeof x === 'string' || x instanceof String;
 }
 
 /**
@@ -38,4 +38,4 @@ export function isStringBrowser(x) {
  * @since v0.0.0
  * @export
  */
-export default IS_NODE ? isStringNode : isStringBrowser;
+export default IS_NODE ? isStringNode : /* istanbul ignore next */ isStringBrowser;

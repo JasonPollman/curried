@@ -6,7 +6,6 @@
   "main": "dist/index.js",
   "dependencies": {
     "@foldr/is-string": "^0.0.0",
-    "@foldr/is-number": "^0.0.0",
     "@foldr/is-object": "^0.0.0"
   }
 }

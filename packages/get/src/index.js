@@ -5,7 +5,6 @@
  */
 
 import isString from '@foldr/is-string';
-import isNumber from '@foldr/is-number';
 import isObject from '@foldr/is-object';
 
 /**
@@ -30,12 +29,12 @@ const PATH_SPLITTER = /\]\.|\]\[|[[\].]/g;
 function traverseObject(object, props) {
   const size = props.length;
 
+  let i = 0;
   let current = object;
-  let i = size;
 
-  while (--i >= 0) {
+  while (i < size) {
     current = current[props[i]];
-    if (i !== size - 1 && !isObject(current)) return undefined;
+    if (i++ !== size - 1 && !isObject(current)) return undefined;
   }
 
   return current;
@@ -66,11 +65,9 @@ function traverseObject(object, props) {
  * get(thing, 'foo.xxx', 'fallback'); // => 'fallback'
  */
 export default function get(thing, path, fallback = undefined) {
-  if (!path || (!isString(path) && !isNumber(path))) return fallback;
+  if (path === null || path === undefined) return fallback;
 
   const isAStringThing = isString(thing);
-
-  // `thing` isn't a string, object, or array.
   if (!isAStringThing && !isObject(thing)) return fallback;
 
   const props = path.toString().split(PATH_SPLITTER).filter(Boolean);

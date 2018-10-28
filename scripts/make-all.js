@@ -83,10 +83,12 @@ function getFoldrAllPackageJson() {
  */
 async function generateFoldrAllIndexContent(packageJsons) {
   const modules = Object.keys(packageJsons);
-  const symbols = modules.map(module => module.replace(/^@foldr\//, '')).map(camelize).sort();
+  const sorted = modules.sort();
+
+  const symbols = sorted.map(module => module.replace(/^@foldr\//, '')).map(camelize);
 
   // All of the `import x from 'y';` statements.
-  const imports = modules.map((module, i) => `import ${symbols[i]} from '${module}';`).sort().join('\n');
+  const imports = sorted.map((module, i) => `import ${symbols[i]} from '${module}';`).join('\n');
   const extras = EXTRAS({ packageJson: await getFoldrAllPackageJson() });
 
   // An { x, y, z } like statement.

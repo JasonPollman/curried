@@ -145,6 +145,7 @@ $ npm run build
 - Bundling all of the `packages/**` packages, creating full UMD versions of each, making:
   - `dist/[package].min.js`
   - `dist/[package].min.js.map`
+- Generating a `docs/docs.json` file for the docs site to use.
 
 ### test
 ```bash

@@ -29,6 +29,8 @@ import {
   filterIgnoredAndInternalPackages,
 } from './utils';
 
+import mainPackageJson from '../package.json';
+
 /**
  * The path to /packages/all.
  * @type {string}
@@ -81,10 +83,10 @@ function getFoldrAllPackageJson() {
  */
 async function generateFoldrAllIndexContent(packageJsons) {
   const modules = Object.keys(packageJsons);
-  const symbols = modules.map(module => module.replace(/^@foldr\//, '')).map(camelize);
+  const symbols = modules.map(module => module.replace(/^@foldr\//, '')).map(camelize).sort();
 
   // All of the `import x from 'y';` statements.
-  const imports = modules.map((module, i) => `import ${symbols[i]} from '${module}';`).join('\n');
+  const imports = modules.map((module, i) => `import ${symbols[i]} from '${module}';`).sort().join('\n');
   const extras = EXTRAS({ packageJson: await getFoldrAllPackageJson() });
 
   // An { x, y, z } like statement.
@@ -140,16 +142,16 @@ async function updateFoldrAllPackageDependencies(packageJsons) {
   const foldrAllPackageJsonSource = path.join(FOLDR_ALL_PACKAGE_ROOT, 'package.json');
   const foldrAllPackageJsonContents = await fs.readJsonAsync(foldrAllPackageJsonSource);
 
+  // Reset dependencies and the version of the package.
   foldrAllPackageJsonContents.dependencies = {};
+  foldrAllPackageJsonContents.version = mainPackageJson.version;
 
-  Object.keys(packageJsons).forEach((key) => {
+  Object.keys(packageJsons).sort().forEach((key) => {
     const { name, version } = packageJsons[key];
     foldrAllPackageJsonContents.dependencies[name] = `^${version}`;
   });
 
-  await fs.outputJsonAsync(foldrAllPackageJsonSource, Object.assign(foldrAllPackageJsonContents, {
-    packageJsons,
-  }));
+  await fs.outputJsonAsync(foldrAllPackageJsonSource, foldrAllPackageJsonContents);
 
   log(green.bold('Package.json file for `@foldr/all` updated successfully!'));
 }

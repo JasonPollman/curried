@@ -1,7 +1,7 @@
 /**
- * Creates a bundled, full UMD version of each package using webpack.
+ * Creates a bundled, full UMD versions of each package using webpack.
  * This will emit a UMD version and source map for each non-internal package
- * at `dist/[package]`.
+ * at `dist/[package].min.js`.
  * @since 10/27/18
  * @file
  */
@@ -36,6 +36,7 @@ const webpackAsync = Promise.promisify(webpack);
 
 /**
  * The banner applied to the top of each bundle file.
+ * @todo This could use some TLC and a copyright.
  * @type {string}
  */
 const banner = `
@@ -52,16 +53,21 @@ const BASE_WEBPACK_CONFIG = {
   mode: 'production',
   devtool: 'source-map',
   target: 'web',
+  // Tell webpack not to shim node globals, since @folder/internal-env
+  // handles this in a way that's agnostic to webpack.
+  // This also reduces about 2kb in bundle sizes.
+  node: false,
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
     filename: '[name].min.js',
     library: '[name]',
     libraryTarget: 'umd',
-    // Fixes sourcemapping file paths, since each package is independently
-    // bundled, we don't need to sourcemaps to reference actual project paths.
+    // Fixes sourcemapping file paths.
+    // Since each package is independently bundled, we don't
+    // need to sourcemaps to reference actual project paths.
     devtoolModuleFilenameTemplate(info) {
       const src = info.absoluteResourcePath;
-      return `foldr:///${path.relative(path.dirname(path.dirname(src)), src)}`;
+      return `foldr:///${path.relative(path.dirname(src), src)}`;
     },
   },
   module: {
@@ -69,7 +75,8 @@ const BASE_WEBPACK_CONFIG = {
       {
         test: /\.js$/,
         // Uses the source map in `[package]/dist/index.js.map`
-        // So we don't have to re-transpile the code.
+        // So we don't have to re-transpile the code to get
+        // proper source maps.
         use: ['source-map-loader'],
         enforce: 'pre',
       },
@@ -83,13 +90,6 @@ const BASE_WEBPACK_CONFIG = {
       },
     }),
   ],
-  // Tell webpack not to shim these node globals, since @folder/internal-env
-  // handles this in a way that's agnostic to webpack.
-  // This also reduces about 2kb in bundle sizes.
-  node: {
-    global: false,
-    process: false,
-  },
 };
 
 /**
@@ -112,7 +112,7 @@ function generateWebpackConfig(packages) {
  * Prints information about the `full` bundle size.
  * @returns {undefined}
  */
-async function printBundleSizes() {
+async function logBundleSizeStats() {
   const source = path.join(__dirname, '..', 'dist', 'foldr.min.js');
   const contents = await fs.readFileAsync(source);
 
@@ -122,15 +122,35 @@ async function printBundleSizes() {
   }));
 
   log(
-    magenta.bold('\nSize of `foldr.min.js` distributable is %skb (%skb gizpped)\n'),
-    Math.trunc(Buffer.byteLength(contents) / 1000),
-    Math.trunc(Buffer.byteLength(gzipped) / 1000),
+    magenta.bold('Size of `foldr.min.js` distributable is %skb (%skb gizpped)'),
+    (Buffer.byteLength(contents) / 1000).toFixed(2),
+    (Buffer.byteLength(gzipped) / 1000).toFixed(2),
   );
 }
 
+/**
+ * Throws an error if bundling failed at all.
+ * @param {Object} stats The status object from webpack compilation.
+ * @returns {undefined}
+ */
+function validateBundles(stats) {
+  if (!stats.hasErrors()) {
+    return log(stats.toString({
+      colors: true,
+      chunks: false,
+      assets: false,
+      children: false,
+      entrypoints: false,
+    }));
+  }
+
+  throw new Error(stats.toJson().errors[0]);
+}
+
 const transpile = compose(
-  printBundleSizes,
+  logBundleSizeStats,
   logTap(green.bold('Packages bundled successfully!')),
+  validateBundles,
   webpackAsync,
   generateWebpackConfig,
   logTap(cyan.bold('Bundling %s packages...'), pkgs => pkgs.length),

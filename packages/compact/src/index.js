@@ -12,7 +12,7 @@
 */
 
 /**
- * Compacts an array by removing falsy values
+ * Compacts an array by removing falsy values.
  * @param {Array} array - the array to remove falsy values from
  * @returns {Array} a newly compacted array
  * @memberof foldr

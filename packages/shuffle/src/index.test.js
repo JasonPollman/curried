@@ -1,7 +1,7 @@
 import shuffle, { implementShuffle, cloneArray } from '.';
 
 describe('shuffle', () => {
-  it('should shuffle an array', () => {
+  it('Should shuffle an array', () => {
     const ogArray = [1, 2, 3, 4, 5];
     const shuffled = shuffle(ogArray);
 
@@ -9,7 +9,15 @@ describe('shuffle', () => {
     expect(JSON.stringify(ogArray) !== JSON.stringify(shuffled)).toBe(true);
   });
 
-  it('should return an empty array if param is not an array', () => {
+  it('Should shuffle an array (length 1)', () => {
+    const ogArray = [1];
+    const shuffled = shuffle(ogArray);
+
+    expect(shuffled.length).toBe(ogArray.length);
+    expect(shuffled).toEqual([1]);
+  });
+
+  it('Should return an empty array if param is not an array', () => {
     const str = 'hello';
 
     expect(shuffle(null)).toEqual([]);
@@ -23,14 +31,12 @@ describe('shuffle', () => {
     const cloned = cloneArray(og);
 
     expect(cloned.length).toBe(og.length);
-    // toEqual since `toBe` will fail due to shallow copy
     expect(cloned).toEqual([1, 2, 3]);
   });
 
   it('implementShuffle should shuffle an array', () => {
     const og = [1, 2, 3];
     const shuffled = implementShuffle(og);
-
     expect(JSON.stringify(og) !== JSON.stringify(shuffled)).toBe(true);
   });
 });

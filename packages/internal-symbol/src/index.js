@@ -1,45 +1,33 @@
 /**
- * The prefix to apply to *all* symbols.
+ * The prefix to apply to *all internal* symbols.
  * @type {string}
  */
 const prefix = '@@foldr/';
 
+/* eslint-disable require-jsdoc */
+
 /**
  * Makes a "Symbol-like" polyfill used for internal use only.
- * Exporting this for testing purposes only.
+ * Exporting this for testing purposes only. Note, this will only be used in
+ * the event that native Symbols aren't avaiable (env is IE11, for example).
  * @returns {function} A "SafeSymbol" factory function.
  */
 export function MakeSafeSymbol() {
-  let counter = 0;
   const registry = {};
 
-  /**
-   * A partial polyfill of Symbol.
-   * This will only be used in the event that native Symbols aren't
-   * avaiable (like in IE11, for example).
-   * @param {string} label The symbol's label.
-   * @returns {string} A "string" symbol.
-   */
   function Symbol(label) {
-    const id = '000000000'.concat((Date.now() + counter++).toString(36)).slice(-9);
+    const value = `@@${label}`;
 
-    /* eslint-disable require-jsdoc */
     return {
       valueOf() {
-        return `${prefix}/${id}/${label}`;
+        return value;
       },
       toString() {
         return this.valueOf();
       },
     };
-    /* eslint-enable require-jsdoc */
   }
 
-  /**
-   * Like Symbol.for, this will return a "globally registered" symbol.
-   * @param {string} label The label to get/create the symbol for.
-   * @returns {string} The fake symbol value.
-   */
   Symbol.for = function SymbolFor(label) {
     registry[label] = registry[label] || Symbol(label);
     return registry[label];
@@ -48,15 +36,26 @@ export function MakeSafeSymbol() {
   return Symbol;
 }
 
-const SafeSymbol = typeof Symbol === 'function' ? Symbol : MakeSafeSymbol();
+export const SafeSymbol = typeof Symbol === 'function' ? Symbol : /* istanbul ignore next */ MakeSafeSymbol();
 
 /**
- * Calls Safeymbol.for to create and register a Symbol that
- * will always contain the label prefix "@@foldr/".
+ * Calls SafeSymbol.for to get/register a symbol with the given `label`.
+ * If runtime is IE11, this will create a new "fake" symbol with '@@' prefixed.
  * @param {string} label The symbol's label.
  * @returns {Symbol|string} The symbol or pseudo symbol.
  * @export
  */
-export default function getSymbol(label) {
+export function getSymbol(label) {
+  return SafeSymbol[label] || SafeSymbol.for(label);
+}
+
+/**
+ * Calls SafeSymbol.for to get/register a Symbol that
+ * will always contain the label prefix "@@foldr/".
+ * @param {string} label The symbol's label.
+ * @returns {Symbol|SafeSymbol} The Symbol or SafeSymbol instance.
+ * @export
+ */
+export default function getInternalSymbol(label) {
   return SafeSymbol.for(prefix.concat(label));
 }

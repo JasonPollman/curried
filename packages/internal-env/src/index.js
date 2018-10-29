@@ -11,7 +11,7 @@
  * That is, `global` in node and `window` in the browser.
  * @type {Object}
  */
-export const GLOBAL = typeof window === 'undefined' ? global : window;
+export const GLOBAL = typeof window === 'undefined' ? global : /* istanbul ignore next */ window;
 
 /**
  * True if running in Node.js, false otherwise.

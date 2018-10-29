@@ -4,17 +4,15 @@
  * @file
  */
 
-/* eslint-disable eqeqeq */
-
 /**
  * Determines if the given item is either undefined or null.
- * @param {any} x The value to assert nil-ness.
- * @returns {boolean} True if `x` is nil, false otherwise.
+ * @param {any} thing The value to assert the nil-ness of.
+ * @returns {boolean} True if `thing` is nil, false otherwise.
  * @category types
  * @memberof foldr
  * @since v0.0.0
  * @export
  */
-export default function isNil(x) {
-  return x == undefined;
+export default function isNil(thing) {
+  return thing == null;
 }

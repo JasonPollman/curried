@@ -5,6 +5,6 @@
   "license": "ISC",
   "main": "dist/index.js",
   "dependencies": {
-    "@foldr/to-string-tag": "^0.0.0"
+    "@foldr/is": "^0.0.0"
   }
 }

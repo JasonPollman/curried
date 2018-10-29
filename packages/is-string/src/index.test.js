@@ -1,55 +1,38 @@
 /**
- * Tests for the `isSafeInteger` function.
+ * Tests for the `isString` function.
  * @since 10/23/18
  * @file
  */
 
-import { isStringNode, isStringBrowser } from '.';
-
-class Foo {
-  // eslint-disable-next-line class-methods-use-this
-  get [Symbol.toStringTag]() {
-    return 'String';
-  }
-}
+import isString from '.';
 
 describe('isString', () => {
-  [isStringNode, isStringBrowser].forEach((method) => {
-    it('Should be a function', () => {
-      expect(typeof method).toBe('function');
-    });
-
-    it('Should return `true` for string values', () => {
-      expect(method('')).toBe(true);
-      expect(method('foo')).toBe(true);
-
-      expect(method(String(''))).toBe(true);
-      expect(method(String(0))).toBe(true);
-      expect(method(String('xxx'))).toBe(true);
-
-      /* eslint-disable no-new-wrappers */
-      expect(method(new String(''))).toBe(true);
-      expect(method(new String('xxx'))).toBe(true);
-      /* eslint-enable no-new-wrappers */
-    });
-
-    it('Should return false otherwise', () => {
-      expect(method([])).toBe(false);
-      expect(method({})).toBe(false);
-      expect(method(0)).toBe(false);
-      expect(method(Infinity)).toBe(false);
-      expect(method(undefined)).toBe(false);
-      expect(method(NaN)).toBe(false);
-      expect(method(null)).toBe(false);
-      expect(method(() => {})).toBe(false);
-    });
+  it('Should be a function', () => {
+    expect(typeof isString).toBe('function');
   });
 
-  it('Should work across browser frames in browsers', () => {
-    expect(isStringBrowser(new Foo())).toBe(true);
+  it('Should return `true` for string values', () => {
+    expect(isString('')).toBe(true);
+    expect(isString('foo')).toBe(true);
+
+    expect(isString(String(''))).toBe(true);
+    expect(isString(String(0))).toBe(true);
+    expect(isString(String('xxx'))).toBe(true);
+
+    /* eslint-disable no-new-wrappers */
+    expect(isString(new String(''))).toBe(true);
+    expect(isString(new String('xxx'))).toBe(true);
+    /* eslint-enable no-new-wrappers */
   });
 
-  it('Should *not* attempt to work across browser frames in browsers', () => {
-    expect(isStringNode(new Foo())).toBe(false);
+  it('Should return false otherwise', () => {
+    expect(isString([])).toBe(false);
+    expect(isString({})).toBe(false);
+    expect(isString(0)).toBe(false);
+    expect(isString(Infinity)).toBe(false);
+    expect(isString(undefined)).toBe(false);
+    expect(isString(NaN)).toBe(false);
+    expect(isString(null)).toBe(false);
+    expect(isString(() => {})).toBe(false);
   });
 });

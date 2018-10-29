@@ -23,4 +23,12 @@ describe('flatten', () => {
     const flattend = flatten(ogArray);
     expect(flattend).toEqual(expected);
   });
+
+  it('Should properyl handle non-array values', () => {
+    expect(flatten(null)).toEqual([]);
+    expect(flatten(undefined)).toEqual([]);
+    expect(flatten(false)).toEqual([]);
+    expect(flatten(true)).toEqual([]);
+    expect(flatten({})).toEqual([]);
+  });
 });

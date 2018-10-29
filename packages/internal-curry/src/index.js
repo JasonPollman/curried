@@ -6,7 +6,7 @@
  * @file
  */
 
-import getSymbol from '@foldr/internal-symbol';
+import getInternalSymbol from '@foldr/internal-symbol';
 
 /* eslint-disable prefer-spread, no-param-reassign, no-nested-ternary */
 
@@ -14,20 +14,20 @@ import getSymbol from '@foldr/internal-symbol';
  * Used to track the arity of curried functions.
  * @type {Sym}
  */
-const ARITY = getSymbol('source-arity');
+const ARITY = getInternalSymbol('source-arity');
 
 /**
  * Used to map curried functions back to their original.
  * @type {Sym}
  */
-const SOURCE = getSymbol('source-function');
+const SOURCE = getInternalSymbol('source-function');
 
 /**
  * A default placeholder value.
  * Used for partial application to curried functions.
  * @type {Sym}
  */
-export const _ = getSymbol('placeholder');
+export const _ = getInternalSymbol('placeholder');
 
 /**
  * Optimized unary curry function.

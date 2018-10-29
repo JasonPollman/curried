@@ -4,7 +4,9 @@
  * @file
  */
 
-import toStringTag from '@foldr/to-string-tag';
+import is from '@foldr/is';
+
+const isPromiseBase = typeof Promise === 'function' ? is(Promise) : /* istanbul ignore next */ () => false;
 
 /**
  * Determines if an object has both a `.then` and `.catch` method.
@@ -24,5 +26,5 @@ const isThenable = x => typeof x.then === 'function' && typeof x.catch === 'func
  * @export
  */
 export default function isPromise(x) {
-  return !!x && typeof x === 'object' && (toStringTag(x) === '[object Promise]' || isThenable(x));
+  return isPromiseBase(x) || (!!x && isThenable(x));
 }

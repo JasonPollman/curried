@@ -1,0 +1,10 @@
+{
+  "name": "@foldr/is-buffer",
+  "description": "Determines if a value is an instance of the Buffer constructor.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@foldr/is": "^0.0.0"
+  }
+}

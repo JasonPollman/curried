@@ -1,0 +1,10 @@
+{
+  "name": "@foldr/is-boolean",
+  "description": "Determines if a value is a boolean.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@foldr/is": "^0.0.0"
+  }
+}

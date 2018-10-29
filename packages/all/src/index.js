@@ -10,6 +10,7 @@
 
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
+import curry from '@foldr/curry';
 import flatten from '@foldr/flatten';
 import get from '@foldr/get';
 import has from '@foldr/has';
@@ -49,6 +50,7 @@ export {
   VERSION,
   compact,
   compose,
+  curry,
   flatten,
   get,
   has,
@@ -87,6 +89,7 @@ export default {
   VERSION,
   compact,
   compose,
+  curry,
   flatten,
   get,
   has,

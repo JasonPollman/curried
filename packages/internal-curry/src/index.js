@@ -137,7 +137,7 @@ function quarternary(fn) {
               : unary(e => fn(a, e, c, d))
           : c === _
             ? d === _
-              ? binary((e, f) => fn(a, e, b, f))
+              ? binary((e, f) => fn(a, b, e, f))
               : unary(e => fn(a, b, e, d))
             : d === _
               ? unary(e => fn(a, b, c, e))
@@ -179,10 +179,9 @@ function quarternary(fn) {
  * placeholders in the previous set with values from the current.
  * @param {Array|Arguments} prev The previous function invocation's arguments.
  * @param {Arguments} curr The current function invocation's arguments.
- * @param {number} arity The arity of the curried function.
  * @returns {Array} The "concatenated" arguments.
  */
-function concat(prev, curr, arity) {
+function concat(prev, curr) {
   const args = [];
   const plen = prev.length;
   const clen = curr.length;
@@ -190,11 +189,11 @@ function concat(prev, curr, arity) {
   let i = -1;
   let index = 0;
 
-  while (++i < arity && i < plen) {
+  while (++i < plen) {
     args[i] = prev[i] === _ && index < clen ? curr[index++] : prev[i];
   }
 
-  while (i < arity && index < clen) {
+  while (index < clen) {
     args[i++] = curr[index++];
   }
 
@@ -223,11 +222,11 @@ function hasPlaceholders(args, arity) {
 function recurry(fn, arity, prev) {
   return function curried() {
     if (!arguments.length) return curried;
-    const args = concat(prev, arguments, arity);
+    const args = concat(prev, arguments);
 
     return args.length < arity || hasPlaceholders(args, arity)
       ? recurry(fn, arity, args)
-      : fn.apply(undefined, args);
+      : fn.apply(this, args);
   };
 }
 
@@ -242,21 +241,17 @@ function nary(fn, arity) {
     return arguments.length
       ? arguments.length < arity || hasPlaceholders(arguments, arity)
         ? recurry(fn, arity, arguments)
-        : fn.apply(undefined, arguments)
+        : fn.apply(this, arguments)
       : curried;
   };
 }
 
-/**
- * The set of optimized curry creation functions.
- * @type {Array<function>}
- */
 const OPTIMIZED = [unary, unary, binary, trinary, quarternary];
 
 /**
  * Curries a function.
  * @param {function} fn The function to curry.
- * @param {number} [arity=fn.length] The arity of `fn` or
+ * @param {number} [options.arity=fn.length] The arity of `fn` or
  * a specific arity override to curry `fn` to.
  * @returns {function} The curried version of `fn`.
  * @export
@@ -278,10 +273,11 @@ const OPTIMIZED = [unary, unary, binary, trinary, quarternary];
  * triples(1)(_, 3)(2)    // => [1, 2, 3]
  * triples(_, 2)(1)(3)    // => [1, 2, 3]
  */
-export default function curry(fn, arity = fn.length) {
+export default function curry(fn, { arity = fn.length, optimized = true } = {}) {
   if (arity < 1) return fn;
 
-  const curried = (OPTIMIZED[arity] || nary)(fn, arity);
+  const curried = (optimized ? (OPTIMIZED[arity] || nary) : nary)(fn, arity);
+
   curried[ARITY] = arity;
   curried[SOURCE] = fn;
   return curried;

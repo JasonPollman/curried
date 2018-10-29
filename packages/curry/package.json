@@ -1,0 +1,10 @@
+{
+  "name": "@foldr/curry",
+  "version": "0.0.0",
+  "description": "Curries functions.",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@foldr/internal-curry": "^0.0.0"
+  }
+}

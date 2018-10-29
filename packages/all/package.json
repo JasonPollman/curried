@@ -7,6 +7,7 @@
   "dependencies": {
     "@foldr/compact": "^0.0.0",
     "@foldr/compose": "^0.0.0",
+    "@foldr/curry": "^0.0.0",
     "@foldr/flatten": "^0.0.0",
     "@foldr/get": "^0.0.0",
     "@foldr/has": "^0.0.0",

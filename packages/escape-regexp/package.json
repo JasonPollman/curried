@@ -1,0 +1,7 @@
+{
+  "name": "@foldr/escape-regexp",
+  "description": "A utility method to escape regular expressions.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist/index.js"
+}

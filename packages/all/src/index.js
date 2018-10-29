@@ -4,18 +4,23 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-10-28
+ * @since 2018-10-29
  * @file
  */
 
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import curry from '@foldr/curry';
+import escapeRegexp from '@foldr/escape-regexp';
 import flatten from '@foldr/flatten';
 import get from '@foldr/get';
 import has from '@foldr/has';
 import head from '@foldr/head';
 import identity from '@foldr/identity';
+import interpolate from '@foldr/interpolate';
+import interpolateBraces from '@foldr/interpolate-braces';
+import interpolateBrackets from '@foldr/interpolate-brackets';
+import interpolatePct from '@foldr/interpolate-pct';
 import is from '@foldr/is';
 import isArray from '@foldr/is-array';
 import isArrayLike from '@foldr/is-array-like';
@@ -52,11 +57,16 @@ export {
   compact,
   compose,
   curry,
+  escapeRegexp,
   flatten,
   get,
   has,
   head,
   identity,
+  interpolate,
+  interpolateBraces,
+  interpolateBrackets,
+  interpolatePct,
   is,
   isArray,
   isArrayLike,
@@ -92,11 +102,16 @@ export default {
   compact,
   compose,
   curry,
+  escapeRegexp,
   flatten,
   get,
   has,
   head,
   identity,
+  interpolate,
+  interpolateBraces,
+  interpolateBrackets,
+  interpolatePct,
   is,
   isArray,
   isArrayLike,

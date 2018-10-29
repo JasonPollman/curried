@@ -65,7 +65,7 @@ function traverseObject(object, props) {
  * get(thing, 'foo.xxx', 'fallback'); // => 'fallback'
  */
 export default function get(thing, path, fallback = undefined) {
-  if (path === null || path === undefined) return fallback;
+  if (path == null || path === '') return fallback;
 
   const isAStringThing = isString(thing);
   if (!isAStringThing && !isObject(thing)) return fallback;

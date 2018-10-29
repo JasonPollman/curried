@@ -1,0 +1,10 @@
+{
+  "name": "@foldr/interpolate-braces",
+  "version": "0.0.0",
+  "description": "Interpolats strings enclosed in `{}`.",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@foldr/interpolate": "^0.0.0"
+  }
+}

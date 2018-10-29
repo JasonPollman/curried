@@ -26,7 +26,6 @@
     "test": "NODE_ENV=test npx jest ./packages/${PKG:-**}/**/*.test.js",
     "test:cover": "npm run test -- --coverage",
     "open:umd": "open ./resources/umd-loader.html",
-    "transpile": "npx babel-node ./scripts/transpile.js",
     "open:coverage": "open ./coverage/lcov-report/index.html"
   },
   "devDependencies": {

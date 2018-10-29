@@ -41,6 +41,7 @@ import isSymbol from '@foldr/is-symbol';
 import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
 import noop from '@foldr/noop';
+import once from '@foldr/once';
 import shuffle from '@foldr/shuffle';
 import toStringTag from '@foldr/to-string-tag';
 
@@ -81,6 +82,7 @@ export {
   isUndefined,
   isWeakMap,
   noop,
+  once,
   shuffle,
   toStringTag,
 };
@@ -120,6 +122,7 @@ export default {
   isUndefined,
   isWeakMap,
   noop,
+  once,
   shuffle,
   toStringTag,
 };

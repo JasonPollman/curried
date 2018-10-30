@@ -19,9 +19,9 @@
  * // Beware, `constant` always returns the same value!
  * // So mutation side-effects are possible!
  *
- * const foo = constant ({ foo: 'bar });
+ * const foo = constant ({ foo: 'bar' });
  * const thing = foo() // => { foo: 'bar' };
- * thing.baz = 'quxx;
+ * thing.baz = 'quxx';
  *
  * const sameThing = foo() // => { foo: 'bar', baz: 'quxx' };
  */

@@ -1,7 +1,7 @@
 /**
- * Tests constantor the `constant` constantunction.
+ * Tests for the `constant` function.
  * @since 10/23/18
- * @constantile
+ * @file
  */
 
 import constant from '.';

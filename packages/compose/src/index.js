@@ -32,19 +32,19 @@
  * sumSquared(2, 3); // => 25
  */
 export default function compose() {
-  let n = arguments.length;
+  const fns = arguments;
+  let n = fns.length;
 
   if (n < 2) {
     throw new Error('You must provide at least two functions to compose.');
   }
 
   while (--n >= 0) {
-    if (typeof arguments[n] !== 'function') {
+    if (typeof fns[n] !== 'function') {
       throw new TypeError('The compose function only accepts functions as arguments.');
     }
   }
 
-  const fns = arguments;
   const size = fns.length - 1;
 
   return function composed() {

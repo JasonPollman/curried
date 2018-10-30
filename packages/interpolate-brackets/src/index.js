@@ -19,13 +19,21 @@ import interpolate from '@foldr/interpolate';
  * @example
  *
  * const string = 'The [verb] brown [thing] jumped over the lazy brown [animal]';
+ * const template = interpolateBrackets(string);
  *
- * interpolateBraces(string, {
+ * template({
  *   verb: 'quick',
  *   thing: 'fox',
  *   animal: 'dog',
  * });
  * // => 'The quick brown fox jumped over the lazy brown dog'
+ *
+ * template({
+ *   verb: 'fast',
+ *   thing: 'fox',
+ *   animal: 'dog',
+ * });
+ * // => 'The fast brown fox jumped over the lazy brown dog'
  */
 export default interpolate({
   delims: ['[', ']'],

@@ -20,8 +20,8 @@ import interpolate from '@foldr/interpolate';
  * @example
  *
  * const string = 'The <% verb %> brown <% thing %> jumped over the lazy brown <% animal %>';
- *
- * interpolatePct(string, {
+ * const template = interpolatePct(string);
+ * template({
  *   verb: 'quick',
  *   thing: 'fox',
  *   animal: 'dog',

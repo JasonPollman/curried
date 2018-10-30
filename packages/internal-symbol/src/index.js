@@ -45,7 +45,7 @@ export const SafeSymbol = typeof Symbol === 'function' ? Symbol : /* istanbul ig
  * @returns {Symbol|string} The symbol or pseudo symbol.
  * @export
  */
-export function getSymbol(label) {
+export function getUnprefixedSymbol(label) {
   return SafeSymbol[label] || SafeSymbol.for(label);
 }
 
@@ -56,6 +56,6 @@ export function getSymbol(label) {
  * @returns {Symbol|SafeSymbol} The Symbol or SafeSymbol instance.
  * @export
  */
-export default function getInternalSymbol(label) {
+export default function getPrefixedSymbol(label) {
   return SafeSymbol.for(prefix.concat(label));
 }

@@ -10,8 +10,10 @@
 
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
+import constant from '@foldr/constant';
 import curry from '@foldr/curry';
 import escapeRegexp from '@foldr/escape-regexp';
+import f from '@foldr/f';
 import flatten from '@foldr/flatten';
 import get from '@foldr/get';
 import has from '@foldr/has';
@@ -48,7 +50,9 @@ import isWeakMap from '@foldr/is-weak-map';
 import noop from '@foldr/noop';
 import once from '@foldr/once';
 import shuffle from '@foldr/shuffle';
+import t from '@foldr/t';
 import toStringTag from '@foldr/to-string-tag';
+import zip from '@foldr/zip';
 
 const VERSION = '0.0.0';
 
@@ -56,8 +60,10 @@ export {
   VERSION,
   compact,
   compose,
+  constant,
   curry,
   escapeRegexp,
+  f,
   flatten,
   get,
   has,
@@ -94,15 +100,19 @@ export {
   noop,
   once,
   shuffle,
+  t,
   toStringTag,
+  zip,
 };
 
 export default {
   VERSION,
   compact,
   compose,
+  constant,
   curry,
   escapeRegexp,
+  f,
   flatten,
   get,
   has,
@@ -139,5 +149,7 @@ export default {
   noop,
   once,
   shuffle,
+  t,
   toStringTag,
+  zip,
 };

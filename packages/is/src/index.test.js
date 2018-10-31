@@ -4,7 +4,7 @@
  * @file
  */
 
-import { isNodeCheck, isBrowserCheck } from '.';
+import is, { isNodeCheck, isBrowserCheck } from '.';
 
 class Foo {
   // eslint-disable-next-line class-methods-use-this
@@ -13,8 +13,15 @@ class Foo {
   }
 }
 
-describe('isString', () => {
-  [isNodeCheck, isBrowserCheck].forEach((method) => {
+describe('is', () => {
+  it('Should work for falsy constructor values', () => {
+    expect(is('', [])).toBe(false);
+    expect(is(null, [])).toBe(false);
+    expect(is(undefined, [])).toBe(false);
+    expect(is(1, [])).toBe(false);
+  });
+
+  [is, isNodeCheck, isBrowserCheck].forEach((method) => {
     it('Should be a function', () => {
       expect(typeof method).toBe('function');
     });

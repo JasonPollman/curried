@@ -9,6 +9,18 @@ import toStringTag from '@foldr/to-string-tag';
 import { IS_NODE } from '@foldr/internal-env';
 
 /**
+ * Base wrapper for is check.
+ * @param {function} check Either the `isNodeCheck` or `isBrowserCheck` function below.
+ * @returns {boolean} True if `thing` is a `Constructor` instance, false otherwise.
+ */
+function withValidConstructor(check) {
+  return function is(Constructor, x) {
+    if (!Constructor || typeof Constructor !== 'function') return false;
+    return check(Constructor, x);
+  };
+}
+
+/**
  * Determines if `x` is an instance of `Constructor`.
  * @param {function} Constructor The constructor to test membership of.
  * @param {any} x The thing to test.
@@ -26,7 +38,7 @@ export function isNodeCheck(Constructor, x) {
  * @returns {boolean} True if `thing` is a `Constructor` instance, false otherwise.
  */
 export function isBrowserCheck(Constructor, x) {
-  return isNodeCheck(x) || (Constructor && toStringTag(x) === `[object ${Constructor.name}]`);
+  return isNodeCheck(x) || toStringTag(x) === `[object ${Constructor.name}]`;
 }
 
 /**
@@ -39,4 +51,6 @@ export function isBrowserCheck(Constructor, x) {
  * @since v0.0.0
  * @export
  */
-export default curry(IS_NODE ? isNodeCheck : /* istanbul ignore next */ isBrowserCheck);
+export default curry(
+  withValidConstructor(IS_NODE ? isNodeCheck : /* istanbul ignore next */ isBrowserCheck),
+);

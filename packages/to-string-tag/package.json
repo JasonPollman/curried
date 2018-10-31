@@ -3,5 +3,7 @@
   "version": "0.0.0",
   "description": "A convenience function for Object.toString.call",
   "license": "ISC",
-  "main": "dist/index.js"
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false
 }

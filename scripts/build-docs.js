@@ -32,7 +32,7 @@ import packageJson from '../package.json';
  * Docs.json ouput destination/
  * @type {string}
  */
-const DOCS_DESTNATION = path.join(PROJECT_ROOT, 'docs', 'docs.json');
+const DOCS_DESTNATION = path.join(PROJECT_ROOT, 'docs');
 
 /**
  * Returns a function that's passed to Promise.map and bound to the given
@@ -87,17 +87,19 @@ function buildPackageDoc(docsBucket) {
  */
 async function buildDocs(packages) {
   const docs = [];
-  const generated = new Date().toISOString();
+  const datetime = new Date().toISOString();
   const { version } = packageJson;
 
   await Promise.map(packages, buildPackageDoc(docs), { concurrency: MAP_CONCURRENCY });
-  return fs.outputFileAsync(DOCS_DESTNATION, JSON.stringify({ generated, version, docs }));
+
+  const destination = path.join(DOCS_DESTNATION, `${version}.json`);
+  return fs.outputFileAsync(destination, JSON.stringify({ datetime, version, docs }));
 }
 
 const buildJSDocs = compose(
-  logTap(green.bold('Docs built successfully!')),
+  logTap(green.bold('Docs metadata built successfully!')),
   buildDocs,
-  logTap(cyan.bold('Building documentation json metafile...')),
+  logTap(cyan.bold('[BUIDLING DOCS METADATA]')),
   getPackageDirectories,
   getPackageFilelist,
 );

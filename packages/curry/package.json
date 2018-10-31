@@ -4,6 +4,8 @@
   "description": "Curries functions.",
   "license": "ISC",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false,
   "dependencies": {
     "@foldr/internal-curry": "^0.0.0"
   }

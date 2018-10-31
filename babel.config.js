@@ -20,6 +20,7 @@ module.exports = {
     }],
     ['minify', {
       simplify: false,
+      builtIns: false,
     }],
   ],
   env: {

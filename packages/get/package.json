@@ -4,6 +4,8 @@
   "license": "ISC",
   "description": "Gets a value from an object specified by a path string.",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false,
   "dependencies": {
     "@foldr/is-string": "^0.0.0",
     "@foldr/is-object": "^0.0.0"

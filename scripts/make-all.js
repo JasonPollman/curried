@@ -13,7 +13,6 @@ import fs from 'fs-extra-promise';
 
 import {
   red,
-  dim,
   cyan,
   green,
 } from 'chalk';
@@ -21,7 +20,6 @@ import {
 import {
   log,
   logTap,
-  getBasename,
   MAP_CONCURRENCY,
   PACKAGES_DIRECTORY,
   getPackageFilelist,
@@ -114,8 +112,6 @@ async function generateFoldrAllIndexContent(packageJsons) {
   ${extras.variables.join(';\n  ')};
 
   export ${exported};
-
-  export default ${exported};
   `;
 
   return rendered.trim().replace(/^ {2}/gm, '').concat('\n');
@@ -154,7 +150,6 @@ async function updateFoldrAllPackageDependencies(packageJsons) {
   });
 
   await fs.outputJsonAsync(foldrAllPackageJsonSource, foldrAllPackageJsonContents);
-
   log(green.bold('Package.json file for `@foldr/all` updated successfully!'));
 }
 
@@ -169,7 +164,6 @@ async function getLibraryPackageJsonFiles(packages) {
   const results = {};
 
   const getPackageJson = async (pkg) => {
-    log(dim('Loading package.json for package %s'), getBasename(pkg));
     const packageJson = await fs.readJsonAsync(path.join(pkg, 'package.json'));
     results[packageJson.name] = packageJson;
   };
@@ -183,7 +177,7 @@ const setup = compose(
   filterIgnoredAndInternalPackages(['all']),
   getPackageDirectories,
   getPackageFilelist,
-  logTap(cyan.bold('Building @foldr/all package')),
+  logTap(cyan.bold('[BUILDING ALL PACKAGE]')),
 );
 
 const build = dependencies => Promise.all([

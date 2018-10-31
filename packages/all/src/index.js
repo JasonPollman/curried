@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-10-29
+ * @since 2018-10-30
  * @file
  */
 
@@ -58,56 +58,6 @@ import zip from '@foldr/zip';
 const VERSION = '0.0.0';
 
 export {
-  VERSION,
-  compact,
-  compose,
-  constant,
-  curry,
-  escapeRegexp,
-  f,
-  flatten,
-  get,
-  has,
-  head,
-  identity,
-  interpolate,
-  interpolateBraces,
-  interpolateBrackets,
-  interpolatePct,
-  is,
-  isArray,
-  isArrayLike,
-  isBoolean,
-  isBuffer,
-  isDate,
-  isError,
-  isFinite,
-  isFunction,
-  isInteger,
-  isMap,
-  isNan,
-  isNil,
-  isNull,
-  isNumber,
-  isObject,
-  isPromise,
-  isRegexp,
-  isSafeInteger,
-  isSet,
-  isString,
-  isSymbol,
-  isUndefined,
-  isWeakMap,
-  memoize,
-  noop,
-  once,
-  shuffle,
-  t,
-  toStringTag,
-  zip,
-};
-
-export default {
   VERSION,
   compact,
   compose,

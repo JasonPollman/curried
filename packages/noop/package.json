@@ -3,5 +3,7 @@
   "version": "0.0.0",
   "description": "A no-operation utility function",
   "license": "ISC",
-  "main": "dist/index.js"
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false
 }

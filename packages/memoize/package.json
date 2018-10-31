@@ -1,0 +1,7 @@
+{
+  "name": "@foldr/memoize",
+  "version": "0.0.0",
+  "description": "Memoizes functions.",
+  "license": "ISC",
+  "main": "dist/index.js"
+}

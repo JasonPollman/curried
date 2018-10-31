@@ -47,6 +47,7 @@ import isString from '@foldr/is-string';
 import isSymbol from '@foldr/is-symbol';
 import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
+import memoize from '@foldr/memoize';
 import noop from '@foldr/noop';
 import once from '@foldr/once';
 import shuffle from '@foldr/shuffle';
@@ -97,6 +98,7 @@ export {
   isSymbol,
   isUndefined,
   isWeakMap,
+  memoize,
   noop,
   once,
   shuffle,
@@ -146,6 +148,7 @@ export default {
   isSymbol,
   isUndefined,
   isWeakMap,
+  memoize,
   noop,
   once,
   shuffle,

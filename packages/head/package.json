@@ -1,6 +1,9 @@
 {
   "name": "@foldr/head",
   "version": "0.0.0",
+  "description": "Gets the first element from an array",
   "license": "ISC",
-  "main": "dist/index.js"
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false
 }

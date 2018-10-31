@@ -4,6 +4,8 @@
   "description": "The complete @foldr library.",
   "license": "ISC",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false,
   "dependencies": {
     "@foldr/compact": "^0.0.0",
     "@foldr/compose": "^0.0.0",

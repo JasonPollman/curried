@@ -13,9 +13,8 @@
 
 const defaultExportToModuleExportsString = `
 if (exports && exports.default) {
-  var keys = Object.keys(exports), i = keys.length;
-  while (--i >= 0) exports.default[keys[i]] = exports[keys[i]];
   module.exports = exports.default;
+  module.exports.default = exports.default;
 }
 `;
 

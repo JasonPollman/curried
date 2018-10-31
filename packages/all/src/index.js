@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-10-28
+ * @since 2018-10-30
  * @file
  */
 
@@ -48,46 +48,6 @@ import toStringTag from '@foldr/to-string-tag';
 const VERSION = '0.0.0';
 
 export {
-  VERSION,
-  compact,
-  compose,
-  curry,
-  flatten,
-  get,
-  has,
-  head,
-  identity,
-  is,
-  isArray,
-  isArrayLike,
-  isBoolean,
-  isBuffer,
-  isDate,
-  isError,
-  isFinite,
-  isFunction,
-  isInteger,
-  isMap,
-  isNan,
-  isNil,
-  isNull,
-  isNumber,
-  isObject,
-  isPromise,
-  isRegexp,
-  isSafeInteger,
-  isSet,
-  isString,
-  isSymbol,
-  isUndefined,
-  isWeakMap,
-  noop,
-  once,
-  shuffle,
-  toStringTag,
-};
-
-export default {
   VERSION,
   compact,
   compose,

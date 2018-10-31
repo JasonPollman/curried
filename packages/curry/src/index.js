@@ -1,5 +1,5 @@
 
-import internalCurry from '@foldr/internal-curry';
+import internalCurry, { _ } from '@foldr/internal-curry';
 
 /**
  * Curries a function.
@@ -39,3 +39,7 @@ export default function curry(fn, options = {}) {
   // unless explicitly flagged.
   return internalCurry(fn, { optimized: false, ...options });
 }
+
+// Exposing the placeholder property...
+curry._ = _;
+export { _ };

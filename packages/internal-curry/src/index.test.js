@@ -4,7 +4,7 @@
  * @file
  */
 
-import curry, { _ } from '.';
+import curry, { _, SOURCE, IS_CURRIED } from '.';
 
 describe('curry', () => {
   it('Should be a function', () => {
@@ -19,6 +19,13 @@ describe('curry', () => {
   it('Should return the original function if the arity is < 1', () => {
     const fn = () => {};
     expect(curry(fn)).toBe(fn);
+  });
+
+  it('Should apply the correct properties to the curried function', () => {
+    const identity = x => x;
+    const id = curry(identity);
+    expect(id[IS_CURRIED]).toBe(true);
+    expect(id[SOURCE]).toBe(identity);
   });
 
   describe('Unary optimized', () => {

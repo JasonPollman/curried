@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-10-30
+ * @since 2018-10-31
  * @file
  */
 
@@ -50,14 +50,17 @@ import isWeakMap from '@foldr/is-weak-map';
 import memoize from '@foldr/memoize';
 import noop from '@foldr/noop';
 import once from '@foldr/once';
+import partial from '@foldr/partial';
 import shuffle from '@foldr/shuffle';
 import t from '@foldr/t';
 import toStringTag from '@foldr/to-string-tag';
 import zip from '@foldr/zip';
 
+const { _ } = curry;
 const VERSION = '0.0.0';
 
 export {
+  _,
   VERSION,
   compact,
   compose,
@@ -101,6 +104,7 @@ export {
   memoize,
   noop,
   once,
+  partial,
   shuffle,
   t,
   toStringTag,

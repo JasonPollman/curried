@@ -12,20 +12,26 @@ import getInternalSymbol from '@foldr/internal-symbol';
 
 /**
  * Used to track the arity of curried functions.
- * @type {Sym}
+ * @type {SafeSymbol}
  */
-const ARITY = getInternalSymbol('source-arity');
+export const ARITY = getInternalSymbol('source-arity');
 
 /**
  * Used to map curried functions back to their original.
- * @type {Sym}
+ * @type {SafeSymbol}
  */
-const SOURCE = getInternalSymbol('source-function');
+export const SOURCE = getInternalSymbol('source-fn');
+
+/**
+ * Signals that this is a curried function.
+ * @type {SafeSymbol}
+ */
+export const IS_CURRIED = getInternalSymbol('is-curried-fn');
 
 /**
  * A default placeholder value.
  * Used for partial application to curried functions.
- * @type {Sym}
+ * @type {SafeSymbol}
  */
 export const _ = getInternalSymbol('placeholder');
 
@@ -280,6 +286,8 @@ export default function curry(fn, { arity = fn.length, optimized = true } = {}) 
 
   curried[ARITY] = arity;
   curried[SOURCE] = fn;
+  curried[IS_CURRIED] = true;
+
   return curried;
 }
 

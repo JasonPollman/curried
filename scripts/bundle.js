@@ -118,7 +118,7 @@ async function logBundleSizeStats() {
   }));
 
   log(
-    magenta.bold('Size of `foldr.min.js` distributable is %skb (%skb gizpped)'),
+    magenta.bold('Size of `foldr.min.js` distributable is %skb (%skb gzipped)'),
     (Buffer.byteLength(contents) / 1000).toFixed(2),
     (Buffer.byteLength(gzipped) / 1000).toFixed(2),
   );

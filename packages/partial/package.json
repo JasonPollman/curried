@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/partial",
+  "description": "Creates partial functions.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-symbol": "^0.0.0"
+  }
+}

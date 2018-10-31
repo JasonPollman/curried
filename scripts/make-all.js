@@ -43,11 +43,11 @@ const FOLDR_ALL_INDEX_DESTINATION = path.join(FOLDR_ALL_PACKAGE_ROOT, 'src', 'in
 
 const EXTRAS = ({ packageJson }) => ({
   variables: [
-    // 'const _ = curry._',
+    'const { _ } = curry',
     `const VERSION = '${packageJson.version}'`,
   ],
   exports: [
-    // '_',
+    '_',
     'VERSION',
   ],
 });

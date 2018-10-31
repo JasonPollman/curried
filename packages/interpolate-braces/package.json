@@ -4,6 +4,8 @@
   "description": "Interpolats strings enclosed in `{}`.",
   "license": "ISC",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false,
   "dependencies": {
     "@foldr/interpolate": "^0.0.0"
   }

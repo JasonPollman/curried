@@ -3,5 +3,7 @@
   "description": "A function that always returns `false`.",
   "version": "0.0.0",
   "license": "ISC",
-  "main": "dist/index.js"
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false
 }

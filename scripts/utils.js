@@ -93,3 +93,14 @@ export function getPackageDirectories(filepaths) {
 export function logTap(message, getMessageData) {
   return x => (getMessageData ? log(message, getMessageData(x)) : log(message)) || x;
 }
+
+/**
+ * Gets an environment variable.
+ * @param {string} variable The name of the variable to get.
+ * @param {string} fallback The fallback value if it doesn't exist.
+ * @returns {string} The envrionment variable value.
+ * @export
+ */
+export function getENV(variable, fallback) {
+  return process.env[variable] || (fallback ? fallback.toString() : undefined);
+}

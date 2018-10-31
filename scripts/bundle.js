@@ -23,11 +23,9 @@ import {
 import {
   log,
   logTap,
-  getBasename,
+  getENV,
+  PROJECT_ROOT,
   PACKAGES_DIRECTORY,
-  getPackageFilelist,
-  getPackageDirectories,
-  filterIgnoredAndInternalPackages,
 } from './utils';
 
 import packageJson from '../package.json';
@@ -40,8 +38,9 @@ const webpackAsync = Promise.promisify(webpack);
  * @type {string}
  */
 const banner = `
-The @foldr/[name] library.
-@filename [filebase]
+The @foldr library.
+@version ${packageJson.version}
+@built ${new Date().toISOString()}
 @license ${packageJson.license}
 `;
 
@@ -50,7 +49,7 @@ The @foldr/[name] library.
  * @type {Object}
  */
 const BASE_WEBPACK_CONFIG = {
-  mode: 'production',
+  mode: getENV('BUNDLE_MODE', 'production'),
   devtool: 'source-map',
   target: 'web',
   // Tell webpack not to shim node globals, since @folder/internal-env
@@ -66,14 +65,14 @@ const BASE_WEBPACK_CONFIG = {
     // Since each package is independently bundled, we don't
     // need to sourcemaps to reference actual project paths.
     devtoolModuleFilenameTemplate(info) {
-      const src = info.absoluteResourcePath;
-      return `foldr:///${path.relative(path.dirname(src), src)}`;
+      return `foldr:///${info.absoluteResourcePath}`;
     },
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        type: 'javascript/auto',
+        test: /\.m?js$/,
         // Uses the source map in `[package]/dist/index.js.map`
         // So we don't have to re-transpile the code to get
         // proper source maps.
@@ -86,7 +85,7 @@ const BASE_WEBPACK_CONFIG = {
     new webpack.BannerPlugin({ banner: banner.trim() }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+        NODE_ENV: JSON.stringify(getENV('NODE_ENV', 'production')),
       },
     }),
   ],
@@ -97,13 +96,10 @@ const BASE_WEBPACK_CONFIG = {
  * @param {Array<string>} packages The list packages to bundle (absolute filepaths).
  * @returns {Object} The prepared webpack configuration.
  */
-function generateWebpackConfig(packages) {
-  const entries = {};
-
-  packages.forEach((pkg) => {
-    const basename = getBasename(pkg);
-    entries[basename === 'all' ? 'foldr' : basename] = `${pkg}/dist/index.js`;
-  });
+function generateWebpackConfig() {
+  const entries = {
+    foldr: path.join(PROJECT_ROOT, 'packages', 'all', 'dist', 'index.mjs'),
+  };
 
   return { ...BASE_WEBPACK_CONFIG, entry: entries };
 }
@@ -135,12 +131,15 @@ async function logBundleSizeStats() {
  */
 function validateBundles(stats) {
   if (!stats.hasErrors()) {
-    return log(stats.toString({
+    return log('\n%s\n', stats.toString({
       colors: true,
+      assets: true,
       chunks: false,
-      assets: false,
+      modules: false,
       children: false,
       entrypoints: false,
+      chunkModules: false,
+      chunkOrigins: false,
     }));
   }
 
@@ -153,10 +152,7 @@ const transpile = compose(
   validateBundles,
   webpackAsync,
   generateWebpackConfig,
-  logTap(cyan.bold('Bundling %s packages...'), pkgs => pkgs.length),
-  filterIgnoredAndInternalPackages(),
-  getPackageDirectories,
-  getPackageFilelist,
+  logTap(cyan.bold('[BUNDLING PACKAGES]')),
 );
 
 transpile(PACKAGES_DIRECTORY).catch((e) => {

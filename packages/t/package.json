@@ -1,0 +1,7 @@
+{
+  "name": "@foldr/t",
+  "description": "A function that always returns `true`.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist/index.js"
+}

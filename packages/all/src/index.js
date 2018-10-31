@@ -4,18 +4,25 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-10-28
+ * @since 2018-10-29
  * @file
  */
 
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
+import constant from '@foldr/constant';
 import curry from '@foldr/curry';
+import escapeRegexp from '@foldr/escape-regexp';
+import f from '@foldr/f';
 import flatten from '@foldr/flatten';
 import get from '@foldr/get';
 import has from '@foldr/has';
 import head from '@foldr/head';
 import identity from '@foldr/identity';
+import interpolate from '@foldr/interpolate';
+import interpolateBraces from '@foldr/interpolate-braces';
+import interpolateBrackets from '@foldr/interpolate-brackets';
+import interpolatePct from '@foldr/interpolate-pct';
 import is from '@foldr/is';
 import isArray from '@foldr/is-array';
 import isArrayLike from '@foldr/is-array-like';
@@ -43,7 +50,9 @@ import isWeakMap from '@foldr/is-weak-map';
 import noop from '@foldr/noop';
 import once from '@foldr/once';
 import shuffle from '@foldr/shuffle';
+import t from '@foldr/t';
 import toStringTag from '@foldr/to-string-tag';
+import zip from '@foldr/zip';
 
 const VERSION = '0.0.0';
 
@@ -51,12 +60,19 @@ export {
   VERSION,
   compact,
   compose,
+  constant,
   curry,
+  escapeRegexp,
+  f,
   flatten,
   get,
   has,
   head,
   identity,
+  interpolate,
+  interpolateBraces,
+  interpolateBrackets,
+  interpolatePct,
   is,
   isArray,
   isArrayLike,
@@ -84,19 +100,28 @@ export {
   noop,
   once,
   shuffle,
+  t,
   toStringTag,
+  zip,
 };
 
 export default {
   VERSION,
   compact,
   compose,
+  constant,
   curry,
+  escapeRegexp,
+  f,
   flatten,
   get,
   has,
   head,
   identity,
+  interpolate,
+  interpolateBraces,
+  interpolateBrackets,
+  interpolatePct,
   is,
   isArray,
   isArrayLike,
@@ -124,5 +149,7 @@ export default {
   noop,
   once,
   shuffle,
+  t,
   toStringTag,
+  zip,
 };

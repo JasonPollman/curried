@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/interpolate",
+  "version": "0.0.0",
+  "description": "Creates interpolator functions.",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@foldr/get": "^0.0.0",
+    "@foldr/escape-regexp": "^0.0.0",
+    "@foldr/internal-curry": "^0.0.0"
+  }
+}

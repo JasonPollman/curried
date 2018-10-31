@@ -4,12 +4,12 @@
  * @file
  */
 
-import getInternalSymbol, { getSymbol, MakeSafeSymbol } from '.';
+import getPrefixedSymbol, { getUnprefixedSymbol, MakeSafeSymbol } from '.';
 
 describe('internal-symbol', () => {
   describe('getInternalSymbol', () => {
     it('Should return a symbol with the prefix "@@foldr/"', () => {
-      const sym = getInternalSymbol('foo');
+      const sym = getPrefixedSymbol('foo');
       expect(typeof sym).toBe('symbol');
       expect(sym.toString()).toBe('Symbol(@@foldr/foo)');
     });
@@ -17,13 +17,13 @@ describe('internal-symbol', () => {
 
   describe('getSymbol', () => {
     it('Should return registered symbol', () => {
-      const sym = getSymbol('iterator');
+      const sym = getUnprefixedSymbol('iterator');
       expect(typeof sym).toBe('symbol');
       expect(sym).toBe(Symbol.iterator);
     });
 
     it('Should register an unregistered symbol', () => {
-      const sym = getSymbol('foo');
+      const sym = getUnprefixedSymbol('foo');
       expect(typeof sym).toBe('symbol');
       expect(sym).toBe(Symbol.for('foo'));
     });
@@ -52,6 +52,18 @@ describe('internal-symbol', () => {
 
       expect(Sym.for('foo')).toBe(sym);
       expect(Sym('foo')).not.toBe(sym);
+    });
+
+    it('Should properly assign to objects', () => {
+      const Sym = MakeSafeSymbol();
+      const sym = Sym.for('foo');
+
+      const x = {};
+      x[sym] = 'test';
+
+      expect(x).toEqual({
+        '@@foo': 'test',
+      });
     });
   });
 });

@@ -37,6 +37,11 @@ describe('get', () => {
     expect(get({ foo: 'bar' }, null, 'fallback')).toBe('fallback');
   });
 
+  it('Should return `fallback` if path is an empty string', () => {
+    expect(get({ foo: 'bar' }, '')).toBe(undefined);
+    expect(get({ foo: 'bar' }, '', 'fallback')).toBe('fallback');
+  });
+
   it('Should return `fallback` if path is `undefined`', () => {
     expect(get({ foo: 'bar' }, undefined)).toBe(undefined);
     expect(get({ foo: 'bar' }, undefined, 'fallback')).toBe('fallback');

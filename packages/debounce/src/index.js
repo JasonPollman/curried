@@ -13,10 +13,17 @@ function noop() {}
 function debounce(fn, time) {
   if (typeof fn !== 'function') return noop;
 
-  return function debounced() {
-    const args = arguments;
+  let isWaiting = false;
+  let timerReference;
 
-    setTimeout(() => {
+  return function debounced() {
+    if (isWaiting) return timerReference;
+
+    const args = arguments;
+    isWaiting = true;
+
+    timerReference = setTimeout(() => {
+      isWaiting = false;
       fn.apply(this, args);
     }, time || 0);
   };

@@ -13,9 +13,11 @@ function handleCycleComplete({ target }) {
   log(`${name}: ${error ? `[Error: ${error.message}]` : toFixed(hz)}`);
 }
 
+const foldrDebounce = debounce(num => num * 2);
+const lodashDebounce = _.debounce(num => num * 2);
+
 new Benchmark.Suite()
-  .add('Foldr #1', () => debounce([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .add('Lodash #1', () => _.debounce([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .add('Rambda #1', () => R.shuffle([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
+  .add('Foldr #1', () => foldrDebounce(2))
+  .add('Lodash #1', () => lodashDebounce(2))
   .on('cycle', handleCycleComplete)
   .run({ async: true });

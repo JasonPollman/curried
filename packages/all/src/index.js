@@ -13,15 +13,22 @@ import binary from '@foldr/binary';
 import clamp from '@foldr/clamp';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
+<<<<<<< HEAD
 import constant from '@foldr/constant';
 import curry from '@foldr/curry';
 import escapeRegExp from '@foldr/escape-regexp';
 import every from '@foldr/every';
 import f from '@foldr/f';
+<<<<<<< HEAD
 import filter from '@foldr/filter';
 import find from '@foldr/find';
 import findKey from '@foldr/find-key';
 import findLast from '@foldr/find-last';
+=======
+=======
+import debounce from '@foldr/debounce';
+>>>>>>> debounce modifications, tests and bench
+>>>>>>> debounce modifications, tests and bench
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
 import fold from '@foldr/fold';
@@ -125,10 +132,14 @@ export {
   escapeRegExp,
   every,
   f,
+<<<<<<< HEAD
   filter,
   find,
   findKey,
   findLast,
+=======
+  debounce,
+>>>>>>> debounce modifications, tests and bench
   flatten,
   flattenDeep,
   fold,
@@ -207,6 +218,7 @@ export {
   toSnakeCase,
   toString,
   toStringTag,
+<<<<<<< HEAD
   toTitleCase,
   toUpperCase,
   toUpperFirst,
@@ -214,5 +226,38 @@ export {
   unary,
   unique,
   values,
+=======
+<<<<<<< HEAD
+>>>>>>> debounce modifications, tests and bench
   zip,
+=======
+};
+
+export default {
+  VERSION,
+  compact,
+  compose,
+  debounce,
+  flatten,
+  get,
+  has,
+  head,
+  identity,
+  isArray,
+  isArrayLike,
+  isFinite,
+  isInteger,
+  isNan,
+  isNil,
+  isNull,
+  isNumber,
+  isObject,
+  isPromise,
+  isSafeInteger,
+  isString,
+  isUndefined,
+  noop,
+  shuffle,
+  toStringTag,
+>>>>>>> debounce modifications, tests and bench
 };

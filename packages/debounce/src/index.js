@@ -26,6 +26,8 @@ function debounce(fn, time) {
       isWaiting = false;
       fn.apply(this, args);
     }, time || 0);
+
+    return timerReference;
   };
 }
 

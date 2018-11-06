@@ -49,10 +49,12 @@ import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
 import memoize from '@foldr/memoize';
 import noop from '@foldr/noop';
+import nth from '@foldr/nth';
 import once from '@foldr/once';
 import partial from '@foldr/partial';
 import shuffle from '@foldr/shuffle';
 import t from '@foldr/t';
+import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
 import toKebabCase from '@foldr/to-kebab-case';
 import toLowerCase from '@foldr/to-lower-case';
@@ -112,10 +114,12 @@ export {
   isWeakMap,
   memoize,
   noop,
+  nth,
   once,
   partial,
   shuffle,
   t,
+  tail,
   toCamelCase,
   toKebabCase,
   toLowerCase,

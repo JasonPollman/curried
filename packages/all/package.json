@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "description": "The complete @foldr library.",
   "license": "ISC",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist",
   "sideEffects": false,
   "dependencies": {
     "@foldr/compact": "^0.0.0",
@@ -21,7 +20,6 @@
     "@foldr/interpolate": "^0.0.0",
     "@foldr/interpolate-braces": "^0.0.0",
     "@foldr/interpolate-brackets": "^0.0.0",
-    "@foldr/interpolate-pct": "^0.0.0",
     "@foldr/is": "^0.0.0",
     "@foldr/is-array": "^0.0.0",
     "@foldr/is-array-like": "^0.0.0",
@@ -38,6 +36,7 @@
     "@foldr/is-null": "^0.0.0",
     "@foldr/is-number": "^0.0.0",
     "@foldr/is-object": "^0.0.0",
+    "@foldr/is-plain-object": "^0.0.0",
     "@foldr/is-promise": "^0.0.0",
     "@foldr/is-regexp": "^0.0.0",
     "@foldr/is-safe-integer": "^0.0.0",
@@ -52,7 +51,16 @@
     "@foldr/partial": "^0.0.0",
     "@foldr/shuffle": "^0.0.0",
     "@foldr/t": "^0.0.0",
+    "@foldr/to-camel-case": "^0.0.0",
+    "@foldr/to-kebab-case": "^0.0.0",
+    "@foldr/to-lower-case": "^0.0.0",
+    "@foldr/to-snake-case": "^0.0.0",
+    "@foldr/to-string": "^0.0.0",
     "@foldr/to-string-tag": "^0.0.0",
+    "@foldr/to-title-case": "^0.0.0",
+    "@foldr/to-upper-case": "^0.0.0",
+    "@foldr/to-upper-first": "^0.0.0",
+    "@foldr/to-words": "^0.0.0",
     "@foldr/zip": "^0.0.0"
   }
 }

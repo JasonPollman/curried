@@ -11,7 +11,7 @@ describe('isSymbol', () => {
     expect(typeof isSymbol).toBe('function');
   });
 
-  it('Should return `true` for Map instances', () => {
+  it('Should return `true` for Symbol instances', () => {
     expect(isSymbol(Symbol('foo'))).toBe(true);
     // eslint-disable-next-line symbol-description
     expect(isSymbol(Symbol())).toBe(true);

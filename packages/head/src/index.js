@@ -12,6 +12,5 @@
  * head([]);           // => undefined
  */
 export default function head(array) {
-  if (array && array.length) return array[0];
-  return undefined;
+  return array ? array[0] : undefined;
 }

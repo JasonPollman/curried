@@ -28,6 +28,7 @@ import {
   PACKAGES_DIRECTORY,
 } from './utils';
 
+import babelrc from '../babel.config';
 import packageJson from '../package.json';
 
 const webpackAsync = Promise.promisify(webpack);
@@ -51,7 +52,7 @@ The @foldr library.
 const BASE_WEBPACK_CONFIG = {
   mode: getENV('BUNDLE_MODE', 'production'),
   devtool: 'source-map',
-  target: 'web',
+  // target: 'web',
   // Tell webpack not to shim node globals, since @folder/internal-env
   // handles this in a way that's agnostic to webpack.
   // This also reduces about 2kb in bundle sizes.
@@ -65,19 +66,38 @@ const BASE_WEBPACK_CONFIG = {
     // Since each package is independently bundled, we don't
     // need to sourcemaps to reference actual project paths.
     devtoolModuleFilenameTemplate(info) {
-      return `foldr:///${info.absoluteResourcePath}`;
+      return `foldr:///${path.relative(PROJECT_ROOT, info.absoluteResourcePath)}`;
     },
+  },
+  resolve: {
+    mainFiles: ['dist/index'],
+    mainFields: ['module', 'main'],
+    extensions: ['.mjs'],
   },
   module: {
     rules: [
       {
-        type: 'javascript/auto',
-        test: /\.m?js$/,
-        // Uses the source map in `[package]/dist/index.js.map`
-        // So we don't have to re-transpile the code to get
-        // proper source maps.
-        use: ['source-map-loader'],
+        type: 'javascript/esm',
+        test: /\.mjs$/,
         enforce: 'pre',
+        use: [
+          // Uses the source map in `[package]/dist/index.js.map`
+          // So we don't have to re-transpile the code to get
+          // proper source maps.
+          {
+            loader: 'source-map-loader',
+          },
+          // Make sure everything is transpiled down to ES5
+          // in the ESM code, since babel.config.js:env.esm
+          // doesn't acutally transform anything.
+          {
+            loader: 'babel-loader',
+            options: {
+              ...babelrc,
+              envName: 'webpack',
+            },
+          },
+        ],
       },
     ],
   },

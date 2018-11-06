@@ -15,4 +15,4 @@ import is from '@foldr/is';
  * @since v0.0.0
  * @export
  */
-export default is(Map);
+export default typeof Map === 'function' ? is(Map) : /* istanbul ignore next */ () => false;

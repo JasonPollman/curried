@@ -65,7 +65,7 @@ async function transformPackage(options) {
       ...babelrc,
       envName,
       sourceMaps: true,
-      sourceRoot: rel(pkg),
+      sourceRoot: path.relative(PROJECT_ROOT, pkg),
     });
 
     const withSourceMap = withSourceMapURL(path.relative(outpath, destinationMap), code);
@@ -84,8 +84,8 @@ async function transformPackage(options) {
  */
 function transpilePackage(pkg) {
   return Promise.all([
-    transformPackage({ pkg, envName: 'cjs', ext: 'js' }),
     transformPackage({ pkg, envName: 'esm', ext: 'mjs' }),
+    transformPackage({ pkg, envName: 'commonjs', ext: 'js' }),
   ]);
 }
 

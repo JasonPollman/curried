@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/to-upper-first",
+  "description": "Converts the first character of a string to uppercase.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/to-string": "^0.0.0"
+  }
+}

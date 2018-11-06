@@ -15,8 +15,7 @@ import { IS_NODE } from '@foldr/internal-env';
  */
 function withValidConstructor(check) {
   return function is(Constructor, x) {
-    if (!Constructor || typeof Constructor !== 'function') return false;
-    return check(Constructor, x);
+    return typeof Constructor === 'function' ? check(Constructor, x) : false;
   };
 }
 
@@ -38,7 +37,7 @@ export function isNodeCheck(Constructor, x) {
  * @returns {boolean} True if `thing` is a `Constructor` instance, false otherwise.
  */
 export function isBrowserCheck(Constructor, x) {
-  return isNodeCheck(x) || toStringTag(x) === `[object ${Constructor.name}]`;
+  return isNodeCheck(Constructor, x) || toStringTag(x) === `[object ${Constructor.name}]`;
 }
 
 /**

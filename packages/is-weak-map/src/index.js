@@ -15,4 +15,4 @@ import is from '@foldr/is';
  * @since v0.0.0
  * @export
  */
-export default is(WeakMap);
+export default typeof WeakMap === 'function' ? is(WeakMap) : /* istanbul ignore next */ () => false;

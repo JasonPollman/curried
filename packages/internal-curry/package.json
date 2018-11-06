@@ -3,8 +3,7 @@
   "description": "Internal, optimized currying function for @foldr internal use only.",
   "version": "0.0.0",
   "license": "ISC",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist",
   "sideEffects": false,
   "dependencies": {
     "@foldr/internal-symbol": "^0.0.0"

@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "description": "Curries functions.",
   "license": "ISC",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist",
   "sideEffects": false,
   "dependencies": {
     "@foldr/internal-curry": "^0.0.0"

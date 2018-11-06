@@ -15,4 +15,4 @@ import is from '@foldr/is';
  * @since v0.0.0
  * @export
  */
-export default is(Set);
+export default typeof Set === 'function' ? is(Set) : /* istanbul ignore next */ () => false;

@@ -11,7 +11,7 @@ describe('isWeakMap', () => {
     expect(typeof isWeakMap).toBe('function');
   });
 
-  it('Should return `true` for Map instances', () => {
+  it('Should return `true` for WeakMap instances', () => {
     expect(isWeakMap(new WeakMap())).toBe(true);
   });
 

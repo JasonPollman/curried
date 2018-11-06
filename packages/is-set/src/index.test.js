@@ -11,7 +11,7 @@ describe('isSet', () => {
     expect(typeof isSet).toBe('function');
   });
 
-  it('Should return `true` for Map instances', () => {
+  it('Should return `true` for Set instances', () => {
     expect(isSet(new Set())).toBe(true);
   });
 

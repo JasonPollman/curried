@@ -28,7 +28,8 @@
     "test": "NODE_ENV=test npx jest ./packages/${PKG:-**}/**/*.test.js",
     "test:cover": "npm run test -- --coverage",
     "open:umd": "open ./resources/umd-loader.html",
-    "open:coverage": "open ./coverage/lcov-report/index.html"
+    "open:coverage": "open ./coverage/lcov-report/index.html",
+    "serve": "serve . -p 3000"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -37,14 +38,15 @@
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^9.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-preset-minify": "^0.5.0",
     "benchmark": "^2.1.4",
     "bluebird": "^3.5.2",
     "chalk": "^2.4.1",
-    "eslint": "^5.7.0",
+    "eslint": "^5.8.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
@@ -58,7 +60,8 @@
     "p-compose": "^1.0.1",
     "rambda": "^1.2.6",
     "rimraf": "^2.6.2",
+    "serve": "^10.0.2",
     "source-map-loader": "^0.2.4",
-    "webpack": "^4.23.1"
+    "webpack": "^4.25.1"
   }
 }

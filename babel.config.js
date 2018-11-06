@@ -24,6 +24,14 @@ module.exports = {
     }],
   ],
   env: {
+    webpack: {
+      presets: [
+        ['@babel/preset-env', {
+          modules: false,
+          targets,
+        }],
+      ],
+    },
     test: {
       plugins: [
         // This fixes an issue with import resolution and babel-jest.
@@ -32,7 +40,7 @@ module.exports = {
         '@babel/plugin-transform-modules-commonjs',
       ],
     },
-    cjs: {
+    commonjs: {
       presets: [
         ['@babel/preset-env', {
           modules: false,
@@ -57,9 +65,6 @@ module.exports = {
       presets: [
         ['@babel/preset-env', {
           modules: false,
-          targets: {
-            esmodules: true,
-          },
         }],
       ],
     },

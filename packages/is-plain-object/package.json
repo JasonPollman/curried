@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/is-plain-object",
+  "description": "Determines if a value is a plain object.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/to-string-tag": "^0.0.0"
+  }
+}

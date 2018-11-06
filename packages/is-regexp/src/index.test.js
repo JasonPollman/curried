@@ -11,7 +11,7 @@ describe('isRegExp', () => {
     expect(typeof isRegExp).toBe('function');
   });
 
-  it('Should return `true` for Map instances', () => {
+  it('Should return `true` for RegExp instances', () => {
     expect(isRegExp(new RegExp('.*'))).toBe(true);
     expect(isRegExp(/foo/)).toBe(true);
   });

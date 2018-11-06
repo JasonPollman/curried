@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/to-camel-case",
+  "description": "Converts a string to camel case.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/to-words": "^0.0.0",
+    "@foldr/to-upper-first": "^0.0.0"
+  }
+}

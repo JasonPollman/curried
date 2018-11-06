@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-10-31
+ * @since 2018-11-5
  * @file
  */
 
@@ -22,7 +22,6 @@ import identity from '@foldr/identity';
 import interpolate from '@foldr/interpolate';
 import interpolateBraces from '@foldr/interpolate-braces';
 import interpolateBrackets from '@foldr/interpolate-brackets';
-import interpolatePct from '@foldr/interpolate-pct';
 import is from '@foldr/is';
 import isArray from '@foldr/is-array';
 import isArrayLike from '@foldr/is-array-like';
@@ -39,6 +38,7 @@ import isNil from '@foldr/is-nil';
 import isNull from '@foldr/is-null';
 import isNumber from '@foldr/is-number';
 import isObject from '@foldr/is-object';
+import isPlainObject from '@foldr/is-plain-object';
 import isPromise from '@foldr/is-promise';
 import isRegexp from '@foldr/is-regexp';
 import isSafeInteger from '@foldr/is-safe-integer';
@@ -53,7 +53,16 @@ import once from '@foldr/once';
 import partial from '@foldr/partial';
 import shuffle from '@foldr/shuffle';
 import t from '@foldr/t';
+import toCamelCase from '@foldr/to-camel-case';
+import toKebabCase from '@foldr/to-kebab-case';
+import toLowerCase from '@foldr/to-lower-case';
+import toSnakeCase from '@foldr/to-snake-case';
+import toString from '@foldr/to-string';
 import toStringTag from '@foldr/to-string-tag';
+import toTitleCase from '@foldr/to-title-case';
+import toUpperCase from '@foldr/to-upper-case';
+import toUpperFirst from '@foldr/to-upper-first';
+import toWords from '@foldr/to-words';
 import zip from '@foldr/zip';
 
 const { _ } = curry;
@@ -76,7 +85,6 @@ export {
   interpolate,
   interpolateBraces,
   interpolateBrackets,
-  interpolatePct,
   is,
   isArray,
   isArrayLike,
@@ -93,6 +101,7 @@ export {
   isNull,
   isNumber,
   isObject,
+  isPlainObject,
   isPromise,
   isRegexp,
   isSafeInteger,
@@ -107,6 +116,15 @@ export {
   partial,
   shuffle,
   t,
+  toCamelCase,
+  toKebabCase,
+  toLowerCase,
+  toSnakeCase,
+  toString,
   toStringTag,
+  toTitleCase,
+  toUpperCase,
+  toUpperFirst,
+  toWords,
   zip,
 };

@@ -3,7 +3,6 @@
   "description": "Determines is a value is exactly null.",
   "version": "0.0.0",
   "license": "ISC",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist",
   "sideEffects": false
 }

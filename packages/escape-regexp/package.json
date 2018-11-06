@@ -3,7 +3,6 @@
   "description": "A utility method to escape regular expressions.",
   "version": "0.0.0",
   "license": "ISC",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist",
   "sideEffects": false
 }

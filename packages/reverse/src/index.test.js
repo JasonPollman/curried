@@ -14,6 +14,8 @@ describe('f', () => {
   it('Should return an empty array for invalid input', () => {
     expect(reverse()).toEqual([]);
     expect(reverse(0)).toEqual([]);
+    expect(reverse(null)).toEqual([]);
+    expect(reverse(() => {})).toEqual([]);
     expect(reverse({ foo: 'bar' })).toEqual([]);
   });
 

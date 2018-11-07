@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-11-5
+ * @since 2018-11-6
  * @file
  */
 
@@ -52,6 +52,7 @@ import noop from '@foldr/noop';
 import nth from '@foldr/nth';
 import once from '@foldr/once';
 import partial from '@foldr/partial';
+import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
 import t from '@foldr/t';
 import tail from '@foldr/tail';
@@ -117,6 +118,7 @@ export {
   nth,
   once,
   partial,
+  reverse,
   shuffle,
   t,
   tail,

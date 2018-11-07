@@ -1,21 +1,28 @@
-const _ = require('lodash');
-const R = require('rambda');
-const Benchmark = require('benchmark');
+module.exports = ({ foldr, lodash, rambda }) => {
+  const tests = {
+    foldr: input => foldr.compact(input),
+    lodash: input => lodash.compact(input),
+    rambda: input => rambda.compact(input),
+  };
 
-const compact = require('./dist');
-
-const { log } = console;
-
-const toFixed = n => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
-
-function handleCycleComplete({ target }) {
-  const { name, hz, error } = target;
-  log(`${name}: ${error ? `[Error: ${error.message}]` : toFixed(hz)}`);
-}
-
-new Benchmark.Suite()
-  .add('Foldr #1', () => compact([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .add('Lodash #1', () => _.compact([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .add('Rambda #1', () => R.compact([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .on('cycle', handleCycleComplete)
-  .run({ async: true });
+  return [
+    {
+      name: 'Compacts an Array: Nothing to Compact',
+      expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
+      setup: () => [1, 2, 3],
+      tests,
+    },
+    {
+      name: 'Compacts an Array: Sparse',
+      expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
+      setup: () => [1, false, 2, 3],
+      tests,
+    },
+    {
+      name: 'Compacts an Array: Frequent',
+      expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
+      setup: () => [NaN, null, 1, false, 0, 2, null, undefined, 3, false],
+      tests,
+    },
+  ];
+};

@@ -1,21 +1,28 @@
-const _ = require('lodash');
-const R = require('rambda');
-const Benchmark = require('benchmark');
+module.exports = ({ foldr, lodash, rambda }) => {
+  const tests = {
+    foldr: input => foldr.flatten(input),
+    lodash: input => lodash.flatten(input),
+    rambda: input => rambda.flatten(input),
+  };
 
-const flatten = require('./dist');
-
-const { log } = console;
-
-const toFixed = n => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
-
-function handleCycleComplete({ target }) {
-  const { name, hz, error } = target;
-  log(`${name}: ${error ? `[Error: ${error.message}]` : toFixed(hz)}`);
-}
-
-new Benchmark.Suite()
-  .add('Foldr #1', () => flatten([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .add('Lodash #1', () => _.flatten([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .add('Rambda #1', () => R.flatten([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .on('cycle', handleCycleComplete)
-  .run({ async: true });
+  return [
+    {
+      name: 'Flattens an Array: Nothing to flatten',
+      expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
+      setup: () => [1, 2, 3],
+      tests,
+    },
+    {
+      name: 'Flattens an Array: Sparse',
+      expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
+      setup: () => [1, [2], 3],
+      tests,
+    },
+    {
+      name: 'Flattens an Array: Frequent',
+      expect: (result, { deepEqual }) => deepEqual(result, [1, 1, 2, 1, 2, 3]),
+      setup: () => [[1], [1, 2], [1, 2, 3], []],
+      tests,
+    },
+  ];
+};

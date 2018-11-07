@@ -1,29 +1,38 @@
-const _ = require('lodash');
-const assert = require('assert');
-const Benchmark = require('benchmark');
-const memoize = require('./dist');
+module.exports = ({ foldr, lodash }) => {
+  const identity = x => x;
+  const sum = (x, y) => x + y;
 
-const { log } = console;
-const toFixed = n => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  const fidentity = foldr.memoize(identity, x => x[0]);
+  const lidentity = lodash.memoize(identity);
 
-function handleCycleComplete({ target }) {
-  const { name, hz, error } = target;
-  log(`${name}: ${error ? `[Error: ${error.message}]` : toFixed(hz)}`);
-}
+  const fsum = foldr.memoize(sum);
+  const lsum = lodash.memoize(sum, (a, b) => JSON.stringify({ 0: a, 1: b }));
 
-const identity = x => x;
-const sum = (x, y) => x + y;
-
-const fIdentity = memoize(identity, x => x[0]);
-const lIdentity = _.memoize(identity);
-
-const fSum = memoize(sum);
-const lSum = _.memoize(sum, (a, b) => JSON.stringify({ 0: a, 1: b }));
-
-new Benchmark.Suite()
-  .add('Foldr (identity)', () => assert(fIdentity(5) === 5))
-  .add('Lodash (identity)', () => assert(lIdentity(5) === 5))
-  .add('Foldr (sum)', () => assert(fSum(1, 2) === 3))
-  .add('Lodash (sum)', () => assert(lSum(1, 2) === 3))
-  .on('cycle', handleCycleComplete)
-  .run({ async: false });
+  return [
+    {
+      name: 'Memoizes Identity',
+      expect: (result, { deepEqual }) => deepEqual(result, 5),
+      tests: {
+        foldr: () => fidentity(5),
+        lodash: () => lidentity(5),
+      },
+    },
+    {
+      name: 'Memoizes Sum',
+      expect: (result, { deepEqual }) => deepEqual(result, 3),
+      tests: {
+        foldr: () => fsum(1, 2),
+        lodash: () => lsum(1, 2),
+      },
+    },
+    {
+      name: 'Memoize Function Creation',
+      expect: (result, assert) => assert(typeof result === 'function'),
+      setup: () => x => x * 2,
+      tests: {
+        foldr: input => foldr.memoize(input),
+        lodash: input => lodash.memoize(input),
+      },
+    },
+  ];
+};

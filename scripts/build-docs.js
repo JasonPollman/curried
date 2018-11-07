@@ -92,7 +92,7 @@ async function buildDocs(packages) {
 
   await Promise.map(packages, buildPackageDoc(docs), { concurrency: MAP_CONCURRENCY });
 
-  const destination = path.join(DOCS_DESTNATION, `${version}.json`);
+  const destination = path.join(DOCS_DESTNATION, `docs-${version}.json`);
   return fs.outputFileAsync(destination, JSON.stringify({ datetime, version, docs }));
 }
 

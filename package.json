@@ -13,7 +13,7 @@
     }
   ],
   "scripts": {
-    "bench": "NODE_ENV=production ./scripts/bench",
+    "bench": "NODE_ENV=production npx babel-node ./scripts/bench.js",
     "build": "npm run clean && npm run build:all && npm run build:transpile && npm run link && npm run build:bundle && npm run build:docs",
     "build:all": "npx babel-node ./scripts/make-all.js",
     "build:bundle": "npx babel-node ./scripts/bundle.js",

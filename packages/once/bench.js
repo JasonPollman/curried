@@ -1,22 +1,26 @@
-const _ = require('lodash');
-const Benchmark = require('benchmark');
+module.exports = ({ foldr, lodash }) => {
+  const double = x => x * 2;
 
-const once = require('./dist').default;
+  const fonce = foldr.once(double);
+  const lonce = lodash.once(double);
 
-const { log } = console;
-
-const toFixed = n => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
-
-function handleCycleComplete({ target }) {
-  const { name, hz, error } = target;
-  log(`${name}: ${error ? `[Error: ${error.message}]` : toFixed(hz)}`);
-}
-
-const onceDoubleLodash = _.once(num => num * 2);
-const onceDoubleFoldr = once(num => num * 2);
-
-new Benchmark.Suite()
-  .add('Foldr #1', () => onceDoubleFoldr(2))
-  .add('Lodash #1', () => onceDoubleLodash(2))
-  .on('cycle', handleCycleComplete)
-  .run({ async: true });
+  return [
+    {
+      name: 'Only Executes Once',
+      expect: (result, { deepEqual }) => deepEqual(result, 10),
+      tests: {
+        foldr: () => fonce(5),
+        lodash: () => lonce(5),
+      },
+    },
+    {
+      name: 'Once Function Creation',
+      expect: (result, assert) => assert(typeof result === 'function'),
+      setup: () => x => x * 2,
+      tests: {
+        foldr: input => foldr.once(input),
+        lodash: input => lodash.once(input),
+      },
+    },
+  ];
+};

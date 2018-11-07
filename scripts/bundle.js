@@ -62,6 +62,9 @@ const BASE_WEBPACK_CONFIG = {
     filename: '[name].min.js',
     library: '[name]',
     libraryTarget: 'umd',
+    // Fixes not being able to require the webpack UMD modules in Node.js
+    // and in other cases where `window` isn't defined (webworker?).
+    globalObject: "(typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : this)",
     // Fixes sourcemapping file paths.
     // Since each package is independently bundled, we don't
     // need to sourcemaps to reference actual project paths.

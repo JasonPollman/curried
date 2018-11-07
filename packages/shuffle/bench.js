@@ -1,21 +1,22 @@
-const _ = require('lodash');
-const R = require('rambda');
-const Benchmark = require('benchmark');
+module.exports = ({ foldr, lodash, rambda }) => {
+  const tests = {
+    foldr: input => foldr.shuffle(input),
+    lodash: input => lodash.shuffle(input),
+    rambda: input => rambda.shuffle(input),
+  };
 
-const shuffle = require('./dist').default;
-
-const { log } = console;
-
-const toFixed = n => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
-
-function handleCycleComplete({ target }) {
-  const { name, hz, error } = target;
-  log(`${name}: ${error ? `[Error: ${error.message}]` : toFixed(hz)}`);
-}
-
-new Benchmark.Suite()
-  .add('Foldr #1', () => shuffle([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .add('Lodash #1', () => _.shuffle([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .add('Rambda #1', () => R.shuffle([1, 2, {}, '', [3, 4, 5, [6, 7, [8]]], 9, null, undefined, [null, [null]]]))
-  .on('cycle', handleCycleComplete)
-  .run({ async: true });
+  return [
+    {
+      name: 'Shuffles an Array: Basic',
+      expect: (result, assert) => assert(typeof result === 'object' && result.length),
+      setup: () => [1, 2, 3],
+      tests,
+    },
+    {
+      name: 'Shuffles an Array: Larger',
+      expect: (result, assert) => assert(typeof result === 'object' && result.length),
+      setup: () => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+      tests,
+    },
+  ];
+};

@@ -14,8 +14,13 @@
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isObject({});        // => true
+ * isObject(() => {});  // => true
+ * isObject('foo');     // => false
  */
 export default function isObject(x) {
   const type = typeof x;
-  return !!x && (type === 'object' || type === 'function');
+  return x != null && (type === 'object' || type === 'function');
 }

@@ -4,15 +4,19 @@
  * @file
  */
 
-import is from '@foldr/is';
-
 /**
  * Determines if the given item is an instance of Function.
- * @param {any} thing The value to check.
- * @returns {boolean} True if `thing` is a Function object, false otherwise.
+ * @param {any} x The value to check.
+ * @returns {boolean} True if `x` is a Function object, false otherwise.
  * @category types
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isFunction(() => {})); // => true
+ * isFunction([]);        // => false
  */
-export default is(Function);
+export default function isFunction(x) {
+  return typeof x === 'function';
+}

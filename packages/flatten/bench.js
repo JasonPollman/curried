@@ -7,6 +7,12 @@ module.exports = ({ foldr, lodash, rambda }) => {
 
   return [
     {
+      name: 'Flattens an Array: Empty',
+      expect: (result, { deepEqual }) => deepEqual(result, []),
+      setup: () => [],
+      tests,
+    },
+    {
       name: 'Flattens an Array: Nothing to flatten',
       expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
       setup: () => [1, 2, 3],
@@ -14,8 +20,8 @@ module.exports = ({ foldr, lodash, rambda }) => {
     },
     {
       name: 'Flattens an Array: Sparse',
-      expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
-      setup: () => [1, [2], 3],
+      expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3, 4, 5]),
+      setup: () => [1, [2], 3, 4, 5],
       tests,
     },
     {

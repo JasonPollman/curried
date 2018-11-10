@@ -15,6 +15,7 @@ import {
   red,
   cyan,
   green,
+  magenta,
 } from 'chalk';
 
 import {
@@ -74,6 +75,17 @@ function getFoldrAllPackageJson() {
 }
 
 /**
+ * Renames some packages.
+ * @param {string} camelizedFunctionName The camel cased function name.
+ * @returns {string} The renamed function name.
+ */
+function fixCamelizeNamingIssues(camelizedFunctionName) {
+  return camelizedFunctionName
+    .replace(/Regexp/g, 'RegExp')
+    .replace(/Nan/g, 'NaN');
+}
+
+/**
  * Generates the contents for the /packages/all/src/index.js file.
  * @param {Object<Object>} packageJsons An object containing all of the package.json files
  * this package is dependent on (keyed by package name).
@@ -83,7 +95,9 @@ async function generateFoldrAllIndexContent(packageJsons) {
   const modules = Object.keys(packageJsons);
   const sorted = modules.sort();
 
-  const symbols = sorted.map(module => module.replace(/^@foldr\//, '')).map(camelize);
+  const symbols = sorted.map(module => module.replace(/^@foldr\//, ''))
+    .map(camelize)
+    .map(fixCamelizeNamingIssues);
 
   // All of the `import x from 'y';` statements.
   const imports = sorted.map((module, i) => `import ${symbols[i]} from '${module}';`).join('\n');
@@ -124,6 +138,9 @@ async function generateFoldrAllIndexContent(packageJsons) {
  * @returns {Proimse<string>} Resolves with the generated contents for /packages/all/src/index.js.
  */
 async function generateFoldrAllPackageIndexFile(packageJsons) {
+  const banner = 'Found %s total exports for @foldr/all package...';
+  log(magenta.bold(banner), Object.keys(packageJsons).length);
+
   const rendered = await generateFoldrAllIndexContent(packageJsons);
   await fs.outputFileAsync(FOLDR_ALL_INDEX_DESTINATION, rendered);
   log(green.bold('Index file for `@foldr/all` generated successfully!'));

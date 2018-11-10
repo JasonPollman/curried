@@ -14,5 +14,9 @@ import is from '@foldr/is';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isDate(new Date());  // => true
+ * isDate('foo');       // => false
  */
 export default is(Date);

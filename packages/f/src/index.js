@@ -11,6 +11,8 @@
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ * f(); // => false
  */
 export default function f() {
   return false;

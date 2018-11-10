@@ -15,6 +15,11 @@ import toUpperFirst from '@foldr/to-upper-first';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * toTitleCase('fooBar');  // => 'Foo Bar'
+ * toTitleCase('foo bar');  // => 'Foo Bar'
+ * toTitleCase('foo_bar');  // => 'Foo Bar'
  */
 export default function toTitleCase(string) {
   const words = toWords(string);

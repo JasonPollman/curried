@@ -55,6 +55,7 @@ function traverseObject(object, props) {
  * @export
  * @export
  * @example
+ *
  * const thing = { foo: [{ bar: 1 }, { bar: 2 }, { bar: 3 }]};
  * get(thing, 'foo');             // => [{ bar: 1 }, { bar: 2 }, { bar: 3 }]
  * get(thing, 'foo[0]');          // => { bar: 1 }
@@ -64,18 +65,19 @@ function traverseObject(object, props) {
  * // Using a fallback value if the item at path doesn't exist or is undefined.
  * get(thing, 'foo.xxx', 'fallback'); // => 'fallback'
  */
-export default function get(thing, path, fallback = undefined) {
+export default function get(thing, path, fallback) {
   if (path == null || path === '') return fallback;
 
   const isAStringThing = isString(thing);
   if (!isAStringThing && !isObject(thing)) return fallback;
 
   const props = path.toString().split(PATH_SPLITTER).filter(Boolean);
+  const delta = props.length;
 
   // Can't traverse more than one level deep on a string.
-  if (isAStringThing && props.length > 1) return fallback;
+  if (isAStringThing && delta > 1) return fallback;
 
-  const result = props.length !== 1
+  const result = delta !== 1
     ? traverseObject(thing, props)
     : thing[props[0]];
 

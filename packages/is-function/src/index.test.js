@@ -13,6 +13,9 @@ describe('isFunction', () => {
 
   it('Should return `true` for Function instances', () => {
     expect(isFunction(() => {})).toBe(true);
+    expect(isFunction(async () => {})).toBe(true);
+    expect(isFunction(function* gen() { /* noop */ })).toBe(true);
+
     // eslint-disable-next-line no-new-func
     expect(isFunction(new Function('console.log("foo");'))).toBe(true);
   });

@@ -6,6 +6,7 @@
  * @since v0.0.0
  * @export
  * @example
- * noop() => undefined
+ *
+ * noop(); // => undefined
  */
 export default function noop() {}

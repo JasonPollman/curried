@@ -12,6 +12,11 @@
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isNull(null);       // => true
+ * isNull(undefined);  // => false
+ * isNull('foo');      // => false
  */
 export default function isNull(x) {
   return x === null;

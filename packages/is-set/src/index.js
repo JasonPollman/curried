@@ -14,5 +14,9 @@ import is from '@foldr/is';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isSet(new Set());  // => true
+ * isSet('foo');      // => false
  */
 export default typeof Set === 'function' ? is(Set) : /* istanbul ignore next */ () => false;

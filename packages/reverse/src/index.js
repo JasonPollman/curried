@@ -6,7 +6,7 @@
 
 /**
  * Creates a new array with the values reversed. This is similar to
- * Array#reverse, except that it does not mutate the original array.
+ * Array#reverse except that it does **not** mutate the original array.
  * @param {Array} array The array to reverse.
  * @returns {Array} The reversed array.
  * @category function

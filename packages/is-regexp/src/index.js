@@ -14,5 +14,10 @@ import is from '@foldr/is';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isRegExp(/^foo$/i);             // => true
+ * isRegExp(new RegExp('.*bar$')); // => true
+ * isRegExp('string');             // => false
  */
 export default is(RegExp);

@@ -6,13 +6,16 @@
 
 /**
  * Flattens an array one level deep.
- * @param {Array} array - The array to flatten.
+ * This will iterate over the provided array pushing all items into a new array.
+ * If the current item is an array, it's contents will also be pushed into the new array.
+ * @param {Array} array The array to flatten.
  * @returns {Array} A newly flattened array.
  * @category array
  * @memberof foldr
  * @since v0.0.0
  * @export
  * @example
+ *
  * flatten([1, 2, 3, 4]);       // => [1, 2, 3, 4]
  * flatten([1, [2, 3], 4]);     // => [1, 2, 3, 4]
  * flatten([[1], [2], [3], 4]); // => [1, 2, 3, 4]

@@ -22,6 +22,7 @@ import isArrayLike from '@foldr/is-array-like';
  * @since v0.0.0
  * @export
  * @example
+ *
  * zip([1, 2, 3], ['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
  * zip(['x', 1], ['y', 2]);         // => [['x', 'y'], [1, 2]]
  * zip('foo', 'bar');               // => [['f', 'b'], ['o', 'a'], ['a', 'r']]

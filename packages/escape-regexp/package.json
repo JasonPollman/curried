@@ -4,5 +4,8 @@
   "version": "0.0.0",
   "license": "ISC",
   "main": "dist",
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/to-string": "^0.0.0"
+  }
 }

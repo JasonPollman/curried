@@ -24,5 +24,9 @@ export function isNaNPolyfill(x) {
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isNaN(NaN);    // => true
+ * isNaN('foo');  // => false
  */
 export default Number.isNaN || /* istanbul ignore next */ isNaNPolyfill;

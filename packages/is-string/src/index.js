@@ -5,6 +5,9 @@
  */
 
 import is from '@foldr/is';
+
+const isStringObject = is(String);
+
 /**
  * Determines if the given item is a string.
  * @param {any} x The value to check.
@@ -13,5 +16,12 @@ import is from '@foldr/is';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isString('foo'); // => true
+ * isString('');    // => true
+ * isString(100);   // => false
  */
-export default is(String);
+export default function isString(x) {
+  return typeof x === 'string' || isStringObject(x);
+}

@@ -5,16 +5,21 @@
  */
 
 /**
- * Determines if the given `thing` is "array like", meaning
+ * Determines if the given value is "array-like"—that is,
  * it is non-falsy and has a length property. This will be true
  * for arrays, arguments, strings, and array-like objects.
- * @param {any} thing The thing to check.
- * @returns {boolean} True if `thing` is array-like, false otherwise.
+ * @param {any} x The value to check.
+ * @returns {boolean} True if `x` is array-like, false otherwise.
  * @category types
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isArrayLike([]);     // => true
+ * isArrayLike('foo');  // => true
+ * isArrayLike({});     // => false
  */
-export default function isArrayLike(thing) {
-  return thing === '' || !!(thing && (thing.length || thing.length === 0));
+export default function isArrayLike(x) {
+  return x === '' || !!(x && (x.length || x.length === 0));
 }

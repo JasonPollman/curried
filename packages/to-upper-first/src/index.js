@@ -15,6 +15,7 @@ import toString from '@foldr/to-string';
  * @since v0.0.0
  * @export
  * @example
+ *
  * toUpperFirst('foobar'); // => 'Foobar'
  */
 export default function toUpperFirst(str) {

@@ -4,20 +4,8 @@
  * @file
  */
 
-import curry from '@foldr/internal-curry';
 import toStringTag from '@foldr/to-string-tag';
 import { IS_NODE } from '@foldr/internal-env';
-
-/**
- * Base wrapper for is check.
- * @param {function} check Either the `isNodeCheck` or `isBrowserCheck` function below.
- * @returns {boolean} True if `thing` is a `Constructor` instance, false otherwise.
- */
-function withValidConstructor(check) {
-  return function is(Constructor, x) {
-    return typeof Constructor === 'function' ? check(Constructor, x) : false;
-  };
-}
 
 /**
  * Determines if `x` is an instance of `Constructor`.
@@ -41,15 +29,48 @@ export function isBrowserCheck(Constructor, x) {
 }
 
 /**
- * Determines if `thing` is an instance of `Constructor`.
+ * Constant false function.
+ * @returns {boolean} The literal `false`.
+ */
+const F = () => false;
+const isCheck = IS_NODE ? isNodeCheck : /* istanbul ignore next */ isBrowserCheck;
+
+/**
+ * Determines if the given value is an instance of `Constructor`.
  * @param {function} Constructor The constructor to test for membership of.
- * @param {any} thing The thing to test.
- * @returns {boolean} True if `thing` is a `Constructor` instance, false otherwise.
+ * @param {any} value The value to test.
+ * @returns {boolean} True if `value` is a `Constructor` instance, false otherwise.
  * @category types
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * is(Object, {});    // => true
+ * is(String, 'foo'); // => true
+ * is(String, {});    // => false
+ *
+ * // Note, `is` is curried.
+ * class Point {
+ *   constructor(x, y) {
+ *      this.x = x;
+ *      this.y = y;
+ *   }
+ * }
+ *
+ * const isPoint = is(Point);
+ *
+ * isPoint(new Point(0, 1)); // => true
+ * isPoint({});              // => false
  */
-export default curry(
-  withValidConstructor(IS_NODE ? isNodeCheck : /* istanbul ignore next */ isBrowserCheck),
-);
+export default function is(Constructor, value) {
+  const isValidConstructor = typeof Constructor === 'function';
+
+  // For performance reasons, simulating curry here.
+  if (arguments.length > 1) return isValidConstructor ? isCheck(Constructor, value) : false;
+  if (!isValidConstructor) return F;
+
+  return function isConstructorInstance(x) {
+    return isCheck(Constructor, x);
+  };
+}

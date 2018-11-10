@@ -93,6 +93,7 @@ function DefaultCache() {
  * @since v0.0.0
  * @export
  * @example
+ *
  * function fibonacci(n) {
  *   return n <= 1 ? 1 : fibonacci(n - 2) + fibonacci(n - 1);
  * }

@@ -12,6 +12,7 @@ import internalCurry, { _ } from '@foldr/internal-curry';
  * @since v0.0.0
  * @export
  * @example
+ *
  * const curried = curry((x, y, z) => x + y + z);
  * curried()        // => curried
  * curried(1)       // => [object Function]

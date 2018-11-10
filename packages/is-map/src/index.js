@@ -14,5 +14,9 @@ import is from '@foldr/is';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isMap(new Map());  // => true
+ * isMap('foo');      // => false
  */
 export default typeof Map === 'function' ? is(Map) : /* istanbul ignore next */ () => false;

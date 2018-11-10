@@ -12,6 +12,7 @@
  * @since v0.0.0
  * @export
  * @example
+ *
  * compact([1, null, 3, undefined]); // => [1, 3]
  * compact(['', 0, 4]);              // => [4]
  */

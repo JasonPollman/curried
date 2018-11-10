@@ -1,8 +1,7 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash }) => {
   const tests = {
     foldr: input => foldr.shuffle(input),
     lodash: input => lodash.shuffle(input),
-    rambda: input => rambda.shuffle(input),
   };
 
   return [

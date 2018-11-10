@@ -17,6 +17,7 @@ const { toString } = Object.prototype;
  * @since v0.0.0
  * @export
  * @example
+ *
  * toStringTag([]);    // => '[object Array]'
  * toStringTag({});    // => '[object Object]'
  * toStringTag(10);    // => '[object Number]'

@@ -1,8 +1,7 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash }) => {
   const tests = {
     foldr: input => foldr.compact(input),
     lodash: input => lodash.compact(input),
-    rambda: input => rambda.compact(input),
   };
 
   return [

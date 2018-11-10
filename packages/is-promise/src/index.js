@@ -24,6 +24,11 @@ const isThenable = x => typeof x.then === 'function' && typeof x.catch === 'func
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isPromise(Promise.resolve()); // => true
+ * isPromise(Promise.reject());  // => true
+ * isPromise('foobar');          // => false
  */
 export default function isPromise(x) {
   return isPromiseBase(x) || (!!x && isThenable(x));

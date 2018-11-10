@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-11-7
+ * @since 2018-11-9
  * @file
  */
 
@@ -12,7 +12,7 @@ import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import constant from '@foldr/constant';
 import curry from '@foldr/curry';
-import escapeRegexp from '@foldr/escape-regexp';
+import escapeRegExp from '@foldr/escape-regexp';
 import f from '@foldr/f';
 import flatten from '@foldr/flatten';
 import get from '@foldr/get';
@@ -33,14 +33,15 @@ import isFinite from '@foldr/is-finite';
 import isFunction from '@foldr/is-function';
 import isInteger from '@foldr/is-integer';
 import isMap from '@foldr/is-map';
-import isNan from '@foldr/is-nan';
+import isNaN from '@foldr/is-nan';
 import isNil from '@foldr/is-nil';
 import isNull from '@foldr/is-null';
 import isNumber from '@foldr/is-number';
 import isObject from '@foldr/is-object';
+import isObjectLike from '@foldr/is-object-like';
 import isPlainObject from '@foldr/is-plain-object';
 import isPromise from '@foldr/is-promise';
-import isRegexp from '@foldr/is-regexp';
+import isRegExp from '@foldr/is-regexp';
 import isSafeInteger from '@foldr/is-safe-integer';
 import isSet from '@foldr/is-set';
 import isString from '@foldr/is-string';
@@ -78,7 +79,7 @@ export {
   compose,
   constant,
   curry,
-  escapeRegexp,
+  escapeRegExp,
   f,
   flatten,
   get,
@@ -99,14 +100,15 @@ export {
   isFunction,
   isInteger,
   isMap,
-  isNan,
+  isNaN,
   isNil,
   isNull,
   isNumber,
   isObject,
+  isObjectLike,
   isPlainObject,
   isPromise,
-  isRegexp,
+  isRegExp,
   isSafeInteger,
   isSet,
   isString,

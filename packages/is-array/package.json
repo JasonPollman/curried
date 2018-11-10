@@ -4,8 +4,5 @@
   "description": "Determines if a value is an Array object.",
   "license": "ISC",
   "main": "dist",
-  "sideEffects": false,
-  "dependencies": {
-    "@foldr/is": "^0.0.0"
-  }
+  "sideEffects": false
 }

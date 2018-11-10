@@ -14,6 +14,11 @@ import toWords from '@foldr/to-words';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * toSnakeCase('fooBar');  // => 'foo_bar'
+ * toSnakeCase('foo bar');  // => 'foo_bar'
+ * toSnakeCase('foo-bar');  // => 'foo_bar'
  */
 export default function toSnakeCase(string) {
   const words = toWords(string);

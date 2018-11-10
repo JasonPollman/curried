@@ -12,8 +12,9 @@ const { hasOwnProperty } = Object.prototype;
  * @since v0.0.0
  * @export
  * @example
- * has({ foo: 1 }, 'foo');  // true
- * has({ bar: 1 }, 'bar');  // false
+ *
+ * has({ foo: 1 }, 'foo');  // => true
+ * has({ bar: 1 }, 'bar');  // => false
  */
 export default function has(thing, property) {
   return !!thing && hasOwnProperty.call(thing, property);

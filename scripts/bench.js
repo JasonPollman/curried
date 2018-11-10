@@ -19,6 +19,7 @@ import {
   bold,
   cyan,
   green,
+  yellow,
 } from 'chalk';
 
 // Libraries we'll be testing...
@@ -88,9 +89,10 @@ const each = (object, iteratee) => {
 /**
  * Creates a function that's called when a suite test cycle is completed.
  * @param {Object} options Suite testing options.
- * @returns {function} A handler for cycle.on('complete;).
+ * @returns {function} A handler for cycle.on('complete').
  */
-function handleCycleComplete({ pkg }) {
+function handleCycleComplete(options) {
+  const { pkg } = options;
   stats[pkg] = stats[pkg] || {};
 
   return ({ target }) => {
@@ -110,7 +112,37 @@ function handleCycleComplete({ pkg }) {
 
     // Get the average operations per second for the current package/library.
     stats[pkg][lib].avg = Math.trunc(stats[pkg][lib].ops / (stats[pkg][lib].passed || 1));
+
+    if (!options.fastest.average || stats[pkg][lib].avg > options.fastest.average) {
+      // This is hacky and horribly mutative, fix later.
+      // eslint-disable-next-line no-param-reassign
+      options.fastest = {
+        library: lib,
+        average: stats[pkg][lib].avg,
+      };
+    }
+
+    // eslint-disable-next-line no-param-reassign
+    if (lib === 'foldr') options.foldrTime = stats[pkg][lib].avg;
+
     log('%s  %s', name, error ? red.bold(`[Error: ${error.message}]`) : green(toFixedLocale(ops)));
+  };
+}
+
+/**
+ * Prints a message if `foldr` isn't the fastest.
+ * @param {Object} options Suite testing options.
+ * @returns {undefined}
+ */
+function handleSuiteComplete(options) {
+  return () => {
+    const { fastest, foldrTime, pkg } = options;
+
+    if (fastest.library !== 'foldr') {
+      const diff = Math.round(Math.abs(1 - (foldrTime / fastest.average)) * 100);
+      const msg = '\n[PERFORMANCE WARNING]\nPackage "%s": %s was %s% faster than foldr!';
+      log(yellow.bold(msg), pkg, fastest.library, diff);
+    }
   };
 }
 
@@ -132,7 +164,7 @@ function addTestsToSuite(suite) {
     const input = setup();
 
     each(tests, (test, library) => {
-      const title = `${dim(pad(40, name))} ${bold(pad(8, `[${library}]`))}`;
+      const title = `${dim(pad(40, name))}  ${bold(pad(8, `[${library}]`))}`;
       let i = 0;
 
       // Only running assertions on the first iteration.
@@ -150,6 +182,8 @@ function executeBenchmarkSuite(options) {
   const suite = new Benchmark.Suite();
   const { pkg, schema } = options;
 
+  const opts = { ...options, fastest: {} };
+
   // Trigger the instantation of the test suite array.
   // This function should return a "bench schema array".
   schema({ ...LIBRARIES }).forEach(addTestsToSuite(suite));
@@ -159,7 +193,8 @@ function executeBenchmarkSuite(options) {
 
   return new Promise(resolve => suite
     .on('complete', resolve)
-    .on('cycle', handleCycleComplete(options))
+    .on('complete', handleSuiteComplete(opts))
+    .on('cycle', handleCycleComplete(opts))
     .run({ async: false }),
   );
 }
@@ -170,6 +205,11 @@ function executeBenchmarkSuite(options) {
  * @returns {Promise} Resolves once all tests suites have run.
  */
 function executeBenchmarkSuites(suites) {
+  if (!suites.length) {
+    log(yellow.bold('No benchmark files found. Exiting...\n'));
+    process.exit(0);
+  }
+
   return Promise.mapSeries(suites, suite => (
     Promise.delay(100).then(() => executeBenchmarkSuite(suite))
   ));
@@ -201,7 +241,7 @@ function globAndRequireBenchmarkFiles() {
  * @param {Object} statsObject The stats object to calculate totals using.
  * @returns {Object} A totals object.
  */
-function calculateTotalsFromStatas(statsObject = stats) {
+function calculateTotalsFromStats(statsObject = stats) {
   const results = {};
 
   each(statsObject, (libraries) => {
@@ -234,7 +274,7 @@ async function updateStatsJson() {
   const { packages } = await fs.readJsonAsync(destination).catchReturn({});
 
   const aggregate = { ...packages, ...stats };
-  const updates = calculateTotalsFromStatas(aggregate);
+  const updates = calculateTotalsFromStats(aggregate);
 
   return fs.outputFileAsync(destination, JSON.stringify({
     totals: updates,
@@ -247,7 +287,7 @@ async function updateStatsJson() {
  * @returns {undefined}
  */
 function printStatsTotals() {
-  const totals = calculateTotalsFromStatas(stats);
+  const totals = calculateTotalsFromStats(stats);
 
   log(cyan.bold('\n[RESULTS: AVERAGE OPERATIONS PER SECOND]\n'));
   each(totals, ({ avg }, library) => {
@@ -255,8 +295,11 @@ function printStatsTotals() {
   });
 }
 
+const start = Date.now();
+const MS2S = x => (x / 1000 / 60).toFixed(2);
+
 const benchmark = compose(
-  logTap(cyan.bold('\n[BENCHMARK TESTING COMPLETE]\n')),
+  () => log(cyan.bold('\n[BENCHMARK TESTING COMPLETED IN %sM]\n'), MS2S(Date.now() - start)),
   updateStatsJson,
   printStatsTotals,
   executeBenchmarkSuites,

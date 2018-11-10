@@ -36,6 +36,7 @@
     "@foldr/is-null": "^0.0.0",
     "@foldr/is-number": "^0.0.0",
     "@foldr/is-object": "^0.0.0",
+    "@foldr/is-object-like": "^0.0.0",
     "@foldr/is-plain-object": "^0.0.0",
     "@foldr/is-promise": "^0.0.0",
     "@foldr/is-regexp": "^0.0.0",

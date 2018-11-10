@@ -6,13 +6,21 @@
 
 import is from '@foldr/is';
 
+const isObjectNumber = is(Number);
+
 /**
  * Determines if the given item is a number.
- * @param {any} thing The value to determine Number membership.
- * @returns {boolean} True if `thing` is a number, false otherwise.
+ * @param {any} x The value to determine Number membership.
+ * @returns {boolean} True if `x` is a number, false otherwise.
  * @category types
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isNumber(100);   // => true
+ * isNumber('100'); // => false
  */
-export default is(Number);
+export default function isNumber(x) {
+  return typeof x === 'number' || isObjectNumber(x);
+}

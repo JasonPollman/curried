@@ -14,5 +14,9 @@ import is from '@foldr/is';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isBuffer(Buffer.from([])); // => true
+ * isBuffer({});              // => false
  */
 export default typeof Buffer === 'function' ? is(Buffer) : /* istanbul ignore next */ () => false;

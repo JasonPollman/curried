@@ -28,5 +28,9 @@ export function isFinitePolyfill(x) {
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isFinite(1);         // => true
+ * isFinite(Infinity);  // => false
  */
 export default Number.isFinite || /* istanbul ignore next */ isFinitePolyfill;

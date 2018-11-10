@@ -11,6 +11,9 @@
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * t(); // => true
  */
 export default function t() {
   return true;

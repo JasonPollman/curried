@@ -14,5 +14,9 @@ import is from '@foldr/is';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isWeakMap(new WeakMap());  // => true
+ * isWeakMap('foo');          // => false
  */
 export default typeof WeakMap === 'function' ? is(WeakMap) : /* istanbul ignore next */ () => false;

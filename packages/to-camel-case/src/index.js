@@ -15,6 +15,11 @@ import toUpperFirst from '@foldr/to-upper-first';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * toCamelCase('foo bar');  // => 'fooBar'
+ * toCamelCase('foo-bar');  // => 'fooBar'
+ * toCamelCase('foo_bar');  // => 'fooBar'
  */
 export default function toCamelCase(string) {
   const words = toWords(string);

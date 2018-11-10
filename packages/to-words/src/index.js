@@ -25,6 +25,9 @@ const RE_TO_WORDS = new RegExp(`${UC.source}${LC.source}+|${LC.source}+|${UC.sou
  * @memberof foldr
  * @since v0.0.0
  * @export
+ *
+ * toWords('foo bar')         // => ['foo', 'bar']
+ * toWords('foo barBaz_quxx') // => ['foo', 'bar', 'Baz', 'quxx']
  */
 export default function toWords(value, pattern) {
   return toString(value).match(pattern || RE_TO_WORDS) || [];

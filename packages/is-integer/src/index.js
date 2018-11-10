@@ -35,5 +35,9 @@ export function isIntegerPolyfill(x) {
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isInteger(1);    // => true
+ * isInteger(1.01); // => false
  */
 export default Number.isInteger || /* istanbul ignore next */ isIntegerPolyfill;

@@ -14,6 +14,11 @@ import toWords from '@foldr/to-words';
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * toKebabCase('fooBar');  // => 'foo-bar'
+ * toKebabCase('foo bar');  // => 'foo-bar'
+ * toKebabCase('foo_bar');  // => 'foo-bar'
  */
 export default function toKebabCase(string) {
   const words = toWords(string);

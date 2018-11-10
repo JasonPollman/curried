@@ -40,13 +40,14 @@ export function implementShuffle(arr) {
 
 /**
  * Shuffles an array using the "Fisher-Yates" shuffle algorithm.
- * @param {array} arr - The array to be shuffled.
- * @returns {array} - A shuffled array.
+ * @param {Array} arr The array to be shuffled.
+ * @returns {Array} A shuffled array.
  * @category array
  * @memberof foldr
  * @since v0.0.0
  * @export
  * @example
+ *
  * shuffle([1, 2, 3, 4]); // => [2, 4, 3, 1]
  * shuffle([1, 2, 3, 4]); // => [3, 4, 1, 2]
  */

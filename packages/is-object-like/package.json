@@ -1,0 +1,7 @@
+{
+  "name": "@foldr/is-object-like",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false
+}

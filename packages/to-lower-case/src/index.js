@@ -15,6 +15,7 @@ import toString from '@foldr/to-string';
  * @since v0.0.0
  * @export
  * @example
+ *
  * toLowerCase('FooBar');  // => 'foobar'
  * toLowerCase('FOO_BAR'); // => 'foo_bar'
  */

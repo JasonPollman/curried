@@ -12,6 +12,11 @@
  * @memberof foldr
  * @since v0.0.0
  * @export
+ * @example
+ *
+ * isUndefined(undefined);  // => true
+ * isUndefined(null);       // => false
+ * isUndefined('foo');      // => false
  */
 export default function isUndefined(x) {
   return x === undefined;

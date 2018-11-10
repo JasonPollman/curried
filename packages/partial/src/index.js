@@ -19,20 +19,20 @@ export const _ = getInternalSymbol('placeholder');
 export const IS_CURRIED = getInternalSymbol('is-curried-fn');
 
 /**
- * Used to determine if a function is curried.
+ * Used to determine if a function is partialed.
  * @type {SafeSymbol}
  */
 export const IS_PARTIAL = getInternalSymbol('is-partial-fn');
 
 /**
- * Used to map curried functions back to their original.
+ * Used to map partialed functions back to their original.
  * @type {SafeSymbol}
  */
 export const SOURCE = getInternalSymbol('source-fn');
 
 /**
  * Partializes `fn` using `partials`.
- * @param {*} fn The function to partialize.
+ * @param {function} fn The function to partialize.
  * @param {Array} partials The set of partial arguments to apply to `fn`.
  * @returns {function} The partialized function.
  */
@@ -90,7 +90,7 @@ function partialize(fn, partials) {
  */
 export default function partial(fn, ...partials) {
   if (typeof fn !== 'function') {
-    throw new TypeError('The first argument given to partial must be a function.');
+    throw new TypeError('The first argument given to `partial` must be a function.');
   }
 
   // No reason to partialize a function with no partials or a curried function.

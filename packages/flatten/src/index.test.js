@@ -24,7 +24,7 @@ describe('flatten', () => {
     expect(flattend).toEqual(expected);
   });
 
-  it('Should properyl handle non-array values', () => {
+  it('Should properly handle non-array values', () => {
     expect(flatten(null)).toEqual([]);
     expect(flatten(undefined)).toEqual([]);
     expect(flatten(false)).toEqual([]);

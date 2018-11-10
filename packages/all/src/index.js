@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-11-9
+ * @since 2018-11-10
  * @file
  */
 
@@ -15,6 +15,7 @@ import curry from '@foldr/curry';
 import escapeRegExp from '@foldr/escape-regexp';
 import f from '@foldr/f';
 import flatten from '@foldr/flatten';
+import flattenDeep from '@foldr/flatten-deep';
 import get from '@foldr/get';
 import has from '@foldr/has';
 import head from '@foldr/head';
@@ -53,6 +54,7 @@ import noop from '@foldr/noop';
 import nth from '@foldr/nth';
 import once from '@foldr/once';
 import partial from '@foldr/partial';
+import rearg from '@foldr/rearg';
 import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
 import t from '@foldr/t';
@@ -82,6 +84,7 @@ export {
   escapeRegExp,
   f,
   flatten,
+  flattenDeep,
   get,
   has,
   head,
@@ -120,6 +123,7 @@ export {
   nth,
   once,
   partial,
+  rearg,
   reverse,
   shuffle,
   t,

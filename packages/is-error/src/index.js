@@ -16,7 +16,7 @@ import is from '@foldr/is';
  * @export
  * @example
  *
- * ieError(new Error());  // => true
- * ieError('foo');       // => false
+ * isError(new Error());  // => true
+ * isError('foo');       // => false
  */
 export default is(Error);

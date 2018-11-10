@@ -41,7 +41,7 @@ describe('partial', () => {
   });
 
   it('Should throw if given a non-function', () => {
-    expect(() => partial('')).toThrow('The first argument given to partial must be a function.');
+    expect(() => partial('')).toThrow('The first argument given to `partial` must be a function.');
   });
 
   it('Should return the source function if no partial arguments are given', () => {

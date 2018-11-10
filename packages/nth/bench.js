@@ -20,7 +20,7 @@ module.exports = ({ foldr, lodash, rambda }) => {
     },
     {
       name: 'Gets Nth Value (null)',
-      expect: (result, assert) => assert(result === undefined),
+      expect: (result, assert) => assert(result === 0),
       setup: () => [[0, 1, 2, 3], null],
       tests,
     },

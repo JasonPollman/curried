@@ -5,6 +5,11 @@
  */
 
 /**
+ * Generic type error
+ */
+const TYPE_ERROR = 'Expected arguments of pipe to be of type function';
+
+/**
  * Takes in functions as parameters, and returns a function
  * that takes in the initial arguements to pass to the first function in the pipe chain.
  *
@@ -24,9 +29,13 @@ function pipe() {
   const funcs = arguments;
   let argLen = funcs.length;
 
+  if (!argLen) {
+    throw new Error(TYPE_ERROR);
+  }
+
   while (--argLen) {
     if (typeof arguments[argLen] !== 'function') {
-      throw new TypeError('Expected arguments of pipe to be of type function');
+      throw new TypeError(TYPE_ERROR);
     }
   }
 

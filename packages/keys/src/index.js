@@ -61,7 +61,7 @@ export function keysWithoutArgumentsLength(x) {
  *
  * keys([1, 2, 3]);       // => ['1', '2', '3']
  * keys({ foo: 'bar' });  // => ['foo']
- * keys(null);            // []
+ * keys(null);            // => []
  */
 export default !hasEnumerableArgumentsLength
   ? keys /* istanbul ignore next */

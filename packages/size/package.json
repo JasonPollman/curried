@@ -1,0 +1,13 @@
+{
+  "name": "@foldr/size",
+  "version": "0.0.0",
+  "description": "Gets the number of items in a collection",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/keys": "^0.0.0",
+    "@foldr/is-array-like": "^0.0.0",
+    "@foldr/to-string-tag": "^0.0.0"
+  }
+}

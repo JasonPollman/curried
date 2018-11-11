@@ -113,18 +113,6 @@ function handleCycleComplete(options) {
     // Get the average operations per second for the current package/library.
     stats[pkg][lib].avg = Math.trunc(stats[pkg][lib].ops / (stats[pkg][lib].passed || 1));
 
-    if (!options.fastest.average || stats[pkg][lib].avg > options.fastest.average) {
-      // This is hacky and horribly mutative, fix later.
-      // eslint-disable-next-line no-param-reassign
-      options.fastest = {
-        library: lib,
-        average: stats[pkg][lib].avg,
-      };
-    }
-
-    // eslint-disable-next-line no-param-reassign
-    if (lib === 'foldr') options.foldrTime = stats[pkg][lib].avg;
-
     log('%s  %s', name, error ? red.bold(`[Error: ${error.message}]`) : green(toFixedLocale(ops)));
   };
 }
@@ -136,12 +124,29 @@ function handleCycleComplete(options) {
  */
 function handleSuiteComplete(options) {
   return () => {
-    const { fastest, foldrTime, pkg } = options;
+    const { pkg } = options;
+    const stat = stats[options.pkg];
 
-    if (fastest.library !== 'foldr') {
-      const diff = Math.round(Math.abs(1 - (foldrTime / fastest.average)) * 100);
+    let fastest;
+
+    let bestAverage = 0;
+    let foldrAverage = 0;
+
+    // Determines which library was fastest
+    // for this particular package suite run.
+    each(stat, ({ avg }, library) => {
+      if (library === 'foldr') foldrAverage = avg;
+
+      if (avg > bestAverage) {
+        bestAverage = avg;
+        fastest = library;
+      }
+    });
+
+    if (fastest !== 'foldr') {
+      const diff = Math.round(Math.abs(1 - (foldrAverage / bestAverage)) * 100);
       const msg = '\n[PERFORMANCE WARNING]\nPackage "%s": %s was %s% faster than foldr!';
-      log(yellow.bold(msg), pkg, fastest.library, diff);
+      log(yellow.bold(msg), pkg, fastest, diff);
     }
   };
 }
@@ -182,8 +187,6 @@ function executeBenchmarkSuite(options) {
   const suite = new Benchmark.Suite();
   const { pkg, schema } = options;
 
-  const opts = { ...options, fastest: {} };
-
   // Trigger the instantation of the test suite array.
   // This function should return a "bench schema array".
   schema({ ...LIBRARIES }).forEach(addTestsToSuite(suite));
@@ -193,8 +196,8 @@ function executeBenchmarkSuite(options) {
 
   return new Promise(resolve => suite
     .on('complete', resolve)
-    .on('complete', handleSuiteComplete(opts))
-    .on('cycle', handleCycleComplete(opts))
+    .on('complete', handleSuiteComplete(options))
+    .on('cycle', handleCycleComplete(options))
     .run({ async: false }),
   );
 }

@@ -59,6 +59,7 @@ import partial from '@foldr/partial';
 import rearg from '@foldr/rearg';
 import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
+import size from '@foldr/size';
 import t from '@foldr/t';
 import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
@@ -130,6 +131,7 @@ export {
   rearg,
   reverse,
   shuffle,
+  size,
   t,
   tail,
   toCamelCase,

@@ -21,5 +21,5 @@
  * isArrayLike({});     // => false
  */
 export default function isArrayLike(x) {
-  return x === '' || !!(x && (x.length || x.length === 0));
+  return (x === '' || !!(x && x.length >= 0)) && typeof x !== 'function';
 }

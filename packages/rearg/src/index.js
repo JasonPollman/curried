@@ -1,6 +1,6 @@
 /**
  * Exports the `rearg` function.
- * @since 10/30/18
+ * @since 11/10/18
  * @file
  */
 

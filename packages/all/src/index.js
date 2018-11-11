@@ -24,6 +24,7 @@ import interpolate from '@foldr/interpolate';
 import interpolateBraces from '@foldr/interpolate-braces';
 import interpolateBrackets from '@foldr/interpolate-brackets';
 import is from '@foldr/is';
+import isArguments from '@foldr/is-arguments';
 import isArray from '@foldr/is-array';
 import isArrayLike from '@foldr/is-array-like';
 import isBoolean from '@foldr/is-boolean';
@@ -49,6 +50,7 @@ import isString from '@foldr/is-string';
 import isSymbol from '@foldr/is-symbol';
 import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
+import keys from '@foldr/keys';
 import memoize from '@foldr/memoize';
 import noop from '@foldr/noop';
 import nth from '@foldr/nth';
@@ -93,6 +95,7 @@ export {
   interpolateBraces,
   interpolateBrackets,
   is,
+  isArguments,
   isArray,
   isArrayLike,
   isBoolean,
@@ -118,6 +121,7 @@ export {
   isSymbol,
   isUndefined,
   isWeakMap,
+  keys,
   memoize,
   noop,
   nth,

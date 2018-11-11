@@ -1,5 +1,5 @@
 /**
- * Tests for the `nooop` function.
+ * Tests for the `noop` function.
  * @since 10/23/18
  * @file
  */

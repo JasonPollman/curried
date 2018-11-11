@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/keys",
+  "version": "0.0.0",
+  "description": "Like Object.keys",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/is-arguments": "^0.0.0"
+  }
+}

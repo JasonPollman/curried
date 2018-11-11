@@ -1,6 +1,9 @@
+function add(a, b) { return a + b; }
+
 module.exports = ({ foldr, lodash, rambda }) => {
-  const fFlow = foldr.flow([lodash.add, lodash.add]);
-  const lFlow = lodash.flow([lodash.add, lodash.add]);
+  console.log([add, add]);
+  const fFlow = foldr.flow([add, add]);
+  const lFlow = lodash.flow([add, add]);
 
   const tests = {
     foldr: input => fFlow(1, 2),

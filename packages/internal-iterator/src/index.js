@@ -227,40 +227,39 @@ const ITERATOR_MAPPING_REVERSE = {
  * @param {function} options.mapping One of the `ITERATOR_MAPPING` or
  * `ITERATOR_MAPPING_REVERSE` objects above.
  * internally invoke the user's `iteratee` passed to it.
- * @param {function} options.iterateeHandler A handler function to perform internal
+ * @param {function} options.handler A handler function to perform internal
  * actions for each item in the collection as it's iterated. This function should
  * internally invoke the user's `iteratee` passed to it.
- * @param {function} options.ResultsConstructor A constructor function that creates
- * the results object that's passed to `iterateeHandler` on each iteration.
- * @param {function=} [options.unwrapResults=false] If true, this function will
+ * @param {function} options.Results A constructor function that creates
+ * the results object that's passed to `handler` on each iteration.
+ * @param {function=} [options.unwrap=false] If true, this function will
  * be called on the final results and the return value from it will be returned
  * to the end-user.
  * @returns {any} The results from iterating over `collection` using `iteratee`.
  * @export
  */
 function iteratorFromOptions({
+  Results,
+  unwrap,
+  inject,
   mapping,
-  unwrapResults,
-  iterateeHandler,
-  ResultsConstructor,
-  iterateArrayLikeFunction,
+  handler,
+  arrayIterator,
 }) {
-  return (collection, iteratee) => {
-    const results = ResultsConstructor();
+  return (collection, iteratee, reducer) => {
+    const results = inject ? Results(reducer) : Results();
 
     if (!collection || typeof collection === 'function' || typeof iteratee !== 'function') {
-      return unwrapResults ? unwrapResults(results) : results;
+      return unwrap ? unwrap(results) : results;
     }
 
     // This is an optimization, since most "iterator" functions iterate
     // over array-like objects, this prevents the `toString.apply` call
     // for arrays, strings, and arguments objects.
-    const iterate = collection.length >= 0
-      ? iterateArrayLikeFunction
-      : mapping[toString.call(collection)];
+    const iterate = collection.length >= 0 ? arrayIterator : mapping[toString.call(collection)];
 
-    if (iterate) iterate(results, collection, iterateeHandler, iteratee);
-    return unwrapResults ? unwrapResults(results) : results;
+    if (iterate) iterate(results, collection, handler, iteratee);
+    return unwrap ? unwrap(results) : results;
   };
 }
 
@@ -270,14 +269,14 @@ function iteratorFromOptions({
  * @param {boolean} options.flipped If true, a functional-style iteratee first
  * function will be returned. Otherwise, the more standard collection first version
  * of the iterator function will be returned.
- * @param {function} options.iterateeHandler A handler function to perform internal
+ * @param {function} options.handler A handler function to perform internal
  * actions for each item in the collection as it's iterated. This function should
  * internally invoke the user's `iteratee` passed to it.
- * @param {function} options.ResultsConstructor A constructor function that creates
- * the results object that's passed to `iterateeHandler` on each iteration.
+ * @param {function} options.Results A constructor function that creates
+ * the results object that's passed to `handler` on each iteration.
  * @param {boolean=} [options.reverse=false] If true, collections will be iterated
  * over in reverse order.
- * @param {function=} [options.unwrapResults=false] If true, this function will
+ * @param {function=} [options.unwrap=false] If true, this function will
  * be called on the final results and the return value from it will be returned
  * to the end-user.
  * @returns {any} The results from iterating over `collection` using `iteratee`.
@@ -286,7 +285,7 @@ function iteratorFromOptions({
 export default function IteratorFactory({ flipped, reverse, ...options }) {
   /* eslint-disable no-param-reassign */
   options.mapping = reverse ? ITERATOR_MAPPING_REVERSE : ITERATOR_MAPPING;
-  options.iterateArrayLikeFunction = reverse ? iterateArrayLikeReverse : iterateArrayLike;
+  options.arrayIterator = reverse ? iterateArrayLikeReverse : iterateArrayLike;
   /* eslint-enable no-param-reassign */
 
   const iterator = iteratorFromOptions(options);

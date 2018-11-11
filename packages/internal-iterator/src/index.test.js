@@ -15,10 +15,10 @@ describe('internal-iterator', () => {
     expect(typeof IteratorFactory({})).toBe('function');
   });
 
-  it('Should return a instance of the ResultsConstructor if given a falsy collection', () => {
+  it('Should return a instance of the Results if given a falsy collection', () => {
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
     };
@@ -29,10 +29,10 @@ describe('internal-iterator', () => {
     expect(IteratorFactory(options)(NaN, x => x * 2)).toEqual([]);
   });
 
-  it('Should return a instance of the ResultsConstructor if given a non-function iterator', () => {
+  it('Should return a instance of the Results if given a non-function iterator', () => {
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
     };
@@ -46,8 +46,8 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         results.push(iteratee(value));
       },
@@ -60,8 +60,8 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -76,8 +76,8 @@ describe('internal-iterator', () => {
 
     const options = {
       reverse: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         results.push(iteratee(value));
       },
@@ -91,8 +91,8 @@ describe('internal-iterator', () => {
 
     const options = {
       reverse: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -106,8 +106,8 @@ describe('internal-iterator', () => {
     const object = { foo: 1, bar: 2, baz: 3 };
 
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(['foo', 'bar', 'baz'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(object);
         results.push(iteratee(value));
@@ -119,8 +119,8 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (object, breaking)', () => {
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -132,8 +132,8 @@ describe('internal-iterator', () => {
   it('Should create an iterator function (object, reverse)', () => {
     const options = {
       reverse: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
     };
@@ -146,8 +146,8 @@ describe('internal-iterator', () => {
 
     const options = {
       reverse: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(['foo', 'bar', 'baz'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(object);
         if (i === 1) return BREAK;
@@ -160,8 +160,8 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Set)', () => {
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
     };
@@ -171,8 +171,8 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Set, breaking)', () => {
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -186,8 +186,8 @@ describe('internal-iterator', () => {
 
     const options = {
       reverse: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect([0, 1, 2].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(set);
         results.push(iteratee(value));
@@ -200,8 +200,8 @@ describe('internal-iterator', () => {
   it('Should create an iterator function (Set, breaking, reverse)', () => {
     const options = {
       reverse: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -214,8 +214,8 @@ describe('internal-iterator', () => {
     const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
 
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(typeof key).toBe('string');
         expect(collection).toBe(map);
         results.push(iteratee(value));
@@ -227,8 +227,8 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Map, breaking)', () => {
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -242,8 +242,8 @@ describe('internal-iterator', () => {
 
     const options = {
       reverse: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(['a', 'b', 'c', 'd'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(map);
         results.push(iteratee(value));
@@ -258,8 +258,8 @@ describe('internal-iterator', () => {
 
     const options = {
       reverse: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      Results: Array,
+      handler: (results, iteratee, i, value, key, collection) => {
         expect(['a', 'b', 'c', 'd'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(map);
         if (i === 1) return BREAK;
@@ -272,8 +272,8 @@ describe('internal-iterator', () => {
 
   it('Should return an empty set on unknown collection types', () => {
     const options = {
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -285,8 +285,8 @@ describe('internal-iterator', () => {
   it('Should return a functional-style signature if `flipped` is true', () => {
     const options = {
       flipped: true,
-      ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      Results: Array,
+      handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -297,9 +297,9 @@ describe('internal-iterator', () => {
 
   it('Should provide the ability to "unwrap" results', () => {
     const options = {
-      unwrapResults: results => results.passed,
-      ResultsConstructor: () => ({ passed: false }),
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      unwrap: results => results.passed,
+      Results: () => ({ passed: false }),
+      handler: (results, iteratee, i, value, key, collection) => {
         const passes = iteratee(value, key, collection);
         if (!passes) return undefined;
 
@@ -315,9 +315,9 @@ describe('internal-iterator', () => {
 
   it('Should provide the ability to "unwrap" results (invalid input)', () => {
     const options = {
-      unwrapResults: results => results.passed,
-      ResultsConstructor: () => ({ passed: false }),
-      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+      unwrap: results => results.passed,
+      Results: () => ({ passed: false }),
+      handler: (results, iteratee, i, value, key, collection) => {
         const passes = iteratee(value, key, collection);
         if (!passes) return undefined;
 
@@ -328,5 +328,21 @@ describe('internal-iterator', () => {
     };
 
     expect(IteratorFactory(options)(null, x => x % 2 === 0)).toEqual(false);
+  });
+
+  it('Should work for reduce', () => {
+    const array = [1, 2, 3];
+
+    const options = {
+      inject: true,
+      unwrap: results => results.acc,
+      Results: acc => ({ acc }),
+      handler: (results, iteratee, i, value, key, collection) => {
+        // eslint-disable-next-line no-param-reassign
+        results.acc = iteratee(results.acc, value, key, collection);
+      },
+    };
+
+    expect(IteratorFactory(options)(array, (acc, x) => acc + x * 2, 0)).toEqual(12);
   });
 });

@@ -19,6 +19,8 @@ import f from '@foldr/f';
 import filter from '@foldr/filter';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
+import fold from '@foldr/fold';
+import foldRight from '@foldr/fold-right';
 import forEach from '@foldr/for-each';
 import forEachRight from '@foldr/for-each-right';
 import get from '@foldr/get';
@@ -103,6 +105,8 @@ export {
   filter,
   flatten,
   flattenDeep,
+  fold,
+  foldRight,
   forEach,
   forEachRight,
   get,

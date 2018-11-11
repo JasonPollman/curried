@@ -1,5 +1,5 @@
 /**
- * Exports the `filter` function.
+ * Exports the `fold` function.
  * @since 11/10/18
  * @file
  */
@@ -9,9 +9,11 @@ import IteratorFactory from '@foldr/internal-iterator';
 /* eslint-disable no-param-reassign */
 
 export default IteratorFactory({
-  Results: Array,
+  inject: true,
+  unwrap: results => results[0],
+  reverse: true,
+  Results: x => [x],
   handler: (results, iteratee, i, value, key, collection) => {
-    const retained = iteratee(value, key, collection);
-    if (retained) results[results.length] = value;
+    results[0] = iteratee(results[0], value, key, collection);
   },
 });

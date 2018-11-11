@@ -7,8 +7,8 @@
 import IteratorFactory from '@foldr/internal-iterator';
 
 export default IteratorFactory({
-  ResultsConstructor: Array,
-  iterateeHandler: (results, iteratee, i, value, key, collection) => {
+  Results: Array,
+  handler: (results, iteratee, i, value, key, collection) => {
     results[i] = iteratee(value, key, collection); // eslint-disable-line no-param-reassign
   },
 });

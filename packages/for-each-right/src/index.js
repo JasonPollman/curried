@@ -8,8 +8,8 @@ import IteratorFactory from '@foldr/internal-iterator';
 
 export default IteratorFactory({
   reverse: true,
-  ResultsConstructor: () => undefined,
-  iterateeHandler: (results, iteratee, i, value, key, collection) => {
+  Results: () => undefined,
+  handler: (results, iteratee, i, value, key, collection) => {
     iteratee(value, key, collection);
   },
 });

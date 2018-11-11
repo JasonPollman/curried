@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/fold-right",
+  "description": "Like Array#reduce, but for collections and iterates in reverse.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

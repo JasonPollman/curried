@@ -17,6 +17,8 @@
     "@foldr/filter": "^0.0.0",
     "@foldr/flatten": "^0.0.0",
     "@foldr/flatten-deep": "^0.0.0",
+    "@foldr/fold": "^0.0.0",
+    "@foldr/fold-right": "^0.0.0",
     "@foldr/for-each": "^0.0.0",
     "@foldr/for-each-right": "^0.0.0",
     "@foldr/get": "^0.0.0",

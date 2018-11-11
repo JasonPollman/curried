@@ -68,6 +68,7 @@ import nth from '@foldr/nth';
 import nullary from '@foldr/nullary';
 import once from '@foldr/once';
 import partial from '@foldr/partial';
+import pipe from '@foldr/pipe';
 import rearg from '@foldr/rearg';
 import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
@@ -154,6 +155,7 @@ export {
   nullary,
   once,
   partial,
+  pipe,
   rearg,
   reverse,
   shuffle,

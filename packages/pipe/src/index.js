@@ -1,4 +1,10 @@
 /**
+ * Exports the `pipe` function.
+ * @since 11/11/18
+ * @file
+ */
+
+/**
  * Takes in functions as parameters, and returns a function
  * that takes in the initial arguements to pass to the first function in the pipe chain.
  *

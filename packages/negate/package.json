@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/negate",
+  "description": "Creates a function that negates the results of another.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/nary": "^0.0.0",
+    "@foldr/partial": "^0.0.0"
+  }
+}

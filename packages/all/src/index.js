@@ -54,6 +54,7 @@ import isWeakMap from '@foldr/is-weak-map';
 import keys from '@foldr/keys';
 import memoize from '@foldr/memoize';
 import nary from '@foldr/nary';
+import negate from '@foldr/negate';
 import noop from '@foldr/noop';
 import nth from '@foldr/nth';
 import nullary from '@foldr/nullary';
@@ -130,6 +131,7 @@ export {
   keys,
   memoize,
   nary,
+  negate,
   noop,
   nth,
   nullary,

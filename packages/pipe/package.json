@@ -1,5 +1,5 @@
 {
-  "name": "@foldr/flow",
+  "name": "@foldr/pipe",
   "version": "0.0.0",
   "description": "A function composition utility function.",
   "license": "ISC",

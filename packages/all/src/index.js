@@ -16,7 +16,6 @@ import escapeRegExp from '@foldr/escape-regexp';
 import f from '@foldr/f';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
-import flow from '@foldr/flow';
 import get from '@foldr/get';
 import has from '@foldr/has';
 import head from '@foldr/head';
@@ -57,6 +56,7 @@ import noop from '@foldr/noop';
 import nth from '@foldr/nth';
 import once from '@foldr/once';
 import partial from '@foldr/partial';
+import pipe from '@foldr/pipe';
 import rearg from '@foldr/rearg';
 import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
@@ -89,7 +89,6 @@ export {
   f,
   flatten,
   flattenDeep,
-  flow,
   get,
   has,
   head,
@@ -130,6 +129,7 @@ export {
   nth,
   once,
   partial,
+  pipe,
   rearg,
   reverse,
   shuffle,

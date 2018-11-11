@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/map",
+  "description": "Like Array#map, but for collections.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

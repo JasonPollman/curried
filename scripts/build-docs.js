@@ -55,7 +55,7 @@ function buildPackageDoc(docsBucket) {
     const {
       tags = [],
       meta = {},
-      since,
+      since = '',
       params,
       returns,
       examples,

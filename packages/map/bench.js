@@ -1,0 +1,43 @@
+module.exports = ({ foldr, lodash, rambda }) => {
+  const double = x => x * 2;
+
+  const tests = {
+    foldr: input => foldr.map(input, double),
+    lodash: input => lodash.map(input, double),
+    rambda: input => rambda.map(double, input),
+  };
+
+  return [
+    {
+      name: 'Maps an Array',
+      expect: (result, { deepEqual }) => deepEqual(result, [2, 4, 6]),
+      setup: () => [1, 2, 3],
+      tests,
+    },
+    {
+      name: 'Maps Invalid',
+      expect: (result, { deepEqual }) => deepEqual(result, []),
+      setup: () => null,
+      tests,
+    },
+    {
+      name: 'Maps a String',
+      expect: (result, { deepEqual }) => deepEqual(result, ['aa', 'bb', 'cc']),
+      setup: () => 'abc',
+      tests: {
+        foldr: input => foldr.map(input, x => `${x}${x}`),
+        lodash: input => lodash.map(input, x => `${x}${x}`),
+        rambda: input => rambda.map(x => `${x}${x}`, input),
+      },
+    },
+    {
+      name: 'Maps an Object',
+      expect: (result, { deepEqual }, library) => (library === 'rambda'
+        ? deepEqual(result, { foo: 2, bar: 4, baz: 6 })
+        : deepEqual(result, [2, 4, 6])
+      ),
+      setup: () => ({ foo: 1, bar: 2, baz: 3 }),
+      tests,
+    },
+  ];
+};

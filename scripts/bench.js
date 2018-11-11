@@ -173,7 +173,7 @@ function addTestsToSuite(suite) {
       let i = 0;
 
       // Only running assertions on the first iteration.
-      suite.add(title, () => (i++ === 0 ? expect(test(input), assert) : test(input)));
+      suite.add(title, () => (i++ === 0 ? expect(test(input), assert, library) : test(input)));
     });
   };
 }

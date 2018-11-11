@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-11-10
+ * @since 2018-11-11
  * @file
  */
 
@@ -15,6 +15,7 @@ import constant from '@foldr/constant';
 import curry from '@foldr/curry';
 import escapeRegExp from '@foldr/escape-regexp';
 import f from '@foldr/f';
+import filter from '@foldr/filter';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
 import get from '@foldr/get';
@@ -52,6 +53,7 @@ import isSymbol from '@foldr/is-symbol';
 import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
 import keys from '@foldr/keys';
+import map from '@foldr/map';
 import memoize from '@foldr/memoize';
 import nary from '@foldr/nary';
 import negate from '@foldr/negate';
@@ -64,6 +66,7 @@ import rearg from '@foldr/rearg';
 import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
 import size from '@foldr/size';
+import some from '@foldr/some';
 import t from '@foldr/t';
 import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
@@ -92,6 +95,7 @@ export {
   curry,
   escapeRegExp,
   f,
+  filter,
   flatten,
   flattenDeep,
   get,
@@ -129,6 +133,7 @@ export {
   isUndefined,
   isWeakMap,
   keys,
+  map,
   memoize,
   nary,
   negate,
@@ -141,6 +146,7 @@ export {
   reverse,
   shuffle,
   size,
+  some,
   t,
   tail,
   toCamelCase,

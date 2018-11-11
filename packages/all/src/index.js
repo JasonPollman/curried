@@ -16,6 +16,7 @@ import escapeRegExp from '@foldr/escape-regexp';
 import f from '@foldr/f';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
+import flow from '@foldr/flow';
 import get from '@foldr/get';
 import has from '@foldr/has';
 import head from '@foldr/head';
@@ -88,6 +89,7 @@ export {
   f,
   flatten,
   flattenDeep,
+  flow,
   get,
   has,
   head,

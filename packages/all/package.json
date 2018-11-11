@@ -14,6 +14,7 @@
     "@foldr/f": "^0.0.0",
     "@foldr/flatten": "^0.0.0",
     "@foldr/flatten-deep": "^0.0.0",
+    "@foldr/flow": "^0.0.0",
     "@foldr/get": "^0.0.0",
     "@foldr/has": "^0.0.0",
     "@foldr/head": "^0.0.0",

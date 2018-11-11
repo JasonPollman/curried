@@ -14,10 +14,13 @@ import compose from '@foldr/compose';
 import constant from '@foldr/constant';
 import curry from '@foldr/curry';
 import escapeRegExp from '@foldr/escape-regexp';
+import every from '@foldr/every';
 import f from '@foldr/f';
 import filter from '@foldr/filter';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
+import forEach from '@foldr/for-each';
+import forEachRight from '@foldr/for-each-right';
 import get from '@foldr/get';
 import has from '@foldr/has';
 import head from '@foldr/head';
@@ -54,6 +57,7 @@ import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
 import keys from '@foldr/keys';
 import map from '@foldr/map';
+import mapRight from '@foldr/map-right';
 import memoize from '@foldr/memoize';
 import nary from '@foldr/nary';
 import negate from '@foldr/negate';
@@ -94,10 +98,13 @@ export {
   constant,
   curry,
   escapeRegExp,
+  every,
   f,
   filter,
   flatten,
   flattenDeep,
+  forEach,
+  forEachRight,
   get,
   has,
   head,
@@ -134,6 +141,7 @@ export {
   isWeakMap,
   keys,
   map,
+  mapRight,
   memoize,
   nary,
   negate,

@@ -6,7 +6,7 @@
 
 import IteratorFactory, { BREAK } from '.';
 
-describe('internal-env', () => {
+describe('internal-iterator', () => {
   it('Should be a function', () => {
     expect(typeof IteratorFactory).toBe('function');
   });
@@ -71,15 +71,50 @@ describe('internal-env', () => {
     expect(IteratorFactory(options)(array, x => x * 2)).toEqual([2]);
   });
 
-  it('Should create an iterator function (object)', () => {
+  it('Should create an iterator function (array, reverse)', () => {
+    const array = [1, 2, 3];
+
     const options = {
+      reverse: true,
       ResultsConstructor: Array,
-      iterateeHandler: (results, iteratee, i, value) => {
+      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+        expect(collection).toBe(array);
         results.push(iteratee(value));
       },
     };
 
-    expect(IteratorFactory(options)({ foo: 1, bar: 2, baz: 3 }, x => x * 2)).toEqual([2, 4, 6]);
+    expect(IteratorFactory(options)(array, x => x * 2)).toEqual([6, 4, 2]);
+  });
+
+  it('Should create an iterator function (array, breaking, reverse)', () => {
+    const array = [1, 2, 3];
+
+    const options = {
+      reverse: true,
+      ResultsConstructor: Array,
+      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+        expect(collection).toBe(array);
+        if (i === 1) return BREAK;
+        return results.push(iteratee(value));
+      },
+    };
+
+    expect(IteratorFactory(options)(array, x => x * 2)).toEqual([6]);
+  });
+
+  it('Should create an iterator function (object)', () => {
+    const object = { foo: 1, bar: 2, baz: 3 };
+
+    const options = {
+      ResultsConstructor: Array,
+      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+        expect(['foo', 'bar', 'baz'].indexOf(key)).toBeGreaterThan(-1);
+        expect(collection).toBe(object);
+        results.push(iteratee(value));
+      },
+    };
+
+    expect(IteratorFactory(options)(object, x => x * 2)).toEqual([2, 4, 6]);
   });
 
   it('Should create an iterator function (object, breaking)', () => {
@@ -92,6 +127,35 @@ describe('internal-env', () => {
     };
 
     expect(IteratorFactory(options)({ foo: 1, bar: 2, baz: 3 }, x => x * 2)).toEqual([2]);
+  });
+
+  it('Should create an iterator function (object, reverse)', () => {
+    const options = {
+      reverse: true,
+      ResultsConstructor: Array,
+      iterateeHandler: (results, iteratee, i, value) => {
+        results.push(iteratee(value));
+      },
+    };
+
+    expect(IteratorFactory(options)({ foo: 1, bar: 2, baz: 3 }, x => x * 2)).toEqual([6, 4, 2]);
+  });
+
+  it('Should create an iterator function (object, breaking, reverse)', () => {
+    const object = { foo: 1, bar: 2, baz: 3 };
+
+    const options = {
+      reverse: true,
+      ResultsConstructor: Array,
+      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+        expect(['foo', 'bar', 'baz'].indexOf(key)).toBeGreaterThan(-1);
+        expect(collection).toBe(object);
+        if (i === 1) return BREAK;
+        return results.push(iteratee(value));
+      },
+    };
+
+    expect(IteratorFactory(options)(object, x => x * 2)).toEqual([6]);
   });
 
   it('Should create an iterator function (Set)', () => {
@@ -115,6 +179,35 @@ describe('internal-env', () => {
     };
 
     expect(IteratorFactory(options)(new Set([1, 2, 3]), x => x * 2)).toEqual([2]);
+  });
+
+  it('Should create an iterator function (Set, reverse)', () => {
+    const set = new Set([1, 2, 3]);
+
+    const options = {
+      reverse: true,
+      ResultsConstructor: Array,
+      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+        expect([0, 1, 2].indexOf(key)).toBeGreaterThan(-1);
+        expect(collection).toBe(set);
+        results.push(iteratee(value));
+      },
+    };
+
+    expect(IteratorFactory(options)(set, x => x * 2)).toEqual([6, 4, 2]);
+  });
+
+  it('Should create an iterator function (Set, breaking, reverse)', () => {
+    const options = {
+      reverse: true,
+      ResultsConstructor: Array,
+      iterateeHandler: (results, iteratee, i, value) => {
+        if (i === 1) return BREAK;
+        return results.push(iteratee(value));
+      },
+    };
+
+    expect(IteratorFactory(options)(new Set([1, 2, 3]), x => x * 2)).toEqual([6]);
   });
 
   it('Should create an iterator function (Map)', () => {
@@ -142,6 +235,39 @@ describe('internal-env', () => {
     };
 
     expect(IteratorFactory(options)(new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]), x => x * 2)).toEqual([2]);
+  });
+
+  it('Should create an iterator function (Map, reverse)', () => {
+    const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
+
+    const options = {
+      reverse: true,
+      ResultsConstructor: Array,
+      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+        expect(['a', 'b', 'c', 'd'].indexOf(key)).toBeGreaterThan(-1);
+        expect(collection).toBe(map);
+        results.push(iteratee(value));
+      },
+    };
+
+    expect(IteratorFactory(options)(map, x => x * 2)).toEqual([8, 6, 4, 2]);
+  });
+
+  it('Should create an iterator function (Map, breaking, reverse)', () => {
+    const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
+
+    const options = {
+      reverse: true,
+      ResultsConstructor: Array,
+      iterateeHandler: (results, iteratee, i, value, key, collection) => {
+        expect(['a', 'b', 'c', 'd'].indexOf(key)).toBeGreaterThan(-1);
+        expect(collection).toBe(map);
+        if (i === 1) return BREAK;
+        return results.push(iteratee(value));
+      },
+    };
+
+    expect(IteratorFactory(options)(map, x => x * 2)).toEqual([8]);
   });
 
   it('Should return an empty set on unknown collection types', () => {

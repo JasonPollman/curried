@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/unary",
+  "description": "Limits the arity of a function to 1.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/nary": "^0.0.0",
+    "@foldr/partial": "^0.0.0"
+  }
+}

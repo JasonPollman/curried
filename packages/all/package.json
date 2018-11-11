@@ -6,6 +6,7 @@
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
+    "@foldr/binary": "^0.0.0",
     "@foldr/compact": "^0.0.0",
     "@foldr/compose": "^0.0.0",
     "@foldr/constant": "^0.0.0",
@@ -50,8 +51,10 @@
     "@foldr/is-weak-map": "^0.0.0",
     "@foldr/keys": "^0.0.0",
     "@foldr/memoize": "^0.0.0",
+    "@foldr/nary": "^0.0.0",
     "@foldr/noop": "^0.0.0",
     "@foldr/nth": "^0.0.0",
+    "@foldr/nullary": "^0.0.0",
     "@foldr/once": "^0.0.0",
     "@foldr/partial": "^0.0.0",
     "@foldr/rearg": "^0.0.0",
@@ -70,6 +73,7 @@
     "@foldr/to-upper-case": "^0.0.0",
     "@foldr/to-upper-first": "^0.0.0",
     "@foldr/to-words": "^0.0.0",
+    "@foldr/unary": "^0.0.0",
     "@foldr/zip": "^0.0.0"
   }
 }

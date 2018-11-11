@@ -8,6 +8,7 @@
  * @file
  */
 
+import binary from '@foldr/binary';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import constant from '@foldr/constant';
@@ -52,8 +53,10 @@ import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
 import keys from '@foldr/keys';
 import memoize from '@foldr/memoize';
+import nary from '@foldr/nary';
 import noop from '@foldr/noop';
 import nth from '@foldr/nth';
+import nullary from '@foldr/nullary';
 import once from '@foldr/once';
 import partial from '@foldr/partial';
 import rearg from '@foldr/rearg';
@@ -72,6 +75,7 @@ import toTitleCase from '@foldr/to-title-case';
 import toUpperCase from '@foldr/to-upper-case';
 import toUpperFirst from '@foldr/to-upper-first';
 import toWords from '@foldr/to-words';
+import unary from '@foldr/unary';
 import zip from '@foldr/zip';
 
 const { _ } = curry;
@@ -80,6 +84,7 @@ const VERSION = '0.0.0';
 export {
   _,
   VERSION,
+  binary,
   compact,
   compose,
   constant,
@@ -124,8 +129,10 @@ export {
   isWeakMap,
   keys,
   memoize,
+  nary,
   noop,
   nth,
+  nullary,
   once,
   partial,
   rearg,
@@ -144,5 +151,6 @@ export {
   toUpperCase,
   toUpperFirst,
   toWords,
+  unary,
   zip,
 };

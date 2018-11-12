@@ -1,5 +1,5 @@
 /**
- * Builds the docs.json metadata for the docs site.
+ * Builds the docs-[version].json metadata for the docs site.
  * @since 10/27/18
  * @file
  */

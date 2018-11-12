@@ -18,6 +18,7 @@
     "build:all": "npx babel-node ./scripts/make-all.js",
     "build:bundle": "npx babel-node ./scripts/bundle.js",
     "build:docs": "npx babel-node ./scripts/build-docs.js",
+    "build:versions": "npx babel-node ./scripts/build-versions.js",
     "build:transpile": "npx babel-node ./scripts/transpile.js",
     "clean": "npm run clean:nuke && npm run clean:dist",
     "clean:dist": "npx rimraf ./packages/**/dist ./dist",

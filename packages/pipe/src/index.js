@@ -39,6 +39,8 @@ function pipe() {
     }
   }
 
+  argLen = funcs.length;
+
   return function receiver() {
     let value = funcs[0].apply(this, arguments);
     let len = 0;

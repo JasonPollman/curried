@@ -71,8 +71,10 @@ import negate from '@foldr/negate';
 import noop from '@foldr/noop';
 import nth from '@foldr/nth';
 import nullary from '@foldr/nullary';
+import omit from '@foldr/omit';
 import once from '@foldr/once';
 import partial from '@foldr/partial';
+import pick from '@foldr/pick';
 import pipe from '@foldr/pipe';
 import rearg from '@foldr/rearg';
 import reverse from '@foldr/reverse';
@@ -163,8 +165,10 @@ export {
   noop,
   nth,
   nullary,
+  omit,
   once,
   partial,
+  pick,
   pipe,
   rearg,
   reverse,

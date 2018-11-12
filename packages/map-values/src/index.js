@@ -18,7 +18,7 @@ import IteratorFactory from '@foldr/internal-iterator';
  * collection, and `collection` is collection.
  *
  * @param {Object} collection The collection to map the values of.
- * @param {function} itreatee The iteratee function to use while mapping values.
+ * @param {function} iteratee The iteratee function to use while mapping values.
  * @returns {Object} The results of mapping the `collection` using `iteratee`.
  * @category object
  * @memberof foldr

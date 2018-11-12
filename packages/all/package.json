@@ -71,6 +71,7 @@
     "@foldr/nullary": "^0.0.0",
     "@foldr/once": "^0.0.0",
     "@foldr/partial": "^0.0.0",
+    "@foldr/pipe": "^0.0.0",
     "@foldr/rearg": "^0.0.0",
     "@foldr/reverse": "^0.0.0",
     "@foldr/shuffle": "^0.0.0",

@@ -2,7 +2,6 @@ language: node_js
 sudo: false
 
 stages:
-  - compile
   - test
 
 env:
@@ -10,10 +9,6 @@ env:
 
 jobs:
   include:
-    - stage: compile
-      script:
-        npm run build
     - stage: test
       script:
-        npm run test:cover
-        codecov
+        npm run test:cover && codecov

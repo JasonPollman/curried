@@ -1,0 +1,13 @@
+language: node_js
+sudo: false
+
+stages:
+  - test
+
+env:
+  secure: ccxnwYHvcpofdDyETARqrF9uA8AOzv2uD69pP1NYZSKQLJGm/yJsi9lNkTBRlX6YaRI/bBkl9zYnB+JOM0Ri5rjrKoDtwk1WAMGFLe7ixf5dHsj6hMT6RQ6SSuG9tSjL5+IF4UI6Aa0Pm3rhEnt+fYcVLLWsLC2xKxRDIUnK1TndqhInUAB/SypMlEoWJclC6e6EtI9dADJvyt8vb+Oif5JVRiO4Smuz2BFDvySAInMuexyDq+vLUQ1GZjjZ8Ab+Slv5CLXvwc7Ezxl44ry5qNw+JqAvCSLwQ/FYEWGMKVbNDXGXYs7vgjreUu7eBFtr1Hq5sYqZ9VO19ZNSEDK0TgSpoz/fHNCmzxrDzg8zWUYmPaQdU7nj4A0bHmHcuS2OQxQrY9t40l38MWJ/ifKmpcZm16CL4sm7UICQAWuGAcGD+WESwKHUtzoivZD0CeE//JSsi+5YHAKTyyDcIuMQlyYwQQ/elR/9tqjK8BJ9Xq2rBftG6qPU/rc6kiWDdH54wzJWUOb3l4cTXxOsLuZV9zgPn7VKaEbchi1+0mGLAq0wp+F3s2vlCHGvYa9b6YOCYfmGHBAJCTCru+thmTSlzKrZ8Eh0HYxFI0QR5mBTKlCPLkvCJs4XM0N+AmhRlxdLfuyieumjlMrIHaVb/7SFqJVSd9u4lLpQVMUdeRK7UQY=
+
+jobs:
+  include:
+    - stage: test
+      script: npm run test:cover && npx codecov

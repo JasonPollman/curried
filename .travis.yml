@@ -11,4 +11,4 @@ jobs:
   include:
     - stage: test
       script:
-        npm run test:cover && codecov
+        npm run test:cover && npx codecov

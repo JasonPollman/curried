@@ -21,6 +21,7 @@ import {
   logTap,
   PROJECT_ROOT,
   MAP_CONCURRENCY,
+  PROJECT_META_ROOT,
   PACKAGES_DIRECTORY,
   getPackageFilelist,
   getPackageDirectories,
@@ -32,7 +33,7 @@ import packageJson from '../package.json';
  * Docs.json ouput destination/
  * @type {string}
  */
-const DOCS_DESTNATION = path.join(PROJECT_ROOT, 'docs');
+const DOCS_DESTNATION = path.join(PROJECT_META_ROOT, 'docs');
 
 /**
  * Returns a function that's passed to Promise.map and bound to the given
@@ -92,7 +93,7 @@ async function buildDocs(packages) {
 
   await Promise.map(packages, buildPackageDoc(docs), { concurrency: MAP_CONCURRENCY });
 
-  const destination = path.join(DOCS_DESTNATION, `docs-${version}.json`);
+  const destination = path.join(DOCS_DESTNATION, `${version}.json`);
   return fs.outputFileAsync(destination, JSON.stringify({ datetime, version, docs }));
 }
 

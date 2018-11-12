@@ -18,6 +18,12 @@ export const { log } = console;
 export const PROJECT_ROOT = path.join(__dirname, '..');
 
 /**
+ * This project's /meta root directory.
+ * @type {string}
+ */
+export const PROJECT_META_ROOT = path.join(__dirname, '..', 'meta');
+
+/**
  * This absolute path to the /packages directory.
  * @type {string}
  */

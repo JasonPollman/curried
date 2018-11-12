@@ -22,7 +22,7 @@ import {
 import {
   log,
   logTap,
-  PROJECT_ROOT,
+  PROJECT_META_ROOT,
 } from './utils';
 
 const execAsync = promisify(exec);
@@ -47,7 +47,7 @@ async function getModuleNPMInfo(module) {
  * @returns {Promise} Resolves once the file has been written to disk.
  */
 function writeVersionsJSON(info) {
-  const destination = path.join(PROJECT_ROOT, 'docs', 'versions.json');
+  const destination = path.join(PROJECT_META_ROOT, 'versions.json');
 
   const data = {
     tags: info['dist-tags'],

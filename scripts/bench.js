@@ -33,6 +33,7 @@ import {
   log,
   logTap,
   PROJECT_ROOT,
+  PROJECT_META_ROOT,
 } from './utils';
 
 const LIBRARIES = {
@@ -273,7 +274,7 @@ function calculateTotalsFromStats(statsObject = stats) {
  * been written to disk.
  */
 async function updateStatsJson() {
-  const destination = path.join(PROJECT_ROOT, 'docs', `bench-${packageJson.version}.json`);
+  const destination = path.join(PROJECT_META_ROOT, 'bench', `${packageJson.version}.json`);
   const { packages } = await fs.readJsonAsync(destination).catchReturn({});
 
   const aggregate = { ...packages, ...stats };

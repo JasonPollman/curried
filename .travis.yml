@@ -10,5 +10,4 @@ env:
 jobs:
   include:
     - stage: test
-      script:
-        npm run test:cover && npx codecov
+      script: npm run test:cover && npx codecov

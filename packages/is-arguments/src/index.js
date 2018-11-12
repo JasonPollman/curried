@@ -27,4 +27,4 @@ import toStringTag from '@foldr/to-string-tag';
  */
 export default function isArguments(x) {
   return !!x && toStringTag(x) === '[object Arguments]';
-};
+}

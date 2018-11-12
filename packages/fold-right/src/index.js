@@ -32,6 +32,7 @@ export default IteratorFactory({
   unwrap: results => results[0],
   reverse: true,
   Results: x => [x],
+  initial: true,
   handler: (results, iteratee, i, value, key, collection) => {
     results[0] = iteratee(results[0], value, key, collection);
   },

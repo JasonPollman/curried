@@ -295,6 +295,25 @@ describe('internal-iterator', () => {
     expect(IteratorFactory(options)(x => x * 2, [1, 2, 3])).toEqual([2]);
   });
 
+  it('Should return a functional-style signature if `flipped` is true (reducing)', () => {
+    const array = [1, 2, 3];
+
+    const options = {
+      inject: true,
+      initial: true,
+      flipped: true,
+      prepare: x => x,
+      unwrap: results => results.acc,
+      Results: acc => ({ acc }),
+      handler: (results, iteratee, i, value, key, collection) => {
+        // eslint-disable-next-line no-param-reassign
+        results.acc = iteratee(results.acc, value, key, collection);
+      },
+    };
+
+    expect(IteratorFactory(options)((acc, x) => acc + x * 2, 0, array)).toEqual(12);
+  });
+
   it('Should provide the ability to "unwrap" results', () => {
     const options = {
       unwrap: results => results.passed,

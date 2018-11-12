@@ -1,0 +1,8 @@
+{
+  "name": "@foldr/internal-iteratee",
+  "description": "Internal Use Only. Gets an iteratee function, given a variety of things.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false
+}

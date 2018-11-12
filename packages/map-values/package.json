@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/map-values",
+  "description": "Maps an object's values.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-iteratee": "^0.0.0",
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

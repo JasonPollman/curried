@@ -15,6 +15,7 @@ import IteratorFactory from '@foldr/internal-iterator';
  * Iteratee functions are called with the signature `iteratee(value, key, collection)`, where
  * `value` is the current item in the collection, `key` is the key of the current item in the
  * collection, and `collection` is collection.
+ *
  * @param {Array|Object|String|Arguments} collection The collection to iterate over.
  * @param {function} iteratee The iteratee function to call for each item in `collection`.
  * @returns {undefined}

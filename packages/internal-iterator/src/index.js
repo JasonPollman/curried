@@ -245,9 +245,11 @@ function iteratorFromOptions({
   mapping,
   handler,
   arrayIterator,
+  prepare,
 }) {
-  return (collection, iteratee, reducer) => {
-    const results = inject ? Results(reducer) : Results();
+  return (collection, userIteratee, initial) => {
+    const iteratee = prepare ? prepare(userIteratee) : userIteratee;
+    const results = inject ? Results(initial) : Results();
 
     if (!collection || typeof collection === 'function' || typeof iteratee !== 'function') {
       return unwrap ? unwrap(results) : results;
@@ -282,17 +284,23 @@ function iteratorFromOptions({
  * @returns {any} The results from iterating over `collection` using `iteratee`.
  * @export
  */
-export default function IteratorFactory({ flipped, reverse, ...options }) {
+export default function IteratorFactory({
+  flipped,
+  initial,
+  reverse,
+  ...options
+}) {
   /* eslint-disable no-param-reassign */
   options.mapping = reverse ? ITERATOR_MAPPING_REVERSE : ITERATOR_MAPPING;
   options.arrayIterator = reverse ? iterateArrayLikeReverse : iterateArrayLike;
   /* eslint-enable no-param-reassign */
 
   const iterator = iteratorFromOptions(options);
+  if (!flipped) return iterator;
 
-  return !flipped ? iterator : function functionalIterator(iteratee, collection) {
-    return iterator(collection, iteratee);
-  };
+  return initial
+    ? (iteratee, init, collection) => iterator(collection, iteratee, init)
+    : (iteratee, collection) => iterator(collection, iteratee);
 }
 
 IteratorFactory.BREAK = BREAK;

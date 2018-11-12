@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/find-last",
+  "description": "Like Array#find, but for collections and iteration is performed in reverse.",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-iterator": "^0.0.0",
+    "@foldr/internal-iteratee": "^0.0.0"
+  }
+}

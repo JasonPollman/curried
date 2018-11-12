@@ -17,6 +17,9 @@ import escapeRegExp from '@foldr/escape-regexp';
 import every from '@foldr/every';
 import f from '@foldr/f';
 import filter from '@foldr/filter';
+import find from '@foldr/find';
+import findKey from '@foldr/find-key';
+import findLast from '@foldr/find-last';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
 import fold from '@foldr/fold';
@@ -59,7 +62,9 @@ import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
 import keys from '@foldr/keys';
 import map from '@foldr/map';
+import mapKeys from '@foldr/map-keys';
 import mapRight from '@foldr/map-right';
+import mapValues from '@foldr/map-values';
 import memoize from '@foldr/memoize';
 import nary from '@foldr/nary';
 import negate from '@foldr/negate';
@@ -103,6 +108,9 @@ export {
   every,
   f,
   filter,
+  find,
+  findKey,
+  findLast,
   flatten,
   flattenDeep,
   fold,
@@ -145,7 +153,9 @@ export {
   isWeakMap,
   keys,
   map,
+  mapKeys,
   mapRight,
+  mapValues,
   memoize,
   nary,
   negate,

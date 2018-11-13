@@ -5,7 +5,7 @@ stages:
     if: NOT (branch = master) AND NOT (branch = develop)
   - name: test-coverage-build
     if: branch IN (develop, master)
-  - name: test-coverage-build
+  - name: deploy
     if: branch IN (develop, master)
 
 env:
@@ -28,9 +28,9 @@ jobs:
     # This will run eslint, babel, lerna link, then run jest on the repo.
     - stage: test-coverage
       script: "npm run clean
-        && npm run lint
         && npm run build:transpile
         && npm run link
+        && npm run lint
         && npm run test:cover"
 
     # Testing/build stage for master and develop
@@ -38,9 +38,9 @@ jobs:
     # Finally, this will upload the LCOV report to codecov.
     - stage: test-coverage-build
       script: "npm run clean
-        && npm run lint
         && npm run build:transpile
         && npm run link
+        && npm run lint
         && npm run test:cover
         && npx codecov"
 

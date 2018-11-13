@@ -1,6 +1,7 @@
 language: node_js
 
 stages:
+  - test
   - deploy
 
 branches:
@@ -12,11 +13,12 @@ env:
   global:
     - AWS_REGION=us-east-1
     - FOLDR_META_BUCKET=foldr-us-east-1-prod
-  
-script:
-  npm run test:cover && npx codecov
+
+script: "true"
 
 jobs:
   include:
+    - stage: test
+      script: npm run test:cover && npx codecov
     - stage: deploy
       script: npm run deploy

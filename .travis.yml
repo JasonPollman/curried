@@ -1,5 +1,13 @@
 language: node_js
 
+stages:
+  - name: test-coverage
+    if: NOT (branch = master) AND (branch = develop)
+  - name: test-coverage-build
+    if: branch IN (develop, master)
+  - name: test-coverage-build
+    if: branch IN (develop, master)
+
 env:
   global:
     - AWS_REGION=us-east-1
@@ -18,47 +26,33 @@ jobs:
   include:
     # Testing stage for all branches that aren't develop or master.
     # This will run eslint, babel, lerna link, then run jest on the repo.
-    - stage: "Test Coverage"
+    - stage: test-coverage
       script: npm run clean
-        \ && npm run lint
-        \ && npm run build:transpile
-        \ && npm run link
-        \ && npm run test:cover
-      branches:
-        only:
-          - null
-        except:
-          - master
-          - develop
-    
-    # Testing stage for master and develop
+        \&& npm run lint
+        \&& npm run build:transpile
+        \&& npm run link
+        \&& npm run test:cover
+
+    # Testing/build stage for master and develop
     # This will run eslint, babel, lerna link, then run jest on the repo.
     # Finally, this will upload the LCOV report to codecov.
-    - stage: "Build & Test"
+    - stage: test-coverage-build
       script: npm run clean
-        \ && npm run lint
-        \ && npm run build:transpile
-        \ && npm run link
-        \ && npm run test:cover
-        \ && npx codecov
-      branches:
-        only:
-          - master
-          - develop
-    
+        \&& npm run lint
+        \&& npm run build:transpile
+        \&& npm run link
+        \&& npm run test:cover
+        \&& npx codecov
+
     # Deploy stage for master only.
     # This will build everything (the `all` package, the docs json file, and the versions meta file),
     # publish all packages to npm, then deploy the docs/meta files to S3.
-    - stage: Deploy
+    - stage: deploy
       script: npm run clean
-        \ && npm run build:all
-        \ && npm run build:transpile
-        \ && npm run link
-        \ && npm run build:bundle
-        \ && npm run build:docs
-        \ && npm run build:versions
-        \ && npm run deploy:meta
-      branches:
-        only:
-          - master
-          - develop
+        \&& npm run build:all
+        \&& npm run build:transpile
+        \&& npm run link
+        \&& npm run build:bundle
+        \&& npm run build:docs
+        \&& npm run build:versions
+        \&& npm run deploy:meta

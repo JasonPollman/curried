@@ -18,13 +18,15 @@ jobs:
   include:
     # Testing stage for all branches that aren't develop or master.
     # This will run eslint, babel, lerna link, then run jest on the repo.
-    - stage: test
+    - stage: "Test Coverage"
       script: npm run clean
         \ && npm run lint
         \ && npm run build:transpile
         \ && npm run link
         \ && npm run test:cover
       branches:
+        only:
+          - null
         except:
           - master
           - develop
@@ -32,7 +34,7 @@ jobs:
     # Testing stage for master and develop
     # This will run eslint, babel, lerna link, then run jest on the repo.
     # Finally, this will upload the LCOV report to codecov.
-    - stage: build-test
+    - stage: "Build & Test"
       script: npm run clean
         \ && npm run lint
         \ && npm run build:transpile
@@ -47,7 +49,7 @@ jobs:
     # Deploy stage for master only.
     # This will build everything (the `all` package, the docs json file, and the versions meta file),
     # publish all packages to npm, then deploy the docs/meta files to S3.
-    - stage: deploy
+    - stage: Deploy
       script: npm run clean
         \ && npm run build:all
         \ && npm run build:transpile

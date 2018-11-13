@@ -1,24 +1,62 @@
 language: node_js
 
-stages:
-  - test
-  - deploy
-
-branches:
-  only:
-    - master
-    - develop
-
 env:
   global:
     - AWS_REGION=us-east-1
     - FOLDR_META_BUCKET=foldr-us-east-1-prod
 
+# Stops travis-ci from running `npm test` by default.
+# Note, we're running tests below, so this isn't necessary.
 script: "true"
+
+# Keeps ~/.npm cache around for faster installs.
+# However, this does not keep node_modules hanging around (which we don't want).
+# https://docs.travis-ci.com/user/caching#npm-cache
+cache: npm
 
 jobs:
   include:
+    # Testing stage for all branches that aren't develop or master.
+    # This will run eslint, babel, lerna link, then run jest on the repo.
     - stage: test
-      script: npm run test:cover && npx codecov
+      script: npm run clean
+        \ && npm run lint
+        \ && npm run build:transpile
+        \ && npm run link
+        \ && npm run test:cover
+      branches:
+        except:
+          - master
+          - develop
+    
+    # Testing stage for master and develop
+    # This will run eslint, babel, lerna link, then run jest on the repo.
+    # Finally, this will upload the LCOV report to codecov.
+    - stage: build-test
+      script: npm run clean
+        \ && npm run lint
+        \ && npm run build:transpile
+        \ && npm run link
+        \ && npm run test:cover
+        \ && npx codecov
+      branches:
+        only:
+          - master
+          - develop
+    
+    # Deploy stage for master only.
+    # This will build everything (the `all` package, the docs json file, and the versions meta file),
+    # publish all packages to npm, then deploy the docs/meta files to S3.
     - stage: deploy
-      script: npm run deploy
+      script: npm run clean
+        \ && npm run build:all
+        \ && npm run build:transpile
+        \ && npm run link
+        \ && npm run build:bundle
+        \ && npm run build:docs
+        \ && npm run build:versions
+        \ && npm run deploy:meta
+      branches:
+        only:
+          - master
+          - develop

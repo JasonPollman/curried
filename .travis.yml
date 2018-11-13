@@ -1,21 +1,58 @@
 language: node_js
-sudo: false
+
 stages:
-- test
-- name: deploy
-  if: branch = master
+  - name: test-coverage
+    if: NOT (branch = master) AND NOT (branch = develop)
+  - name: test-coverage-build
+    if: branch IN (develop, master)
+  - name: deploy
+    if: branch IN (develop, master)
 
 env:
   global:
-  - secure: ccxnwYHvcpofdDyETARqrF9uA8AOzv2uD69pP1NYZSKQLJGm/yJsi9lNkTBRlX6YaRI/bBkl9zYnB+JOM0Ri5rjrKoDtwk1WAMGFLe7ixf5dHsj6hMT6RQ6SSuG9tSjL5+IF4UI6Aa0Pm3rhEnt+fYcVLLWsLC2xKxRDIUnK1TndqhInUAB/SypMlEoWJclC6e6EtI9dADJvyt8vb+Oif5JVRiO4Smuz2BFDvySAInMuexyDq+vLUQ1GZjjZ8Ab+Slv5CLXvwc7Ezxl44ry5qNw+JqAvCSLwQ/FYEWGMKVbNDXGXYs7vgjreUu7eBFtr1Hq5sYqZ9VO19ZNSEDK0TgSpoz/fHNCmzxrDzg8zWUYmPaQdU7nj4A0bHmHcuS2OQxQrY9t40l38MWJ/ifKmpcZm16CL4sm7UICQAWuGAcGD+WESwKHUtzoivZD0CeE//JSsi+5YHAKTyyDcIuMQlyYwQQ/elR/9tqjK8BJ9Xq2rBftG6qPU/rc6kiWDdH54wzJWUOb3l4cTXxOsLuZV9zgPn7VKaEbchi1+0mGLAq0wp+F3s2vlCHGvYa9b6YOCYfmGHBAJCTCru+thmTSlzKrZ8Eh0HYxFI0QR5mBTKlCPLkvCJs4XM0N+AmhRlxdLfuyieumjlMrIHaVb/7SFqJVSd9u4lLpQVMUdeRK7UQY=
-  - secure: 0Uqxc7v6m8V8EzPSdtb15rqKYSGLzRFitEIJKgwhQLTonl7azigkM9liiw/MKyLxUxxrZzCJgEZpuBJ7uUj/M0W6YgH4unWh510ZSNz2uG8v/NGD5YbD2AfXRl82fnfkwSSiW97JNm4ZtiejKcEg+FSb5W6zJcdp6ZJkGQyvbabgC4EIAPpnOtvr6RMTq9HHI6+YPlYgLiB+0sN/fz4RPnZ8obj2IOIRMJNohBqztp/nOmMB/NSMINfRd5T09hhOCb9cQ8jyba4X9SeXy5Xk9UR37ieQyptYF7M+/NGToWWIoyb8rkOCcLXfatzNRrN+heahBIMeZDYjXkTw0L9qhNmj8YvxfFIL/OZ+TuR6HLgkUxRfWoMhHVxBjODeQ3p/wEdIbSatkIGE6fWqau3RLgH7EREpxbeRZs4vE+tp1Xz2qxTBe+awEwqRaa3iHv0mmawlmaTiGGslKrmEbDQtEfsqHPg85+KMkGPJgklND1gZlX7pIzwelM10JeVcH5R7gNKWmRVxq+JZyr5oVBSFmOHn97Ku/L4rudywtoyAGxnuPhDdhWBDGs1MG1gA0jH7CcccQSc4Wx4lMN8BNTSRt70tFh7fJ2dH3IVb/uof//Uefa085goqv/Nc4MpmNowI7hg4pLyUtsCTBL6alEnYTT8HPY3H4iCGWkzdUyF07i8=
-  - secure: TCQbYh3j6LqZeBDCtzSYT8JvbSe4aLpJ/E2/eHFZmGQm+YOsMiZRMhNUhni3raViZPhmTKzSrNy+qyzhVsjZuYr6tIJPtebJ/vlMTHwS/VyleYv19U2YUc6V8SEL1WZbKdPYQAYiM0LVR4DQZrMKO4LYE/r8dCoumRt3vblxbHKPA72iql8LGuAhw+Vixo3bKs/fDQIedorCEoQj2XkFvqiIJByjVPC98wSNSVjQcsQHSU5ZaEMXLYOokRnWPrFx5jJov6v9Vd8ZjUbeeopoNRqMjH9dVSdynjrmRnaNbfsJpQLNOXbbZX5+v6c5URdieSwgpjzI+olNTfF3jvXzDJzuMrND4nPt7ngFy/WvgCZW+TWqVkjUVKY+bfcos8AAzOl2EDLMvI7eiUylbidwTHN1ewVS281o1JgEf5gRZHdCRG5qwPHLA16Pcs5CoAGrQrHZAU8YnbMoDbelNdxqr2QMKNmUMGzjXqao/xeCC3KrgvgqL0BcJLJX0/0+oNjsoIoyAHSfmLALsnlhl5E5F3bMVgYfVCDA2f40uNB5McAwzFQr8U0uEFfAsv76LwqLpskDsTZeGcINwmrhNWlEIfTZyPBNkZDFfDCdVsG35b2OVDWPvMBdoqXh1rh44dqxzndvQO6OJ+ITpegdJIAzSnRt2W8/p4lMmZW1Ox11ByQ=
-  - FOLDR_META_BUCKET=foldr-us-east-1-prod
-  - AWS_REGION=us-east-1
+    - AWS_REGION=us-east-1
+    - FOLDR_META_BUCKET=foldr-us-east-1-prod
+
+# Stops travis-ci from running `npm test` by default.
+# Note, we're running tests below, so this isn't necessary.
+script: "true"
+
+# Keeps ~/.npm cache around for faster installs.
+# However, this does not keep node_modules hanging around (which we don't want).
+# https://docs.travis-ci.com/user/caching#npm-cache
+cache: npm
+
 jobs:
   include:
-  - stage: test
-    script: npm run test:cover && npx codecov
-  - stage: deploy
-    script: npm run deploy
+    # Testing stage for all branches that aren't develop or master.
+    # This will run eslint, babel, lerna link, then run jest on the repo.
+    - stage: test-coverage
+      script: "npm run clean
+        && npm run build:transpile
+        && npm run link
+        && npm run lint
+        && npm run test:cover"
 
+    # Testing/build stage for master and develop
+    # This will run eslint, babel, lerna link, then run jest on the repo.
+    # Finally, this will upload the LCOV report to codecov.
+    - stage: test-coverage-build
+      script: "npm run clean
+        && npm run build:transpile
+        && npm run link
+        && npm run lint
+        && npm run test:cover
+        && npx codecov"
+
+    # Deploy stage for master only.
+    # This will build everything (the `all` package, the docs json file, and the versions meta file),
+    # publish all packages to npm, then deploy the docs/meta files to S3.
+    - stage: deploy
+      script: "npm run clean
+        && npm run build:all
+        && npm run build:transpile
+        && npm run link
+        && npm run build:bundle
+        && npm run build:docs
+        && npm run build:versions
+        && npm run deploy:meta"

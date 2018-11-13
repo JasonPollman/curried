@@ -100,7 +100,7 @@ async function buildDocs(packages) {
 const buildJSDocs = compose(
   logTap(green.bold('Docs metadata built successfully!')),
   buildDocs,
-  logTap(cyan.bold('[BUIDLING DOCS METADATA]')),
+  logTap(cyan.bold('[BUILDING DOCS METADATA]')),
   getPackageDirectories,
   getPackageFilelist,
 );

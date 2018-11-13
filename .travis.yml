@@ -6,7 +6,7 @@ stages:
   - name: test-coverage-build
     if: branch IN (develop, master)
   - name: deploy
-    if: branch = master
+    if: branch = master AND (NOT (type = pull_request))
 
 env:
   global:

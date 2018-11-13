@@ -2,7 +2,7 @@
   "name": "@foldr/rearg",
   "description": "Rearranges the arguments of a function.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

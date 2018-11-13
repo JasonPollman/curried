@@ -2,7 +2,7 @@
   "name": "@foldr/size",
   "version": "0.0.0",
   "description": "Gets the number of items in a collection",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

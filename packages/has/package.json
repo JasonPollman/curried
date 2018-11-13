@@ -2,7 +2,7 @@
   "name": "@foldr/has",
   "version": "0.0.0",
   "description": "A utility function to test whether or not an object has a property.",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

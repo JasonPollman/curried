@@ -2,7 +2,7 @@
   "name": "@foldr/some",
   "description": "Like Array#some, but for collections.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

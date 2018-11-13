@@ -2,7 +2,7 @@
   "name": "@foldr/is-finite",
   "description": "Determines if a value is a finite number.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

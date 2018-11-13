@@ -1,7 +1,7 @@
 {
   "name": "@foldr/get",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "description": "Gets a value from an object specified by a path string.",
   "main": "dist",
   "sideEffects": false,

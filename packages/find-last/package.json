@@ -2,7 +2,7 @@
   "name": "@foldr/find-last",
   "description": "Like Array#find, but for collections and iteration is performed in reverse.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

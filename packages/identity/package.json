@@ -2,7 +2,7 @@
   "name": "@foldr/identity",
   "version": "0.0.0",
   "description": "The identity function.",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

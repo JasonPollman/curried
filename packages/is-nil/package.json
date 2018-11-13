@@ -2,7 +2,7 @@
   "name": "@foldr/is-nil",
   "description": "Determines is a value is nil (null or undefined).",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

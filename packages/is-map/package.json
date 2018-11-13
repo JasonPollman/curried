@@ -2,7 +2,7 @@
   "name": "@foldr/is-map",
   "description": "Determines if a value is an instance of the Map constructor.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

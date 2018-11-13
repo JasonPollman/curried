@@ -2,7 +2,7 @@
   "name": "@foldr/fold-right",
   "description": "Like Array#reduce, but for collections and iterates in reverse.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

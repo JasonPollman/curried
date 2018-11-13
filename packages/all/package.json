@@ -2,7 +2,7 @@
   "name": "@foldr/all",
   "version": "0.0.0",
   "description": "The complete @foldr library.",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

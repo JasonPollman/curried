@@ -2,7 +2,7 @@
   "name": "@foldr/negate",
   "description": "Creates a function that negates the results of another.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

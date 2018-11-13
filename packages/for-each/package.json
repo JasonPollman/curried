@@ -2,7 +2,7 @@
   "name": "@foldr/for-each",
   "description": "Like Array#forEach, but for collections.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

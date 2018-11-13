@@ -2,7 +2,7 @@
   "name": "@foldr/keys",
   "version": "0.0.0",
   "description": "Like Object.keys",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

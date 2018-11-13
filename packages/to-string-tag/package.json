@@ -2,7 +2,7 @@
   "name": "@foldr/to-string-tag",
   "version": "0.0.0",
   "description": "A convenience function for Object.toString.call",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

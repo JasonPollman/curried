@@ -2,7 +2,7 @@
   "name": "@foldr/reverse",
   "description": "Reverses an array without mutation.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

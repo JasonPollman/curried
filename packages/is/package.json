@@ -2,7 +2,7 @@
   "name": "@foldr/is",
   "description": "Determines constructor type membership.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

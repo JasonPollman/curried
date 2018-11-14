@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/clamp",
+  "description": "Clamps a number in the range of `min` and `max`",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/to-number": "^0.0.0"
+  }
+}

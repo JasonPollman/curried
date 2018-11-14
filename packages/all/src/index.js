@@ -9,6 +9,7 @@
  */
 
 import binary from '@foldr/binary';
+import clamp from '@foldr/clamp';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import constant from '@foldr/constant';
@@ -86,6 +87,7 @@ import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
 import toKebabCase from '@foldr/to-kebab-case';
 import toLowerCase from '@foldr/to-lower-case';
+import toNumber from '@foldr/to-number';
 import toPath from '@foldr/to-path';
 import toSnakeCase from '@foldr/to-snake-case';
 import toString from '@foldr/to-string';
@@ -104,6 +106,7 @@ export {
   _,
   VERSION,
   binary,
+  clamp,
   compact,
   compose,
   constant,
@@ -181,6 +184,7 @@ export {
   toCamelCase,
   toKebabCase,
   toLowerCase,
+  toNumber,
   toPath,
   toSnakeCase,
   toString,

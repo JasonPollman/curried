@@ -52,24 +52,29 @@ export function toNumber(x) {
 }
 
 /**
- * Converts a value into a string by calling it's inherited or own `toString` method.
- * An empty string is returned for `null` and `undefined`.
- * @param {any} x The value to convert to a string.
- * @returns {string} The value to convert to a string.
- * @category util
+ * Converts `x` to a number.
+ * If `x` is a number, it will be returned, if `x` is a string it will be coerced to
+ * a number using `+x`. If `x` is an object, it's `valueOf` method will be called, if
+ * available.
+ *
+ * Binary, octal, and hexidecimal strings (i.e. '0b101') will be converted
+ * to their number equivalent.
+ *
+ * @param {any} x The value to convert to a number.
+ * @returns {number} The number equivalent of `x`.
+ * @category number
  * @memberof foldr
  * @since v0.0.0
  * @export
  * @example
- * toString(null);      // => ''
- * toString(undefined); // => ''
- * toString(0);         // => '0'
- * toString('foo');     // => 'foo'
- * toString([1, 2, 3]); // => '1,2,3'
  *
- * toString({
+ * toNumber(0);     // => 0;
+ * toNumber('0');   // => 0;
+ * toNumber('1e6'); // => 1000000;
+ *
+ * toNumber({
  *   value: 'string-value',
- *   toString() { return this.value; },
- * }) // => 'value'
+ *   valueOf() { return 5; },
+ * }) // => 5
  */
 export default !IS_IE ? toNumber : /* istanbul ignore next */ toNumberIE;

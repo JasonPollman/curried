@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/invoke",
+  "description": "Invokes a function on an object at the given path.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/to-path": "^0.0.0"
+  }
+}

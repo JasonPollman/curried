@@ -8,7 +8,6 @@
  * @file
  */
 
-/* istanbul ignore file */
 /* eslint-disable no-nested-ternary */
 
 /**
@@ -16,7 +15,9 @@
  * That is, `global` in node and `window` in the browser.
  * @type {Object}
  */
-export const GLOBAL = typeof global === 'object' ? global : typeof window === 'object' ? window : this;
+export const GLOBAL = typeof global === 'object' ? global
+  /* istanbul ignore next */ : typeof window === 'object' ? window
+  /* istanbul ignore next */ : this;
 
 /**
  * True if running in Node.js, false otherwise.
@@ -36,4 +37,5 @@ export const IS_BROWSER = typeof window === 'object';
  * True if running in IE, false otherwise.
  * @type {boolean}
  */
-export const IS_IE = IS_BROWSER && /Trident\/|MSIE/.test((window.navigator || {}).userAgent);
+export const IS_IE = IS_BROWSER /* istanbul ignore next */
+  && /Trident\/|MSIE/.test((/* istanbul ignore next */ window.navigator || {}).userAgent);

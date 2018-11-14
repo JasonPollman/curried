@@ -1,6 +1,6 @@
 /**
  * Exports the `clamp` function.
- * @since 11/10/18
+ * @since 11/14/18
  * @file
  */
 

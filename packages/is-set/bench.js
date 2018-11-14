@@ -1,7 +1,7 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: input => foldr.isSet(input),
-    rambda: input => rambda.is(Set)(input),
+    ramda: input => ramda.is(Set)(input),
     lodash: input => lodash.isSet(input),
   };
 

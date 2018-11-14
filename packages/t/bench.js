@@ -1,9 +1,9 @@
-module.exports = ({ foldr, lodash, rambda }) => {
-  const rtrue = rambda.always(true);
+module.exports = ({ foldr, lodash, ramda }) => {
+  const rtrue = ramda.always(true);
 
   const tests = {
     foldr: () => foldr.t(),
-    rambda: () => rtrue(),
+    ramda: () => rtrue(),
     lodash: () => lodash.stubTrue(),
   };
 

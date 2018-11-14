@@ -6,7 +6,6 @@
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
-    "@foldr/is-number": "^0.0.0",
-    "@foldr/internal-env": "^0.0.0"
+    "@foldr/is-number": "^0.0.0"
   }
 }

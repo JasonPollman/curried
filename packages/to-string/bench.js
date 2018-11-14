@@ -1,8 +1,8 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: input => foldr.toString(input),
     lodash: input => lodash.toString(input),
-    rambda: input => rambda.toString(input),
+    ramda: input => ramda.toString(input),
   };
 
   return [

@@ -1,10 +1,10 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const double = x => x * 2;
 
   const tests = {
     foldr: input => foldr.map(input, double),
     lodash: input => lodash.map(input, double),
-    rambda: input => rambda.map(double, input),
+    ramda: input => ramda.map(double, input),
   };
 
   return [
@@ -27,12 +27,12 @@ module.exports = ({ foldr, lodash, rambda }) => {
       tests: {
         foldr: input => foldr.map(input, x => `${x}${x}`),
         lodash: input => lodash.map(input, x => `${x}${x}`),
-        rambda: input => rambda.map(x => `${x}${x}`, input),
+        ramda: input => ramda.map(x => `${x}${x}`, input),
       },
     },
     {
       name: 'Maps an Object',
-      expect: (result, { deepEqual }, library) => (library === 'rambda'
+      expect: (result, { deepEqual }, library) => (library === 'ramda'
         ? deepEqual(result, { foo: 2, bar: 4, baz: 6 })
         : deepEqual(result, [2, 4, 6])
       ),

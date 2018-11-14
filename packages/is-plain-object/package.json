@@ -6,6 +6,8 @@
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
+    "@foldr/internal-env": "^0.0.0",
+    "@foldr/is-object-like": "^0.0.0",
     "@foldr/to-string-tag": "^0.0.0"
   }
 }

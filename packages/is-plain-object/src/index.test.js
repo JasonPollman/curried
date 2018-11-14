@@ -4,7 +4,7 @@
  * @file
  */
 
-import isPlainObject from '.';
+import isPlainObject, { hasObjectConstructorBrowser } from '.';
 
 describe('isPlainObject', () => {
   it('Should return `true` for objects', () => {
@@ -13,12 +13,13 @@ describe('isPlainObject', () => {
     expect(isPlainObject({})).toBe(true);
     expect(isPlainObject({ foo: 'bar' })).toBe(true);
     expect(isPlainObject(Object())).toBe(true);
-    expect(isPlainObject(new class Foo {}())).toBe(true);
+    expect(isPlainObject(Object.create(null))).toBe(true);
   });
 
   it('Should return `false` otherwise', () => {
     // eslint-disable-next-line no-void
     expect(isPlainObject(void 0)).toBe(false);
+    expect(isPlainObject(new class Foo {}())).toBe(false);
     expect(isPlainObject(undefined)).toBe(false);
     expect(isPlainObject(false)).toBe(false);
     expect(isPlainObject(true)).toBe(false);
@@ -40,5 +41,25 @@ describe('isPlainObject', () => {
     expect(isPlainObject(Infinity)).toBe(false);
     expect(isPlainObject(-Infinity)).toBe(false);
     expect(isPlainObject(new class Foo extends Array {}())).toBe(false);
+  });
+
+  describe('hasObjectConstructorBrowser', () => {
+    it('Should determine if something is a "plain object"', () => {
+      // eslint-disable-next-line
+      expect(hasObjectConstructorBrowser(new Object())).toBe(true);
+      expect(hasObjectConstructorBrowser({})).toBe(true);
+      expect(hasObjectConstructorBrowser({ foo: 'bar' })).toBe(true);
+      expect(hasObjectConstructorBrowser(Object())).toBe(true);
+      expect(hasObjectConstructorBrowser(Object.create(null))).toBe(true);
+
+      class SpoofObject {
+        // eslint-disable-next-line
+        get [Symbol.toStringTag]() {
+          return 'Object';
+        }
+      }
+
+      expect(hasObjectConstructorBrowser(new SpoofObject())).toBe(true);
+    });
   });
 });

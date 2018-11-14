@@ -1,9 +1,9 @@
-module.exports = ({ foldr, lodash, rambda }) => {
-  const rfalse = rambda.always(false);
+module.exports = ({ foldr, lodash, ramda }) => {
+  const rfalse = ramda.always(false);
 
   const tests = {
     foldr: () => foldr.f(),
-    rambda: () => rfalse(),
+    ramda: () => rfalse(),
     lodash: () => lodash.stubFalse(),
   };
 

@@ -5,7 +5,6 @@
  */
 
 import isNumber from '@foldr/is-number';
-import { GLOBAL } from '@foldr/internal-env';
 
 /**
  * Determines if the given item is a finite number. That is both a number and not Infinity.
@@ -17,7 +16,7 @@ import { GLOBAL } from '@foldr/internal-env';
  * @export
  */
 export function isFinitePolyfill(x) {
-  return isNumber(x) && GLOBAL.isFinite(x);
+  return isNumber(x) && isFinite(x); // eslint-disable-line no-restricted-globals
 }
 
 /**

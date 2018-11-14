@@ -1,4 +1,4 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const sum = (x, y) => x + y;
 
   const double = (acc, curr) => {
@@ -9,7 +9,7 @@ module.exports = ({ foldr, lodash, rambda }) => {
   const tests = {
     foldr: ([input, acc]) => foldr.foldRight(input, sum, acc),
     lodash: ([input, acc]) => lodash.reduceRight(input, sum, acc),
-    rambda: ([input, acc]) => rambda.reduceRight(sum, acc, input),
+    ramda: ([input, acc]) => ramda.reduceRight(sum, acc, input),
   };
 
   return [
@@ -26,7 +26,7 @@ module.exports = ({ foldr, lodash, rambda }) => {
       tests: {
         foldr: ([input, acc]) => foldr.foldRight(input, double, acc()),
         lodash: ([input, acc]) => lodash.reduceRight(input, double, acc()),
-        rambda: ([input, acc]) => rambda.reduceRight(double, acc(), input),
+        ramda: ([input, acc]) => ramda.reduceRight(double, acc(), input),
       },
     },
     {

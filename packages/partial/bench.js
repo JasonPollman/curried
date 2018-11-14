@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: x => foldr.partial(x, foldr._, 1)(2),
     lodash: x => lodash.partial(x, lodash._, 1)(2),
-    rambda: x => rambda.partial(x, rambda.__, 1)(2),
+    ramda: x => ramda.partial(x, ramda.__, 1)(2),
   };
 
   return [
@@ -21,7 +21,7 @@ module.exports = ({ foldr, lodash, rambda }) => {
       tests: {
         foldr: x => foldr.partial(x, foldr._, 1),
         lodash: x => lodash.partial(x, lodash._, 1),
-        rambda: x => rambda.partial(x, rambda.__, 1),
+        ramda: x => ramda.partial(x, ramda.__, 1),
       },
     },
   ];

@@ -1,7 +1,7 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: x => foldr.identity(x),
-    rambda: x => rambda.identity(x),
+    ramda: x => ramda.identity(x),
     lodash: x => lodash.identity(x),
   };
 

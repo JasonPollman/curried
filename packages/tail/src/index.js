@@ -10,15 +10,16 @@
  * @example
  *
  * tail([1, 2, 3, 4]); // => [2, 3, 4]
+ * tail([1]);          // => []
  * tail([]);           // => []
  */
 export default function tail(array) {
   const results = [];
   if (!array) return results;
 
-  const size = array.length;
-  let i = 1;
+  let size = array.length;
+  if (size < 2) return results;
 
-  while (i < size) results[i - 1] = array[i++];
+  while (--size) results[size - 1] = array[size];
   return results;
 }

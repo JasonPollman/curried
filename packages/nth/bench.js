@@ -1,8 +1,8 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: ([array, n]) => foldr.nth(array, n),
     lodash: ([array, n]) => lodash.nth(array, n),
-    rambda: ([array, n]) => rambda.nth(n, array),
+    ramda: ([array, n]) => ramda.nth(n, array),
   };
 
   return [

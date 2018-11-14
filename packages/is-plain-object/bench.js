@@ -16,7 +16,7 @@ module.exports = ({ foldr, lodash }) => {
     {
       name: 'isPlainObject => True (2)',
       expect: (result, assert) => assert(result === true),
-      setup: () => new Foo(),
+      setup: () => Object.create(null),
       tests,
     },
     {
@@ -35,6 +35,12 @@ module.exports = ({ foldr, lodash }) => {
       name: 'isPlainObject => False (3)',
       expect: (result, assert) => assert(result === false),
       setup: () => null,
+      tests,
+    },
+    {
+      name: 'isPlainObject => False (4)',
+      expect: (result, assert) => assert(result === false),
+      setup: () => new Foo(),
       tests,
     },
   ];

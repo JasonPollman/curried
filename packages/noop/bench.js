@@ -1,9 +1,9 @@
-module.exports = ({ foldr, lodash, rambda }) => {
-  const rnoop = rambda.always(undefined);
+module.exports = ({ foldr, lodash, ramda }) => {
+  const rnoop = ramda.always(undefined);
 
   const tests = {
     foldr: () => foldr.noop(),
-    rambda: () => rnoop(),
+    ramda: () => rnoop(),
     lodash: () => lodash.noop(),
   };
 

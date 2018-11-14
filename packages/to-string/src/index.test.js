@@ -13,6 +13,7 @@ describe('toString', () => {
 
   it('Should convert values to a string', () => {
     expect(toString(undefined)).toBe('');
+    expect(toString(Symbol('foo'))).toBe('Symbol(foo)');
     expect(toString(null)).toBe('');
     expect(toString()).toBe('');
     expect(toString(1)).toBe('1');

@@ -1,9 +1,9 @@
 module.exports = ({ foldr, lodash }) => {
-  const noop = () => {};
+  const plus2 = x => x + 2;
 
   const tests = {
-    foldr: input => foldr.forEachRight(input, noop),
-    lodash: input => lodash.forEachRight(input, noop),
+    foldr: input => foldr.forEachRight(input, plus2),
+    lodash: input => lodash.forEachRight(input, plus2),
   };
 
   return [

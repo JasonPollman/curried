@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-11-12
+ * @since 11/13/2018
  * @file
  */
 
@@ -86,6 +86,7 @@ import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
 import toKebabCase from '@foldr/to-kebab-case';
 import toLowerCase from '@foldr/to-lower-case';
+import toPath from '@foldr/to-path';
 import toSnakeCase from '@foldr/to-snake-case';
 import toString from '@foldr/to-string';
 import toStringTag from '@foldr/to-string-tag';
@@ -180,6 +181,7 @@ export {
   toCamelCase,
   toKebabCase,
   toLowerCase,
+  toPath,
   toSnakeCase,
   toString,
   toStringTag,

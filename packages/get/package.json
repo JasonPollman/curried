@@ -6,7 +6,6 @@
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
-    "@foldr/is-string": "^0.0.0",
-    "@foldr/is-object": "^0.0.0"
+    "@foldr/to-path": "^0.0.0"
   }
 }

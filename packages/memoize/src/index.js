@@ -12,7 +12,11 @@ const { hasOwnProperty } = Object.prototype;
  * @returns {Cache} The current cache object.
  */
 function del(key) {
-  delete this.data[key];
+  if (this.has(key)) {
+    this.size--;
+    delete this.data[key];
+  }
+
   return this;
 }
 
@@ -23,7 +27,11 @@ function del(key) {
  * @returns {Cache} The current cache object.
  */
 function set(key, value) {
-  this.data[key] = value;
+  if (!this.has(key)) {
+    this.size++;
+    this.data[key] = value;
+  }
+
   return this;
 }
 
@@ -50,6 +58,7 @@ function has(key) {
  * @returns {Cache} The current cache object.
  */
 function clear() {
+  this.size = 0;
   this.data = {};
   return this;
 }
@@ -64,9 +73,19 @@ function DefaultCache() {
     set,
     get,
     clear,
+    size: 0,
     data: {},
     delete: del,
   };
+}
+
+/**
+ * Creates an error message string for memoize.
+ * @param {string} arg The name of the argument to create the message for.
+ * @returns {string} The error message string.
+ */
+function emsg(arg) {
+  return `Argument for parameter "${arg}" must be a function.`;
 }
 
 /**
@@ -85,9 +104,15 @@ function DefaultCache() {
  * used to generate the cache key for the current call. This should serialize arguments in
  * a way that is unique for the arguments set. It is passed the input Arguments object.
  * Default value is `JSON.stringify`.
- * @param {function=} [Cache=memoize.Cache] The class used to create the cache
- * for the memoized function. This requires an interface similar to the native Map object.
- * Custom implementations require implementing the following methods: `has`, `get`, and `set`.
+ * @param {object=} [mcache=new memoize.Cache()] The cache instance for the memoized function.
+ * This requires an object with an interface similar to the native Map object.
+ * Custom implementations require implementing the following methods:
+ *  - `has`
+ *  - `get`
+ *  - `set`
+ *  - `size`
+ *  - `clear`
+ *  - `delete`
  * @returns {function} The memoized version of `fn`.
  * @memberof foldr
  * @since v0.0.0
@@ -108,14 +133,9 @@ function DefaultCache() {
  * // Takes less than a second (only a few ms, actually).
  * fastFibonacci(45); // => 1836311903
  */
-export default function memoize(fn, resolver = JSON.stringify, Cache = memoize.Cache) {
-  if (typeof fn !== 'function') {
-    throw new Error('Argument for parameter `fn` must be a function.');
-  }
-
-  if (typeof resolver !== 'function') {
-    throw new Error('Argument for parameter `resolver` must be a function.');
-  }
+export default function memoize(fn, resolver = JSON.stringify, mcache) {
+  if (typeof fn !== 'function') throw new Error(emsg('fn'));
+  if (typeof resolver !== 'function') throw new Error(emsg('resolver'));
 
   // eslint-disable-next-line require-jsdoc
   function memoized() {
@@ -131,7 +151,7 @@ export default function memoize(fn, resolver = JSON.stringify, Cache = memoize.C
     return results;
   }
 
-  memoized.cache = new Cache();
+  memoized.cache = mcache || new memoize.Cache();
   return memoized;
 }
 

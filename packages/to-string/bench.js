@@ -24,6 +24,12 @@ module.exports = ({ foldr, lodash, rambda }) => {
       tests,
     },
     {
+      name: 'Converts to a String: Array',
+      expect: (result, assert) => assert(result === '1,2,3'),
+      setup: () => [1, 2, 3],
+      tests,
+    },
+    {
       name: 'Converts to a String: `null`',
       expect: (result, assert) => assert(result === ''),
       setup: () => null,

@@ -36,7 +36,8 @@ import IteratorFactory from '@foldr/internal-iterator';
  * filter({ a: 1, b: 2, c: 3 }, isEven); // => [2]
  */
 export default IteratorFactory({
-  Results: Array,
+  Empty: () => [],
+  Results: () => [],
   handler: (results, iteratee, i, value, key, collection) => {
     const retained = iteratee(value, key, collection);
     if (retained) results[results.length] = value;

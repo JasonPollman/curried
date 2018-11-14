@@ -38,6 +38,7 @@ import IteratorFactory, { BREAK } from '@foldr/internal-iterator';
  * filter({ a: 1, b: 3, c: 5 }, isEven); // => undefined
  */
 export default IteratorFactory({
+  Empty: () => undefined,
   unwrap: results => results.x,
   Results: () => ({ x: undefined }),
   prepare: getIteratee,

@@ -31,7 +31,8 @@ import IteratorFactory from '@foldr/internal-iterator';
  */
 export default IteratorFactory({
   reverse: true,
-  Results: Array,
+  Empty: () => [],
+  Results: () => [],
   handler: (results, iteratee, i, value, key, collection) => {
     results[i] = iteratee(value, key, collection); // eslint-disable-line no-param-reassign
   },

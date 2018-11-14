@@ -43,7 +43,8 @@ import IteratorFactory from '@foldr/internal-iterator';
  * mapValues(people, 'name'); // => { 1: 'Ben', 2: 'John', 3: 'Al' }
  */
 export default IteratorFactory({
-  Results: Object,
+  Empty: () => ({}),
+  Results: () => ({}),
   prepare: getIteratee,
   handler: (results, iteratee, i, value, key, collection) => {
     results[key] = iteratee(value, key, collection);

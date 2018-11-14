@@ -36,7 +36,7 @@ function preparePickIteratee(iteratee) {
 
     // Iternal Iterator will return the empty results
     // object in the case `iteratee` isn't a function.
-    default: return undefined;
+    default: return identity;
   }
 }
 
@@ -71,7 +71,8 @@ function preparePickIteratee(iteratee) {
  * pick(data, (value, key) => value[0] === 'b'); // => { bar: 'bar', baz: 'baz' }
  */
 export default IteratorFactory({
-  Results: Object,
+  Empty: () => ({}),
+  Results: () => ({}),
   prepare: preparePickIteratee,
   handler: (results, iteratee, i, value, key, collection) => {
     if (iteratee(value, key, collection)) results[key] = value;

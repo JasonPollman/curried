@@ -32,6 +32,7 @@ import IteratorFactory from '@foldr/internal-iterator';
  * forEach([1, 2, 3], log); // Prints 1, then 2, then 3.
  */
 export default IteratorFactory({
+  Empty: () => undefined,
   Results: () => undefined,
   handler: (results, iteratee, i, value, key, collection) => {
     iteratee(value, key, collection);

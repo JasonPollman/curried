@@ -28,7 +28,7 @@ import IteratorFactory from '@foldr/internal-iterator';
  * foldRight[1, 2, 3], square, 0); // => 14
  */
 export default IteratorFactory({
-  inject: true,
+  Empty: x => x,
   unwrap: results => results[0],
   reverse: true,
   Results: x => [x],

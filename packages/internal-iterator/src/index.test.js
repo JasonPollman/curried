@@ -17,7 +17,8 @@ describe('internal-iterator', () => {
 
   it('Should return a instance of the Results if given a falsy collection', () => {
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
@@ -31,7 +32,8 @@ describe('internal-iterator', () => {
 
   it('Should return a instance of the Results if given a non-function iterator', () => {
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
@@ -46,7 +48,8 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         results.push(iteratee(value));
@@ -60,7 +63,8 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         if (i === 1) return BREAK;
@@ -76,7 +80,8 @@ describe('internal-iterator', () => {
 
     const options = {
       reverse: true,
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         results.push(iteratee(value));
@@ -91,7 +96,8 @@ describe('internal-iterator', () => {
 
     const options = {
       reverse: true,
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         if (i === 1) return BREAK;
@@ -106,7 +112,8 @@ describe('internal-iterator', () => {
     const object = { foo: 1, bar: 2, baz: 3 };
 
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(['foo', 'bar', 'baz'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(object);
@@ -119,7 +126,8 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (object, breaking)', () => {
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -131,8 +139,9 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (object, reverse)', () => {
     const options = {
+      Empty: () => [],
       reverse: true,
-      Results: Array,
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
@@ -145,8 +154,9 @@ describe('internal-iterator', () => {
     const object = { foo: 1, bar: 2, baz: 3 };
 
     const options = {
+      Empty: () => [],
       reverse: true,
-      Results: Array,
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(['foo', 'bar', 'baz'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(object);
@@ -160,7 +170,8 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Set)', () => {
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
@@ -171,7 +182,8 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Set, breaking)', () => {
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -185,8 +197,9 @@ describe('internal-iterator', () => {
     const set = new Set([1, 2, 3]);
 
     const options = {
+      Empty: () => [],
       reverse: true,
-      Results: Array,
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect([0, 1, 2].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(set);
@@ -199,8 +212,9 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Set, breaking, reverse)', () => {
     const options = {
+      Empty: () => [],
       reverse: true,
-      Results: Array,
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -214,7 +228,8 @@ describe('internal-iterator', () => {
     const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
 
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(typeof key).toBe('string');
         expect(collection).toBe(map);
@@ -227,7 +242,8 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Map, breaking)', () => {
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -241,8 +257,9 @@ describe('internal-iterator', () => {
     const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
 
     const options = {
+      Empty: () => [],
       reverse: true,
-      Results: Array,
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(['a', 'b', 'c', 'd'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(map);
@@ -257,8 +274,9 @@ describe('internal-iterator', () => {
     const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
 
     const options = {
+      Empty: () => [],
       reverse: true,
-      Results: Array,
+      Results: () => [],
       handler: (results, iteratee, i, value, key, collection) => {
         expect(['a', 'b', 'c', 'd'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(map);
@@ -272,7 +290,8 @@ describe('internal-iterator', () => {
 
   it('Should return an empty set on unknown collection types', () => {
     const options = {
-      Results: Array,
+      Empty: () => [],
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -284,8 +303,9 @@ describe('internal-iterator', () => {
 
   it('Should return a functional-style signature if `flipped` is true', () => {
     const options = {
+      Empty: () => [],
       flipped: true,
-      Results: Array,
+      Results: () => [],
       handler: (results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -299,6 +319,7 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
+      Empty: x => x,
       inject: true,
       initial: true,
       flipped: true,
@@ -316,6 +337,7 @@ describe('internal-iterator', () => {
 
   it('Should provide the ability to "unwrap" results', () => {
     const options = {
+      Empty: () => false,
       unwrap: results => results.passed,
       Results: () => ({ passed: false }),
       handler: (results, iteratee, i, value, key, collection) => {
@@ -334,6 +356,7 @@ describe('internal-iterator', () => {
 
   it('Should provide the ability to "unwrap" results (invalid input)', () => {
     const options = {
+      Empty: () => false,
       unwrap: results => results.passed,
       Results: () => ({ passed: false }),
       handler: (results, iteratee, i, value, key, collection) => {
@@ -353,6 +376,7 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
+      Empty: x => x,
       inject: true,
       unwrap: results => results.acc,
       Results: acc => ({ acc }),

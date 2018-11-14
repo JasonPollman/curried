@@ -29,6 +29,7 @@ import IteratorFactory from '@foldr/internal-iterator';
  */
 export default IteratorFactory({
   reverse: true,
+  Empty: () => undefined,
   Results: () => undefined,
   handler: (results, iteratee, i, value, key, collection) => {
     iteratee(value, key, collection);

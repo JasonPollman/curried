@@ -100,6 +100,7 @@ import toUpperCase from '@foldr/to-upper-case';
 import toUpperFirst from '@foldr/to-upper-first';
 import toWords from '@foldr/to-words';
 import unary from '@foldr/unary';
+import values from '@foldr/values';
 import zip from '@foldr/zip';
 
 const { _ } = curry;
@@ -200,5 +201,6 @@ export {
   toUpperFirst,
   toWords,
   unary,
+  values,
   zip,
 };

@@ -4,7 +4,7 @@
  * @file
  */
 
-import keys, { keysWithoutArgumentsLength } from '.';
+import keys, { removeLengthFromKeys } from '.';
 
 describe('keys', () => {
   it('Should be a function', () => {
@@ -35,47 +35,25 @@ describe('keys', () => {
     expect(keys('foo')).toEqual(['0', '1', '2']);
   });
 
+  it('Should return a Map\'s keys', () => {
+    expect(keys(new Map([[1, 2], ['foo', 'bar']]))).toEqual([1, 'foo']);
+  });
+
+  it('Should return a Sets\'s keys', () => {
+    expect(keys(new Set([1, 2, 3]))).toEqual([0, 1, 2]);
+  });
+
   it('Should return an arguments\'s keys', () => {
     (function test() {
       expect(keys(arguments)).toEqual(['0', '1']);
     }(1, 2));
   });
 
-  describe('keysWithoutArgumentsLength', () => {
-    it('Should return any empty array for nil input', () => {
-      expect(keysWithoutArgumentsLength()).toEqual([]);
-      expect(keysWithoutArgumentsLength(null)).toEqual([]);
-      expect(keysWithoutArgumentsLength(NaN)).toEqual([]);
-      expect(keysWithoutArgumentsLength(undefined)).toEqual([]);
-      expect(keysWithoutArgumentsLength(0)).toEqual([]);
-      expect(keysWithoutArgumentsLength('')).toEqual([]);
-    });
-
-    it('Should return an arguments\'s keys', () => {
-      (function test() {
-        expect(keysWithoutArgumentsLength(arguments)).toEqual(['0', '1']);
-      }(1, 2));
-    });
-
-    it('Should return an argument\'s keys (with enumerable length property)', () => {
-      class Args {
-        constructor(args) {
-          [this[0], this[1]] = args;
-          this.length = args.length;
-        }
-
-        // eslint-disable-next-line class-methods-use-this
-        get [Symbol.toStringTag]() {
-          return 'Arguments';
-        }
-      }
-
-      const args = new Args([1, 2]);
-      expect(keysWithoutArgumentsLength(args)).toEqual(['0', '1']);
-    });
-
-    it('Should call `keys` otherwise', () => {
-      expect(keysWithoutArgumentsLength([1, 2])).toEqual(['0', '1']);
+  describe('removeLengthFromKeys', () => {
+    it('Should remove the `length` property from a keyset', () => {
+      expect(removeLengthFromKeys([])).toEqual([]);
+      expect(removeLengthFromKeys(['length'])).toEqual([]);
+      expect(removeLengthFromKeys([1, 2, 3, 'length', 4])).toEqual([1, 2, 3, 4]);
     });
   });
 });

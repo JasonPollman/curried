@@ -25,7 +25,7 @@ module.exports = ({ foldr, lodash }) => {
     },
     {
       name: 'Invokes `fn` (Null)',
-      expect: (result, assert) => assert(result === 'invoked!'),
+      expect: (result, assert) => assert(result === undefined),
       setup: () => [
         {
           foo: {

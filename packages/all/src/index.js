@@ -8,6 +8,7 @@
  * @file
  */
 
+import attempt from '@foldr/attempt';
 import binary from '@foldr/binary';
 import clamp from '@foldr/clamp';
 import compact from '@foldr/compact';
@@ -109,6 +110,7 @@ const VERSION = '0.0.0';
 export {
   _,
   VERSION,
+  attempt,
   binary,
   clamp,
   compact,

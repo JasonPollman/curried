@@ -6,6 +6,7 @@
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
+    "@foldr/attempt": "^0.0.0",
     "@foldr/binary": "^0.0.0",
     "@foldr/clamp": "^0.0.0",
     "@foldr/compact": "^0.0.0",

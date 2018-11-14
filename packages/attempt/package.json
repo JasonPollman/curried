@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/attempt",
+  "description": "Attempts to execute a function, return its result or the given fallback value.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/is-object": "^0.0.0"
+  }
+}

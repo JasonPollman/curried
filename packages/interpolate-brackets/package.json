@@ -2,7 +2,7 @@
   "name": "@foldr/interpolate-brackets",
   "version": "0.0.0",
   "description": "Interpolats strings enclosed in `[]`.",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

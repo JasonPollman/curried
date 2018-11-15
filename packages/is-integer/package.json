@@ -2,7 +2,7 @@
   "name": "@foldr/is-integer",
   "description": "Determines if a number is an integer.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

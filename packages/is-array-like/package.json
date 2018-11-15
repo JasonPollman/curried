@@ -2,7 +2,7 @@
   "name": "@foldr/is-array-like",
   "description": "Determines is an object is array-like (has a length and is non-falsy).",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

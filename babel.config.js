@@ -11,12 +11,28 @@ const targets = {
   ],
 };
 
+/**
+ * These are plugins we're excluding as they cause performance
+ * issues. Just be aware of why they're being excluded so you can
+ * guard for it in the code.
+ * @type {Array<string>}
+ */
+const exclude = [
+  // Excluding this as it kills performance where typeof === 'object' is
+  // concerned by adding the `_typeof` helper.
+
+  // BE AWARE THAT IN SOME OLDER BROWSER VERSIONS THAT TYPEOF SYMBOL
+  // IS ACTUALLY `object` (HENCE THE HELPER).
+  'babel-plugin-transform-typeof-symbol',
+];
+
 module.exports = {
   compact: true,
   comments: false,
   presets: [
     ['@babel/preset-env', {
       targets,
+      exclude,
     }],
     ['minify', {
       simplify: false,
@@ -29,6 +45,7 @@ module.exports = {
         ['@babel/preset-env', {
           modules: false,
           targets,
+          exclude,
         }],
       ],
     },
@@ -45,6 +62,7 @@ module.exports = {
         ['@babel/preset-env', {
           modules: false,
           targets,
+          exclude,
         }],
       ],
       plugins: [
@@ -65,6 +83,7 @@ module.exports = {
       presets: [
         ['@babel/preset-env', {
           modules: false,
+          exclude,
         }],
       ],
     },

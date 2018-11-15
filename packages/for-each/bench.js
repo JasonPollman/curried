@@ -1,10 +1,10 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const noop = () => {};
 
   const tests = {
     foldr: input => foldr.forEach(input, noop),
     lodash: input => lodash.forEach(input, noop),
-    rambda: input => rambda.forEach(input, noop),
+    ramda: input => ramda.forEach(input, noop),
   };
 
   return [

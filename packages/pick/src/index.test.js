@@ -45,6 +45,19 @@ describe('pick', () => {
     });
   });
 
+  it('Should pick an object\'s values (bad iteratee)', () => {
+    expect(pick({
+      foo: 1,
+      bar: 2,
+      baz: 0,
+      quxx: 3,
+    }, 0)).toEqual({
+      foo: 1,
+      bar: 2,
+      quxx: 3,
+    });
+  });
+
   it('Should work for Map objects', () => {
     const collection = new Map([['a', 1], ['b', 2], ['c', 3]]);
     expect(pick(collection, val => val > 1)).toEqual({

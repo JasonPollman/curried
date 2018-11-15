@@ -2,7 +2,7 @@
   "name": "@foldr/to-snake-case",
   "description": "Converts a string to snake case.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

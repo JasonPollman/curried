@@ -2,7 +2,7 @@
   "name": "@foldr/partial",
   "description": "Creates partial functions.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

@@ -36,7 +36,8 @@ import IteratorFactory from '@foldr/internal-iterator';
  * map('foobar', identity);           // => ['f', 'o', 'o', 'b', 'a', 'r']
  */
 export default IteratorFactory({
-  Results: Array,
+  Empty: () => [],
+  Results: () => [],
   handler: (results, iteratee, i, value, key, collection) => {
     results[i] = iteratee(value, key, collection);
   },

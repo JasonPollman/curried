@@ -39,7 +39,7 @@ import IteratorFactory from '@foldr/internal-iterator';
  * fold([1, 2, 3], square, 0); // => 14
  */
 export default IteratorFactory({
-  inject: true,
+  Empty: x => x,
   unwrap: results => results[0],
   Results: x => [x],
   initial: true,

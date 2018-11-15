@@ -1,4 +1,4 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const object = {};
 
   return [
@@ -8,7 +8,7 @@ module.exports = ({ foldr, lodash, rambda }) => {
       tests: {
         foldr: () => foldr.constant(1),
         lodash: () => lodash.constant(1),
-        rambda: () => rambda.always(1),
+        ramda: () => ramda.always(1),
       },
     },
     {
@@ -17,7 +17,7 @@ module.exports = ({ foldr, lodash, rambda }) => {
       tests: {
         foldr: () => foldr.constant(null),
         lodash: () => lodash.constant(null),
-        rambda: () => rambda.always(null),
+        ramda: () => ramda.always(null),
       },
     },
     {
@@ -26,7 +26,7 @@ module.exports = ({ foldr, lodash, rambda }) => {
       tests: {
         foldr: () => foldr.constant(object),
         lodash: () => lodash.constant(object),
-        rambda: () => rambda.always(object),
+        ramda: () => ramda.always(object),
       },
     },
   ];

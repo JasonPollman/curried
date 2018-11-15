@@ -11,6 +11,10 @@ describe('forEachRight', () => {
     expect(typeof forEachRight).toBe('function');
   });
 
+  it('Should iterate over all items (empty input)', () => {
+    expect(forEachRight(null, () => 5)).toEqual(undefined);
+  });
+
   it('Should iterate over all items', () => {
     let i = 0;
     const keys = [];

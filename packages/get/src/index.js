@@ -4,47 +4,13 @@
  * @file
  */
 
-import isString from '@foldr/is-string';
-import isObject from '@foldr/is-object';
-
-/**
- * Used to split paths.
- * @type {RegExp}
- * \]\.   => foo[1].bar
- *                ^^
- * \]\[   => foo[1][10]
- *                ^^
- * [[\].] => foo.bar[1]
- *              ^   ^ ^
- */
-const PATH_SPLITTER = /\]\.|\]\[|[[\].]/g;
-
-/**
- * Traverses an object tree until the `prop` array is empty.
- * @param {Object} object The object to traverse.
- * @param {Array<string>} props The list of properties to traverse down on
- * `object` until finding the last one.
- * @returns {any} The value of `props.join('.')`, as per traversing the tree.
- */
-function traverseObject(object, props) {
-  const size = props.length;
-
-  let i = 0;
-  let current = object;
-
-  while (i < size) {
-    current = current[props[i]];
-    if (i++ !== size - 1 && !isObject(current)) return undefined;
-  }
-
-  return current;
-}
+import toPath from '@foldr/to-path';
 
 /**
  * Walks the given object or string and finds the property
  * defined by `path`, which is a "path string" in the format:
  * `foo.bar.baz`, `foo[1].bar`, `foo[bar][baz]`.
- * @param {Object|Array|String} thing The thing to "get" from.
+ * @param {Object|Array|String} object The thing to "get" from.
  * @param {string} path The path of the property to get.
  * @param {any=} fallback The fallback value if `undefined`
  * is returned from the lookup.
@@ -65,21 +31,22 @@ function traverseObject(object, props) {
  * // Using a fallback value if the item at path doesn't exist or is undefined.
  * get(thing, 'foo.xxx', 'fallback'); // => 'fallback'
  */
-export default function get(thing, path, fallback) {
-  if (path == null || path === '') return fallback;
+export default function get(object, path, fallback) {
+  const props = toPath(path);
+  const size = props.length;
 
-  const isAStringThing = isString(thing);
-  if (!isAStringThing && !isObject(thing)) return fallback;
+  if (!size || !object) return fallback;
 
-  const props = path.toString().split(PATH_SPLITTER).filter(Boolean);
-  const delta = props.length;
+  let current = object;
+  let i = 0;
 
-  // Can't traverse more than one level deep on a string.
-  if (isAStringThing && delta > 1) return fallback;
+  if (size === 1) {
+    current = object[props[0]];
+  } else {
+    while (i < size && current != null) {
+      current = current[props[i++]];
+    }
+  }
 
-  const result = delta !== 1
-    ? traverseObject(thing, props)
-    : thing[props[0]];
-
-  return result === undefined ? fallback : result;
+  return current === undefined ? fallback : current;
 }

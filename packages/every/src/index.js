@@ -39,6 +39,7 @@ import IteratorFactory, { BREAK } from '@foldr/internal-iterator';
  */
 export default IteratorFactory({
   unwrap: results => results.x,
+  Empty: () => true,
   Results: () => ({ x: true }),
   handler: (results, iteratee, i, value, key, collection) => {
     if (iteratee(value, key, collection)) return undefined;

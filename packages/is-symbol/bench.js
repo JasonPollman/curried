@@ -1,8 +1,8 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: input => foldr.isSymbol(input),
     lodash: input => lodash.isSymbol(input),
-    rambda: input => rambda.is(Symbol, input),
+    ramda: input => ramda.is(Symbol, input),
   };
 
   return [

@@ -9,7 +9,6 @@ import toString from '@foldr/to-string';
 /* eslint-disable no-param-reassign */
 
 const ESCAPE_RE = /[\\^$.*+?()[\]{}|]/g;
-const { replace } = String.prototype;
 
 /**
  * Escapes characters that have special meaning in regular expressions. That is:
@@ -28,5 +27,5 @@ const { replace } = String.prototype;
  */
 export default function escapeRegExp(string) {
   string = toString(string);
-  return string && ESCAPE_RE.test(string) ? replace.call(string, ESCAPE_RE, '\\$&') : string;
+  return string && ESCAPE_RE.test(string) ? string.replace(ESCAPE_RE, '\\$&') : string;
 }

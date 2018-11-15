@@ -1,7 +1,7 @@
 {
   "private": true,
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "contributors": [
     {
       "name": "Jason James Pollman",
@@ -61,7 +61,7 @@
     "lerna": "^3.4.3",
     "lodash": "^4.17.11",
     "p-compose": "^1.0.1",
-    "rambda": "^1.2.6",
+    "ramda": "^0.25.0",
     "rimraf": "^2.6.2",
     "serve": "^10.1.1",
     "source-map-loader": "^0.2.4",

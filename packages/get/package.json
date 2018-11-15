@@ -1,12 +1,11 @@
 {
   "name": "@foldr/get",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "description": "Gets a value from an object specified by a path string.",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
-    "@foldr/is-string": "^0.0.0",
-    "@foldr/is-object": "^0.0.0"
+    "@foldr/to-path": "^0.0.0"
   }
 }

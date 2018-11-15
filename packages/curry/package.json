@@ -2,7 +2,7 @@
   "name": "@foldr/curry",
   "version": "0.0.0",
   "description": "Curries functions.",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

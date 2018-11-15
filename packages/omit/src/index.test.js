@@ -43,6 +43,17 @@ describe('omit', () => {
     });
   });
 
+  it('Should pick an object\'s values (bad iteratee)', () => {
+    expect(omit({
+      foo: 1,
+      bar: 2,
+      baz: 0,
+      quxx: 3,
+    }, 0)).toEqual({
+      baz: 0,
+    });
+  });
+
   it('Should work for Map objects', () => {
     const collection = new Map([['a', 1], ['b', 2], ['c', 3]]);
     expect(omit(collection, val => val > 1)).toEqual({

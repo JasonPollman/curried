@@ -49,7 +49,8 @@ import IteratorFactory from '@foldr/internal-iterator';
  * // }
  */
 export default IteratorFactory({
-  Results: Object,
+  Empty: () => ({}),
+  Results: () => ({}),
   prepare: getIteratee,
   handler: (results, iteratee, i, value, key, collection) => {
     results[iteratee(value, key, collection)] = value;

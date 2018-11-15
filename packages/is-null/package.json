@@ -2,7 +2,7 @@
   "name": "@foldr/is-null",
   "description": "Determines is a value is exactly null.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

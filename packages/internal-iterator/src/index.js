@@ -239,26 +239,25 @@ const ITERATOR_MAPPING_REVERSE = {
  * @export
  */
 function iteratorFromOptions({
+  Empty,
   Results,
   unwrap,
-  inject,
   mapping,
   handler,
   arrayIterator,
   prepare,
 }) {
   return (collection, userIteratee, initial) => {
-    const iteratee = prepare ? prepare(userIteratee) : userIteratee;
-    const results = inject ? Results(initial) : Results();
+    if (!collection) return Empty(initial);
 
-    if (!collection || typeof collection === 'function' || typeof iteratee !== 'function') {
-      return unwrap ? unwrap(results) : results;
-    }
+    const iteratee = prepare ? prepare(userIteratee) : userIteratee;
+    if (typeof iteratee !== 'function') return Empty(initial);
 
     // This is an optimization, since most "iterator" functions iterate
     // over array-like objects, this prevents the `toString.apply` call
     // for arrays, strings, and arguments objects.
     const iterate = collection.length >= 0 ? arrayIterator : mapping[toString.call(collection)];
+    const results = Results(initial);
 
     if (iterate) iterate(results, collection, handler, iteratee);
     return unwrap ? unwrap(results) : results;

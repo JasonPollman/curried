@@ -24,7 +24,7 @@ import {
 
 // Libraries we'll be testing...
 import lodash from 'lodash';
-import * as rambda from 'rambda';
+import * as ramda from 'ramda';
 import * as foldr from '../packages/all';
 
 import packageJson from '../package.json';
@@ -39,7 +39,7 @@ import {
 const LIBRARIES = {
   foldr,
   lodash,
-  rambda,
+  ramda,
 };
 
 const noop = () => {};

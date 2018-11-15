@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/to-number",
+  "description": "Converts a thing to a number.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-env": "^0.0.0"
+  }
+}

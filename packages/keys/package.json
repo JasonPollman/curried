@@ -2,10 +2,13 @@
   "name": "@foldr/keys",
   "version": "0.0.0",
   "description": "Like Object.keys",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
-    "@foldr/is-arguments": "^0.0.0"
+    "@foldr/map": "^0.0.0",
+    "@foldr/is-array": "^0.0.0",
+    "@foldr/is-map": "^0.0.0",
+    "@foldr/is-set": "^0.0.0"
   }
 }

@@ -1,7 +1,7 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: input => foldr.isBoolean(input),
-    rambda: input => rambda.is(Boolean)(input),
+    ramda: input => ramda.is(Boolean)(input),
     lodash: input => lodash.isBoolean(input),
   };
 

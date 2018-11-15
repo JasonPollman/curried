@@ -2,7 +2,7 @@
   "name": "@foldr/is-nan",
   "description": "Determines if a value is NaN.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

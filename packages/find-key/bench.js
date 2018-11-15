@@ -26,32 +26,6 @@ module.exports = ({ foldr, lodash }) => {
       tests,
     },
     {
-      name: 'Finds Key (List of Objects)',
-      expect: (result, assert) => assert(result === 1),
-      setup: () => [
-        { name: 'foo', age: 10, x: 'y' },
-        { name: 'foo', age: 30, x: 'y' },
-        { name: 'foo', age: 50, x: 'y' },
-      ],
-      tests: {
-        foldr: input => foldr.findKey(input, x => x.name === 'foo' && x.age === 30),
-        lodash: input => lodash.findKey(input, x => x.name === 'foo' && x.age === 30),
-      },
-    },
-    {
-      name: 'Finds Key (Shorthand Iteratee)',
-      expect: (result, assert) => assert(result === 1),
-      setup: () => [
-        { name: 'foo', age: 10, x: 'y' },
-        { name: 'foo', age: 30, x: 'y' },
-        { name: 'foo', age: 50, x: 'y' },
-      ],
-      tests: {
-        foldr: input => foldr.findKey(input, { name: 'foo', age: 30 }),
-        lodash: input => lodash.findKey(input, { name: 'foo', age: 30 }),
-      },
-    },
-    {
       name: 'Finds Key (Object)',
       expect: (result, assert) => assert(result === 'b'),
       setup: () => ({

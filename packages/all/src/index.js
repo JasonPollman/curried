@@ -4,11 +4,13 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-11-12
+ * @since 11/14/2018
  * @file
  */
 
+import attempt from '@foldr/attempt';
 import binary from '@foldr/binary';
+import clamp from '@foldr/clamp';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import constant from '@foldr/constant';
@@ -33,6 +35,7 @@ import identity from '@foldr/identity';
 import interpolate from '@foldr/interpolate';
 import interpolateBraces from '@foldr/interpolate-braces';
 import interpolateBrackets from '@foldr/interpolate-brackets';
+import invoke from '@foldr/invoke';
 import is from '@foldr/is';
 import isArguments from '@foldr/is-arguments';
 import isArray from '@foldr/is-array';
@@ -76,6 +79,7 @@ import once from '@foldr/once';
 import partial from '@foldr/partial';
 import pick from '@foldr/pick';
 import pipe from '@foldr/pipe';
+import random from '@foldr/random';
 import rearg from '@foldr/rearg';
 import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
@@ -84,8 +88,11 @@ import some from '@foldr/some';
 import t from '@foldr/t';
 import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
+import toFinite from '@foldr/to-finite';
 import toKebabCase from '@foldr/to-kebab-case';
 import toLowerCase from '@foldr/to-lower-case';
+import toNumber from '@foldr/to-number';
+import toPath from '@foldr/to-path';
 import toSnakeCase from '@foldr/to-snake-case';
 import toString from '@foldr/to-string';
 import toStringTag from '@foldr/to-string-tag';
@@ -94,6 +101,7 @@ import toUpperCase from '@foldr/to-upper-case';
 import toUpperFirst from '@foldr/to-upper-first';
 import toWords from '@foldr/to-words';
 import unary from '@foldr/unary';
+import values from '@foldr/values';
 import zip from '@foldr/zip';
 
 const { _ } = curry;
@@ -102,7 +110,9 @@ const VERSION = '0.0.0';
 export {
   _,
   VERSION,
+  attempt,
   binary,
+  clamp,
   compact,
   compose,
   constant,
@@ -127,6 +137,7 @@ export {
   interpolate,
   interpolateBraces,
   interpolateBrackets,
+  invoke,
   is,
   isArguments,
   isArray,
@@ -170,6 +181,7 @@ export {
   partial,
   pick,
   pipe,
+  random,
   rearg,
   reverse,
   shuffle,
@@ -178,8 +190,11 @@ export {
   t,
   tail,
   toCamelCase,
+  toFinite,
   toKebabCase,
   toLowerCase,
+  toNumber,
+  toPath,
   toSnakeCase,
   toString,
   toStringTag,
@@ -188,5 +203,6 @@ export {
   toUpperFirst,
   toWords,
   unary,
+  values,
   zip,
 };

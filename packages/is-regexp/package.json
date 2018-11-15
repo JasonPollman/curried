@@ -2,7 +2,7 @@
   "name": "@foldr/is-regexp",
   "description": "Determines if a value is an instance of the RegExp constructor.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

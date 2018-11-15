@@ -2,7 +2,7 @@
   "name": "@foldr/is-array",
   "version": "0.0.0",
   "description": "Determines if a value is an Array object.",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false
 }

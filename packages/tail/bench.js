@@ -1,8 +1,8 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: x => foldr.tail(x),
     lodash: x => lodash.tail(x),
-    rambda: x => rambda.tail(x),
+    ramda: x => ramda.tail(x),
   };
 
   return [

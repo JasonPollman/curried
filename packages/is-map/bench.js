@@ -1,7 +1,7 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: input => foldr.isMap(input),
-    rambda: input => rambda.is(Map)(input),
+    ramda: input => ramda.is(Map)(input),
     lodash: input => lodash.isMap(input),
   };
 

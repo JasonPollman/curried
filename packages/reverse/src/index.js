@@ -16,7 +16,7 @@
  * @example
  *
  * const items = ['foo', 'bar', 'baz'];
- * reverse(items); // => ['baz', 'bar', 'foo]
+ * reverse(items); // => ['baz', 'bar', 'foo']
  */
 export default function reverse(array) {
   const results = [];

@@ -2,7 +2,7 @@
   "name": "@foldr/pick",
   "description": "Creates an object from an existing one selecting only the specified keys.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

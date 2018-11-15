@@ -1,8 +1,8 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: x => foldr.reverse(x),
     lodash: x => lodash.reverse(x),
-    rambda: x => rambda.reverse(x),
+    ramda: x => ramda.reverse(x),
   };
 
   return [

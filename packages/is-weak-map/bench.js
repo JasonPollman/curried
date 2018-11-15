@@ -1,7 +1,7 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: input => foldr.isWeakMap(input),
-    rambda: input => rambda.is(WeakMap)(input),
+    ramda: input => ramda.is(WeakMap)(input),
     lodash: input => lodash.isWeakMap(input),
   };
 

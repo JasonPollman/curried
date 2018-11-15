@@ -1,10 +1,10 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const keepEven = x => x % 2 === 0;
 
   const tests = {
     foldr: input => foldr.filter(input, keepEven),
     lodash: input => lodash.filter(input, keepEven),
-    rambda: input => rambda.filter(keepEven, input),
+    ramda: input => ramda.filter(keepEven, input),
   };
 
   return [
@@ -27,12 +27,12 @@ module.exports = ({ foldr, lodash, rambda }) => {
       tests: {
         foldr: input => foldr.filter(input, x => x === 'a'),
         lodash: input => lodash.filter(input, x => x === 'a'),
-        rambda: input => rambda.filter(x => x === 'a', input),
+        ramda: input => ramda.filter(x => x === 'a', input),
       },
     },
     {
       name: 'Filters an Object',
-      expect: (result, { deepEqual }, library) => (library === 'rambda'
+      expect: (result, { deepEqual }, library) => (library === 'ramda'
         ? deepEqual(result, { bar: 2 })
         : deepEqual(result, [2])
       ),

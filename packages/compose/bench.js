@@ -1,7 +1,7 @@
-module.exports = ({ foldr, lodash, rambda }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: input => foldr.compose(...input)(1),
-    rambda: input => rambda.compose(...input)(1),
+    ramda: input => ramda.compose(...input)(1),
     lodash: input => lodash.flowRight(...input)(1),
   };
 

@@ -13,6 +13,10 @@ describe('fold', () => {
     expect(typeof foldRight).toBe('function');
   });
 
+  it('Should fold an array (empty input)', () => {
+    expect(foldRight(null, sum, 0)).toEqual(0);
+  });
+
   it('Should fold an array (1)', () => {
     expect(foldRight([1, 2, 3, 4], sum, 0)).toEqual(10);
   });

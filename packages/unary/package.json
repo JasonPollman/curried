@@ -2,7 +2,7 @@
   "name": "@foldr/unary",
   "description": "Limits the arity of a function to 1.",
   "version": "0.0.0",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist",
   "sideEffects": false,
   "dependencies": {

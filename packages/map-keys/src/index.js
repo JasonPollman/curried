@@ -52,7 +52,7 @@ export default IteratorFactory({
   Empty: () => ({}),
   Results: () => ({}),
   prepare: getIteratee,
-  handler: (results, iteratee, i, value, key, collection) => {
+  handler: (context, results, iteratee, i, value, key, collection) => {
     results[iteratee(value, key, collection)] = value;
   },
 });

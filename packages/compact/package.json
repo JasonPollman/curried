@@ -3,5 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "main": "dist",
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fn-factory": "^0.0.0"
+  }
 }

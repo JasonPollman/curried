@@ -1,7 +1,10 @@
 /**
- * Returns the first index of a proven array.
- * @param {Array} array - The array that will provide the first index.
- * @returns {Array} - The value at the first index of an array.
+ * Returns the value at the first index of an array.
+ *
+ * @name head
+ * @param {Array} array The array that will provide the first index.
+ * @returns {Array} The value at the first index of an array.
+ *
  * @category array
  * @memberof foldr
  * @since v0.0.0

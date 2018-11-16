@@ -42,7 +42,7 @@ export default IteratorFactory({
   unwrap: results => results.x,
   Results: () => ({ x: undefined }),
   prepare: getIteratee,
-  handler: (results, iteratee, i, value, key, collection) => {
+  handler: (context, results, iteratee, i, value, key, collection) => {
     if (!iteratee(value, key, collection)) return undefined;
     results.x = key;
     return BREAK;

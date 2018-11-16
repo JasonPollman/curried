@@ -74,7 +74,7 @@ export default IteratorFactory({
   Empty: () => ({}),
   Results: () => ({}),
   prepare: prepareOmitIteratee,
-  handler: (results, iteratee, i, value, key, collection) => {
+  handler: (context, results, iteratee, i, value, key, collection) => {
     if (!iteratee(value, key, collection)) results[key] = value;
   },
 });

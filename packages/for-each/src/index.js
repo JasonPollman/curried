@@ -34,7 +34,7 @@ import IteratorFactory from '@foldr/internal-iterator';
 export default IteratorFactory({
   Empty: () => undefined,
   Results: () => undefined,
-  handler: (results, iteratee, i, value, key, collection) => {
+  handler: (context, results, iteratee, i, value, key, collection) => {
     iteratee(value, key, collection);
   },
 });

@@ -31,7 +31,7 @@ export default IteratorFactory({
   reverse: true,
   Empty: () => undefined,
   Results: () => undefined,
-  handler: (results, iteratee, i, value, key, collection) => {
+  handler: (context, results, iteratee, i, value, key, collection) => {
     iteratee(value, key, collection);
   },
 });

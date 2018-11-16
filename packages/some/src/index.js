@@ -44,7 +44,7 @@ export default IteratorFactory({
   unwrap: results => results[0],
   Empty: () => false,
   Results: () => [false],
-  handler: (results, iteratee, i, value, key, collection) => {
+  handler: (context, results, iteratee, i, value, key, collection) => {
     if (!iteratee(value, key, collection)) return undefined;
     results[0] = true;
     return BREAK;

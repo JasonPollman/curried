@@ -1,3 +1,8 @@
+/**
+ * Exports the `has` function.
+ * @since 10/23/18
+ * @file
+ */
 
 const { hasOwnProperty } = Object.prototype;
 

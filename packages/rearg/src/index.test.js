@@ -4,7 +4,8 @@
  * @file
  */
 
-import rearg, { IS_REARGED, SOURCE } from '.';
+import { IS_REARGED, SOURCE } from '@foldr/internal-rearg';
+import rearg from '.';
 
 describe('rearg', () => {
   it('Should be a function', () => {

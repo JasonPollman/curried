@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/internal-rearg",
+  "description": "Rearranges the arguments of a function—for @foldr internal use only.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-symbol": "^0.0.0"
+  }
+}

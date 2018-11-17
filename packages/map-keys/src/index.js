@@ -6,7 +6,7 @@
 
 import getIteratee from '@foldr/internal-iteratee';
 import IteratorFactory from '@foldr/internal-iterator';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /* eslint-disable no-param-reassign */
 

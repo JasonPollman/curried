@@ -5,7 +5,7 @@
  */
 
 import IteratorFactory from '@foldr/internal-iterator';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /**
  * This function is like `map` except that iteration is performed from right to left.

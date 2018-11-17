@@ -5,7 +5,7 @@
  */
 
 import isArrayLike from '@foldr/is-array-like';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /**
  * Creates an array of values grouped by index.

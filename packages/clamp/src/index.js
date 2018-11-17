@@ -5,7 +5,7 @@
  */
 
 import toNumber from '@foldr/to-number';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 const INF = Infinity;
 

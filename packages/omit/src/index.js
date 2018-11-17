@@ -5,7 +5,7 @@
  */
 
 import IteratorFactory from '@foldr/internal-iterator';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /**
  * The identity function.

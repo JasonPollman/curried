@@ -5,7 +5,7 @@
  */
 
 import isObject from '@foldr/is-object';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /* eslint-disable prefer-spread */
 

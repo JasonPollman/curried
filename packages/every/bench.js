@@ -7,7 +7,7 @@ module.exports = ({ foldr, lodash, fp }) => {
   };
 
   const functionalTests = {
-    foldr: input => foldr.every.fn(hasEven, input),
+    foldr: input => foldr.every.f(hasEven, input),
     lodash: input => fp.every(hasEven, input),
   };
 
@@ -62,7 +62,7 @@ module.exports = ({ foldr, lodash, fp }) => {
       expect: (result, assert) => assert(result === false),
       setup: () => 'xyzabc',
       tests: {
-        foldr: input => foldr.every.fn(x => x === 'a', input),
+        foldr: input => foldr.every.f(x => x === 'a', input),
         lodash: input => fp.every(x => x === 'a', input),
       },
     },

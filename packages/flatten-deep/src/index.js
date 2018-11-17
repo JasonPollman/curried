@@ -5,7 +5,7 @@
  */
 
 import isArray from '@foldr/is-array';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /**
  * Base recursive functionality for `flattenDeep`.

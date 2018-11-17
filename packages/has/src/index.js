@@ -4,7 +4,7 @@
  * @file
  */
 
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 const { hasOwnProperty } = Object.prototype;
 

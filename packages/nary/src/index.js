@@ -4,7 +4,7 @@
  * @file
  */
 
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /**
  * Creates a function that wraps `fn` and invokes it with up to `n` arguments.

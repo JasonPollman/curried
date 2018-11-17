@@ -4,7 +4,7 @@
  * @file
  */
 
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /**
  * Returns the nth element in an array.

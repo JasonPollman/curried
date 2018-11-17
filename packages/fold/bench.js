@@ -23,7 +23,7 @@ module.exports = ({
   };
 
   const functionalTests = {
-    foldr: ([input, acc]) => foldr.fold.fn(sum, acc, input),
+    foldr: ([input, acc]) => foldr.fold.f(sum, acc, input),
     lodash: ([input, acc]) => fp.reduce(sum, acc, input),
     ramda: ([input, acc]) => ramda.reduce(sum, acc, input),
   };
@@ -56,7 +56,7 @@ module.exports = ({
       expect: (result, { deepEqual }) => deepEqual(result, [2, 4, 6, 8, 10, 12]),
       setup: () => [[1, 2, 3, 4, 5, 6], () => []],
       tests: {
-        foldr: ([input, acc]) => foldr.fold.fn(doubleFN, acc(), input),
+        foldr: ([input, acc]) => foldr.fold.f(doubleFN, acc(), input),
         lodash: ([input, acc]) => fp.reduce(doubleFN, acc(), input),
         ramda: ([input, acc]) => ramda.reduce(doubleFN, acc(), input),
       },

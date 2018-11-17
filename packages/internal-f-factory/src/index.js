@@ -12,6 +12,7 @@ import rearg from '@foldr/internal-rearg';
 
 /* eslint-disable no-param-reassign */
 
+const has = Object.hasOwnProperty;
 const identity = x => x;
 
 /**
@@ -68,6 +69,10 @@ export default function FunctionalFactory(fn, options) {
     return functionalize(fn, {
       ...config,
       ...overrides,
+
+      // Aliasing this to make more sense to the end user.
+      // Note, this option is passed to curry's options.
+      optimized: has.call(overrides, 'context') ? overrides.context : config.optimized,
     });
   }
 

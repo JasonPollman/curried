@@ -13,7 +13,7 @@ module.exports = ({
   };
 
   const functionalTests = {
-    foldr: input => foldr.filter.fn(keepEven, input),
+    foldr: input => foldr.filter.f(keepEven, input),
     lodash: input => fp.filter(keepEven, input),
     ramda: input => ramda.filter(keepEven, input),
   };
@@ -58,7 +58,7 @@ module.exports = ({
       expect: (result, { deepEqual }) => deepEqual(result, ['a']),
       setup: () => 'abc',
       tests: {
-        foldr: input => foldr.filter.fn(x => x === 'a', input),
+        foldr: input => foldr.filter.f(x => x === 'a', input),
         lodash: input => fp.filter(x => x === 'a', input),
         ramda: input => ramda.filter(x => x === 'a', input),
       },

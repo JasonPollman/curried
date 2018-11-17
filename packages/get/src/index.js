@@ -5,7 +5,7 @@
  */
 
 import toPath from '@foldr/to-path';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /**
  * Walks the given object or string and finds the property

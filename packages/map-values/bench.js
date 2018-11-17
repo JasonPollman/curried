@@ -13,7 +13,7 @@ module.exports = ({
   };
 
   const functionalTests = {
-    foldr: input => foldr.mapValues.fn(double, input),
+    foldr: input => foldr.mapValues.f(double, input),
     lodash: input => fp.mapValues(double, input),
     ramda: input => ramda.map(double, input),
   };
@@ -67,7 +67,7 @@ module.exports = ({
         c: { name: 'c' },
       }),
       tests: {
-        foldr: input => foldr.mapValues.fn('name', input),
+        foldr: input => foldr.mapValues.f('name', input),
         lodash: input => fp.mapValues('name', input),
       },
     },

@@ -1,5 +1,5 @@
 {
-  "name": "@foldr/internal-fn-factory",
+  "name": "@foldr/internal-f-factory",
   "description": "Creates functional versions of @foldr methods—for internal use only.",
   "version": "0.0.0",
   "license": "MIT",

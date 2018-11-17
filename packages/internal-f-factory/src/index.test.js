@@ -1,5 +1,5 @@
 /**
- * Tests for the `internal-fn-factory` file.
+ * Tests for the `internal-f-factory` file.
  * @since 10/23/18
  * @file
  */

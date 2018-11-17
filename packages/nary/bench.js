@@ -4,7 +4,7 @@ module.exports = ({ fp, foldr, lodash }) => {
   const fbinary = foldr.nary(x, 2);
   const lbinary = lodash.ary(x, 2);
 
-  const fbinaryFn = foldr.nary.fn(2, x);
+  const fbinaryFn = foldr.nary.f(2, x);
   const lbinaryFn = fp.ary(2, x);
 
   const tests = {

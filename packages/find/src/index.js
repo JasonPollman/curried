@@ -5,7 +5,7 @@
  */
 
 import getIteratee from '@foldr/internal-iteratee';
-import FunctionalFactory from '@foldr/internal-fn-factory';
+import FunctionalFactory from '@foldr/internal-f-factory';
 import IteratorFactory, { BREAK } from '@foldr/internal-iterator';
 
 /* eslint-disable no-param-reassign */

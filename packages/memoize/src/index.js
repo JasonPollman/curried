@@ -99,6 +99,7 @@ function emsg(arg) {
  * results calls to `fn`. You can override `memoize.Cache` with anything that implements
  * a `Map` like interface.
  *
+ * @name memoize
  * @param {function} fn The function to memoize.
  * @param {function=} [resolver=memoize.resolver] The cache key resolver. This is a function
  * used to generate the cache key for the current call. This should serialize arguments in
@@ -114,7 +115,9 @@ function emsg(arg) {
  *  - `clear`
  *  - `delete`
  * @returns {function} The memoized version of `fn`.
- * @memberof foldr
+ *
+ * @category function
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

@@ -24,7 +24,7 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
  * @returns {Object} The results of mapping the `collection` using `iteratee`.
  *
  * @category object
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -64,7 +64,7 @@ const mapValues = IteratorFactory({
  * Iteratee functions are called with the signature `iteratee(value)`, where
  * `value` is the current item in the collection being iterated over.
  *
- * @name mapValues.fn
+ * @name mapValues.f
  * @param {function} iteratee The iteratee function to use while mapping values.
  * @param {Object} collection The collection to map the values of.
  * @returns {Object} The results of mapping the `collection` using `iteratee`.
@@ -72,7 +72,7 @@ const mapValues = IteratorFactory({
  * @arity 2
  * @autocurried
  * @category object
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -81,7 +81,7 @@ const mapValues = IteratorFactory({
  *   return x ** 2;
  * }
  *
- * mapValues.fn(square, { foo: 1, bar: 2, baz: 3 }); // => { foo: 1, bar: 4, baz: 9 }
+ * mapValues.f(square, { foo: 1, bar: 2, baz: 3 }); // => { foo: 1, bar: 4, baz: 9 }
  *
  * // Using the shorthand string iteratee you can
  * // map an object to a property of the object.
@@ -92,9 +92,9 @@ const mapValues = IteratorFactory({
  *   3: { name: 'Al', age: 18 },
  * };
  *
- * mapValues('name')(people); // => { 1: 'Ben', 2: 'John', 3: 'Al' }
+ * mapValues.f('name')(people); // => { 1: 'Ben', 2: 'John', 3: 'Al' }
  */
-export const fn = FunctionalFactory(mapValues, {
+export const f = FunctionalFactory(mapValues, {
   arity: 2,
   capped: true,
   context: 'config',

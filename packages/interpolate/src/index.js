@@ -80,7 +80,7 @@ function replacer({ escape = '\\', strict = false, onReplacement = identity }, t
  * @param {Object} tokens The set of tokens that can be used as replacements in `string`.
  * @returns {string} The interpolated string.
  * @category string
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @autocurried
  * @export

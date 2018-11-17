@@ -6,6 +6,7 @@
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
+    "@foldr/internal-fn-factory": "^0.0.0",
     "@foldr/internal-iterator": "^0.0.0",
     "@foldr/internal-iteratee": "^0.0.0"
   }

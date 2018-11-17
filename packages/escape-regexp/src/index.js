@@ -17,7 +17,7 @@ const ESCAPE_RE = /[\\^$.*+?()[\]{}|]/g;
  * @param {string} string The string to escape.
  * @returns {string} The escaped string.
  * @category utility
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @example
  *

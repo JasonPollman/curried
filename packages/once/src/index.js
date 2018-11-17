@@ -7,10 +7,13 @@ function noop() {}
 /**
  * Creates a function that wraps and limits the invocation of `fn` to one call.
  * If fn is invoked more than once, it returns the result from the first invocation.
+ *
+ * @name once
  * @param {function} fn The function to "once"
  * @returns {any} Whatever is returned from the first call to `fn`.
+ *
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

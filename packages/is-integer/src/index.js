@@ -32,7 +32,7 @@ export function isIntegerPolyfill(x) {
  * @param {any} x The value to assert.
  * @returns {boolean} True if `x` is an integer, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

@@ -7,11 +7,14 @@
 import toString from '@foldr/to-string';
 
 /**
- * Converts the first character of a string to uppercase.
+ * Capitalizes the first character of a string.
+ *
+ * @name toUpperFirst
  * @param {string} str The string to conver to upper first.
  * @returns {string} The string with the first character uppercased.
- * @category util
- * @memberof foldr
+ *
+ * @category string
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

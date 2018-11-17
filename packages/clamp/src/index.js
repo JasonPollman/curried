@@ -31,7 +31,7 @@ const INF = Infinity;
  * @returns {number} The clamped value.
  *
  * @category number
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -79,7 +79,7 @@ export default function clamp(x, lower, upper) {
  * If `lower` or `upper` is `NaN`, they are converted to `-Infinity`
  * and `Infinity`, respectively.
  *
- * @name clamp.fn
+ * @name clamp.f
  * @param {number=} lower The minimum value `x` can be.
  * @param {number} upper The maximum value `x` can be.
  * @param {number} x The value to clamp.
@@ -88,16 +88,16 @@ export default function clamp(x, lower, upper) {
  * @arity 3
  * @autocurried
  * @category functional
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
  *
- * clamp.fn(0, 10)(5);   // => 5
- * clamp.fn(0, 10)(-10); // => 0
- * clamp.fn(10)(20)(0);  // => 10
+ * clamp.f(0, 10)(5);   // => 5
+ * clamp.f(0, 10)(-10); // => 0
+ * clamp.f(10)(20)(0);  // => 10
  */
-export const fn = FunctionalFactory(clamp, {
+export const f = FunctionalFactory(clamp, {
   arity: 3,
   signature: [2, 0, 1],
 });

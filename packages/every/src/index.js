@@ -26,7 +26,7 @@ import IteratorFactory, { BREAK } from '@foldr/internal-iterator';
  * for `predicate`, false otherwise.
  *
  * @category collection
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -64,7 +64,7 @@ const every = IteratorFactory({
  * Predicate functions are called with the signature `predicate(value)`, where
  * `value` is the current item in the collection being iterated over.
  *
- * @name every.fn
+ * @name every.f
  * @param {function} predicate The predicate iteratee function.
  * @param {Array|Object|String|Arguments} collection The collection to iterate over.
  * @returns {boolean} True if all items in the collection return true
@@ -73,7 +73,7 @@ const every = IteratorFactory({
  * @arity 2
  * @autocurried
  * @category collection
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -82,13 +82,13 @@ const every = IteratorFactory({
  *   return x % 2 === 0;
  * }
  *
- * every.fn(isEven, [1, 2, 3]);            // => false
- * every.fn(isEven, [2, 4, 6]);            // => true
+ * every.f(isEven, [1, 2, 3]);            // => false
+ * every.f(isEven, [2, 4, 6]);            // => true
  *
- * every.fn(isEven, { a: 1, b: 2, c: 3 }); // => false
- * every.fn(isEven, { a: 2, b: 4, c: 6 }); // => true
+ * every.f(isEven, { a: 1, b: 2, c: 3 }); // => false
+ * every.f(isEven, { a: 2, b: 4, c: 6 }); // => true
  */
-export const fn = FunctionalFactory(every, {
+export const f = FunctionalFactory(every, {
   arity: 2,
   capped: true,
   context: 'config',

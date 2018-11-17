@@ -20,7 +20,7 @@ import internalRearg from '@foldr/internal-rearg';
  * @returns {function} The rearged function.
  *
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

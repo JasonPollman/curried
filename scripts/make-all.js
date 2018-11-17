@@ -21,6 +21,7 @@ import {
 import {
   log,
   logTap,
+  camelize,
   MAP_CONCURRENCY,
   PACKAGES_DIRECTORY,
   getPackageFilelist,
@@ -52,18 +53,6 @@ const EXTRAS = ({ packageJson }) => ({
     'VERSION',
   ],
 });
-
-/**
- * A weak implementation of camel casing a string.
- * @param {string} string The string to camel case.
- * @returns {string} The camel cased string.
- */
-function camelize(string) {
-  return string
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, ($0, i) => (i === 0 ? $0.toLowerCase() : $0.toUpperCase()))
-    .replace(/\s+/g, '')
-    .replace(/[^a-z]/ig, '');
-}
 
 /**
  * Gets the package.json contents for the /packages/all package.

@@ -24,7 +24,7 @@ export function isFinitePolyfill(x) {
  * @param {any} x The value to assert finiteness.
  * @returns {boolean} True if `x` is a finite, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

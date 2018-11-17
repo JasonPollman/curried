@@ -5,6 +5,7 @@
  */
 
 import IteratorFactory from '@foldr/internal-iterator';
+import FunctionalFactory from '@foldr/internal-fn-factory';
 
 /**
  * The identity function.
@@ -47,13 +48,15 @@ function prepareOmitIteratee(iteratee) {
  * `value` is the current item in the collection, `key` is the key of the current item in the
  * collection, and `collection` is collection.
  *
+ * @name omit
  * @param {Object} collection The collection to omit properties from.
  * @param {Array|function} iteratee The iteratee function to use while omitting. If given
  * an array, all of the own properties of `collection` that exist in the array will be
  * omitted, all other values will be included in the results object.
  * @returns {Object} A new object with all but the omitted values.
+ *
  * @category object
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -70,11 +73,56 @@ function prepareOmitIteratee(iteratee) {
  * // Using a function
  * omit(data, (value, key) => value[0] === 'b'); // => { foo: 'foo }
  */
-export default IteratorFactory({
+const omit = IteratorFactory({
   Empty: () => ({}),
   Results: () => ({}),
   prepare: prepareOmitIteratee,
   handler: (context, results, iteratee, i, value, key, collection) => {
-    if (!iteratee(value, key, collection)) results[key] = value;
+    if (context && context.capped ? !iteratee(value) : !iteratee(value, key, collection)) {
+      results[key] = value;
+    }
   },
 });
+
+
+/**
+ * Functional, autocurried version of [omit](#omit).
+ *
+ * Creates a new object by "omitting" the given properties from `collection`.
+ *
+ * Iteratee functions are called with the signature `iteratee(value)`, where
+ * `value` is the current item in the collection being iterated over.
+ *
+ * @name omit.f
+ * @param {Array|function} iteratee The iteratee function to use while omitting. If given
+ * an array, all of the own properties of `collection` that exist in the array will be
+ * omitted, all other values will be included in the results object.
+ * @param {Object} collection The collection to omit properties from.
+ * @returns {Object} A new object with all but the omitted values.
+ *
+ * @arity 2
+ * @autocurried
+ * @category functional
+ * @publishdoc
+ * @since v0.0.0
+ * @export
+ * @example
+ *
+ * const data = {
+ *   foo: 'foo',
+ *   bar: 'bar',
+ *   baz: 'baz',
+ * };
+ *
+ * // Using array shorthand
+ * omit.f(['foo', 'baz'], omit); // => { bar: 'bar' }
+ *
+ * // Using a function
+ * omit.f((value, key) => value[0] === 'b')(data); // => { foo: 'foo }
+ */
+export const f = FunctionalFactory(omit, {
+  arity: 2,
+  signature: [1, 0],
+});
+
+export default omit;

@@ -5,7 +5,6 @@
  */
 
 import internalCurry, { _ } from '@foldr/internal-curry';
-import FunctionalFactory from '@foldr/internal-fn-factory';
 
 /**
  * Curries a function.
@@ -18,7 +17,7 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
  * @returns {function} The curried version of `fn`.
  *
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -54,41 +53,3 @@ export default function curry(fn, options = {}) {
 // Exposing the placeholder property...
 curry._ = _;
 export { _ };
-
-/**
- * Functional, autocurried version of [curry](#curry).
- * Curries a function.
- *
- * @name curry.fn
- * @param {function} fn The function to curry.
- * @param {Object=} options Currying options.
- * @param {number} [options.arity=fn.length] The arity of `fn` or
- * a specific arity override to curry `fn` to.
- * @returns {function} The curried version of `fn`.
- *
- * @arity 1
- * @autocurried
- * @category functional
- * @memberof foldr
- * @since v0.0.0
- * @export
- * @example
- *
- * const curried = curry.fn((x, y, z) => x + y + z);
- * curried()        // => curried
- * curried(1)       // => [object Function]
- * curried(1)(2)    // => [object Function]
- * curried(1)(2)(3) // => 6
- * curried(1, 2)(3) // => 6
- * curried(1)(2, 3) // => 6
- * curried(1, 2, 3) // => 6
- *
- * // You can also use partial application (placeholders)...
- * const triples = curry.fn((a, b, c) => [a, b, c]);
- * triples(_, 2, 3)(1)    // => [1, 2, 3]
- * triples(_, _, 3)(1)(2) // => [1, 2, 3]
- * triples(1)(_)(2)(_)(3) // => [1, 2, 3]
- * triples(1)(_, 3)(2)    // => [1, 2, 3]
- * triples(_, 2)(1)(3)    // => [1, 2, 3]
- */
-export const fn = FunctionalFactory(curry, { arity: 1 });

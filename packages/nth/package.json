@@ -4,5 +4,8 @@
   "description": "Gets the nth element from an array",
   "license": "MIT",
   "main": "dist",
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fn-factory": "^0.0.0"
+  }
 }

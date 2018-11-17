@@ -19,11 +19,14 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
  * Iteratee functions are called with the signature `iteratee(value, key, collection)`, where
  * `value` is the current item in the collection, `key` is the key of the current item in the
  * collection, and `collection` is collection.
+ *
+ * @name map
  * @param {Array|Object|String|Arguments} collection The collection to iterate over.
  * @param {function} iteratee The iterate function to use while mapping.
  * @returns {Array} The results of mapping `collection` to `iteratee`.
+ *
  * @category collection
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -53,7 +56,7 @@ const map = IteratorFactory({
  * Iteratee functions are called with a single argument (`value`), that is is the current item
  * in the collection being iterated over.
  *
- * @name map.fn
+ * @name map.f
  * @param {function} iteratee The iterate function to use while mapping.
  * @param {Array|Object|String|Arguments} collection The collection to iterate over.
  * @returns {Array} The results of mapping `collection` to `iteratee`.
@@ -61,7 +64,7 @@ const map = IteratorFactory({
  * @arity 2
  * @autocurried
  * @category functional
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -70,11 +73,11 @@ const map = IteratorFactory({
  *   return x ** 2;
  * }
  *
- * map.fn(square, [1, 2, 3]);            // => [1, 4, 9]
- * map.fn(square, { a: 1, b: 2, c: 3 }); // => [1, 4, 9]
- * map.fn(identity, 'foobar');           // => ['f', 'o', 'o', 'b', 'a', 'r']
+ * map.f(square, [1, 2, 3]);            // => [1, 4, 9]
+ * map.f(square, { a: 1, b: 2, c: 3 }); // => [1, 4, 9]
+ * map.f(identity, 'foobar');           // => ['f', 'o', 'o', 'b', 'a', 'r']
  */
-export const fn = FunctionalFactory(map, {
+export const f = FunctionalFactory(map, {
   arity: 2,
   capped: true,
   context: 'config',

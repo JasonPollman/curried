@@ -21,7 +21,7 @@ const isThenable = x => typeof x.then === 'function' && typeof x.catch === 'func
  * @param {any} x The value to determine whether or not it's a Promise.
  * @returns {boolean} True if `x` is a Promise, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

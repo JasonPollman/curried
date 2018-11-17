@@ -9,7 +9,7 @@
  * @param {any} x The value to assert undefined-ness.
  * @returns {boolean} True if `x` is undefined, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

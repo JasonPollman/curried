@@ -43,7 +43,7 @@ const hasObjectConstructor = IS_NODE
  * @param {any} x The value to determine whether or not it's a plain object.
  * @returns {boolean} True if `x` is a plain object, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

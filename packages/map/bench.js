@@ -1,4 +1,6 @@
-module.exports = ({ foldr, lodash, ramda, fp }) => {
+module.exports = ({
+  foldr, lodash, ramda, fp,
+}) => {
   const double = x => x * 2;
 
   const tests = {

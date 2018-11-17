@@ -12,7 +12,7 @@ import isObjectLike from '@foldr/is-object-like';
  * @param {any} x The value to check.
  * @returns {boolean} True if `thing` is a boolean, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

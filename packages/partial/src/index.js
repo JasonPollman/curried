@@ -67,7 +67,7 @@ function partialize(fn, partials) {
  * @param {function} fn The function to partialize.
  * @returns {function} The partialized function.
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

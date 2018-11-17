@@ -41,7 +41,7 @@ const isCheck = IS_NODE ? isNodeCheck : /* istanbul ignore next */ isBrowserChec
  * @param {any} value The value to test.
  * @returns {boolean} True if `value` is a `Constructor` instance, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

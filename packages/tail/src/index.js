@@ -1,10 +1,13 @@
 
 /**
  * Returns a new array containing all elements of the provided array except the first.
+ *
+ * @name tail
  * @param {Array} array The array to get the tail of.
  * @returns {Array} A new array containing the elements 1..N from the original array.
+ *
  * @category array
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

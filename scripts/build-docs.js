@@ -9,6 +9,7 @@ import fs from 'fs-extra-promise';
 import jsdoc from 'jsdoc-api';
 import Promise from 'bluebird';
 import compose from 'p-compose';
+import marked from 'marked';
 
 import {
   red,
@@ -19,6 +20,7 @@ import {
 import {
   log,
   logTap,
+  camelize,
   PROJECT_ROOT,
   MAP_CONCURRENCY,
   PROJECT_META_ROOT,
@@ -36,23 +38,33 @@ import packageJson from '../package.json';
 const DOCS_DESTNATION = path.join(PROJECT_META_ROOT, 'docs');
 
 /**
- * Returns a function that's passed to Promise.map and bound to the given
- * `docsBucket`. This function will read the current package's package.json
- * and parse it's JSDocs, then add the appropriate information to `docsBucket`.
- * @param {Array<object>} docsBucket An array of documents that will be written to `docs.json`.
- * @returns {function} An iteratee function for Promise.map below.
+ * Walks an object and renders all strings as inline markdown.
+ * @param {Object} object The object to walk.
+ * @returns {Object} The originally passed in object.
  */
-function buildPackageDoc(docsBucket) {
-  return async (pkg) => {
-    const [{ name, version }, docs] = await Promise.all([
-      fs.readJsonAsync(path.join(pkg, 'package.json')),
-      jsdoc.explain({ files: [path.join(pkg, 'src', 'index.js')] }),
-    ]);
+function walkRecursiveInlineMarkdownRender(object) {
+  if (object) {
+    Object.keys(object).forEach((key) => {
+      const type = typeof object[key];
 
-    // Only document stuff with `@memberof foldr`
-    const doc = docs.find(d => d.memberof === 'foldr');
-    if (!doc) return;
+      // eslint-disable-next-line no-param-reassign
+      if (type === 'string') object[key] = marked.inlineLexer(object[key], []);
+      if (type === 'object') walkRecursiveInlineMarkdownRender(object[key]);
+    });
+  }
 
+  return object;
+}
+
+/**
+ * Formats a single JSDOC block and adds it to the `docsMapping` collection.
+ * @param {string} pkg The package filename this doc belongs to.
+ * @param {Object} packageJson The packageJson information for this doc.
+ * @param {Object} docsMapping A bucket for collectin docs.
+ * @returns {undefined}
+ */
+function formatDoc(pkg, { name, version }, docsMapping) {
+  return (doc) => {
     const {
       tags = [],
       meta = {},
@@ -60,24 +72,50 @@ function buildPackageDoc(docsBucket) {
       params,
       returns,
       examples,
+      longname,
       description,
     } = doc;
 
-    docsBucket.push({
-      name: path.basename(pkg),
+    // If you do `export default function foo()` then `longname`
+    // will be module.exports. Hackily rectifying that here.
+    const symbol = longname === 'module.exports' ? camelize(name.replace(/^@foldr\//, '')) : longname;
+
+    // eslint-disable-next-line no-param-reassign
+    docsMapping[symbol] = {
+      name: symbol,
       since: since.replace(/^v/, ''),
       package: { name, version },
-      description,
-      category: (tags.find(tag => tag.title === 'category') || {}).value || null,
-      params,
-      returns,
+      description: marked(description),
+      categories: tags.filter(tag => tag.title === 'category').map(x => x.value),
+      params: walkRecursiveInlineMarkdownRender(params),
+      returns: walkRecursiveInlineMarkdownRender(returns),
       examples,
       location: {
         source: path.relative(PROJECT_ROOT, path.join(meta.path, meta.filename)),
         lineno: meta.lineno,
         range: meta.range,
       },
-    });
+    };
+  };
+}
+
+/**
+ * Returns a function that's passed to Promise.map and bound to the given
+ * `docsMapping`. This function will read the current package's package.json
+ * and parse it's JSDocs, then add the appropriate information to `docsMapping`.
+ * @param {Array<object>} docsMapping An array of documents that will be written to `docs.json`.
+ * @returns {function} An iteratee function for Promise.map below.
+ */
+function buildPackageDoc(docsMapping) {
+  return async (pkg) => {
+    const [filePackageJson, rawDocs] = await Promise.all([
+      fs.readJsonAsync(path.join(pkg, 'package.json')),
+      jsdoc.explain({ files: [path.join(pkg, 'src', 'index.js')] }),
+    ]);
+
+    // Only document stuff with `@publishdoc`
+    const docs = rawDocs.filter(doc => (doc.tags || []).find(x => x.title === 'publishdoc'));
+    docs.forEach(formatDoc(pkg, filePackageJson, docsMapping));
   };
 }
 
@@ -87,11 +125,11 @@ function buildPackageDoc(docsBucket) {
  * @returns {Promise} Resolves once the docs file has been written to disk.
  */
 async function buildDocs(packages) {
-  const docs = [];
+  const docs = {};
   const datetime = new Date().toISOString();
   const { version } = packageJson;
 
-  await Promise.map(packages, buildPackageDoc(docs), { concurrency: MAP_CONCURRENCY });
+  await Promise.mapSeries(packages, buildPackageDoc(docs), { concurrency: MAP_CONCURRENCY });
 
   const destination = path.join(DOCS_DESTNATION, `${version}.json`);
   return fs.outputFileAsync(destination, JSON.stringify({ datetime, version, docs }));

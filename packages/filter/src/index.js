@@ -26,7 +26,7 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
  * @returns {Array} The results of mapping `collection` to `filterFn`.
  *
  * @category collection
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -61,15 +61,15 @@ const filter = IteratorFactory({
  * Filterer functions are called with the signature `filterFn(value)`, where
  * `value` is the current item in the collection being iterated over.
  *
- * @name filter.fn
+ * @name filter.f
  * @param {function} filterFn The iteratee function to use while filtering.
  * @param {Array|Object|String|Arguments} collection The collection to iterate over.
  * @returns {Array} The results of filtering `collection` with `filterFn`.
  *
  * @arity 2
  * @autocurried
- * @category collection
- * @memberof foldr
+ * @category functional
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -78,10 +78,10 @@ const filter = IteratorFactory({
  *   return x % 2 === 0;
  * }
  *
- * filter.fn(isEven, [1, 2, 3]);            // => [2]
- * filter.fn(isEven, { a: 1, b: 2, c: 3 }); // => [2]
+ * filter.f(isEven, [1, 2, 3]);            // => [2]
+ * filter.f(isEven, { a: 1, b: 2, c: 3 }); // => [2]
  */
-export const fn = FunctionalFactory(filter, {
+export const f = FunctionalFactory(filter, {
   arity: 2,
   capped: true,
   context: 'config',

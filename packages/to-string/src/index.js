@@ -7,13 +7,17 @@
 /**
  * Converts a value into a string by calling it's inherited or own `toString` method.
  * An empty string is returned for `null` and `undefined`.
+ *
+ * @name toString
  * @param {any} x The value to convert to a string.
  * @returns {string} The value to convert to a string.
- * @category util
- * @memberof foldr
+ *
+ * @category utility
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
+ *
  * toString(null);      // => ''
  * toString(undefined); // => ''
  * toString(0);         // => '0'

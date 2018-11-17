@@ -31,7 +31,7 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
  * @returns {Array} The results of folding `collection` onto `reducer`.
  *
  * @category collection
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -65,7 +65,7 @@ const fold = IteratorFactory({
  * where `accumulator` is either the initial value or the results of a previous `reducer` call,
  * and `value` is the current item in the collection being iterated over.
  *
- * @name fold.fn
+ * @name fold.f
  * @param {function} reducer The reduction function to use while folding.
  * @param {any} initial The inital, "primer" value for folding.
  * @param {Array|Object|String|Arguments} collection The collection to fold or "reduce".
@@ -73,8 +73,8 @@ const fold = IteratorFactory({
  *
  * @arity 3
  * @autocurried
- * @category collection
- * @memberof foldr
+ * @category functional
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -83,11 +83,11 @@ const fold = IteratorFactory({
  *   return acc + x ** 2;
  * }
  *
- * fold.fn(square)(0)([1, 2, 3]); // => 14
- * fold.fn(square, 0)([1, 2, 3]); // => 14
- * fold.fn(square, 0, [1, 2, 3]); // => 14
+ * fold.f(square)(0)([1, 2, 3]); // => 14
+ * fold.f(square, 0)([1, 2, 3]); // => 14
+ * fold.f(square, 0, [1, 2, 3]); // => 14
  */
-export const fn = FunctionalFactory(fold, {
+export const f = FunctionalFactory(fold, {
   arity: 3,
   capped: true,
   context: 'config',

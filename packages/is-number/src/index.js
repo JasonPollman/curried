@@ -13,7 +13,7 @@ const isObjectNumber = is(Number);
  * @param {any} x The value to determine Number membership.
  * @returns {boolean} True if `x` is a number, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

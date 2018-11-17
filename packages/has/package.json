@@ -4,5 +4,8 @@
   "description": "A utility function to test whether or not an object has a property.",
   "license": "MIT",
   "main": "dist",
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fn-factory": "^0.0.0"
+  }
 }

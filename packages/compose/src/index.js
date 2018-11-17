@@ -25,7 +25,7 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
  * @returns {function} The composite function.
  *
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -71,7 +71,7 @@ export default function compose() {
  * Functional, autocurried version of [compose](#compose).
  *
  * Creates a new function that returns the result of invoking
- * the given functions in successive order from right to left
+ * the two given functions in successive order from right to left
  * passing the results of the previous invocation to the next
  * function.
  *
@@ -81,14 +81,17 @@ export default function compose() {
  * This function is very similar to `pipe`, except that the order
  * of function execution flows from right to left (bottom to top).
  *
- * @name compose.fn
- * @param {...function} functions The functions to compose.
+ * Remember `f(g(x))` from high school? This is it.
+ *
+ * @name compose.f
+ * @param {function} g The first (wrapper) function to compose.
+ * @param {function} f The second function to compose.
  * @returns {function} The composite function.
  *
  * @arity 2
  * @autocurried
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -101,8 +104,8 @@ export default function compose() {
  *   return x * x;
  * }
  *
- * const sumSquared = compose.fn(square)(add);
+ * const sumSquared = compose.f(square)(add);
  * sumSquared(1, 2); // => 9
  * sumSquared(2, 3); // => 25
  */
-export const fn = FunctionalFactory(compose, { arity: 2 });
+export const f = FunctionalFactory(compose, { arity: 2 });

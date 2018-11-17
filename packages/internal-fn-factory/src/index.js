@@ -53,7 +53,7 @@ export function functionalize(fn, config) {
 export default function FunctionalFactory(fn, options) {
   const config = {
     curried: true,
-    namespace: 'fn',
+    namespace: 'f',
     ...options,
   };
 
@@ -64,15 +64,17 @@ export default function FunctionalFactory(fn, options) {
    * overrides to apply the the new function.
    * @returns {function} The functionalized version of `fn`.
    */
-  fn.functionalize = function functionalizeWrapper(overrides) {
+  function makeFunctionalWrapper(overrides) {
     return functionalize(fn, {
       ...config,
       ...overrides,
     });
-  };
+  }
 
-  const functional = functionalize(fn, config);
+  const functional = makeFunctionalWrapper(fn, config);
 
+  fn.make = makeFunctionalWrapper;
   fn[config.namespace] = functional;
+
   return functional;
 }

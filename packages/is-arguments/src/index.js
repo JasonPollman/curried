@@ -12,7 +12,7 @@ import toStringTag from '@foldr/to-string-tag';
  * @param {any} x The thing to check.
  * @returns {boolean} True if `thing` is an Arguments instance, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

@@ -10,7 +10,7 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
 /* eslint-disable prefer-spread */
 
 /**
- * "Attempts" to invoke `fn`.
+ * *Attempts* to invoke `fn`.
  *
  * Invokes and returns the return value from `fn`. If the call to `fn` throws,
  * either the `fallback` value (if provided) or the caught error is returned.
@@ -21,7 +21,7 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
  * @param {any=} fallback The fallback value to use if `fn` throws.
  * @returns {any} The return value from `fn`, `fallback`, or the caught error.
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -57,7 +57,7 @@ export default function attempt(fn, args, fallback) {
  * Invokes and returns the return value from `fn`. If the call to `fn` throws,
  * either the `fallback` value (if provided) or the caught error is returned.
  *
- * @name attempt.fn
+ * @name attempt.f
  * @param {Array|null|undefined} args An array of arguments to pass to `fn`.
  * @param {function} fn The function to attempt to invoke.
  * @param {any=} fallback The fallback value to use if `fn` throws.
@@ -66,7 +66,7 @@ export default function attempt(fn, args, fallback) {
  * @arity 2
  * @autocurried
  * @category functional
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -77,12 +77,12 @@ export default function attempt(fn, args, fallback) {
  * }
  *
  * // Call was okay.
- * const attempt.fn([1])(assertIsPositive); // => 1;
+ * const attempt.f([1])(assertIsPositive); // => 1;
  *
  * // Call threw.
- * const attempt.fn([-1], assertIsPositive); => Error('x must be a positive number');
+ * const attempt.f([-1], assertIsPositive); => Error('x must be a positive number');
  */
-export const fn = FunctionalFactory(attempt, {
+export const f = FunctionalFactory(attempt, {
   arity: 2,
   signature: [1, 0],
   optimized: false,

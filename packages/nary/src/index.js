@@ -15,7 +15,7 @@ import FunctionalFactory from '@foldr/internal-fn-factory';
  * @returns {function} The function with a fixed arity of `n`.
  *
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -43,7 +43,7 @@ export default function nary(fn, n) {
 /**
  * Functional, autocurried version of [nary](#nary).
  *
- * @name nary.fn
+ * @name nary.f
  * @param {number} n The function to fix the arity of.
  * @param {function} fn The function to fix the arity of.
  * @returns {function} The function with a fixed arity of `n`.
@@ -51,7 +51,7 @@ export default function nary(fn, n) {
  * @arity 2
  * @autocurried
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -60,10 +60,10 @@ export default function nary(fn, n) {
  *    return arguments;
  * }
  *
- * const fixed = nary.fn(2)(foo);
+ * const fixed = nary.f(2)(foo);
  * fixed('a', 'b', 'c', 'd'); // => { 0: 'a', 1: 'b' }
  */
-export const fn = FunctionalFactory(nary, {
+export const f = FunctionalFactory(nary, {
   arity: 2,
   signature: [1, 0],
 });

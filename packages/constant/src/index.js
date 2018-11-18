@@ -4,6 +4,16 @@
  * @file
  */
 
+import getInternalSymbol from '@foldr/internal-symbol';
+
+/* eslint-disable require-jsdoc */
+
+/**
+ * Used to track the arity of curried functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
+
 /**
  * Creates a function that always returns the given value.
  *
@@ -30,7 +40,10 @@
  * const sameThing = foo() // => { foo: 'bar', baz: 'quxx' };
  */
 export default function constant(value) {
-  return function consistently() {
+  function consistently() {
     return value;
-  };
+  }
+
+  consistently[ARITY] = 1;
+  return consistently;
 }

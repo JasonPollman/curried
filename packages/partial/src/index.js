@@ -117,7 +117,7 @@ export default function partial(fn, ...partials) {
 
   const partialized = partialize(fn, partials);
 
-  partialized[ARITY] = fn[ARITY] !== undefined ? fn[ARITY] : fn.length;
+  partialized[ARITY] = fn[ARITY] >= 0 ? fn[ARITY] : fn.length;
   partialized[SOURCE] = fn;
   partialized[IS_PARTIAL] = true;
   partialized.toString = toStringForPartialed;

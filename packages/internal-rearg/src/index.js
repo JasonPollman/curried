@@ -78,7 +78,7 @@ export default function rearg(fn, signature) {
 
   const rearged = reargWrap(fn, signature);
 
-  rearged[ARITY] = fn[ARITY] !== undefined ? fn[ARITY] : fn.length;
+  rearged[ARITY] = fn[ARITY] >= 0 ? fn[ARITY] : fn.length;
   rearged[SOURCE] = fn;
   rearged[IS_REARGED] = true;
   rearged.toString = toStringForRearged;

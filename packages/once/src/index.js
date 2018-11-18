@@ -1,4 +1,20 @@
 /**
+ * Exports the `constant` function.
+ * @since 10/29/18
+ * @file
+ */
+
+import getInternalSymbol from '@foldr/internal-symbol';
+
+/* eslint-disable require-jsdoc */
+
+/**
+ * Used to track the arity of curried functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
+
+/**
  * No operation
  * @returns {void}
  */
@@ -28,12 +44,15 @@ export default function once(fn) {
   let amt = 0;
   let res;
 
-  return function onced() {
+  function onced() {
     if (amt > 0) return res;
 
     amt++;
     res = fn.apply(this, arguments);
 
     return res;
-  };
+  }
+
+  onced[ARITY] = fn[ARITY] >= 0 ? fn[ARITY] : fn.length;
+  return onced;
 }

@@ -36,6 +36,17 @@ export const IS_CURRIED = getInternalSymbol('is-curried-fn');
 export const _ = getInternalSymbol('placeholder');
 
 /**
+ * The `toString` implementation for curried functions.
+ * This will print the original function's source string
+ * prepended with a friendly message that the function is curried.
+ * @returns {string} The source function's code with a comment
+ * informing the user that the function is curried.
+ */
+function toStringForCurried() {
+  return '/* Curry Wrapped */\r\n'.concat(this[SOURCE].toString());
+}
+
+/**
  * Optimized unary curry function.
  * @param {function} fn The source (original) function.
  * @returns {function} The curried function
@@ -67,17 +78,6 @@ function binary(fn) {
       case 0: return curried;
     }
   };
-}
-
-/**
- * The `toString` implementation for curried functions.
- * This will print the original function's source string
- * prepended with a friendly message that the function is curried.
- * @returns {string} The source function's code with a comment
- * informing the user that the function is curried.
- */
-function toStringForCurried() {
-  return '/* Curry Wrapped */\r\n'.concat(this[SOURCE].toString());
 }
 
 /**

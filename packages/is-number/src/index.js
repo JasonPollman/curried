@@ -10,10 +10,13 @@ const isObjectNumber = is(Number);
 
 /**
  * Determines if the given item is a number.
+ *
+ * @name isNumber
  * @param {any} x The value to determine Number membership.
  * @returns {boolean} True if `x` is a number, false otherwise.
+ *
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

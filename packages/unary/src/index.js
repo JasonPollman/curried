@@ -13,7 +13,7 @@ import partial from '@foldr/partial';
  * @param {function} fn The function to fix the arity of.
  * @returns {function} The function with a fixed arity of 1.
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

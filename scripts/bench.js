@@ -24,6 +24,7 @@ import {
 
 // Libraries we'll be testing...
 import lodash from 'lodash';
+import fp from 'lodash/fp';
 import * as ramda from 'ramda';
 import * as foldr from '../packages/all';
 
@@ -37,9 +38,10 @@ import {
 } from './utils';
 
 const LIBRARIES = {
+  fp,
   foldr,
-  lodash,
   ramda,
+  lodash,
 };
 
 const noop = () => {};
@@ -170,7 +172,7 @@ function addTestsToSuite(suite) {
     const input = setup();
 
     each(tests, (test, library) => {
-      const title = `${dim(pad(40, name))}  ${bold(pad(8, `[${library}]`))}`;
+      const title = `${dim(pad(60, name))}  ${bold(pad(8, `[${library}]`))}`;
       let i = 0;
 
       // Only running assertions on the first iteration.

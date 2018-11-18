@@ -1,0 +1,8 @@
+{
+  "name": "@foldr/is-equal",
+  "version": "0.0.0",
+  "description": "Determines if two values are equal using the SameValueZero comparison.",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false
+}

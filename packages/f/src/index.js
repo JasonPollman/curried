@@ -8,7 +8,7 @@
  * A function that always returns `false`.
  * @returns {boolean} The literal boolean `false`.
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

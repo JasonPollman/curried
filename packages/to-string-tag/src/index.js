@@ -7,13 +7,16 @@
 const { toString } = Object.prototype;
 
 /**
- * Calls Object.prototype.toString on `thing`.
+ * Calls Object.prototype.toString on `x`.
  * This is primarily used internally, but could be useful as cross-frame compatible "instanceof"
  * checks, since `x instanceof Array`, for example, won't work across browser frames.
- * @param {any} thing The thing to get the toString tag of.
- * @returns {string} The `thing's` toString representation.
+ *
+ * @name toStringTag
+ * @param {any} x The value to get the "toString" tag of.
+ * @returns {string} The `x's` toString representation.
+ *
  * @category utility
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -23,6 +26,6 @@ const { toString } = Object.prototype;
  * toStringTag(10);    // => '[object Number]'
  * toStringTag('foo'); // => '[object String]'
  */
-export default function toStringTag(thing) {
-  return toString.apply(thing);
+export default function toStringTag(x) {
+  return toString.apply(x);
 }

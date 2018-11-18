@@ -18,10 +18,13 @@ export function isNaNPolyfill(x) {
 
 /**
  * Determines if the given item is NaN.
+ *
+ * @name isNaN
  * @param {any} x The value to check.
  * @returns {boolean} True if `x` is NaN, false otherwise.
+ *
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

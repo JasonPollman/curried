@@ -8,10 +8,13 @@ import is from '@foldr/is';
 
 /**
  * Determines if the given item is an instance of WeakMap.
+ *
+ * @name isWeakMap
  * @param {any} thing The value to check.
  * @returns {boolean} True if `thing` is a WeakMap object, false otherwise.
+ *
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

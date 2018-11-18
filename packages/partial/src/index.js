@@ -25,10 +25,27 @@ export const IS_CURRIED = getInternalSymbol('is-curried-fn');
 export const IS_PARTIAL = getInternalSymbol('is-partial-fn');
 
 /**
+ * Used to track the arity of partialed functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
+
+/**
  * Used to map partialed functions back to their original.
  * @type {SafeSymbol}
  */
 export const SOURCE = getInternalSymbol('source-fn');
+
+/**
+ * The `toString` implementation for partialed functions.
+ * This will print the original function's source string
+ * prepended with a friendly message that the function is partialized.
+ * @returns {string} The source function's code with a comment
+ * informing the user that the function is partialized.
+ */
+function toStringForPartialed() {
+  return '/* Partial Wrapped */\r\n'.concat(this[SOURCE].toString());
+}
 
 /**
  * Partializes `fn` using `partials`.
@@ -40,8 +57,10 @@ function partialize(fn, partials) {
   const applied = partials.length;
 
   return function partialized() {
-    const args = [];
-    const size = arguments.length;
+    const input = arguments;
+    const output = [];
+
+    const size = input.length;
 
     let i = 0;
     let n = 0;
@@ -49,13 +68,13 @@ function partialize(fn, partials) {
     // Push partial applications into the final arguments set
     // if they're placeholders, grab them from `arguments`.
     while (i < applied) {
-      args[i] = partials[i] === _ ? arguments[n++] : partials[i];
+      output[i] = partials[i] === _ ? input[n++] : partials[i];
       i++;
     }
 
     // Push remaining arguments into the final arguments set.
-    while (n < size) args[i++] = arguments[n++];
-    return fn.apply(this, args);
+    while (n < size) output[i++] = input[n++];
+    return fn.apply(this, output);
   };
 }
 
@@ -67,7 +86,7 @@ function partialize(fn, partials) {
  * @param {function} fn The function to partialize.
  * @returns {function} The partialized function.
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -97,8 +116,12 @@ export default function partial(fn, ...partials) {
   if (!partials.length || fn[IS_CURRIED]) return fn;
 
   const partialized = partialize(fn, partials);
+
+  partialized[ARITY] = fn[ARITY] >= 0 ? fn[ARITY] : fn.length;
   partialized[SOURCE] = fn;
   partialized[IS_PARTIAL] = true;
+  partialized.toString = toStringForPartialed;
+
   return partialized;
 }
 

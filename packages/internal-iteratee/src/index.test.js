@@ -37,6 +37,10 @@ describe('internal-env', () => {
     expect(getIteratee(['name', 'wrong'])({ name: 'test' })).toEqual(false);
   });
 
+  it('Should return the correct iteratee for arrays (NaN)', () => {
+    expect(getIteratee(['name', NaN])({ name: NaN })).toEqual(true);
+  });
+
   it('Should return the correct iteratee for objects', () => {
     expect(getIteratee({})()).toEqual(true);
     expect(getIteratee({})({ name: 'test' })).toEqual(true);

@@ -4,7 +4,7 @@
  * @file
  */
 
-import constant from '.';
+import constant, { ARITY } from '.';
 
 describe('constant', () => {
   it('Should be a function', () => {
@@ -30,5 +30,11 @@ describe('constant', () => {
       foo: 'bar',
       baz: 'quxx',
     });
+  });
+
+  it('Should set the `ARITY` symbol to 1', () => {
+    const object = { foo: 'bar' };
+    const create = constant(object);
+    expect(create[ARITY]).toBe(1);
   });
 });

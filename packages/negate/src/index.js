@@ -6,10 +6,13 @@
 
 /**
  * Creates a function that negates the result of `fn`.
+ *
+ * @name negate
  * @param {function} fn The function to negate.
  * @returns {function} The negated version of `fn`.
+ *
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

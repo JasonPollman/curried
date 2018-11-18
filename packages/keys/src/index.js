@@ -45,10 +45,11 @@ export function removeLengthFromKeys(x) {
  *
  * Note, the order of the keys is not guaranteed.
  *
+ * @name keys
  * @param {any} x The value to get the keys of.
  * @returns {Array} An array of the given object's keys.
  * @category collection
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

@@ -4,15 +4,29 @@
  * @file
  */
 
+import getInternalSymbol from '@foldr/internal-symbol';
+
+/* eslint-disable require-jsdoc */
+
+/**
+ * Used to track the arity of curried functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
+
 /**
  * Creates a function that always returns the given value.
+ *
+ * @name constant
  * @param {any} value The value that the newly created function will return.
  * @returns {function} The literal boolean `false`.
+ *
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
+ *
  * const Null = constant(null);
  * Null() // => null
  *
@@ -26,7 +40,10 @@
  * const sameThing = foo() // => { foo: 'bar', baz: 'quxx' };
  */
 export default function constant(value) {
-  return function consistently() {
+  function consistently() {
     return value;
-  };
+  }
+
+  consistently[ARITY] = 1;
+  return consistently;
 }

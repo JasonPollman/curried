@@ -1,4 +1,4 @@
-module.exports = ({ foldr, lodash }) => [
+module.exports = ({ fp, foldr, lodash }) => [
   {
     name: 'Gets A Property',
     expect: (result, assert) => assert(result === 'bar'),
@@ -9,12 +9,30 @@ module.exports = ({ foldr, lodash }) => [
     },
   },
   {
+    name: 'Gets A Property (Functional)',
+    expect: (result, assert) => assert(result === 'bar'),
+    setup: () => ({ foo: 'bar' }),
+    tests: {
+      foldr: input => foldr.get.f('foo', input),
+      lodash: input => fp.get('foo', input),
+    },
+  },
+  {
     name: 'Gets A Property (Nested)',
     expect: (result, assert) => assert(result === 1),
     setup: () => ({ foo: { bar: { baz: 1 } } }),
     tests: {
       foldr: input => foldr.get(input, 'foo.bar.baz'),
       lodash: input => lodash.get(input, 'foo.bar.baz'),
+    },
+  },
+  {
+    name: 'Gets A Property (Functional, Nested)',
+    expect: (result, assert) => assert(result === 1),
+    setup: () => ({ foo: { bar: { baz: 1 } } }),
+    tests: {
+      foldr: input => foldr.get.f('foo.bar.baz', input),
+      lodash: input => fp.get('foo.bar.baz', input),
     },
   },
   {
@@ -33,6 +51,15 @@ module.exports = ({ foldr, lodash }) => [
     tests: {
       foldr: input => foldr.get(input, 'foo.bar.baz[1].quxx[2].foo'),
       lodash: input => lodash.get(input, 'foo.bar.baz[1].quxx[2].foo'),
+    },
+  },
+  {
+    name: 'Gets A Property (Nested, Complex, Functional)',
+    expect: (result, assert) => assert(result === 'expected'),
+    setup: () => ({ foo: { bar: { baz: [0, { quxx: [1, 2, { foo: 'expected' }] }] } } }),
+    tests: {
+      foldr: input => foldr.get.f('foo.bar.baz[1].quxx[2].foo', input),
+      lodash: input => fp.get('foo.bar.baz[1].quxx[2].foo', input),
     },
   },
   {

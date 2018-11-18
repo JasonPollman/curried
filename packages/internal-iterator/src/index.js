@@ -7,6 +7,7 @@
 
 import getSymbol from '@foldr/internal-symbol';
 
+const identity = x => x;
 const { keys } = Object;
 const { toString } = Object.prototype;
 
@@ -18,47 +19,50 @@ export const BREAK = getSymbol('iterator-break');
 
 /**
  * Iterates over array-like objects (Arrays, Arguments, and strings).
+ * @param {any} context The `this` binding to pass to the handler.
  * @param {Array|Object} results The results set that iteration will "fill".
  * @param {Array|Arguments|string} array The array-like object we're iterating over.
  * @param {function} handler The wrapper handler.
  * @param {function} iteratee The user provided iteratee function.
  * @returns {undefined}
  */
-function iterateArrayLike(results, array, handler, iteratee) {
+function iterateArrayLike(context, results, array, handler, iteratee) {
   const size = array.length;
   let i = 0;
 
   while (i < size) {
-    if (handler(results, iteratee, i, array[i], i++, array) === BREAK) break;
+    if (handler(context, results, iteratee, i, array[i], i++, array) === BREAK) break;
   }
 }
 
 /**
  * Iterates over array-like objects (Arrays, Arguments, and strings) in reverse.
+ * @param {any} context The `this` binding to pass to the handler.
  * @param {Array|Object} results The results set that iteration will "fill".
  * @param {Array|Arguments|string} array The array-like object we're iterating over.
  * @param {function} handler The wrapper handler.
  * @param {function} iteratee The user provided iteratee function.
  * @returns {undefined}
  */
-function iterateArrayLikeReverse(results, array, handler, iteratee) {
+function iterateArrayLikeReverse(context, results, array, handler, iteratee) {
   let i = array.length;
   let n = 0;
 
   while (--i >= 0) {
-    if (handler(results, iteratee, n++, array[i], i, array) === BREAK) break;
+    if (handler(context, results, iteratee, n++, array[i], i, array) === BREAK) break;
   }
 }
 
 /**
  * Iterates over Objects.
+ * @param {any} context The `this` binding to pass to the handler.
  * @param {Array|Object} results The results set that iteration will "fill".
  * @param {Object} object The object we're iterating over.
  * @param {function} handler The wrapper handler.
  * @param {function} iteratee The user provided iteratee function.
  * @returns {undefined}
  */
-function iterateObject(results, object, handler, iteratee) {
+function iterateObject(context, results, object, handler, iteratee) {
   const props = keys(object);
   const size = props.length;
 
@@ -67,19 +71,20 @@ function iterateObject(results, object, handler, iteratee) {
 
   while (i < size) {
     key = props[i];
-    if (handler(results, iteratee, i++, object[key], key, object) === BREAK) break;
+    if (handler(context, results, iteratee, i++, object[key], key, object) === BREAK) break;
   }
 }
 
 /**
  * Iterates over Objects in reverse.
+ * @param {any} context The `this` binding to pass to the handler.
  * @param {Array|Object} results The results set that iteration will "fill".
  * @param {Object} object The object we're iterating over.
  * @param {function} handler The wrapper handler.
  * @param {function} iteratee The user provided iteratee function.
  * @returns {undefined}
  */
-function iterateObjectReverse(results, object, handler, iteratee) {
+function iterateObjectReverse(context, results, object, handler, iteratee) {
   const props = keys(object);
 
   let key;
@@ -88,39 +93,41 @@ function iterateObjectReverse(results, object, handler, iteratee) {
 
   while (--i >= 0) {
     key = props[i];
-    if (handler(results, iteratee, n++, object[key], key, object) === BREAK) break;
+    if (handler(context, results, iteratee, n++, object[key], key, object) === BREAK) break;
   }
 }
 
 /**
  * Iterates over Set instances.
+ * @param {any} context The `this` binding to pass to the handler.
  * @param {Array|Object} results The results set that iteration will "fill".
  * @param {Set} set The Set that we're iterating over.
  * @param {function} handler The wrapper handler.
  * @param {function} iteratee The user provided iteratee function.
  * @returns {undefined}
  */
-function iterateSet(results, set, handler, iteratee) {
+function iterateSet(context, results, set, handler, iteratee) {
   let i = 0;
 
   const iteratorForEntries = set.entries();
   let next = iteratorForEntries.next();
 
   while (!next.done) {
-    if (handler(results, iteratee, i, next.value[0], i++, set) === BREAK) break;
+    if (handler(context, results, iteratee, i, next.value[0], i++, set) === BREAK) break;
     next = iteratorForEntries.next();
   }
 }
 
 /**
  * Iterates over Set instances in reverse.
+ * @param {any} context The `this` binding to pass to the handler.
  * @param {Array|Object} results The results set that iteration will "fill".
  * @param {Set} set The Set that we're iterating over.
  * @param {function} handler The wrapper handler.
  * @param {function} iteratee The user provided iteratee function.
  * @returns {undefined}
  */
-function iterateSetReverse(results, set, handler, iteratee) {
+function iterateSetReverse(context, results, set, handler, iteratee) {
   const entries = [];
   const iteratorForEntries = set.entries();
 
@@ -136,40 +143,45 @@ function iterateSetReverse(results, set, handler, iteratee) {
   n = 0;
 
   while (--i >= 0) {
-    if (handler(results, iteratee, n++, entries[i][0], i, set) === BREAK) break;
+    if (handler(context, results, iteratee, n++, entries[i][0], i, set) === BREAK) break;
     next = iteratorForEntries.next();
   }
 }
 
 /**
  * Iterates over Map instances.
+ * @param {any} context The `this` binding to pass to the handler.
  * @param {Array|Object} results The results set that iteration will "fill".
  * @param {Map} map The Map that we're iterating over.
  * @param {function} handler The wrapper handler.
  * @param {function} iteratee The user provided iteratee function.
  * @returns {undefined}
  */
-function iterateMap(results, map, handler, iteratee) {
+function iterateMap(context, results, map, handler, iteratee) {
   let i = 0;
 
   const iteratorForEntries = map.entries();
   let next = iteratorForEntries.next();
 
   while (!next.done) {
-    if (handler(results, iteratee, i++, next.value[1], next.value[0], map) === BREAK) break;
+    if (handler(context, results, iteratee, i++, next.value[1], next.value[0], map) === BREAK) {
+      break;
+    }
+
     next = iteratorForEntries.next();
   }
 }
 
 /**
  * Iterates over Map instances in reverse.
+ * @param {any} context The `this` binding to pass to the handler.
  * @param {Array|Object} results The results set that iteration will "fill".
  * @param {Set} set The Map that we're iterating over.
  * @param {function} handler The wrapper handler.
  * @param {function} iteratee The user provided iteratee function.
  * @returns {undefined}
  */
-function iterateMapReverse(results, set, handler, iteratee) {
+function iterateMapReverse(context, results, set, handler, iteratee) {
   const entries = [];
   const iteratorForEntries = set.entries();
 
@@ -185,7 +197,10 @@ function iterateMapReverse(results, set, handler, iteratee) {
   n = 0;
 
   while (--i >= 0) {
-    if (handler(results, iteratee, n++, entries[i][1], entries[i][0], set) === BREAK) break;
+    if (handler(context, results, iteratee, n++, entries[i][1], entries[i][0], set) === BREAK) {
+      break;
+    }
+
     next = iteratorForEntries.next();
   }
 }
@@ -247,11 +262,11 @@ function iteratorFromOptions({
   arrayIterator,
   prepare,
 }) {
-  return (collection, userIteratee, initial) => {
+  return function iterator(collection, userIteratee, initial) {
     if (!collection) return Empty(initial);
 
-    const iteratee = prepare ? prepare(userIteratee) : userIteratee;
-    if (typeof iteratee !== 'function') return Empty(initial);
+    let iteratee = prepare ? prepare(userIteratee) : userIteratee;
+    if (typeof iteratee !== 'function') iteratee = identity;
 
     // This is an optimization, since most "iterator" functions iterate
     // over array-like objects, this prevents the `toString.apply` call
@@ -259,7 +274,7 @@ function iteratorFromOptions({
     const iterate = collection.length >= 0 ? arrayIterator : mapping[toString.call(collection)];
     const results = Results(initial);
 
-    if (iterate) iterate(results, collection, handler, iteratee);
+    if (iterate) iterate(this, results, collection, handler, iteratee);
     return unwrap ? unwrap(results) : results;
   };
 }
@@ -283,23 +298,18 @@ function iteratorFromOptions({
  * @returns {any} The results from iterating over `collection` using `iteratee`.
  * @export
  */
-export default function IteratorFactory({
-  flipped,
-  initial,
-  reverse,
-  ...options
-}) {
-  /* eslint-disable no-param-reassign */
-  options.mapping = reverse ? ITERATOR_MAPPING_REVERSE : ITERATOR_MAPPING;
-  options.arrayIterator = reverse ? iterateArrayLikeReverse : iterateArrayLike;
-  /* eslint-enable no-param-reassign */
+export default function IteratorFactory(options) {
+  return iteratorFromOptions({
+    ...options,
 
-  const iterator = iteratorFromOptions(options);
-  if (!flipped) return iterator;
+    mapping: options.reverse
+      ? ITERATOR_MAPPING_REVERSE
+      : ITERATOR_MAPPING,
 
-  return initial
-    ? (iteratee, init, collection) => iterator(collection, iteratee, init)
-    : (iteratee, collection) => iterator(collection, iteratee);
+    arrayIterator: options.reverse
+      ? iterateArrayLikeReverse
+      : iterateArrayLike,
+  });
 }
 
 IteratorFactory.BREAK = BREAK;

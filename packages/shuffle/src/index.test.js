@@ -2,11 +2,15 @@ import shuffle, { implementShuffle, cloneArray } from '.';
 
 describe('shuffle', () => {
   it('Should shuffle an array', () => {
-    const ogArray = [1, 2, 3, 4, 5];
-    const shuffled = shuffle(ogArray);
+    const og = [1, 2, 3, 4, 5];
+    const shuffled = shuffle(og);
+    expect(shuffled.length).toBe(og.length);
 
-    expect(shuffled.length).toBe(ogArray.length);
-    expect(JSON.stringify(ogArray) !== JSON.stringify(shuffled)).toBe(true);
+    for (let i = 0; i < og.length; i++) {
+      const index = og.indexOf(shuffled[i]);
+      expect(index).toBeGreaterThan(-1);
+      og.splice(index, 1);
+    }
   });
 
   it('Should shuffle an array (length 1)', () => {
@@ -37,6 +41,12 @@ describe('shuffle', () => {
   it('implementShuffle should shuffle an array', () => {
     const og = [1, 2, 3];
     const shuffled = implementShuffle(og);
-    expect(JSON.stringify(og) !== JSON.stringify(shuffled)).toBe(true);
+    expect(shuffled.length).toBe(og.length);
+
+    for (let i = 0; i < og.length; i++) {
+      const index = og.indexOf(shuffled[i]);
+      expect(index).toBeGreaterThan(-1);
+      og.splice(index, 1);
+    }
   });
 });

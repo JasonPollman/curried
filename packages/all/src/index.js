@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 11/14/2018
+ * @since 11/18/2018
  * @file
  */
 
@@ -43,6 +43,7 @@ import isArrayLike from '@foldr/is-array-like';
 import isBoolean from '@foldr/is-boolean';
 import isBuffer from '@foldr/is-buffer';
 import isDate from '@foldr/is-date';
+import isEqual from '@foldr/is-equal';
 import isError from '@foldr/is-error';
 import isFinite from '@foldr/is-finite';
 import isFunction from '@foldr/is-function';
@@ -85,6 +86,9 @@ import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
 import size from '@foldr/size';
 import some from '@foldr/some';
+import stubArray from '@foldr/stub-array';
+import stubObject from '@foldr/stub-object';
+import stubString from '@foldr/stub-string';
 import t from '@foldr/t';
 import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
@@ -145,6 +149,7 @@ export {
   isBoolean,
   isBuffer,
   isDate,
+  isEqual,
   isError,
   isFinite,
   isFunction,
@@ -187,6 +192,9 @@ export {
   shuffle,
   size,
   some,
+  stubArray,
+  stubObject,
+  stubString,
   t,
   tail,
   toCamelCase,

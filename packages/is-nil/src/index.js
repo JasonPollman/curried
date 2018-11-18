@@ -6,10 +6,12 @@
 
 /**
  * Determines if the given item is either `undefined` or `null`.
+ *
+ * @name isNil
  * @param {any} x The value to assert the nil-ness of.
  * @returns {boolean} True if `x` is nil, false otherwise.
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

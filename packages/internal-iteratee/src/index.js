@@ -4,7 +4,12 @@
  * @file
  */
 
+/* eslint-disable no-self-compare */
+
 const { keys } = Object;
+
+// SameValueZero comparison.
+const isEqual = (x, y) => (x === x ? x === y : y !== y);
 
 /**
  * The identity function.
@@ -55,7 +60,7 @@ function iterateeForObject(object) {
 
     while (i < size) {
       prop = props[i++];
-      if (value[prop] !== object[prop]) return false;
+      if (!isEqual(value[prop], object[prop])) return false;
     }
 
     return true;
@@ -71,7 +76,7 @@ function iterateeForObject(object) {
  */
 function iterateeForArray(tuple) {
   if (!tuple.length) return T;
-  return x => x && x[tuple[0]] === tuple[1];
+  return x => !!x && isEqual(x[tuple[0]], tuple[1]);
 }
 
 /**

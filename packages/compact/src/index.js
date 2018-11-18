@@ -6,9 +6,13 @@
 
 /**
  * Compacts an array by removing falsy values.
- * @param {Array} array - the array to remove falsy values from
- * @returns {Array} a newly compacted array
- * @memberof foldr
+ *
+ * @name compact
+ * @param {Array} array The array to remove falsy values from.
+ * @returns {Array} A newly compacted array.
+ *
+ * @category array
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

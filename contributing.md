@@ -44,14 +44,14 @@ standard seemed a natural fit.
 Moreover, since we're using JSDoc tags to build the API documentation, the following tags should
 be included on exposed library functions:
 
-| Tag         | Reason |
-| ----------- | ------ |
-| `@param`    | All parameters the function receives should be documented. |
-| `@returns`  | The return value of the function should be documented. |
-| `@memberof` | **This should be set to `foldr`.**<br />This tag is used as a sentinel value to identify the doc block as a public facing function that belongs on the docs site (as opposed to an internal—but potentially exported—function). |
-| `@since`    | **Formatted: `@since vX.X.X`.**<br />This tag is used to track when the version of this function was added to the primary (`all`) package. **Not the version of the package itself.** |
-| `@export`   | For good measure. |
-| `@example`  | Used as the code example on the doc site. This should contain **valid** js code. |
+| Tag           | Reason |
+| ------------- | ------ |
+| `@param`      | All parameters the function receives should be documented. |
+| `@returns`    | The return value of the function should be documented. |
+| `@publishdoc` | **This is required to flag the doc for the docs site.**<br />This tag is used as a sentinel value to identify the doc block as a public facing function that belongs on the docs site (as opposed to an internal—but potentially exported—function). |
+| `@since`      | **Formatted: `@since vX.X.X`.**<br />This tag is used to track when the version of this function was added to the primary (`all`) package. **Not the version of the package itself.** |
+| `@export`     | For good measure. |
+| `@example`    | Used as the code example on the doc site. This should contain **valid** js code. |
 
 **An Example JSDoc:**
 
@@ -70,10 +70,12 @@ be included on exposed library functions:
  * This function is very similar to `pipe`, except that the order
  * of function execution flows from right to left (bottom to top).
  *
+ * @name compose
  * @param {...function} functions The functions to compose.
  * @returns {function} The composite function.
+ *
  * @category function
- * @memberof foldr 
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

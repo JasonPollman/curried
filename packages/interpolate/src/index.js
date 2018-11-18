@@ -62,6 +62,8 @@ function replacer({ escape = '\\', strict = false, onReplacement = identity }, t
 
 /**
  * Interpolates `string` using `options`, replacing all values with properties from `tokens`.
+ *
+ * @name interpolate
  * @param {Object} options Interpolation options.
  * @param {Array<string>} options.delims A tuple in which the first element is the start
  * delimiter and the second is the end delimiter. For example ['{', '}'] would replace
@@ -79,8 +81,9 @@ function replacer({ escape = '\\', strict = false, onReplacement = identity }, t
  * @param {string} string The string to interpolate.
  * @param {Object} tokens The set of tokens that can be used as replacements in `string`.
  * @returns {string} The interpolated string.
+ *
  * @category string
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @autocurried
  * @export

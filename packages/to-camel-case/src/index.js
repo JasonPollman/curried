@@ -9,10 +9,13 @@ import toUpperFirst from '@foldr/to-upper-first';
 
 /**
  * Converts a string to camel case.
+ *
+ * @name toCamelCase
  * @param {string} string The string to convert to camel case.
  * @returns {Array<string>} The camel cased string.
- * @category utility
- * @memberof foldr
+ *
+ * @category string
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

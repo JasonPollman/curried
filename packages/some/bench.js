@@ -1,9 +1,21 @@
-module.exports = ({ foldr, lodash }) => {
+module.exports = ({
+  fp,
+  foldr,
+  ramda,
+  lodash,
+}) => {
   const hasEven = x => x % 2 === 0;
 
   const tests = {
     foldr: input => foldr.some(input, hasEven),
     lodash: input => lodash.some(input, hasEven),
+    ramda: input => ramda.any(hasEven, input),
+  };
+
+  const functionalTests = {
+    foldr: input => foldr.some.f(hasEven, input),
+    lodash: input => fp.some(hasEven, input),
+    ramda: input => ramda.any(hasEven, input),
   };
 
   return [
@@ -12,6 +24,12 @@ module.exports = ({ foldr, lodash }) => {
       expect: (result, assert) => assert(result === true),
       setup: () => [1, 2, 3],
       tests,
+    },
+    {
+      name: 'Somes an Array (Functional)',
+      expect: (result, assert) => assert(result === true),
+      setup: () => [1, 2, 3],
+      tests: functionalTests,
     },
     {
       name: 'Somes Invalid',
@@ -33,6 +51,12 @@ module.exports = ({ foldr, lodash }) => {
       expect: (result, assert) => assert(result === true),
       setup: () => ({ foo: 1, bar: 2, baz: 3 }),
       tests,
+    },
+    {
+      name: 'Somes an Object (Functional)',
+      expect: (result, assert) => assert(result === true),
+      setup: () => ({ foo: 1, bar: 2, baz: 3 }),
+      tests: functionalTests,
     },
   ];
 };

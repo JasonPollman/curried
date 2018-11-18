@@ -135,10 +135,13 @@ const toStringPathMemoized = memoize(toStringPath, resolver, cache);
 /**
  * Converts a string path (i.e. foo.bar.baz) to any array of "path tokens".
  * This works using both the dot and bracket notiation and supports strings.
+ *
+ * @name toPath
  * @param {string} value The value to convert to a path.
  * @returns {Array<string>} An array of paths.
- * @category util
- * @memberof foldr
+ *
+ * @category utility
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

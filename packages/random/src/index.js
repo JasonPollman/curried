@@ -38,12 +38,14 @@ function randomBase(min, max, floating) {
  * If either `lower` or `upper` are `Infinity`, they will be clamped
  * to `Number.MIN_VALUE` or `Number.MAX_VALUE` respectively.
  *
+ * @name random
  * @param {number} lower The inclusive lower range of the random number.
  * @param {number} upper The inclusive upper range of the random number.
  * @param {boolean=} floating True to get a random float, false for an integer.
  * @returns {number} A random number.
+ *
  * @category number
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

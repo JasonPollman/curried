@@ -8,12 +8,15 @@ import nary from '@foldr/nary';
 import partial from '@foldr/partial';
 
 /**
- * Creates a function that wraps `fn` and invokes it with up to 2 arguments.
- * Extraneous arguments passed to the wrapped function will be ignored.
+ * Creates a wrapper function around `fn` that limits
+ * the number of arguments passed to `fn` to 2.
+ *
+ * @name binary
  * @param {function} fn The function to fix the arity of.
  * @returns {function} The function with a fixed arity of 2.
+ *
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

@@ -14,10 +14,12 @@ const { MAX_VALUE } = Number;
  * Converts `x` to a finite number.
  * Note, this will also call `toNumber` on `x`.
  *
- * @param {any} x The value to convert to a finite number.
+ * @name toFinite
+ * @param {string|number} x The value to convert to a finite number.
  * @returns {number} The finite equivalent of `x`.
+ *
  * @category number
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

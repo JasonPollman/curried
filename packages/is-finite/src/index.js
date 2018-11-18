@@ -21,10 +21,13 @@ export function isFinitePolyfill(x) {
 
 /**
  * Determines if the given item is a finite primitive number (a number and not Infinity).
+ *
+ * @name isFinite
  * @param {any} x The value to assert finiteness.
  * @returns {boolean} True if `x` is a finite, false otherwise.
+ *
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

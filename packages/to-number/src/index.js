@@ -42,7 +42,7 @@ export function toNumberIE(x) {
 
 /**
  * Converts `x` to a number.
- * @param {number} x The value to convert to a number.
+ * @param {string|number|Object} x The value to convert to a number.
  * @returns {number} `x` as a number.
  * @export
  */
@@ -60,10 +60,12 @@ export function toNumber(x) {
  * Binary, octal, and hexidecimal strings (i.e. '0b101') will be converted
  * to their number equivalent.
  *
- * @param {any} x The value to convert to a number.
+ * @name toNumber
+ * @param {string|number|Object} x The value to convert to a number.
  * @returns {number} The number equivalent of `x`.
+ *
  * @category number
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

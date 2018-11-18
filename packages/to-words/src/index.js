@@ -18,11 +18,14 @@ const RE_TO_WORDS = new RegExp(`${UC.source}${LC.source}+|${LC.source}+|${UC.sou
  * unicode categories to match against the given string. Therefore all non-letter and
  * digit unicode characters will be omitted from the returned string.
  * @see https://www.regular-expressions.info/unicode.html for more information.
+ *
+ * @name toWords
  * @param {string} value The value to convert into an array of words.
  * @param {RegExp=} pattern The pattern to use to split the string into words.
  * @returns {Array<string>} The string split into an array of words.
+ *
  * @category utility
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  *

@@ -16,7 +16,7 @@ import IteratorFactory from '@foldr/internal-iterator';
  * @param {function} iteratee The iteratee function to call for each item in `collection`.
  * @returns {undefined}
  * @category collection
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -31,7 +31,7 @@ export default IteratorFactory({
   reverse: true,
   Empty: () => undefined,
   Results: () => undefined,
-  handler: (results, iteratee, i, value, key, collection) => {
+  handler: (context, results, iteratee, i, value, key, collection) => {
     iteratee(value, key, collection);
   },
 });

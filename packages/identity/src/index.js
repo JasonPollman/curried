@@ -4,7 +4,7 @@
  * @param {any} x The value to passthrough.
  * @returns {any} The value of `x`.
  * @category function
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

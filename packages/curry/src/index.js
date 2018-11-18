@@ -1,14 +1,23 @@
+/**
+ * Exports the curry function.
+ * @since 10/18/18
+ * @file
+ */
 
 import internalCurry, { _ } from '@foldr/internal-curry';
 
 /**
  * Curries a function.
+ *
+ * @name curry
  * @param {function} fn The function to curry.
  * @param {Object=} options Currying options.
  * @param {number} [options.arity=fn.length] The arity of `fn` or
  * a specific arity override to curry `fn` to.
  * @returns {function} The curried version of `fn`.
- * @memberof foldr
+ *
+ * @category function
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

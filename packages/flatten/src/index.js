@@ -11,7 +11,7 @@
  * @param {Array} array The array to flatten.
  * @returns {Array} A newly flattened array.
  * @category array
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -24,11 +24,12 @@ function flatten(array) {
   if (!array || !array.length) return [];
 
   const copy = [];
+  const size = array.length;
 
   let len = -1;
   let arrayInd = 0;
 
-  while (++len < array.length) {
+  while (++len < size) {
     if (!array[len] || array[len].constructor !== Array) {
       copy[arrayInd] = array[len];
       arrayInd++;

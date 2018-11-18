@@ -6,10 +6,13 @@
 
 /**
  * Determines if the given item is null.
+ *
+ * @name isNull
  * @param {any} x The value to assert null-ness.
  * @returns {boolean} True if `x` is null, false otherwise.
+ *
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

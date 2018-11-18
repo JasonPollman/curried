@@ -24,11 +24,12 @@ const getValue = val => val;
  *
  * Note, the order of the keys is not guaranteed.
  *
+ * @name values
  * @param {any} x The thing to get the values of.
  * @returns {Array} An array of the given object's values.
- * @name keys
+ *
  * @category collection
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

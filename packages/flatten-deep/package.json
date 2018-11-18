@@ -5,6 +5,7 @@
   "main": "dist",
   "sideEffects": false,
   "dependencies": {
+    "@foldr/internal-f-factory": "^0.0.0",
     "@foldr/is-array": "^0.0.0"
   }
 }

@@ -11,10 +11,13 @@ import toStringTag from '@foldr/to-string-tag';
 /**
  * Gets the size of an object.
  * That is, the number of the object's own enumerable properties.
+ *
+ * @name size
  * @param {any} x The value to get the size of.
  * @returns {number} The size (or length) of the object.
+ *
  * @category utility
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

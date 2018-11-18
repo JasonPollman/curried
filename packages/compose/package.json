@@ -4,5 +4,9 @@
   "description": "A function composition utility function.",
   "license": "MIT",
   "main": "dist",
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-f-factory": "^0.0.0",
+    "@foldr/internal-symbol": "^0.0.0"
+  }
 }

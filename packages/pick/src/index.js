@@ -5,6 +5,7 @@
  */
 
 import IteratorFactory from '@foldr/internal-iterator';
+import FunctionalFactory from '@foldr/internal-f-factory';
 
 /**
  * The identity function.
@@ -47,13 +48,15 @@ function preparePickIteratee(iteratee) {
  * `value` is the current item in the collection, `key` is the key of the current item in the
  * collection, and `collection` is collection.
  *
+ * @name pick
  * @param {Object} collection The collection to pick from.
  * @param {Array|function} iteratee The iteratee function to use while picking. If given
  * an array, all of the own properties of `collection` that exist in the array will be
  * picked, all other values will be ignored.
  * @returns {Object} A new object with only the picked values.
+ *
  * @category object
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example
@@ -70,11 +73,54 @@ function preparePickIteratee(iteratee) {
  * // Using function
  * pick(data, (value, key) => value[0] === 'b'); // => { bar: 'bar', baz: 'baz' }
  */
-export default IteratorFactory({
+const pick = IteratorFactory({
   Empty: () => ({}),
   Results: () => ({}),
   prepare: preparePickIteratee,
-  handler: (results, iteratee, i, value, key, collection) => {
-    if (iteratee(value, key, collection)) results[key] = value;
+  handler: (context, results, iteratee, i, value, key, collection) => {
+    if (context && context.capped ? iteratee(value, key) : iteratee(value, key, collection)) {
+      results[key] = value;
+    }
   },
 });
+
+/**
+ * Functional, autocurried version of [pick](#pick).
+ * Creates a new object by "picking" (or selecting) the given properties.
+ *
+ * Iteratee functions are called with the signature `iteratee(value)`, where
+ * `value` is the current item in the collection being iterated over.
+ *
+ * @name pick.f
+ * @param {Array|function} iteratee The iteratee function to use while picking. If given
+ * an array, all of the own properties of `collection` that exist in the array will be
+ * picked, all other values will be ignored.
+ * @param {Object} collection The collection to pick from.
+ * @returns {Object} A new object with only the picked values.
+ *
+ * @category functional
+ * @publishdoc
+ * @since v0.0.0
+ * @export
+ * @example
+ *
+ * const data = {
+ *   foo: 'foo',
+ *   bar: 'bar',
+ *   baz: 'baz',
+ * };
+ *
+ * // Using array shorthand
+ * pick.f(['foo', 'baz'], data); // => { foo: 'foo', baz: 'baz' }
+ *
+ * // Using function
+ * pick.f((value, key) => value[0] === 'b')(data); // => { bar: 'bar', baz: 'baz' }
+ */
+export const f = FunctionalFactory(pick, {
+  arity: 2,
+  capped: true,
+  context: 'config',
+  signature: [1, 0],
+});
+
+export default pick;

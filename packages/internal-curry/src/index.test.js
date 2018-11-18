@@ -4,11 +4,23 @@
  * @file
  */
 
-import curry, { _, SOURCE, IS_CURRIED } from '.';
+import curry, {
+  _,
+  ARITY,
+  SOURCE,
+  IS_CURRIED,
+} from '.';
+
+const TO_STRING_MATCH = /^\/\* Curry Wrapped \*\/\r\n/;
 
 describe('curry', () => {
   it('Should be a function', () => {
     expect(typeof curry).toBe('function');
+  });
+
+  it('Should alter the curried function\'s `toString` method', () => {
+    const source = x => x;
+    expect(curry(source).toString()).toMatch(TO_STRING_MATCH);
   });
 
   it('Should curry a function', () => {
@@ -19,6 +31,36 @@ describe('curry', () => {
   it('Should return the original function if the arity is < 1', () => {
     const fn = () => {};
     expect(curry(fn)).toBe(fn);
+  });
+
+  it('Should return the original function for nullary functions', () => {
+    const source = () => 5;
+    const curried = curry(source);
+    expect(curried).toBe(source);
+  });
+
+  it('Should return the original function for arity values <= 0 (1)', () => {
+    const source = x => x;
+    const curried = curry(source, { arity: 0 });
+    expect(curried).toBe(source);
+  });
+
+  it('Should return the original function for arity values <= 0 (2)', () => {
+    const source = x => x;
+    const curried = curry(source, { arity: -1 });
+    expect(curried).toBe(source);
+  });
+
+  it('Should return the original function for arity values <= 0 (3)', () => {
+    const source = x => x;
+    const curried = curry(source, { arity: '-5' });
+    expect(curried).toBe(source);
+  });
+
+  it('Should return the original function for arity values <= 0 (4)', () => {
+    const source = x => x;
+    const curried = curry(source, { arity: null });
+    expect(curried).toBe(source);
   });
 
   it('Should apply the correct properties to the curried function', () => {
@@ -64,6 +106,18 @@ describe('curry', () => {
     });
   });
 
+  it('Should respect the ARITY symbol', () => {
+    function fn(a, b) {
+      return `${a}-${b}`;
+    }
+
+    fn[ARITY] = 1;
+
+    const curried = curry(fn);
+    expect(curried(1, 2)).toBe('1-undefined');
+    expect(() => curried(1)(2)).toThrow(/is not a function/);
+  });
+
   describe('Nary', () => {
     it('Should curry a binary function (non-optimized)', () => {
       const fn = (a, b) => `${a}-${b}`;
@@ -85,6 +139,28 @@ describe('curry', () => {
       expect(curried(1, 2, 3, 4, 5)).toBe('1-2-3-4-5');
       expect(curried(1, 2)(3, 4)(5)).toBe('1-2-3-4-5');
       expect(curried(1)(2)(3)(4)(5)).toBe('1-2-3-4-5');
+    });
+
+    it('Should retain context if "unoptimized" (nary)', () => {
+      const obj = {};
+
+      function fn(a, b) {
+        expect(this).toBe(obj);
+        return `${a}-${b}`;
+      }
+
+      const curried = curry(fn, { optimized: false });
+      obj.curried = curried;
+
+      expect(obj.curried(1, 2)).toBe('1-2');
+      expect(obj.curried(1)(2)).toBe('1-2');
+      expect(obj.curried()(1)(2)).toBe('1-2');
+      expect(obj.curried(1)()(2)).toBe('1-2');
+      expect(obj.curried(_)(1)(2)).toBe('1-2');
+      expect(obj.curried(1)(_)(2)).toBe('1-2');
+      expect(obj.curried(1, _)(2)).toBe('1-2');
+      expect(obj.curried(_, 2)(1)).toBe('1-2');
+      expect(obj.curried(_, 2)(1, _)).toBe('1-2');
     });
   });
 

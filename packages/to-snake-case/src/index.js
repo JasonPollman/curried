@@ -8,10 +8,13 @@ import toWords from '@foldr/to-words';
 
 /**
  * Converts a string to camel case.
+ *
+ * @name toSnakeCase
  * @param {string} string The string to convert to camel case.
  * @returns {Array<string>} The camel cased string.
- * @category utility
- * @memberof foldr
+ *
+ * @category string
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

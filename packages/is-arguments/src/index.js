@@ -9,10 +9,13 @@ import toStringTag from '@foldr/to-string-tag';
 
 /**
  * Determines is `x` is an Arguments instance.
+ *
+ * @name isArguments
  * @param {any} x The thing to check.
  * @returns {boolean} True if `thing` is an Arguments instance, false otherwise.
+ *
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

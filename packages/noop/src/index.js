@@ -2,7 +2,7 @@
  * A function that returns nothing. A "no operation".
  * @returns {undefined}
  * @category utility
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

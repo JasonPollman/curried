@@ -8,10 +8,13 @@
 /**
  * Determines is `x` is an Array instance.
  * Note, this is based on the native `Array.isArray` method.
+ *
+ * @name isArray
  * @param {any} x The thing to check.
  * @returns {boolean} True if `thing` is an Array instance, false otherwise.
+ *
  * @category types
- * @memberof foldr
+ * @publishdoc
  * @since v0.0.0
  * @export
  * @example

@@ -4,8 +4,19 @@
  * @file
  */
 
+import getInternalSymbol from '@foldr/internal-symbol';
+
+/* eslint-disable require-jsdoc */
+
+/**
+ * Used to track the arity of piped functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
+
 /**
  * Generic type error
+ * @type {string}
  */
 const TYPE_ERROR = 'Expected arguments of pipe to be of type function';
 
@@ -39,18 +50,25 @@ function pipe() {
     }
   }
 
-  argLen = funcs.length;
+  const size = funcs.length;
 
-  return function receiver() {
+  function receiver() {
     let value = funcs[0].apply(this, arguments);
     let len = 0;
 
-    while (++len < argLen) {
+    while (++len < size) {
       value = funcs[len].call(this, value);
     }
 
     return value;
-  };
+  }
+
+  const first = funcs[0];
+
+  // So we can apply function transformations to piped functions
+  // we stash the arity here. For example, currying a composed function.
+  receiver[ARITY] = first[ARITY] !== undefined ? first[ARITY] : first.length;
+  return receiver;
 }
 
 export default pipe;

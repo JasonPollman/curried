@@ -5,6 +5,15 @@
  */
 
 import FunctionalFactory from '@foldr/internal-f-factory';
+import getInternalSymbol from '@foldr/internal-symbol';
+
+/* eslint-disable require-jsdoc */
+
+/**
+ * Used to track the arity of composed functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
 
 /**
  * Function composition.
@@ -57,14 +66,21 @@ export default function compose() {
   }
 
   const size = fns.length - 1;
+  const last = fns[size];
 
-  return function composed() {
+  function composed() {
     let i = size;
     let result = fns[i].apply(this, arguments);
 
     while (--i >= 0) result = fns[i].call(this, result);
     return result;
-  };
+  }
+
+  // So we can apply function transformations to composed functions,
+  // we stash the arity here. For example, currying a composed function.
+  composed[ARITY] = last[ARITY] !== undefined ? last[ARITY] : last.length;
+
+  return composed;
 }
 
 /**

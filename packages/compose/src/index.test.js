@@ -4,7 +4,7 @@
  * @file
  */
 
-import compose, { f } from '.';
+import compose, { f, ARITY } from '.';
 
 describe('compose', () => {
   it('Should be a function', () => {
@@ -31,6 +31,27 @@ describe('compose', () => {
     expect(typeof sumSquared).toBe('function');
     expect(sumSquared(1, 2)).toBe(9);
     expect(sumSquared(2, 3)).toBe(25);
+  });
+
+  it('Should add the `ARITY` property to composed functions', () => {
+    const sum = (a, b) => a + b;
+    const square = x => x * x;
+    const sumSquared = compose(square, sum);
+
+    expect(typeof sumSquared).toBe('function');
+    expect(sumSquared(1, 2)).toBe(9);
+    expect(sumSquared[ARITY]).toBe(2);
+  });
+
+  it('Should add the `ARITY` property to composed functions (already there)', () => {
+    const sum = (a, b) => a + b;
+    sum[ARITY] = 3;
+    const square = x => x * x;
+    const sumSquared = compose(square, sum);
+
+    expect(typeof sumSquared).toBe('function');
+    expect(sumSquared(1, 2)).toBe(9);
+    expect(sumSquared[ARITY]).toBe(3);
   });
 
   describe('compose.f', () => {

@@ -7,8 +7,8 @@ module.exports = ({ fp, foldr, lodash }) => {
   };
 
   const functionalTests = {
-    foldr: input => foldr.findKey.f(input, isTwo),
-    lodash: input => fp.findKey(input, isTwo),
+    foldr: input => foldr.findKey.f(isTwo, input),
+    lodash: input => fp.findKey(isTwo, input),
   };
 
   return [

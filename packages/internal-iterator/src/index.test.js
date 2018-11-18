@@ -320,6 +320,36 @@ describe('internal-iterator', () => {
     expect(IteratorFactory(options)([1, 3, 5], x => x % 2 === 0)).toEqual(false);
   });
 
+  it('Should provide the ability to "prepare" iteratees', () => {
+    const iteratee = x => x % 2 === 0;
+    let prepared = false;
+
+    function prep(iter) {
+      prepared = true;
+      expect(iter).toBe(iteratee);
+      return iteratee;
+    }
+
+    const options = {
+      Empty: () => false,
+      unwrap: results => results.passed,
+      Results: () => ({ passed: false }),
+      prepare: prep,
+      handler: (context, results, iter, i, value, key, collection) => {
+        const passes = iter(value, key, collection);
+        if (!passes) return undefined;
+
+        // eslint-disable-next-line no-param-reassign
+        results.passed = true;
+        return BREAK;
+      },
+    };
+
+    expect(IteratorFactory(options)([1, 2, 3], iteratee)).toEqual(true);
+    expect(IteratorFactory(options)([1, 3, 5], iteratee)).toEqual(false);
+    expect(prepared).toBe(true);
+  });
+
   it('Should provide the ability to "unwrap" results (invalid input)', () => {
     const options = {
       Empty: () => false,

@@ -4,11 +4,38 @@
  * @file
  */
 
-import rearg, { IS_REARGED, SOURCE } from '.';
+import rearg, { IS_REARGED, ARITY, SOURCE } from '.';
+
+const TO_STRING_MATCH = /^\/\* Rearg Wrapped \*\/\r\n/;
 
 describe('rearg', () => {
   it('Should be a function', () => {
     expect(typeof rearg).toBe('function');
+  });
+
+  it('Should alter the partialed function\'s `toString` method', () => {
+    const source = x => x;
+    expect(rearg(source, [0]).toString()).toMatch(TO_STRING_MATCH);
+  });
+
+  it('Should respect the `ARITY` symbol (none)', () => {
+    const fn = (x, y, z) => x + y + z;
+    const rearged = rearg(fn, [1, 0]);
+
+    expect(typeof rearged).toBe('function');
+    expect(rearged('x', 'y', 'z')).toBe('yxz');
+    expect(rearged[ARITY]).toBe(3);
+  });
+
+  it('Should respect the `ARITY` symbol (passthrough)', () => {
+    const fn = (x, y, z) => x + y + z;
+    fn[ARITY] = 2;
+
+    const rearged = rearg(fn, [1, 0]);
+
+    expect(typeof rearged).toBe('function');
+    expect(rearged('x', 'y', 'z')).toBe('yxz');
+    expect(rearged[ARITY]).toBe(2);
   });
 
   it('Should rearg functions (1)', () => {

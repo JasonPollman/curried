@@ -70,6 +70,17 @@ function binary(fn) {
 }
 
 /**
+ * The `toString` implementation for curried functions.
+ * This will print the original function's source string
+ * prepended with a friendly message that the function is curried.
+ * @returns {string} The source function's code with a comment
+ * informing the user that the function is curried.
+ */
+function toStringForCurried() {
+  return '/* Curry Wrapped */\r\n'.concat(this[SOURCE].toString());
+}
+
+/**
  * Optimized trinary curry function.
  * @param {function} fn The source (original) function.
  * @returns {function} The curried function
@@ -223,16 +234,17 @@ function hasPlaceholders(args, arity) {
  * @param {function} fn The source (original) function.
  * @param {number} arity The arity to curry `fn` to.
  * @param {Arguments|Array} prev The previous arguments in the curry sequence.
+ * @param {any} context The context from the initial invocation.
  * @returns {function} The next function in the curry sequence.
  */
-function recurry(fn, arity, prev) {
+function recurry(fn, arity, prev, context) {
   return function curried() {
     if (!arguments.length) return curried;
     const args = concat(prev, arguments);
 
     return args.length < arity || hasPlaceholders(args, arity)
-      ? recurry(fn, arity, args)
-      : fn.apply(this, args);
+      ? recurry(fn, arity, args, context)
+      : fn.apply(context, args);
   };
 }
 
@@ -244,11 +256,11 @@ function recurry(fn, arity, prev) {
  */
 function nary(fn, arity) {
   return function curried() {
-    return arguments.length
-      ? arguments.length < arity || hasPlaceholders(arguments, arity)
-        ? recurry(fn, arity, arguments)
-        : fn.apply(this, arguments)
-      : curried;
+    const args = arguments;
+
+    return args.length < arity || hasPlaceholders(args, arity)
+      ? recurry(fn, arity, args, this)
+      : fn.apply(this, args);
   };
 }
 
@@ -279,7 +291,8 @@ const OPTIMIZED = [unary, unary, binary, trinary, quarternary];
  * triples(1)(_, 3)(2)    // => [1, 2, 3]
  * triples(_, 2)(1)(3)    // => [1, 2, 3]
  */
-export default function curry(fn, { arity = fn.length, optimized = true } = {}) {
+export default function curry(fn, { arity = fn[ARITY], optimized = true } = {}) {
+  if (arity === undefined) arity = fn.length;
   if (arity < 1) return fn;
 
   const curried = (optimized ? (OPTIMIZED[arity] || nary) : nary)(fn, arity);
@@ -287,6 +300,7 @@ export default function curry(fn, { arity = fn.length, optimized = true } = {}) 
   curried[ARITY] = arity;
   curried[SOURCE] = fn;
   curried[IS_CURRIED] = true;
+  curried.toString = toStringForCurried;
 
   return curried;
 }

@@ -9,6 +9,12 @@
 import getInternalSymbol from '@foldr/internal-symbol';
 
 /**
+ * Used to track the arity of rearged functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
+
+/**
  * Used to determine if a function is rearged.
  * @type {SafeSymbol}
  */
@@ -19,6 +25,17 @@ export const IS_REARGED = getInternalSymbol('is-rearged-fn');
  * @type {SafeSymbol}
  */
 export const SOURCE = getInternalSymbol('source-fn');
+
+/**
+ * The `toString` implementation for rearged functions.
+ * This will print the original function's source string
+ * prepended with a friendly message that the function is rearged.
+ * @returns {string} The source function's code with a comment
+ * informing the user that the function is rearged.
+ */
+function toStringForRearged() {
+  return '/* Rearg Wrapped */\r\n'.concat(this[SOURCE].toString());
+}
 
 /**
  * Reargs `fn` using `signature`.
@@ -60,8 +77,11 @@ export default function rearg(fn, signature) {
   if (!signature || !signature.length) return fn;
 
   const rearged = reargWrap(fn, signature);
+
+  rearged[ARITY] = fn[ARITY] !== undefined ? fn[ARITY] : fn.length;
   rearged[SOURCE] = fn;
   rearged[IS_REARGED] = true;
+  rearged.toString = toStringForRearged;
 
   return rearged;
 }

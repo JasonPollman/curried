@@ -29,7 +29,7 @@ export function functionalize(fn, config) {
   } = config;
 
   const binding = context === 'config' ? config : context;
-  const method = !binding ? fn : fn.bind(binding);
+  const method = binding === undefined ? fn : fn.bind(binding);
 
   return (curried ? curry : identity)(signature ? rearg(method, signature) : method, config);
 }
@@ -52,11 +52,7 @@ export function functionalize(fn, config) {
  * @export
  */
 export default function FunctionalFactory(fn, options) {
-  const config = {
-    curried: true,
-    namespace: 'f',
-    ...options,
-  };
+  const config = { curried: true, ...options };
 
   /**
    * Allows users to create custom functionalized versions of the provided function.
@@ -65,21 +61,19 @@ export default function FunctionalFactory(fn, options) {
    * overrides to apply the the new function.
    * @returns {function} The functionalized version of `fn`.
    */
-  function makeFunctionalWrapper(overrides) {
-    return functionalize(fn, {
-      ...config,
-      ...overrides,
+  function make(overrides) {
+    const merged = { ...config, ...overrides };
 
-      // Aliasing this to make more sense to the end user.
-      // Note, this option is passed to curry's options.
-      optimized: has.call(overrides, 'context') ? overrides.context : config.optimized,
-    });
+    // Aliasing this to make more sense to the end user.
+    // Note, this option is passed to curry's options.
+    merged.optimized = has.call(merged, 'context') ? false : merged.optimized;
+    return functionalize(fn, merged);
   }
 
-  const functional = makeFunctionalWrapper(fn, config);
+  const functional = make(fn, {});
 
-  fn.make = makeFunctionalWrapper;
-  fn[config.namespace] = functional;
+  fn.make = make;
+  fn[config.namespace || 'f'] = functional;
 
   return functional;
 }

@@ -25,10 +25,27 @@ export const IS_CURRIED = getInternalSymbol('is-curried-fn');
 export const IS_PARTIAL = getInternalSymbol('is-partial-fn');
 
 /**
+ * Used to track the arity of partialed functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
+
+/**
  * Used to map partialed functions back to their original.
  * @type {SafeSymbol}
  */
 export const SOURCE = getInternalSymbol('source-fn');
+
+/**
+ * The `toString` implementation for partialed functions.
+ * This will print the original function's source string
+ * prepended with a friendly message that the function is partialized.
+ * @returns {string} The source function's code with a comment
+ * informing the user that the function is partialized.
+ */
+function toStringForPartialed() {
+  return '/* Partial Wrapped */\r\n'.concat(this[SOURCE].toString());
+}
 
 /**
  * Partializes `fn` using `partials`.
@@ -99,8 +116,11 @@ export default function partial(fn, ...partials) {
   if (!partials.length || fn[IS_CURRIED]) return fn;
 
   const partialized = partialize(fn, partials);
+
+  partialized[ARITY] = fn[ARITY] !== undefined ? fn[ARITY] : fn.length;
   partialized[SOURCE] = fn;
   partialized[IS_PARTIAL] = true;
+  partialized.toString = toStringForPartialed;
 
   return partialized;
 }

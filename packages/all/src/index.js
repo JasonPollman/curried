@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 11/18/2018
+ * @since 2018-11-18
  * @file
  */
 
@@ -13,6 +13,7 @@ import binary from '@foldr/binary';
 import clamp from '@foldr/clamp';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
+import concat from '@foldr/concat';
 import constant from '@foldr/constant';
 import curry from '@foldr/curry';
 import escapeRegExp from '@foldr/escape-regexp';
@@ -119,6 +120,7 @@ export {
   clamp,
   compact,
   compose,
+  concat,
   constant,
   curry,
   escapeRegExp,

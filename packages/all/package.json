@@ -11,6 +11,7 @@
     "@foldr/clamp": "^0.0.0",
     "@foldr/compact": "^0.0.0",
     "@foldr/compose": "^0.0.0",
+    "@foldr/concat": "^0.0.0",
     "@foldr/constant": "^0.0.0",
     "@foldr/curry": "^0.0.0",
     "@foldr/escape-regexp": "^0.0.0",

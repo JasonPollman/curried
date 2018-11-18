@@ -9,8 +9,11 @@ import isObjectLike from '@foldr/is-object-like';
 
 /**
  * Determines if the given item is a boolean.
+ *
+ * @name isBoolean
  * @param {any} x The value to check.
  * @returns {boolean} True if `thing` is a boolean, false otherwise.
+ *
  * @category types
  * @publishdoc
  * @since v0.0.0

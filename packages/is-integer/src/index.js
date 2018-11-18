@@ -29,8 +29,11 @@ export function isIntegerPolyfill(x) {
 
 /**
  * Determines if the given item is an integer.
+ *
+ * @name isInteger
  * @param {any} x The value to assert.
  * @returns {boolean} True if `x` is an integer, false otherwise.
+ *
  * @category types
  * @publishdoc
  * @since v0.0.0

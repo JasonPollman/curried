@@ -40,8 +40,10 @@ const hasObjectConstructor = IS_NODE
  * Determines if the given item is a "plain object". That is an object that
  * is a direct (non-inherited) instance of the Object class.
  *
+ * @name isPlainObject
  * @param {any} x The value to determine whether or not it's a plain object.
  * @returns {boolean} True if `x` is a plain object, false otherwise.
+ *
  * @category types
  * @publishdoc
  * @since v0.0.0

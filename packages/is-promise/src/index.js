@@ -17,9 +17,12 @@ const isThenable = x => typeof x.then === 'function' && typeof x.catch === 'func
 
 /**
  * Determines if the given item is a Promise object.
- * That is, if it is a native Promise or it's `thenable` (contains `.then` and `.catch` functions).
+ * That is, if it's a native Promise or it's `thenable` (contains `.then` and `.catch` functions).
+ *
+ * @name isPromise
  * @param {any} x The value to determine whether or not it's a Promise.
  * @returns {boolean} True if `x` is a Promise, false otherwise.
+ *
  * @category types
  * @publishdoc
  * @since v0.0.0

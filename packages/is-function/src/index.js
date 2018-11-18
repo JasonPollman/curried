@@ -6,8 +6,11 @@
 
 /**
  * Determines if the given item is an instance of Function.
+ *
+ * @name isFunction
  * @param {any} x The value to check.
  * @returns {boolean} True if `x` is a Function object, false otherwise.
+ *
  * @category types
  * @publishdoc
  * @since v0.0.0

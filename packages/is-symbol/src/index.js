@@ -10,8 +10,11 @@ const isSymbolCrossFrame = typeof Symbol === 'function' ? is(Symbol) : /* istanb
 
 /**
  * Determines if the given item is an instance of Symbol.
+ *
+ * @name isSymbol
  * @param {any} x The value to check.
  * @returns {boolean} True if `x` is a Symbol object, false otherwise.
+ *
  * @category types
  * @publishdoc
  * @since v0.0.0

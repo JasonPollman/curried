@@ -8,8 +8,11 @@ import is from '@foldr/is';
 
 /**
  * Determines if the given item is an instance of Error.
+ *
+ * @name isError
  * @param {any} x The value to check.
  * @returns {boolean} True if `x` is an Error object, false otherwise.
+ *
  * @category types
  * @publishdoc
  * @since v0.0.0

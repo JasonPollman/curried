@@ -14,7 +14,7 @@ module.exports = ({ foldr, lodash, ramda }) => {
 
   return [
     {
-      name: 'Curried Function Invocation (1)',
+      name: 'Curried Function Invocation (Basic)',
       expect: (result, assert) => assert(result === 3),
       tests: {
         foldr: () => fsum(1)(2),
@@ -23,7 +23,16 @@ module.exports = ({ foldr, lodash, ramda }) => {
       },
     },
     {
-      name: 'Curried Function Invocation (2)',
+      name: 'Curried Function Invocation (Empty Invocations)',
+      expect: (result, assert) => assert(result === 3),
+      tests: {
+        foldr: () => fsum()(1)()()(2),
+        lodash: () => lsum()(1)()()(2),
+        ramda: () => rsum()(1)()()(2),
+      },
+    },
+    {
+      name: 'Curried Function Invocation (Full Arity)',
       expect: (result, assert) => assert(result === 3),
       tests: {
         foldr: () => fsum(1, 2),
@@ -32,7 +41,7 @@ module.exports = ({ foldr, lodash, ramda }) => {
       },
     },
     {
-      name: 'Curried Function Invocation (3)',
+      name: 'Curried Function Invocation (Pleacholders)',
       expect: (result, assert) => assert(result === 3),
       tests: {
         foldr: () => fsum(foldr._, 2)(1),
@@ -41,7 +50,7 @@ module.exports = ({ foldr, lodash, ramda }) => {
       },
     },
     {
-      name: 'Curried Function Invocation (4)',
+      name: 'Curried Function Invocation (Multi)',
       expect: (result, assert) => assert(result === 'a-b-c-d-e-f'),
       tests: {
         foldr: () => flong('a')('b')('c')('d', 'e', 'f'),
@@ -50,7 +59,7 @@ module.exports = ({ foldr, lodash, ramda }) => {
       },
     },
     {
-      name: 'Curried Function Invocation (5)',
+      name: 'Curried Function Invocation (Multi, Placeholders)',
       expect: (result, assert) => assert(result === 'a-b-c-d-e-f'),
       tests: {
         foldr: () => flong('a')(foldr._)('b')('c')('d', foldr._, 'f')('e'),

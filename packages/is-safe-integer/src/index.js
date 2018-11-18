@@ -20,8 +20,21 @@ export function isSafeIntegerPolyfill(x) {
 /**
  * Checks if `value` is a safe integer. An integer is safe if it's an IEEE-754
  * double precision number which isn't the result of a rounded unsafe integer.
+ *
+ * @name isSafeInteger
  * @param {any} x The value to check.
  * @returns {boolean} True if `x` is a safe integer, false otherwise.
+ *
+ * @category types
+ * @publishdoc
+ * @since v0.0.0
  * @export
+ * @example
+ *
+ * isSafeInterger(0);        // => true
+ * isSafeInterger(10);       // => true
+ * isSafeInterger(NaN);      // => false
+ * isSafeInterger(1.1);      // => false
+ * isSafeInterger(Infinity); // => false
  */
 export default Number.isSafeInteger || /* istanbul ignore next */ isSafeIntegerPolyfill;

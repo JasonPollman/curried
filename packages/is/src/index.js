@@ -40,6 +40,9 @@ const isCheck = IS_NODE ? isNodeCheck : /* istanbul ignore next */ isBrowserChec
  * @param {function} Constructor The constructor to test for membership of.
  * @param {any} value The value to test.
  * @returns {boolean} True if `value` is a `Constructor` instance, false otherwise.
+ *
+ * @name is
+ * @autocurried
  * @category types
  * @publishdoc
  * @since v0.0.0

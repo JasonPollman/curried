@@ -6,8 +6,11 @@
 
 /**
  * Determines if the given item is undefined.
+ *
+ * @name isUndefined
  * @param {any} x The value to assert undefined-ness.
  * @returns {boolean} True if `x` is undefined, false otherwise.
+ *
  * @category types
  * @publishdoc
  * @since v0.0.0

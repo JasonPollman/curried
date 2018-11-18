@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 11/18/2018
+ * @since 2018-11-18
  * @file
  */
 
@@ -105,6 +105,7 @@ import toUpperCase from '@foldr/to-upper-case';
 import toUpperFirst from '@foldr/to-upper-first';
 import toWords from '@foldr/to-words';
 import unary from '@foldr/unary';
+import unique from '@foldr/unique';
 import values from '@foldr/values';
 import zip from '@foldr/zip';
 
@@ -211,6 +212,7 @@ export {
   toUpperFirst,
   toWords,
   unary,
+  unique,
   values,
   zip,
 };

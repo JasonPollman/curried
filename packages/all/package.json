@@ -103,6 +103,7 @@
     "@foldr/to-upper-first": "^0.0.0",
     "@foldr/to-words": "^0.0.0",
     "@foldr/unary": "^0.0.0",
+    "@foldr/unique": "^0.0.0",
     "@foldr/values": "^0.0.0",
     "@foldr/zip": "^0.0.0"
   }

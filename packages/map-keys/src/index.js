@@ -55,8 +55,7 @@ const mapKeys = IteratorFactory({
   Results: () => ({}),
   prepare: getIteratee,
   handler: (context, results, iteratee, i, value, key, collection) => {
-    const k = context && context.capped ? iteratee(value) : iteratee(value, key, collection);
-    results[k] = value;
+    results[context && context.capped ? iteratee(key) : iteratee(value, key, collection)] = value;
   },
 });
 
@@ -66,8 +65,8 @@ const mapKeys = IteratorFactory({
  * Creates a new object with the same values as `collection` but with the keys mapped
  * using `iteratee`.
  *
- * Iteratee functions are called with the signature `iteratee(value)`, where
- * `value` is the current item in the collection that's being iterated over.
+ * Iteratee functions are called with the signature `iteratee(key)`, where
+ * `key` is the key of the current item in the collection that's being iterated over.
  *
  * @name mapKeys.f
  * @param {function} iteratee The iteratee function to use while mapping keys.
@@ -82,27 +81,11 @@ const mapKeys = IteratorFactory({
  * @export
  * @example
  *
- * function uppercaseKey(value, key) {
+ * function uppercaseKey(key) {
  *   return key.toUpperCase();
  * }
  *
- * mapValues(square)({ foo: 1, bar: 2, baz: 3 }); // => { FOO: 1, BAR: 2, BAZ: 3 }
- *
- * // Using the shorthand string iteratee you can
- * // map an object to a property of the object.
- *
- * const people = {
- *   1: { name: 'Ben', age: 21 },
- *   2: { name: 'John', age: 32 },
- *   3: { name: 'Al', age: 18 },
- * };
- *
- * mapKeys('name', people);
- * // => {
- * //  Ben: { name: 'Ben', age: 21 },
- * //  John: { name: 'John', age: 32 },
- * //  Al: { name: 'Al', age: 18 },
- * // }
+ * mapKeys(square)({ foo: 1, bar: 2, baz: 3 }); // => { FOO: 1, BAR: 2, BAZ: 3 }
  */
 export const f = FunctionalFactory(mapKeys, {
   arity: 2,

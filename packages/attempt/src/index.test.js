@@ -4,7 +4,7 @@
  * @file
  */
 
-import attempt from '.';
+import attempt, { f } from '.';
 
 describe('attempt', () => {
   it('Should be a function', () => {
@@ -59,5 +59,46 @@ describe('attempt', () => {
     };
 
     expect(attempt(fn, 'foobar')).toBe(7);
+  });
+
+  describe('attempt.f', () => {
+    it('Should be a function', () => {
+      // eslint-disable-next-line import/no-named-as-default-member
+      expect(typeof attempt.f).toBe('function');
+      expect(typeof f).toBe('function');
+
+      // eslint-disable-next-line import/no-named-as-default-member
+      expect(attempt.f === f).toBe(true);
+    });
+
+    it('Should execute a function (curried)', () => {
+      const fn = (a, b) => {
+        expect(a).toBe(1);
+        expect(b).toBe(2);
+        return 3;
+      };
+
+      expect(f([1, 2])(fn)).toBe(3);
+    });
+
+    it('Should catch if the function throws', () => {
+      const fn = (a, b) => {
+        expect(a).toBe(1);
+        expect(b).toBe(2);
+        throw new Error('foo');
+      };
+
+      expect(f([1, 2])(fn).message).toBe('foo');
+    });
+
+    it('Should handle bad arguments silently', () => {
+      const fn = (a, b) => {
+        expect(a).toBe(undefined);
+        expect(b).toBe(undefined);
+        return 7;
+      };
+
+      expect(f('foobar')(fn)).toBe(7);
+    });
   });
 });

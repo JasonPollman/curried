@@ -43,6 +43,7 @@ import isArrayLike from '@foldr/is-array-like';
 import isBoolean from '@foldr/is-boolean';
 import isBuffer from '@foldr/is-buffer';
 import isDate from '@foldr/is-date';
+import isEqual from '@foldr/is-equal';
 import isError from '@foldr/is-error';
 import isFinite from '@foldr/is-finite';
 import isFunction from '@foldr/is-function';
@@ -145,6 +146,7 @@ export {
   isBoolean,
   isBuffer,
   isDate,
+  isEqual,
   isError,
   isFinite,
   isFunction,

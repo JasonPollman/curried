@@ -49,7 +49,7 @@ const find = IteratorFactory({
   Results: () => [undefined],
   prepare: getIteratee,
   handler: (context, results, iteratee, i, value, key, collection) => {
-    if (context && context.capped ? iteratee(value) : !iteratee(value, key, collection)) {
+    if (context && context.capped ? !iteratee(value) : !iteratee(value, key, collection)) {
       return undefined;
     }
 

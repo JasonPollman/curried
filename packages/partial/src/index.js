@@ -40,8 +40,10 @@ function partialize(fn, partials) {
   const applied = partials.length;
 
   return function partialized() {
-    const args = [];
-    const size = arguments.length;
+    const input = arguments;
+    const output = [];
+
+    const size = input.length;
 
     let i = 0;
     let n = 0;
@@ -49,13 +51,13 @@ function partialize(fn, partials) {
     // Push partial applications into the final arguments set
     // if they're placeholders, grab them from `arguments`.
     while (i < applied) {
-      args[i] = partials[i] === _ ? arguments[n++] : partials[i];
+      output[i] = partials[i] === _ ? input[n++] : partials[i];
       i++;
     }
 
     // Push remaining arguments into the final arguments set.
-    while (n < size) args[i++] = arguments[n++];
-    return fn.apply(this, args);
+    while (n < size) output[i++] = input[n++];
+    return fn.apply(this, output);
   };
 }
 
@@ -99,6 +101,7 @@ export default function partial(fn, ...partials) {
   const partialized = partialize(fn, partials);
   partialized[SOURCE] = fn;
   partialized[IS_PARTIAL] = true;
+
   return partialized;
 }
 

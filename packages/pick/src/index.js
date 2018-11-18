@@ -78,7 +78,7 @@ const pick = IteratorFactory({
   Results: () => ({}),
   prepare: preparePickIteratee,
   handler: (context, results, iteratee, i, value, key, collection) => {
-    if (context && context.capped ? iteratee(value) : iteratee(value, key, collection)) {
+    if (context && context.capped ? iteratee(value, key) : iteratee(value, key, collection)) {
       results[key] = value;
     }
   },
@@ -118,6 +118,8 @@ const pick = IteratorFactory({
  */
 export const f = FunctionalFactory(pick, {
   arity: 2,
+  capped: true,
+  context: 'config',
   signature: [1, 0],
 });
 

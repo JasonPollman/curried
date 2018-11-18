@@ -1,14 +1,21 @@
-module.exports = ({ foldr, lodash, fp }) => {
+module.exports = ({
+  fp,
+  foldr,
+  ramda,
+  lodash,
+}) => {
   const hasEven = x => x % 2 === 0;
 
   const tests = {
     foldr: input => foldr.every(input, hasEven),
     lodash: input => lodash.every(input, hasEven),
+    ramda: input => ramda.all(hasEven, input),
   };
 
   const functionalTests = {
     foldr: input => foldr.every.f(hasEven, input),
     lodash: input => fp.every(hasEven, input),
+    ramda: input => ramda.all(hasEven, input),
   };
 
   return [

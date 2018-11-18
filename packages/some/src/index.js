@@ -20,7 +20,7 @@ import IteratorFactory, { BREAK } from '@foldr/internal-iterator';
  * `value` is the current item in the collection, `key` is the key of the current item in the
  * collection, and `collection` is collection.
  *
- * @name every
+ * @name some
  * @param {Array|Object|String|Arguments} collection The collection to iterate over.
  * @param {function} predicate The predicate iteratee function.
  * @returns {boolean} True if any item in the collection returns `true`
@@ -44,12 +44,12 @@ import IteratorFactory, { BREAK } from '@foldr/internal-iterator';
  * some({ a: 2, b: 4, c: 6 }, isEven); // => true
  * some({ a: 1, b: 3, c: 5 }, isEven); // => false
  */
-const every = IteratorFactory({
+const some = IteratorFactory({
   unwrap: results => results[0],
   Empty: () => false,
   Results: () => [false],
   handler: (context, results, iteratee, i, value, key, collection) => {
-    if (context && context.capped ? iteratee(value) : !iteratee(value, key, collection)) {
+    if (context && context.capped ? !iteratee(value) : !iteratee(value, key, collection)) {
       return undefined;
     }
 
@@ -67,7 +67,7 @@ const every = IteratorFactory({
  * Predicate functions are called with the signature `predicate(value)`, where
  * `value` is the current item in the collection being iterated over.
  *
- * @name every.f
+ * @name some.f
  * @param {function} predicate The predicate iteratee function.
  * @param {Array|Object|String|Arguments} collection The collection to iterate over.
  * @returns {boolean} True if any item in the collection returns `true`
@@ -93,11 +93,11 @@ const every = IteratorFactory({
  * some.f(isEven)({ a: 2, b: 4, c: 6 }); // => true
  * some.f(isEven, { a: 1, b: 3, c: 5 }); // => false
  */
-export const f = FunctionalFactory(every, {
+export const f = FunctionalFactory(some, {
   arity: 2,
   capped: true,
   context: 'config',
   signature: [1, 0],
 });
 
-export default every;
+export default some;

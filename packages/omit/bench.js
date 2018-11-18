@@ -1,5 +1,10 @@
-module.exports = ({ foldr, lodash }) => {
+module.exports = ({ fp, foldr, lodash }) => {
   const tests = {
+    foldr: ([input, values]) => foldr.omit(input, values),
+    lodash: ([input, values]) => lodash.omit(input, values),
+  };
+
+  const functionalTests = {
     foldr: ([input, values]) => foldr.omit(input, values),
     lodash: ([input, values]) => lodash.omit(input, values),
   };
@@ -15,6 +20,15 @@ module.exports = ({ foldr, lodash }) => {
       },
     },
     {
+      name: 'Omits Values (Functional)',
+      expect: (result, { deepEqual }) => deepEqual(result, { c: 3 }),
+      setup: () => [{ a: 1, b: 2, c: 3 }, x => x === 1 || x === 2],
+      tests: {
+        foldr: ([input, values]) => foldr.omit.f(values, input),
+        lodash: ([input, values]) => fp.omitBy(values, input),
+      },
+    },
+    {
       name: 'Omits Values (Null)',
       expect: (result, { deepEqual }) => deepEqual(result, {}),
       setup: () => [null, ['a', 'b']],
@@ -25,6 +39,12 @@ module.exports = ({ foldr, lodash }) => {
       expect: (result, { deepEqual }) => deepEqual(result, { c: 3 }),
       setup: () => [{ a: 1, b: 2, c: 3 }, ['a', 'b']],
       tests,
+    },
+    {
+      name: 'Omits Values (Array Shorthand, Functional)',
+      expect: (result, { deepEqual }) => deepEqual(result, { c: 3 }),
+      setup: () => [{ a: 1, b: 2, c: 3 }, ['a', 'b']],
+      tests: functionalTests,
     },
     {
       name: 'Omits Values (Array Shorthand 2)',

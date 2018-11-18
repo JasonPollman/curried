@@ -4,7 +4,9 @@
  * @file
  */
 
-import memoize from '.';
+import memoize, { ARITY } from '.';
+
+const TO_STRING_MATCH = /^\/\* Memoized \*\/\r\n/;
 
 describe('curry', () => {
   it('Should be a function', () => {
@@ -13,6 +15,26 @@ describe('curry', () => {
 
   it('Should expose a default `Cache` property', () => {
     expect(typeof memoize.Cache).toBe('function');
+  });
+
+  it('Should respect the `ARITY` symbol', () => {
+    const fn = (x, y) => x + y;
+    const memoized = memoize(fn);
+    expect(memoized[ARITY]).toBe(2);
+  });
+
+  it('Should respect the `ARITY` symbol (existing)', () => {
+    const fn = (x, y) => x + y;
+    fn[ARITY] = 10;
+
+    const memoized = memoize(fn);
+    expect(memoized[ARITY]).toBe(10);
+  });
+
+  it('Should alter the partialed function\'s `toString` method', () => {
+    const fn = (x, y) => x + y;
+    const memoized = memoize(fn);
+    expect(memoized.toString()).toMatch(TO_STRING_MATCH);
   });
 
   it('Should memoize a function', () => {

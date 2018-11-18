@@ -8,6 +8,7 @@
   "dependencies": {
     "@foldr/attempt": "^0.0.0",
     "@foldr/binary": "^0.0.0",
+    "@foldr/chunk": "^0.0.0",
     "@foldr/clamp": "^0.0.0",
     "@foldr/compact": "^0.0.0",
     "@foldr/compose": "^0.0.0",
@@ -30,6 +31,7 @@
     "@foldr/has": "^0.0.0",
     "@foldr/head": "^0.0.0",
     "@foldr/identity": "^0.0.0",
+    "@foldr/init": "^0.0.0",
     "@foldr/interpolate": "^0.0.0",
     "@foldr/interpolate-braces": "^0.0.0",
     "@foldr/interpolate-brackets": "^0.0.0",
@@ -63,6 +65,7 @@
     "@foldr/is-undefined": "^0.0.0",
     "@foldr/is-weak-map": "^0.0.0",
     "@foldr/keys": "^0.0.0",
+    "@foldr/last": "^0.0.0",
     "@foldr/map": "^0.0.0",
     "@foldr/map-keys": "^0.0.0",
     "@foldr/map-right": "^0.0.0",

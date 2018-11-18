@@ -23,12 +23,11 @@ function resolver(args) {
 
 /**
  * Converts a string to an array of object path tokens.
- * @param {string} value The value to convert to a set of path tokens.
+ * @param {string} path The value to convert to a set of path tokens.
  * @returns {Array} An array of paths.
  */
-function toStringPath(value) {
+function toStringPath(path) {
   const results = [];
-  const path = toString(value);
   const size = path.length;
 
   if (!path || !size) return results;
@@ -152,5 +151,5 @@ const toStringPathMemoized = memoize(toStringPath, resolver, cache);
  * toPath('foo[0][1]["bar"].baz'); // => ['foo', '0', '1', 'bar', 'baz']
  */
 export default function toPath(value) {
-  return isArray(value) ? value : toStringPathMemoized(value);
+  return isArray(value) ? value : toStringPathMemoized(toString(value));
 }

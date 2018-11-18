@@ -50,11 +50,13 @@ function reargWrap(fn, reargs) {
     const input = arguments;
     const output = [];
 
+    const max = input.length < size ? input.length : size;
+
     let i = 0;
     let n = 0;
 
     // Push all "re-arguments" into the new arguments set.
-    while (i < size) output[n++] = input[reargs[i++]];
+    while (i < max) output[n++] = input[reargs[i++]];
 
     i = input.length;
 

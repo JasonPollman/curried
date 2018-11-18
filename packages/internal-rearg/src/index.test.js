@@ -38,6 +38,17 @@ describe('rearg', () => {
     expect(rearged[ARITY]).toBe(2);
   });
 
+  it('Should only apply reargs up to the given arguments length', () => {
+    const fn = (...args) => args;
+
+    const rearged = rearg(fn, [1, 0, 1, 1, 1, 1, 1]);
+
+    expect(typeof rearged).toBe('function');
+    expect(rearged('x', 'y', 'z')).toEqual(['y', 'x', 'y']);
+    expect(rearged('x')).toEqual([undefined]);
+    expect(rearged('x', 'y')).toEqual(['y', 'x']);
+  });
+
   it('Should rearg functions (1)', () => {
     const fn = (x, y) => x + y;
     const rearged = rearg(fn, [1, 0]);

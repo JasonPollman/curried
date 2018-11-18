@@ -14,8 +14,7 @@ module.exports = {
     'text',
   ],
   collectCoverageFrom: [
-    'packages/**/src/**/*.js',
-    '!packages/all/src/**/*.js',
+    'packages/**/src/**/*.js'
   ],
   transform: {
     '^.+\\.jsx?$': 'babel-jest',

@@ -49,7 +49,7 @@ describe('partial', () => {
     const pow = (x, y) => x ** y;
     const powerOf2 = partial(pow, 2);
     expect(powerOf2(1)).toBe(2);
-    expect(powerOf2[ARITY]).toBe(2);
+    expect(powerOf2[ARITY]).toBe(1);
   });
 
   it('Should respect the `ARITY` symbol (passthrough)', () => {
@@ -58,7 +58,7 @@ describe('partial', () => {
 
     const powerOf2 = partial(pow, 2);
     expect(powerOf2(1)).toBe(2);
-    expect(powerOf2[ARITY]).toBe(10);
+    expect(powerOf2[ARITY]).toBe(9);
   });
 
   it('Should apply the correct properties to the partialized function', () => {

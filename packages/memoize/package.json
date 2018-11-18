@@ -4,5 +4,8 @@
   "description": "Memoizes functions.",
   "license": "MIT",
   "main": "dist",
-  "sideEffects": false
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-symbol": "^0.0.0"
+  }
 }

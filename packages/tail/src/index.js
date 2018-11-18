@@ -4,7 +4,7 @@
  *
  * @name tail
  * @param {Array} array The array to get the tail of.
- * @returns {Array} A new array containing the elements 1..N from the original array.
+ * @returns {Array} A new array containing the elements (0..N] from the original array.
  *
  * @category array
  * @publishdoc

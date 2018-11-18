@@ -13,12 +13,6 @@ import getInternalSymbol from '@foldr/internal-symbol';
 export const _ = getInternalSymbol('placeholder');
 
 /**
- * Used to determine if a function is curried.
- * @type {SafeSymbol}
- */
-export const IS_CURRIED = getInternalSymbol('is-curried-fn');
-
-/**
  * Used to determine if a function is partialed.
  * @type {SafeSymbol}
  */
@@ -113,11 +107,18 @@ export default function partial(fn, ...partials) {
   }
 
   // No reason to partialize a function with no partials or a curried function.
-  if (!partials.length || fn[IS_CURRIED]) return fn;
+  if (!partials.length) return fn;
 
   const partialized = partialize(fn, partials);
 
-  partialized[ARITY] = fn[ARITY] >= 0 ? fn[ARITY] : fn.length;
+  let i = partials.length;
+  let arity = fn[ARITY] >= 0 ? fn[ARITY] : fn.length;
+
+  // We have to adjust the arity of the partialized function
+  // so if curried it will curry properly.
+  while (--i >= 0) if (partials[i] !== _) arity--;
+
+  partialized[ARITY] = arity;
   partialized[SOURCE] = fn;
   partialized[IS_PARTIAL] = true;
   partialized.toString = toStringForPartialed;

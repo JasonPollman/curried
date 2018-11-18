@@ -1,0 +1,8 @@
+{
+  "name": "@foldr/last",
+  "version": "0.0.0",
+  "description": "Gets the last element from an array",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false
+}

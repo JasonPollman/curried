@@ -10,6 +10,7 @@
 
 import attempt from '@foldr/attempt';
 import binary from '@foldr/binary';
+import chunk from '@foldr/chunk';
 import clamp from '@foldr/clamp';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
@@ -32,6 +33,7 @@ import get from '@foldr/get';
 import has from '@foldr/has';
 import head from '@foldr/head';
 import identity from '@foldr/identity';
+import init from '@foldr/init';
 import interpolate from '@foldr/interpolate';
 import interpolateBraces from '@foldr/interpolate-braces';
 import interpolateBrackets from '@foldr/interpolate-brackets';
@@ -65,6 +67,7 @@ import isSymbol from '@foldr/is-symbol';
 import isUndefined from '@foldr/is-undefined';
 import isWeakMap from '@foldr/is-weak-map';
 import keys from '@foldr/keys';
+import last from '@foldr/last';
 import map from '@foldr/map';
 import mapKeys from '@foldr/map-keys';
 import mapRight from '@foldr/map-right';
@@ -116,6 +119,7 @@ export {
   VERSION,
   attempt,
   binary,
+  chunk,
   clamp,
   compact,
   compose,
@@ -138,6 +142,7 @@ export {
   has,
   head,
   identity,
+  init,
   interpolate,
   interpolateBraces,
   interpolateBrackets,
@@ -171,6 +176,7 @@ export {
   isUndefined,
   isWeakMap,
   keys,
+  last,
   map,
   mapKeys,
   mapRight,

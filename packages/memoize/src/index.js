@@ -4,6 +4,31 @@
  * @file
  */
 
+import getInternalSymbol from '@foldr/internal-symbol';
+
+/**
+ * Used to track the arity of partialed functions.
+ * @type {SafeSymbol}
+ */
+export const ARITY = getInternalSymbol('source-arity');
+
+/**
+ * Used to map partialed functions back to their original.
+ * @type {SafeSymbol}
+ */
+export const SOURCE = getInternalSymbol('source-fn');
+
+/**
+ * The `toString` implementation for memoized functions.
+ * This will print the original function's source string
+ * prepended with a friendly message that the function is memoized.
+ * @returns {string} The source function's code with a comment
+ * informing the user that the function is partialized.
+ */
+function toStringForMemoized() {
+  return '/* Memoized */\r\n'.concat(this[SOURCE].toString());
+}
+
 const { hasOwnProperty } = Object.prototype;
 
 /**
@@ -95,7 +120,7 @@ function emsg(arg) {
  * If the function is invoked multiple times with the same arguments signature, the results
  * from the first invocation is returned.
  *
- * memoize uses the value of `memoize.Cache` to create new Cache objects that store the
+ * `memoize` uses the value of `memoize.Cache` to create new cache objects that store the
  * results calls to `fn`. You can override `memoize.Cache` with anything that implements
  * a `Map` like interface.
  *
@@ -154,7 +179,12 @@ export default function memoize(fn, resolver = JSON.stringify, mcache) {
     return results;
   }
 
+  memoized[ARITY] = fn[ARITY] !== undefined ? fn[ARITY] : fn.length;
+  memoized[SOURCE] = fn;
+
   memoized.cache = mcache || new memoize.Cache();
+  memoized.toString = toStringForMemoized;
+
   return memoized;
 }
 

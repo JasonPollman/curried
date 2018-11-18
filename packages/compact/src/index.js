@@ -24,12 +24,12 @@ export default function compact(array) {
   const arr = [];
   const len = array == null ? 0 : array.length;
 
-  let i = -1;
+  let i = 0;
   let ind = -1;
 
   while (++ind < len) {
     if (array[ind]) {
-      arr[++i] = array[ind];
+      arr[i++] = array[ind];
     }
   }
 

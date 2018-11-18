@@ -1,22 +1,23 @@
-module.exports = ({
-  foldr,
-  ramda,
-  lodash,
-}) => {
-  const tests = {
-    foldr: input => foldr.unique(input),
-    ramda: input => ramda.uniq(input),
-    lodash: input => lodash.uniq(input),
-  };
+/**
+ * Tests for the `compose` function.
+ * @since 10/23/18
+ * @file
+ */
 
-  const concatResult = [1, 2, 3, 4, 6];
+import unique from '.';
 
-  return [
-    {
-      name: 'Gets unique values from 2 arrays',
-      expect: (result, assert) => assert.deepEqual(result, concatResult),
-      setup: () => [1, 2, 2, 3, 4, 6, 6, 1],
-      tests,
-    },
-  ];
-};
+describe('unique', () => {
+  it('Should be a function', () => {
+    expect(typeof unique).toBe('function');
+  });
+
+  it('Should pull unique values from an array', () => {
+    expect(unique([1, 1, 2, 3, 3, 3, 6, 9, 9, 1])).toEqual([1, 2, 3, 6, 9]);
+    expect(unique([1, null, 2, undefined, undefined])).toEqual([1, null, 2, undefined]);
+    expect(unique([2, 2, 2])).toEqual([2]);
+  });
+
+  it('Should default to an empty array', () => {
+    expect(unique()).toEqual([]);
+  });
+});

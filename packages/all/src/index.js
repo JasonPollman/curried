@@ -86,6 +86,9 @@ import reverse from '@foldr/reverse';
 import shuffle from '@foldr/shuffle';
 import size from '@foldr/size';
 import some from '@foldr/some';
+import stubArray from '@foldr/stub-array';
+import stubObject from '@foldr/stub-object';
+import stubString from '@foldr/stub-string';
 import t from '@foldr/t';
 import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
@@ -189,6 +192,9 @@ export {
   shuffle,
   size,
   some,
+  stubArray,
+  stubObject,
+  stubString,
   t,
   tail,
   toCamelCase,

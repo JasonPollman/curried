@@ -1,6 +1,6 @@
 /**
  * Tests for the `compose` function.
- * @since 10/23/18
+ * @since 11/18/18
  * @file
  */
 

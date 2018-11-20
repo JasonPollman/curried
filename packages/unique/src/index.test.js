@@ -17,6 +17,12 @@ describe('unique', () => {
     expect(unique([2, 2, 2])).toEqual([2]);
   });
 
+  it('Should pull unique values from an array with length over 200', () => {
+    const array = [...new Array(200)].map(() => 'hello there');
+
+    expect(unique(array)).toEqual(['hello there']);
+  });
+
   it('Should default to an empty array', () => {
     expect(unique()).toEqual([]);
   });

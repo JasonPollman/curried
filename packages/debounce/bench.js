@@ -1,6 +1,5 @@
 module.exports = ({
   foldr,
-  ramda,
   lodash,
 }) => {
   const noop = f => f;

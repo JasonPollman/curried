@@ -13,6 +13,7 @@ import binary from '@foldr/binary';
 import clamp from '@foldr/clamp';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
+import concat from '@foldr/concat';
 import constant from '@foldr/constant';
 import curry from '@foldr/curry';
 import escapeRegExp from '@foldr/escape-regexp';
@@ -120,6 +121,7 @@ export {
   clamp,
   compact,
   compose,
+  concat,
   constant,
   curry,
   escapeRegExp,

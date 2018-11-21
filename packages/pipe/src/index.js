@@ -26,6 +26,7 @@ const TYPE_ERROR = 'Expected arguments of pipe to be of type function';
  *
  * After the first function in the pipe chain completes, that value is then passed to the next
  * function in the pipe chain, and so on.
+ * @category function
  * @param {Array<function>} arguments - functions to pipe data through
  * @returns {*} - whatever is returned from the pipe chain
  * @example

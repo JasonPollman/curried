@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-11-20
+ * @since 2018-11-21
  * @file
  */
 

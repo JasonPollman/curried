@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-11-4
+ * @since 2018-11-20
  * @file
  */
 
@@ -15,6 +15,7 @@ import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import constant from '@foldr/constant';
 import curry from '@foldr/curry';
+import debounce from '@foldr/debounce';
 import escapeRegExp from '@foldr/escape-regexp';
 import every from '@foldr/every';
 import f from '@foldr/f';
@@ -22,9 +23,6 @@ import filter from '@foldr/filter';
 import find from '@foldr/find';
 import findKey from '@foldr/find-key';
 import findLast from '@foldr/find-last';
-import debounce from '@foldr/debounce';
-import escapeRegexp from '@foldr/escape-regexp';
-import f from '@foldr/f';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
 import fold from '@foldr/fold';
@@ -125,6 +123,7 @@ export {
   compose,
   constant,
   curry,
+  debounce,
   escapeRegExp,
   every,
   f,
@@ -132,9 +131,6 @@ export {
   find,
   findKey,
   findLast,
-  debounce,
-  escapeRegexp,
-  f,
   flatten,
   flattenDeep,
   fold,

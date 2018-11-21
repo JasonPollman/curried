@@ -1,23 +1,23 @@
-const _ = require('lodash');
-const R = require('rambda');
-const Benchmark = require('benchmark');
+module.exports = ({
+  foldr,
+  ramda,
+  lodash,
+}) => {
+  const noop = f => f;
+  const lDebounced = lodash.debounce(noop, 1000);
+  const fDebounced = foldr.debounce(noop, 1000);
 
-const debounce = require('./dist').default;
+  const tests = {
+    foldr: () => fDebounced(),
+    lodash: () => lDebounced(),
+  };
 
-const { log } = console;
-
-const toFixed = n => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
-
-function handleCycleComplete({ target }) {
-  const { name, hz, error } = target;
-  log(`${name}: ${error ? `[Error: ${error.message}]` : toFixed(hz)}`);
-}
-
-const foldrDebounce = debounce(num => num * 2);
-const lodashDebounce = _.debounce(num => num * 2);
-
-new Benchmark.Suite()
-  .add('Foldr #1', () => foldrDebounce(2))
-  .add('Lodash #1', () => lodashDebounce(2))
-  .on('cycle', handleCycleComplete)
-  .run({ async: true });
+  return [
+    {
+      name: 'Debounces a function',
+      expect: () => {}, // testing benchmark efficiency not output..
+      setup: () => [1, 2, 2, 3, 4, 6, 6, 1],
+      tests,
+    },
+  ];
+};

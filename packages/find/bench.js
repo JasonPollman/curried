@@ -2,7 +2,7 @@ module.exports = ({
   fp,
   foldr,
   ramda,
-  lodash
+  lodash,
 }) => {
   const isTwo = x => x === 2;
 

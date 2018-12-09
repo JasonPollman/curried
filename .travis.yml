@@ -52,10 +52,5 @@ jobs:
     # publish all packages to npm, then deploy the docs/meta files to S3.
     - stage: deploy
       script: "npm run clean
-        && npm run build:all
-        && npm run build:transpile
-        && npm run link
-        && npm run build:bundle
-        && npm run build:docs
-        && npm run build:versions
+        && npm run build
         && npm run deploy"

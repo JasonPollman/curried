@@ -72,18 +72,25 @@ async function preparePackage(pkg) {
   const pkgJsonSourcepath = path.join(pkg, 'package.json');
   const packageJson = await fs.readJsonAsync(pkgJsonSourcepath);
 
+  const basename = path.basename(pkg);
+  const camelCasedName = camelize(basename);
+
   const formattedPackageJson = {
+    name: `@foldr/${basename}`,
+    version: '0.0.0',
     ...packageJsonTemplate,
     ...packageJson,
   };
 
-  const camelCasedName = camelize(formattedPackageJson.name);
-
   const tokens = {
     constants,
     package: formattedPackageJson,
-    docs: docs[camelCasedName],
+    docs: {
+      ...docs[camelCasedName],
+      example: ((docs[camelCasedName] || {}).examples || [])[0],
+    },
     derived: {
+      basename,
       camelCasedName,
     },
   };
@@ -107,10 +114,15 @@ async function preparePackages(packages) {
   return Promise.mapSeries(packages, preparePackage);
 }
 
+function filterCategoriesOnly(paths) {
+  return paths.filter(filepath => /categories\//.test(filepath));
+}
+
 const prepare = compose(
-  logTap(green.bold('\nPackages Prepared Successfully!')),
+  logTap(green.bold('Packages Prepared Successfully!')),
   preparePackages,
   logTap(cyan.bold('[PREPARING %s PACKAGES]'), pkgs => pkgs.length),
+  filterCategoriesOnly,
   getPackageDirectories,
   getPackageFilelist,
 );

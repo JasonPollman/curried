@@ -41,7 +41,7 @@ describe('interpolate', () => {
     expect(interpolate({}, '', tokens)).toBe('');
     expect(interpolate({}, null, tokens)).toBe('');
     expect(interpolate({}, [], tokens)).toBe('');
-    expect(interpolate({}, () => {}, tokens)).toBe('function()');
+    expect(interpolate({}, () => {}, tokens)).toMatch(/function ?\(\)/);
   });
 
   it('Should interpolate a string (with extra spaces, custom delimiter)', () => {

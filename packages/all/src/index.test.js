@@ -129,6 +129,31 @@ describe('@foldr/all', () => {
     });
   });
 
+  describe('Nary <=> Curry', () => {
+    it('Should be able to curry a "capped" function', () => {
+      const fn = (x, y, z) => `${x}-${y}-${z}`;
+
+      const capped = foldr.nary(fn, 2);
+      expect(capped('x', 'y', 'z')).toBe('x-y-undefined');
+      const curried = foldr.curry(capped);
+
+      expect(curried('x', 'y')).toBe('x-y-undefined');
+      expect(curried('x', 'y')).toBe('x-y-undefined');
+      expect(curried(foldr._, 'y')('x')).toBe('x-y-undefined');
+    });
+
+    it('Should be able to cap a curried function', () => {
+      const fn = (x, y, z) => `${x}-${y}-${z}`;
+
+      const curried = foldr.curry(fn);
+      expect(curried('x', foldr._, 'z')('y')).toBe('x-y-z');
+
+      const capped = foldr.nary(curried, 2);
+      expect(capped('x')('y', 'z')).toBe('x-y-z');
+      expect(capped('x', 's', 'd')('y')).toBe('x-s-y');
+    });
+  });
+
   describe('Memoize <=> Partial', () => {
     it('Should be able to partial a memoized function', () => {
       const fn = (x, y, z) => `${x}-${y}-${z}`;

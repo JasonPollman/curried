@@ -72,7 +72,7 @@ const every = IteratorFactory({
  *
  * @arity 2
  * @autocurried
- * @category collection
+ * @category functional
  * @publishdoc
  * @since v0.0.0
  * @export

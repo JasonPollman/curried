@@ -7,7 +7,7 @@
 import is from '@foldr/is';
 
 /**
- * Determines if the given item is an instance of Error.
+ * Determines if the given item is an instance of `Error`.
  *
  * @name isError
  * @param {any} x The value to check.
@@ -20,6 +20,6 @@ import is from '@foldr/is';
  * @example
  *
  * isError(new Error());  // => true
- * isError('foo');       // => false
+ * isError('foo');        // => false
  */
 export default is(Error);

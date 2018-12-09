@@ -65,7 +65,7 @@ export default function nary(fn, n) {
     return fn.apply(this, args);
   }
 
-  fixed[ARITY] = n;
+  fixed[ARITY] = cap;
   fixed[SOURCE] = fn;
   fixed.toString = toStringForCapped;
 
@@ -82,7 +82,7 @@ export default function nary(fn, n) {
  *
  * @arity 2
  * @autocurried
- * @category function
+ * @category functional
  * @publishdoc
  * @since v0.0.0
  * @export

@@ -5,8 +5,8 @@
 
 /**
  * Shallow clones an array.
- * @param {Array} arr - the array to clone
- * @returns {Array} - the newly cloned array
+ * @param {Array} arr The array to clone.
+ * @returns {Array} The newly cloned array.
  */
 export function cloneArray(arr) {
   const clone = [];
@@ -18,8 +18,8 @@ export function cloneArray(arr) {
 
 /**
  * Implements the "Fisher-Yates" shuffle algorithm.
- * @param {Array} arr - The array to be shifted.
- * @returns {Array} - The newly shifted array.
+ * @param {Array} arr The array to be shifted.
+ * @returns {Array} The newly shifted array.
  */
 export function implementShuffle(arr) {
   const dupe = cloneArray(arr);
@@ -41,7 +41,7 @@ export function implementShuffle(arr) {
 /**
  * Shuffles an array using the "Fisher-Yates" shuffle algorithm.
  *
- * @name shuffle.
+ * @name shuffle
  * @param {Array} arr The array to be shuffled.
  * @returns {Array} A shuffled array.
  *

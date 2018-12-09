@@ -16,10 +16,12 @@
  * init([]);           // => []
  */
 export default function init(array) {
-  const length = array == null ? 0 : array.length;
-  if (!length) return [];
+  if (!array) return [];
 
-  let size = array.length - 1;
+  const len = array.length;
+  if (len <= 0) return [];
+
+  let size = len - 1 || 0;
 
   // If you know the eventual size of the array, it's
   // much faster to initialize with a given size since

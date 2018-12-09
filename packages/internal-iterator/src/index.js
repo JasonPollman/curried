@@ -274,7 +274,7 @@ function iteratorFromOptions({
     const iterate = collection.length >= 0 ? arrayIterator : mapping[toString.call(collection)];
     const results = Results(initial);
 
-    if (iterate) iterate(this, results, collection, handler, iteratee);
+    (iterate || mapping['[object Object]'])(this, results, collection, handler, iteratee);
     return unwrap ? unwrap(results) : results;
   };
 }

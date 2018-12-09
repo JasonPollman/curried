@@ -68,7 +68,7 @@ function prepareOmitIteratee(iteratee) {
  * };
  *
  * // Using array shorthand
- * omit(omit, ['foo', 'baz']); // => { bar: 'bar' }
+ * omit(data, ['foo', 'baz']); // => { bar: 'bar' }
  *
  * // Using a function
  * omit(data, (value, key) => value[0] === 'b'); // => { foo: 'foo }

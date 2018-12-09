@@ -106,7 +106,7 @@ export default function compose() {
  *
  * @arity 2
  * @autocurried
- * @category function
+ * @category functional
  * @publishdoc
  * @since v0.0.0
  * @export

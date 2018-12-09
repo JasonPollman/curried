@@ -75,7 +75,7 @@ const mapKeys = IteratorFactory({
  *
  * @arity 2
  * @autocurried
- * @category object
+ * @category functional
  * @publishdoc
  * @since v0.0.0
  * @export

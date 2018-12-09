@@ -26,7 +26,7 @@ const { MAX_VALUE } = Number;
  *
  * toFinite(0);         // => 0;
  * toFinite(Infinity);  // => Number.MAX_VALUE;
- * toFinite(-Infinity); // => Number.MAX_VALUE;
+ * toFinite(-Infinity); // => Number.MIN_VALUE;
  *
  * toFinite({ valueOf() { return 5; } }) // => 5
  */

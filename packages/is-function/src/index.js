@@ -5,7 +5,7 @@
  */
 
 /**
- * Determines if the given item is an instance of Function.
+ * Determines if the given value is a function.
  *
  * @name isFunction
  * @param {any} x The value to check.

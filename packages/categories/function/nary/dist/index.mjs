@@ -1,2 +1,0 @@
-import SafeSymbolFor from"@foldr/internal-symbol";export var ARITY=SafeSymbolFor("source-arity");export var SOURCE=SafeSymbolFor("source-fn");function toStringForCapped(){return"/* Arity Capped to ".concat(this[ARITY]," */\r\n").concat(this[SOURCE].toString())}export default function nary(a,b){if("function"!=typeof a)throw new TypeError("Expected a function.");var d=+b||0,e=0>d?0:d;function c(){var b=arguments;if(b.length>e)b.length=e;return a.apply(this,b)}c[ARITY]=e;c[SOURCE]=a;c.toString=toStringForCapped;return c}
-//# sourceMappingURL=index.js.map

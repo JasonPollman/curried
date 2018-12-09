@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=sample;var _random=_interopRequireDefault(require("@foldr/random")),_values=_interopRequireDefault(require("@foldr/values")),_isArray=_interopRequireDefault(require("@foldr/is-array"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function sample(a){if(!a)return;var b=(0,_isArray.default)(a)?a:(0,_values.default)(a);return b[(0,_random.default)(b.length-1)]}
-//# sourceMappingURL=index.js.map

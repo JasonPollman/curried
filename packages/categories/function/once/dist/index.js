@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=once;exports.ARITY=void 0;var _internalSymbol=_interopRequireDefault(require("@foldr/internal-symbol"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var ARITY=(0,_internalSymbol.default)("source-arity");exports.ARITY=ARITY;function noop(){}function once(a){if("function"!=typeof a)return noop;var c=0,d;function b(){if(0<c)return d;c++;d=a.apply(this,arguments);return d}b[ARITY]=0<=a[ARITY]?a[ARITY]:a.length;return b}
-//# sourceMappingURL=index.js.map

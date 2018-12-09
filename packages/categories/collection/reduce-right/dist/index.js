@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=void 0;var _internalIterator=_interopRequireDefault(require("@foldr/internal-iterator"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var _default=(0,_internalIterator.default)({$$empty:function b(a){return a},$$unwrap:function b(a){return a[0]},$$reverse:!0,$$results:function b(a){return[a]},$$handler:function h(a,b,c,d,e,f,g){b[0]=a&&a.capped?c(b[0],e):c(b[0],e,f,g)}});exports.default=_default;
-//# sourceMappingURL=index.js.map

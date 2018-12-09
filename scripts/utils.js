@@ -76,13 +76,12 @@ export const filterIgnoredAndInternalPackages = (ignored = []) => packages => (
  * @export
  */
 export async function getPackageFilelist(basepath) {
-  const [auto, categories, internal] = await Promise.all([
-    globAsync(`${basepath}/auto/*`),
-    globAsync(`${basepath}/internal/*`),
+  const [generated, categories] = await Promise.all([
+    globAsync(`${basepath}/generated/*`),
     globAsync(`${basepath}/categories/*/*`),
   ]);
 
-  return auto.concat(internal, categories);
+  return generated.concat(categories);
 }
 
 /**

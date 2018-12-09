@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=isBoolean;var _toStringTag=_interopRequireDefault(require("@foldr/to-string-tag")),_isObjectLike=_interopRequireDefault(require("@foldr/is-object-like"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function isBoolean(a){return!0===a||!1===a||(0,_isObjectLike.default)(a)&&"[object Boolean]"===(0,_toStringTag.default)(a)}
-//# sourceMappingURL=index.js.map

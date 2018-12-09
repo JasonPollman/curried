@@ -1,2 +1,0 @@
-import toFinite from"@foldr/to-finite";var rand=Math.random;function randomBase(a,b,c){var d=rand()*(b-a)+a;return c?d:0|d}export default function random(a,b,c){switch(arguments.length){case 0:return randomBase(0,1,!1);case 1:return randomBase(0,toFinite(a),a%1);case 2:a=toFinite(a);b=toFinite(b);return randomBase(a,b,a%1||b%1);default:return randomBase(toFinite(a),toFinite(b),c);}}
-//# sourceMappingURL=index.js.map

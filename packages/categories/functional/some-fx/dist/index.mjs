@@ -1,2 +1,0 @@
-import FunctionalFactory from"@foldr/internal-fmake";import iterator,{BREAK}from"@foldr/internal-iterator";var some=iterator({unwrap:function b(a){return a[0]},Empty:function a(){return!1},Results:function a(){return[!1]},handler:function h(a,b,c,d,e,f,g){if(a&&a.capped?!c(e):!c(e,f,g)){return}b[0]=!0;return BREAK}});export var f=FunctionalFactory(some,{arity:2,capped:!0,context:"config",signature:[1,0]});export default some;
-//# sourceMappingURL=index.js.map

@@ -1,2 +1,0 @@
-import getIteratee from"@foldr/internal-iteratee";import IteratorFactory from"@foldr/internal-iterator";import FunctionalFactory from"@foldr/internal-fmake";var mapValues=IteratorFactory({Empty:function a(){return{}},Results:function a(){return{}},prepare:getIteratee,handler:function h(a,b,c,d,e,f,g){b[f]=a&&a.capped?c(e):c(e,f,g)}});export var f=FunctionalFactory(mapValues,{arity:2,capped:!0,context:"config",signature:[1,0]});export default mapValues;
-//# sourceMappingURL=index.js.map

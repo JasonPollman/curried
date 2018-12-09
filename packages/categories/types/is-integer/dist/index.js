@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.isIntegerPolyfill=isIntegerPolyfill;exports.default=void 0;var _isFinite=_interopRequireDefault(require("@foldr/is-finite"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var floor=Math.trunc||Math.floor;function isIntegerPolyfill(a){return(0,_isFinite.default)(a)&&floor(a)===a}var _default=Number.isInteger||isIntegerPolyfill;exports.default=_default;
-//# sourceMappingURL=index.js.map

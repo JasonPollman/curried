@@ -1,2 +1,0 @@
-var prefix="@@foldr/";export function MakeSafeSymbol(){var b={};function a(a){var b="@@".concat(a);return{valueOf:function a(){return b},toString:function a(){return this.valueOf()}}}a.for=function(c){b[c]=b[c]||a(c);return b[c]};return a}export var SafeSymbol="function"==typeof Symbol?Symbol:MakeSafeSymbol();export function getUnprefixedSymbol(a){return SafeSymbol[a]||SafeSymbol.for(a)}export default function getPrefixedSymbol(a){return SafeSymbol.for(prefix.concat(a))}
-//# sourceMappingURL=index.js.map

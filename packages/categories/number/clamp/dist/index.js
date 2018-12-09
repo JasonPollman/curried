@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=clamp;var _toNumber=_interopRequireDefault(require("@foldr/to-number"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var INF=1/0;function clamp(a,b,c){if(c===void 0){c=b;b=-INF}a=(0,_toNumber.default)(a);if(a!==a)return a;b=(0,_toNumber.default)(b);c=(0,_toNumber.default)(c);if(c!==c)c=INF;if(b!==b)b=-INF;if(b>c)c=b;return a<b?b:a>c?c:a}
-//# sourceMappingURL=index.js.map

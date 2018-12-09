@@ -1,2 +1,0 @@
-import toPath from"@foldr/to-path";import FunctionalFactory from"@foldr/internal-fmake";export default function invoke(a,b,c){if(!a)return;var d=toPath(b),e=d.length;if(!e)return;var f=0,g=a,h=a;while(f<e&&null!=g){h=g;g=g[d[f++]]}if("function"!=typeof g)return;return g.apply(h,c&&"object"==typeof c?c:void 0)}export var f=FunctionalFactory(invoke,{arity:3,signature:[2,0,1]});
-//# sourceMappingURL=index.js.map

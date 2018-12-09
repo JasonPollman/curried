@@ -1,2 +1,0 @@
-import SafeSymbolFor from"@foldr/internal-symbol";export var ARITY=SafeSymbolFor("source-arity");export default function compose(){var b=arguments,c=b.length;if(2>c){throw new Error("You must provide at least two functions to compose.")}while(0<=--c){if("function"!=typeof b[c]){throw new TypeError("The compose function only accepts functions as arguments.")}}var d=b.length-1,e=b[d];function a(){var a=d,c=b[a].apply(this,arguments);while(0<=--a){c=b[a].call(this,c)}return c}a[ARITY]=e[ARITY]!==void 0?e[ARITY]:e.length;return a}
-//# sourceMappingURL=index.js.map

@@ -1,2 +1,0 @@
-import iterator from"@foldr/internal-iterator";var identity=function(a){return a};function preparePickIteratee(a){if(null==a)return identity;switch(a.constructor){case Function:return a;case Array:return function(b,c){return-1<a.indexOf(c)};default:return identity;}}export default iterator({Empty:function a(){return{}},Results:function a(){return{}},prepare:preparePickIteratee,handler:function h(a,b,c,d,e,f,g){if(a&&a.capped?c(e,f):c(e,f,g)){b[f]=e}}});
-//# sourceMappingURL=index.js.map

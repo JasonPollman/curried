@@ -1,8 +1,7 @@
 {
   "version": "0.0.0",
   "packages": [
-    "packages/auto/*",
-    "packages/internal/*",
+    "packages/generated/*",
     "packages/categories/*/*"
   ]
 }

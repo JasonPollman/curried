@@ -1,2 +1,0 @@
-import{IS_IE}from"@foldr/internal-env";var toInt=parseInt,NAN=0/0,IS_OCTAL=/^0o[0-7]+$/i,IS_BINARY=/^0b[0-1]+$/i;export function toNumberIE(a){if("number"==typeof a)return a;if("symbol"==typeof a)return NAN;var b=IS_BINARY.test(a);if(b||IS_OCTAL.test(a))return toInt(a.slice(2),b?2:8);return+a}export function toNumber(a){return"number"==typeof a?a:"symbol"==typeof a?NAN:+a}export default!IS_IE?toNumber:toNumberIE;
-//# sourceMappingURL=index.js.map

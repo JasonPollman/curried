@@ -2,6 +2,7 @@ meta
 coverage
 node_modules
 
+**/dist
 **/coverage
 **/node_modules
 

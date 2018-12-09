@@ -1,2 +1,0 @@
-import SafeSymbolFor from"@foldr/internal-symbol";export var ARITY=SafeSymbolFor("source-arity");var TYPE_ERROR="Expected arguments of pipe to be of type function";function pipe(){var b=arguments,c=b.length;if(!c)throw new Error(TYPE_ERROR);while(--c){if("function"!=typeof arguments[c]){throw new TypeError(TYPE_ERROR)}}var d=b.length;function a(){var a=b[0].apply(this,arguments),c=0;while(++c<d){a=b[c].call(this,a)}return a}var e=b[0];a[ARITY]=e[ARITY]!==void 0?e[ARITY]:e.length;return a}export default pipe;
-//# sourceMappingURL=index.js.map

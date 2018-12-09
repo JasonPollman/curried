@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=has;exports.f=void 0;var _internalFmake=_interopRequireDefault(require("@foldr/internal-fmake"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var hasOwnProperty=Object.prototype.hasOwnProperty;function has(a,b){return!!a&&hasOwnProperty.call(a,b)}var f=(0,_internalFmake.default)(has,{arity:2,signature:[1,0]});exports.f=f;
-//# sourceMappingURL=index.js.map

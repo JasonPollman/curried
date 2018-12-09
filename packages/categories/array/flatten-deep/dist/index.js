@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=flattenDeep;var _isArray=_interopRequireDefault(require("@foldr/is-array"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function flattenDeepBase(a,b,c,d){var e=a.length,f=d+1,g=0,h;while(g<e){h=a[g++];if(f<=b&&(0,_isArray.default)(h)){flattenDeepBase(h,b,c,f)}else{c[c.length]=h}}return c}function flattenDeep(a,b){if(!a||!a.length)return[];return flattenDeepBase(a,+b||1/0,[],0)}
-//# sourceMappingURL=index.js.map

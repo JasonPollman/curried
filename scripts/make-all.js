@@ -35,7 +35,7 @@ import mainPackageJson from '../package.json';
  * The path to /packages/all.
  * @type {string}
  */
-const FOLDR_ALL_PACKAGE_ROOT = path.join(PACKAGES_DIRECTORY, 'auto', 'all');
+const FOLDR_ALL_PACKAGE_ROOT = path.join(PACKAGES_DIRECTORY, 'generated', 'all');
 
 /**
  * The path to /packages/all/src/index.js.

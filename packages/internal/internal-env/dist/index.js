@@ -1,2 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.IS_IE=exports.IS_BROWSER=exports.IS_NODE=exports.GLOBAL=void 0;var GLOBAL="object"==typeof global?global:"object"==typeof window?window:void 0;exports.GLOBAL=GLOBAL;var IS_NODE="object"==typeof process&&"object"==typeof process.versions&&"string"==typeof process.versions.node;exports.IS_NODE=IS_NODE;var IS_BROWSER="object"==typeof window;exports.IS_BROWSER=IS_BROWSER;var IS_IE=IS_BROWSER&&/Trident\/|MSIE/.test((window.navigator||{}).userAgent);exports.IS_IE=IS_IE;
-//# sourceMappingURL=index.js.map

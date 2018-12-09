@@ -20,7 +20,7 @@ import {
 import {
   PROJECT_ROOT,
   MAP_CONCURRENCY,
-  PROJECT_META_ROOT,
+  DOCS_DESTNATION,
 } from '../constants';
 
 import {
@@ -32,12 +32,6 @@ import {
 } from '../utils';
 
 import packageJson from '../../package.json';
-
-/**
- * Docs.json ouput destination/
- * @type {string}
- */
-const DOCS_DESTNATION = path.join(PROJECT_META_ROOT, 'docs');
 
 /**
  * Walks an object and renders all strings as inline markdown.

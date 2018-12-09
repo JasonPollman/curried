@@ -4,13 +4,11 @@
  * @file
  */
 
-import glob from 'glob';
 import path from 'path';
 import AWS from 'aws-sdk';
 import Promise from 'bluebird';
 import compose from 'p-compose';
 import fs from 'fs-extra-promise';
-import { promisify } from 'util';
 
 import {
   dim,
@@ -29,9 +27,9 @@ import {
   log,
   logTap,
   getENV,
+  globAsync,
 } from '../utils';
 
-const globAsync = promisify(glob);
 const AWS_REGION = getENV('AWS_REGION', 'us-east-1');
 const META_BUCKET = getENV('FOLDR_META_BUCKET', null);
 

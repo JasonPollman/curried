@@ -1,6 +1,0 @@
-# This is a "global" .npmignore file that's copied to each package's root directory.
-# This will only be copied over if and only if no pre-existing .npmignore file exists.
-# So, if you need a custom .npmignore, create one in the package's root directory.
-
-src
-bench.js

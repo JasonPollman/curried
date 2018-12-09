@@ -7,7 +7,6 @@
  */
 
 import path from 'path';
-import glob from 'glob';
 import fs from 'fs-extra-promise';
 import Promise from 'bluebird';
 import compose from 'p-compose';
@@ -25,15 +24,14 @@ import { PROJECT_ROOT } from '../constants';
 import {
   log,
   logTap,
+  globAsync,
   getPackageFilelist,
   getPackageDirectories,
 } from '../utils';
 
 import babelrc from '../../babel.config';
 
-const globAsync = Promise.promisify(glob);
 const rel = filepath => path.relative(PROJECT_ROOT, filepath);
-
 const withSourceMapURL = (uri, code) => code.trim().concat(`\n//# sourceMappingURL=${uri}\n`);
 
 /**

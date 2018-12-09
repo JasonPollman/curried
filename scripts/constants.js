@@ -20,6 +20,8 @@ module.exports = Object.freeze({
   PROJECT_META_ROOT: path.join(PROJECT_ROOT, 'meta'),
   // The path to this project's /caches directory.
   PROJECT_CACHES_ROOT: path.join(PROJECT_ROOT, 'caches'),
+  // The path to this project's /resources directory.
+  PROJECT_RESOURCES_ROOT: path.join(PROJECT_ROOT, 'resources'),
   // The path to this project's /packages directory.
   PROJECT_PACKAGES_ROOT,
   // The path to the distributable package (the "all" package).
@@ -30,6 +32,8 @@ module.exports = Object.freeze({
   MAP_CONCURRENCY: os.cpus().length - 1,
   // Used to differentiate from internal/public packages.
   INTERNAL_PACKAGES: /^internal-/,
+  // Docs.json ouput destination directory.
+  DOCS_DESTNATION: path.join(PROJECT_ROOT, 'meta', 'docs'),
   // The public URL to the documentation website
   DOCS_SITE_URL: 'http://foldr.com',
   // The GitHub URL for this project

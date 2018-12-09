@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=void 0;var _clamp=_interopRequireDefault(require("@foldr/clamp")),_internalFmake=_interopRequireDefault(require("@foldr/internal-fmake"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var _default=(0,_internalFmake.default)(_clamp.default,{arity:3,signature:[2,0,1]});exports.default=_default;
+//# sourceMappingURL=index.js.map

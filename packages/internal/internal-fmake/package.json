@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/internal-fmake",
+  "description": "Creates functional versions of @foldr methods—for internal use only.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-curry": "^0.0.0",
+    "@foldr/internal-rearg": "^0.0.0"
+  }
+}

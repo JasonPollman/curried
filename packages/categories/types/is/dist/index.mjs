@@ -1,0 +1,2 @@
+import toStringTag from"@foldr/to-string-tag";import{IS_NODE}from"@foldr/internal-env";export function isNodeCheck(a,b){return null!=b&&(b.constructor===a||b instanceof a)}export function isBrowserCheck(a,b){return isNodeCheck(a,b)||toStringTag(b)==="[object ".concat(a.name,"]")}var F=function(){return!1},isCheck=IS_NODE?isNodeCheck:isBrowserCheck;export default function is(a,b){var c="function"==typeof a;if(1<arguments.length)return c?isCheck(a,b):!1;if(!c)return F;return function(b){return isCheck(a,b)}}
+//# sourceMappingURL=index.js.map

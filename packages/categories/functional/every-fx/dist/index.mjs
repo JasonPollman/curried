@@ -1,0 +1,2 @@
+import FunctionalFactory from"@foldr/internal-fmake";import IteratorFactory,{BREAK}from"@foldr/internal-iterator";var every=IteratorFactory({unwrap:function b(a){return a.x},Empty:function a(){return!0},Results:function a(){return{x:!0}},handler:function h(a,b,c,d,e,f,g){if(a&&a.capped?c(e):c(e,f,g)){return}b.x=!1;return BREAK}});export var f=FunctionalFactory(every,{arity:2,capped:!0,context:"config",signature:[1,0]});export default every;
+//# sourceMappingURL=index.js.map

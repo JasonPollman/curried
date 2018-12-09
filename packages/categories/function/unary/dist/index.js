@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=void 0;var _nary=_interopRequireDefault(require("@foldr/nary")),_partial=_interopRequireDefault(require("@foldr/partial"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var _default=(0,_partial.default)(_nary.default,_partial.default._,1);exports.default=_default;
+//# sourceMappingURL=index.js.map

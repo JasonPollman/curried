@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.isSafeIntegerPolyfill=isSafeIntegerPolyfill;exports.default=void 0;var _isInteger=_interopRequireDefault(require("@foldr/is-integer"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function isSafeIntegerPolyfill(a){return(0,_isInteger.default)(a)&&Math.abs(a)<=Number.MAX_SAFE_INTEGER}var _default=Number.isSafeInteger||isSafeIntegerPolyfill;exports.default=_default;
+//# sourceMappingURL=index.js.map

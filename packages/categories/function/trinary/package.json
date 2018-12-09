@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/trinary",
+  "description": "Limits the arity of a function to 3",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/nary": "^0.0.0",
+    "@foldr/partial": "^0.0.0"
+  }
+}

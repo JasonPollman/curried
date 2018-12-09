@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/get-fx",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Gets the value from an object specified at the given string path",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fmake": "^0.0.0",
+    "@foldr/to-path": "^0.0.0"
+  }
+}

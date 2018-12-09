@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=isPromise;var _is=_interopRequireDefault(require("@foldr/is"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var isPromiseBase="function"==typeof Promise?(0,_is.default)(Promise):function(){return!1},isThenable=function(a){return"function"==typeof a.then&&"function"==typeof a.catch};function isPromise(a){return isPromiseBase(a)||!!a&&isThenable(a)}
+//# sourceMappingURL=index.js.map

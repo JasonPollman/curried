@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/flatten-deep-fx",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fmake": "^0.0.0",
+    "@foldr/is-array": "^0.0.0"
+  }
+}

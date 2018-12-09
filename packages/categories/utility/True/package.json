@@ -1,0 +1,8 @@
+{
+  "name": "@foldr/true",
+  "description": "A function that always returns `true`.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false
+}

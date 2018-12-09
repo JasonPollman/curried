@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/chunk-fx",
+  "description": "Functional, autocurried version of @foldr/chunk",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/chunk": "^0.0.0",
+    "@foldr/internal-fmake": "^0.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/zip",
+  "description": "A function that always returns `false`.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/is-array-like": "^0.0.0"
+  }
+}

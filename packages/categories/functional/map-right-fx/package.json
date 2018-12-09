@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/map-right-fx",
+  "description": "Like Array#map, but for collections and iterates in reverse.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fmake": "^0.0.0",
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/has",
+  "version": "0.0.0",
+  "description": "A utility function to test whether or not an object has a property",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fmake": "^0.0.0"
+  }
+}

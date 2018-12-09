@@ -1,0 +1,13 @@
+{
+  "name": "@foldr/map-values-fx",
+  "description": "Maps an object's values.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fmake": "^0.0.0",
+    "@foldr/internal-iteratee": "^0.0.0",
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

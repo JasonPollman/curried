@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/clamp-fx",
+  "description": "Functional, autocurried version of @foldr/clamp",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/clamp": "^0.0.0",
+    "@foldr/internal-fmake": "^0.0.0"
+  }
+}

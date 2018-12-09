@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/compose-async",
+  "version": "0.0.0",
+  "description": "Composes async functions",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-symbol": "^0.0.0"
+  }
+}

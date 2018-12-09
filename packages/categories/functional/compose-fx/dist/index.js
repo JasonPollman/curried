@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=void 0;var _internalFmake=_interopRequireDefault(require("@foldr/internal-fmake")),_compose=_interopRequireDefault(require("@foldr/compose"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var _default=(0,_internalFmake.default)(_compose.default,{arity:2});exports.default=_default;
+//# sourceMappingURL=index.js.map

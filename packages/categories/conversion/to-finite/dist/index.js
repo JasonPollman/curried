@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=toFinite;var _toNumber=_interopRequireDefault(require("@foldr/to-number"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var MAX_VALUE=Number.MAX_VALUE;function toFinite(a){if(!a)return 0===a?a:0;a=(0,_toNumber.default)(a);if(!a)return 0===a?a:0;return a>MAX_VALUE?MAX_VALUE:a<-MAX_VALUE?-MAX_VALUE:a}
+//# sourceMappingURL=index.js.map

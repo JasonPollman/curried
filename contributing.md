@@ -38,6 +38,16 @@ The exception to this rule is the `all` directory which is an automatically gene
 Since this is a requirement of npm package names and we're mapping directories to npm modules, this
 standard seemed a natural fit.
 
+### Function Naming Conventions
+
+**Casting**    
+Functions that cast from one type to another should be prefixed with `to`. For example,
+`toArray` or `toNumber`.
+
+**Membership Determinism**    
+Functions that determine if something is a member of some class or type should be prefixed with `is`
+and should be in the format `is[Class]`. For example: `isString`, `isDate`, or `isRegExp`.
+
 ## Documentation Standards
 **Since all documentation for this project is built using JSDoc, all JSDoc blocks should be well-written and use proper punctuation.**
 
@@ -50,6 +60,7 @@ be included on exposed library functions:
 | `@returns`    | The return value of the function should be documented. |
 | `@publishdoc` | **This is required to flag the doc for the docs site.**<br />This tag is used as a sentinel value to identify the doc block as a public facing function that belongs on the docs site (as opposed to an internal—but potentially exported—function). |
 | `@since`      | **Formatted: `@since vX.X.X`.**<br />This tag is used to track when the version of this function was added to the primary (`all`) package. **Not the version of the package itself.** |
+| `@arity`      | The standard arity of the function (excluding optional arguments). |
 | `@export`     | For good measure. |
 | `@example`    | Used as the code example on the doc site. This should contain **valid** js code. |
 
@@ -74,6 +85,7 @@ be included on exposed library functions:
  * @param {...function} functions The functions to compose.
  * @returns {function} The composite function.
  *
+ * @arity Infinity
  * @category function
  * @publishdoc
  * @since v0.0.0
@@ -166,3 +178,7 @@ $ npm run test:cover
 ```
 **Runs `npm run test` and generates a LCOV test coverage report.**    
 You can also use the `PKG` environment variable with the script.
+
+## Important & Miscellanous Things
+- **Properties beginning with `$$` will be mangled in the distributable version of foldr!**
+  By prefixing $$ to a property name you can significantly reduce the size of the bundle.

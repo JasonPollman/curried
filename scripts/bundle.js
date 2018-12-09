@@ -12,6 +12,7 @@ import webpack from 'webpack';
 import Promise from 'bluebird';
 import compose from 'p-compose';
 import fs from 'fs-extra-promise';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 import {
   red,
@@ -32,6 +33,15 @@ import babelrc from '../babel.config';
 import packageJson from '../package.json';
 
 const webpackAsync = Promise.promisify(webpack);
+const mangeCacheSourcepath = path.join(PROJECT_ROOT, 'mangle-cache.json');
+
+let mangleCache;
+
+try {
+  mangleCache = fs.readJsonSync(mangeCacheSourcepath);
+} catch (e) {
+  mangleCache = {};
+}
 
 /**
  * The banner applied to the top of each bundle file.
@@ -71,6 +81,25 @@ const BASE_WEBPACK_CONFIG = {
     devtoolModuleFilenameTemplate(info) {
       return `foldr:///${path.relative(PROJECT_ROOT, info.absoluteResourcePath)}`;
     },
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          parse: {},
+          compress: {},
+          mangle: true,
+          // mangle: {
+          //   properties: { regex: /^\$\$/ },
+          // },
+          output: null,
+          toplevel: true,
+          nameCache: mangleCache,
+          ie8: false,
+          keep_fnames: false,
+        },
+      }),
+    ],
   },
   resolve: {
     mainFiles: ['dist/index'],
@@ -121,7 +150,7 @@ const BASE_WEBPACK_CONFIG = {
  */
 function generateWebpackConfig() {
   const entries = {
-    foldr: path.join(PROJECT_ROOT, 'packages', 'all', 'dist', 'index.mjs'),
+    foldr: path.join(PROJECT_ROOT, 'packages', 'auto', 'all', 'dist', 'index.mjs'),
   };
 
   return { ...BASE_WEBPACK_CONFIG, entry: entries };
@@ -169,7 +198,12 @@ function validateBundles(stats) {
   throw new Error(stats.toJson().errors[0]);
 }
 
+function outputMangleCache() {
+  return fs.outputJsonAsync(mangeCacheSourcepath, mangleCache);
+}
+
 const transpile = compose(
+  outputMangleCache,
   logBundleSizeStats,
   logTap(green.bold('Packages bundled successfully!')),
   validateBundles,

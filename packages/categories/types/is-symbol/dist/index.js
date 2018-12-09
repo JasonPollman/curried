@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=isSymbol;var _is=_interopRequireDefault(require("@foldr/is"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var isSymbolCrossFrame="function"==typeof Symbol?(0,_is.default)(Symbol):function(){return!1};function isSymbol(a){return"symbol"==typeof a||isSymbolCrossFrame(a)}
+//# sourceMappingURL=index.js.map

@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=toKebabCase;var _toWords=_interopRequireDefault(require("@foldr/to-words"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function toKebabCase(a){var b=(0,_toWords.default)(a),c=b.length;if(!c)return"";var d=1,e=b[0].toLowerCase();while(d<c){e+="-".concat(b[d++].toLowerCase())}return e}
+//# sourceMappingURL=index.js.map

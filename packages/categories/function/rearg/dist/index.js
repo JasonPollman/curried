@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=rearg;var _internalRearg=_interopRequireDefault(require("@foldr/internal-rearg"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function rearg(a,b){if("function"!=typeof a){throw new TypeError("The first argument given to `rearg` must be a function.")}return(0,_internalRearg.default)(a,b)}
+//# sourceMappingURL=index.js.map

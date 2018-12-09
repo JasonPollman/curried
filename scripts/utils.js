@@ -6,10 +6,12 @@
 
 import os from 'os';
 import path from 'path';
+import glob from 'glob';
 import Promise from 'bluebird';
 import fs from 'fs-extra-promise';
 
 export const { log } = console;
+export const globAsync = Promise.promisify(glob);
 
 /**
  * This project's root directory.
@@ -73,8 +75,14 @@ export const filterIgnoredAndInternalPackages = (ignored = []) => packages => (
  * @returns {Array<string>} An array of absolute filepaths contained in `basepath`.
  * @export
  */
-export function getPackageFilelist(basepath) {
-  return fs.readdirAsync(basepath).map(pkg => path.join(basepath, pkg));
+export async function getPackageFilelist(basepath) {
+  const [auto, categories, internal] = await Promise.all([
+    globAsync(`${basepath}/auto/*`),
+    globAsync(`${basepath}/internal/*`),
+    globAsync(`${basepath}/categories/*/*`),
+  ]);
+
+  return auto.concat(internal, categories);
 }
 
 /**

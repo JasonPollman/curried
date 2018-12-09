@@ -35,7 +35,7 @@ import mainPackageJson from '../package.json';
  * The path to /packages/all.
  * @type {string}
  */
-const FOLDR_ALL_PACKAGE_ROOT = path.join(PACKAGES_DIRECTORY, 'all');
+const FOLDR_ALL_PACKAGE_ROOT = path.join(PACKAGES_DIRECTORY, 'auto', 'all');
 
 /**
  * The path to /packages/all/src/index.js.
@@ -71,7 +71,9 @@ function getFoldrAllPackageJson() {
 function fixCamelizeNamingIssues(camelizedFunctionName) {
   return camelizedFunctionName
     .replace(/Regexp/g, 'RegExp')
-    .replace(/Nan/g, 'NaN');
+    .replace(/Nan/g, 'NaN')
+    .replace(/^false$/, 'False')
+    .replace(/^true$/, 'True');
 }
 
 /**
@@ -135,6 +137,15 @@ async function generateFoldrAllPackageIndexFile(packageJsons) {
   log(green.bold('Index file for `@foldr/all` generated successfully!'));
 }
 
+function makeAllPackageJson() {
+  return {
+    name: '@foldr/all',
+    version: '0.0.0',
+    main: 'dist',
+    sideEffects: false,
+  };
+}
+
 /**
  * Updates the package.json for the `@foldr/all` package by updating the
  * `dependencies` with the latest version of each dependent package.
@@ -144,7 +155,10 @@ async function generateFoldrAllPackageIndexFile(packageJsons) {
  */
 async function updateFoldrAllPackageDependencies(packageJsons) {
   const foldrAllPackageJsonSource = path.join(FOLDR_ALL_PACKAGE_ROOT, 'package.json');
-  const foldrAllPackageJsonContents = await fs.readJsonAsync(foldrAllPackageJsonSource);
+
+  const foldrAllPackageJsonContents = await fs
+    .readJsonAsync(foldrAllPackageJsonSource)
+    .catch(makeAllPackageJson);
 
   // Reset dependencies and the version of the package.
   foldrAllPackageJsonContents.dependencies = {};
@@ -186,10 +200,10 @@ const setup = compose(
   logTap(cyan.bold('[BUILDING ALL PACKAGE]')),
 );
 
-const build = dependencies => Promise.all([
-  updateFoldrAllPackageDependencies(dependencies),
-  generateFoldrAllPackageIndexFile(dependencies),
-]);
+const build = async (dependencies) => {
+  await updateFoldrAllPackageDependencies(dependencies);
+  await generateFoldrAllPackageIndexFile(dependencies);
+};
 
 setup(PACKAGES_DIRECTORY).then(build).catch((e) => {
   log(red.bold(e.stack));

@@ -1,0 +1,8 @@
+{
+  "name": "@foldr/always",
+  "description": "Creates a function that always returns the same value",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false
+}

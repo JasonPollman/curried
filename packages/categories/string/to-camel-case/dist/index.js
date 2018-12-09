@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=toCamelCase;var _toWords=_interopRequireDefault(require("@foldr/to-words")),_toUpperFirst=_interopRequireDefault(require("@foldr/to-upper-first"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function toCamelCase(a){var b=(0,_toWords.default)(a),c=b.length;if(!c)return"";var d=1,e=b[0].toLowerCase();while(d<c){e+=(0,_toUpperFirst.default)(b[d++])}return e}
+//# sourceMappingURL=index.js.map

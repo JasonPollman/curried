@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});exports.default=escapeRegExp;var _toString=_interopRequireDefault(require("@foldr/to-string"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}var ESCAPE_RE=/[\\^$.*+?()[\]{}|]/g;function escapeRegExp(a){a=(0,_toString.default)(a);return a&&ESCAPE_RE.test(a)?a.replace(ESCAPE_RE,"\\$&"):a}
+//# sourceMappingURL=index.js.map

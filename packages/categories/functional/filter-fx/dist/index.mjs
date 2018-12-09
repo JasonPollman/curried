@@ -1,0 +1,2 @@
+import IteratorFactory from"@foldr/internal-iterator";import FunctionalFactory from"@foldr/internal-fmake";var filter=IteratorFactory({Empty:function a(){return[]},Results:function a(){return[]},handler:function h(a,b,c,d,e,f,g){if(a&&a.capped?c(e):c(e,f,g)){b[b.length]=e}}});export var f=FunctionalFactory(filter,{arity:2,capped:!0,context:"config",signature:[1,0]});export default filter;
+//# sourceMappingURL=index.js.map

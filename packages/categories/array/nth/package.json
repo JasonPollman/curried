@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/nth",
+  "version": "0.0.0",
+  "description": "Gets the nth element from an array",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fmake": "^0.0.0"
+  }
+}

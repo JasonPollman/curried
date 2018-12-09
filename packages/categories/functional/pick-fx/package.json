@@ -1,0 +1,12 @@
+{
+  "name": "@foldr/pick-fx",
+  "description": "Creates an object from an existing one selecting only the specified keys.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-fmake": "^0.0.0",
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

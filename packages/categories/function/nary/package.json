@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/nary",
+  "description": "Limits the arity of a function to `n`.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-symbol": "^0.0.0"
+  }
+}

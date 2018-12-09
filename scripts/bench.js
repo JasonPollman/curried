@@ -5,7 +5,6 @@
  * @file
  */
 
-import glob from 'glob';
 import path from 'path';
 import assert from 'assert';
 import Promise from 'bluebird';
@@ -26,13 +25,14 @@ import {
 import lodash from 'lodash';
 import fp from 'lodash/fp';
 import * as ramda from 'ramda';
-import * as foldr from '../packages/all';
+import * as foldr from '../packages/auto/all';
 
 import packageJson from '../package.json';
 
 import {
   log,
   logTap,
+  globAsync,
   PROJECT_ROOT,
   PROJECT_META_ROOT,
 } from './utils';
@@ -45,7 +45,6 @@ const LIBRARIES = {
 };
 
 const noop = () => {};
-const globAsync = Promise.promisify(glob);
 
 /**
  * Stores stats about each test suite for logging/dumping

@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/every",
+  "description": "Like Array#every, but for collections.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

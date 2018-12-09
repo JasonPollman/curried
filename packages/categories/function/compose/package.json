@@ -1,0 +1,11 @@
+{
+  "name": "@foldr/compose",
+  "version": "0.0.0",
+  "description": "A function composition utility function",
+  "license": "MIT",
+  "main": "dist",
+  "sideEffects": false,
+  "dependencies": {
+    "@foldr/internal-symbol": "^0.0.0"
+  }
+}

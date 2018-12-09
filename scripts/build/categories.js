@@ -19,23 +19,27 @@ import {
 } from 'chalk';
 
 import {
+  PROJECT_ROOT,
+  MAP_CONCURRENCY,
+  PROJECT_PACKAGES_ROOT,
+} from '../constants';
+
+import {
   log,
   logTap,
   camelize,
-  MAP_CONCURRENCY,
-  PACKAGES_DIRECTORY,
   getPackageFilelist,
   getPackageDirectories,
   filterIgnoredAndInternalPackages,
-} from './utils';
+} from '../utils';
 
-import mainPackageJson from '../package.json';
+import mainPackageJson from '../../package.json';
 
 /**
  * The path to /packages/all.
  * @type {string}
  */
-const FOLDR_ALL_PACKAGE_ROOT = path.join(PACKAGES_DIRECTORY, 'generated', 'all');
+const FOLDR_ALL_PACKAGE_ROOT = path.join(PROJECT_PACKAGES_ROOT, 'generated', 'all');
 
 /**
  * The path to /packages/all/src/index.js.
@@ -205,7 +209,7 @@ const build = async (dependencies) => {
   await generateFoldrAllPackageIndexFile(dependencies);
 };
 
-setup(PACKAGES_DIRECTORY).then(build).catch((e) => {
+setup(PROJECT_ROOT).then(build).catch((e) => {
   log(red.bold(e.stack));
   process.exit(1);
 });

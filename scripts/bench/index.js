@@ -25,17 +25,20 @@ import {
 import lodash from 'lodash';
 import fp from 'lodash/fp';
 import * as ramda from 'ramda';
-import * as foldr from '../packages/auto/all';
+import * as foldr from '../../packages/generated/all/dist';
 
-import packageJson from '../package.json';
+import packageJson from '../../package.json';
+
+import {
+  PROJECT_ROOT,
+  PROJECT_META_ROOT,
+} from '../constants';
 
 import {
   log,
   logTap,
   globAsync,
-  PROJECT_ROOT,
-  PROJECT_META_ROOT,
-} from './utils';
+} from '../utils';
 
 const LIBRARIES = {
   fp,

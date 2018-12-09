@@ -1,5 +1,5 @@
 /**
- * Builds the docs-[version].json metadata for the docs site.
+ * Builds the docs/[version].json metadata for the docs site.
  * @since 10/27/18
  * @file
  */
@@ -18,18 +18,20 @@ import {
 } from 'chalk';
 
 import {
-  log,
-  logTap,
-  camelize,
   PROJECT_ROOT,
   MAP_CONCURRENCY,
   PROJECT_META_ROOT,
-  PACKAGES_DIRECTORY,
+} from '../constants';
+
+import {
+  log,
+  logTap,
+  camelize,
   getPackageFilelist,
   getPackageDirectories,
-} from './utils';
+} from '../utils';
 
-import packageJson from '../package.json';
+import packageJson from '../../package.json';
 
 /**
  * Docs.json ouput destination/
@@ -86,6 +88,7 @@ function formatDoc(pkg, { name, version }, docsMapping) {
       since: since.replace(/^v/, ''),
       package: { name, version },
       description: marked(description),
+      arity: tags.find(tag => tag.title === 'arity') || 'Infinity',
       categories: tags.filter(tag => tag.title === 'category').map(x => x.value),
       params: walkRecursiveInlineMarkdownRender(params),
       returns: walkRecursiveInlineMarkdownRender(returns),
@@ -129,7 +132,7 @@ async function buildDocs(packages) {
   const datetime = new Date().toISOString();
   const { version } = packageJson;
 
-  await Promise.mapSeries(packages, buildPackageDoc(docs), { concurrency: MAP_CONCURRENCY });
+  await Promise.map(packages, buildPackageDoc(docs), { concurrency: MAP_CONCURRENCY });
 
   const destination = path.join(DOCS_DESTNATION, `${version}.json`);
   return fs.outputFileAsync(destination, JSON.stringify({ datetime, version, docs }));
@@ -143,7 +146,7 @@ const buildJSDocs = compose(
   getPackageFilelist,
 );
 
-buildJSDocs(PACKAGES_DIRECTORY).catch((e) => {
+buildJSDocs(PROJECT_ROOT).catch((e) => {
   log(red.bold(e.stack));
   process.exit(1);
 });

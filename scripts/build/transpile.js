@@ -20,16 +20,16 @@ import {
   green,
 } from 'chalk';
 
+import { PROJECT_ROOT } from '../constants';
+
 import {
   log,
   logTap,
-  PROJECT_ROOT,
-  PACKAGES_DIRECTORY,
   getPackageFilelist,
   getPackageDirectories,
-} from './utils';
+} from '../utils';
 
-import babelrc from '../babel.config';
+import babelrc from '../../babel.config';
 
 const globAsync = Promise.promisify(glob);
 const rel = filepath => path.relative(PROJECT_ROOT, filepath);
@@ -109,7 +109,7 @@ const transpile = compose(
   getPackageFilelist,
 );
 
-transpile(PACKAGES_DIRECTORY).catch((e) => {
+transpile(PROJECT_ROOT).catch((e) => {
   log(red.bold(e.stack));
   process.exit(1);
 });

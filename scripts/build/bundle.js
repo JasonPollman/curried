@@ -22,18 +22,25 @@ import {
 } from 'chalk';
 
 import {
+  PROJECT_ROOT,
+  DIST_DESTINATION,
+  DIST_PACKAGE_ROOT,
+  PROJECT_CACHES_ROOT,
+  PROJECT_PACKAGES_ROOT,
+} from '../constants';
+
+import {
   log,
   logTap,
   getENV,
-  PROJECT_ROOT,
-  PACKAGES_DIRECTORY,
-} from './utils';
+} from '../utils';
 
-import babelrc from '../babel.config';
-import packageJson from '../package.json';
+import babelrc from '../../babel.config';
+import packageJson from '../../package.json';
 
+const NODE_ENV = getENV('NODE_ENV', 'production');
 const webpackAsync = Promise.promisify(webpack);
-const mangeCacheSourcepath = path.join(PROJECT_ROOT, 'mangle-cache.json');
+const mangeCacheSourcepath = path.join(PROJECT_CACHES_ROOT, 'mangle-cache.json');
 
 let mangleCache;
 
@@ -60,7 +67,10 @@ The @foldr library.
  * @type {Object}
  */
 const BASE_WEBPACK_CONFIG = {
-  mode: getENV('BUNDLE_MODE', 'production'),
+  entry: {
+    foldr: path.join(DIST_PACKAGE_ROOT, 'dist', 'index.mjs'),
+  },
+  mode: NODE_ENV,
   devtool: 'source-map',
   // target: 'web',
   // Tell webpack not to shim node globals, since @folder/internal-env
@@ -68,7 +78,7 @@ const BASE_WEBPACK_CONFIG = {
   // This also reduces about 2kb in bundle sizes.
   node: false,
   output: {
-    path: path.resolve(__dirname, '..', 'dist'),
+    path: DIST_DESTINATION,
     filename: '[name].min.js',
     library: '[name]',
     libraryTarget: 'umd',
@@ -81,25 +91,6 @@ const BASE_WEBPACK_CONFIG = {
     devtoolModuleFilenameTemplate(info) {
       return `foldr:///${path.relative(PROJECT_ROOT, info.absoluteResourcePath)}`;
     },
-  },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          parse: {},
-          compress: {},
-          mangle: true,
-          // mangle: {
-          //   properties: { regex: /^\$\$/ },
-          // },
-          output: null,
-          toplevel: true,
-          nameCache: mangleCache,
-          ie8: false,
-          keep_fnames: false,
-        },
-      }),
-    ],
   },
   resolve: {
     mainFiles: ['dist/index'],
@@ -137,7 +128,7 @@ const BASE_WEBPACK_CONFIG = {
     new webpack.BannerPlugin({ banner: banner.trim() }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(getENV('NODE_ENV', 'production')),
+        NODE_ENV: JSON.stringify(NODE_ENV),
       },
     }),
   ],
@@ -149,11 +140,31 @@ const BASE_WEBPACK_CONFIG = {
  * @returns {Object} The prepared webpack configuration.
  */
 function generateWebpackConfig() {
-  const entries = {
-    foldr: path.join(PROJECT_ROOT, 'packages', 'auto', 'all', 'dist', 'index.mjs'),
-  };
+  const config = { ...BASE_WEBPACK_CONFIG };
 
-  return { ...BASE_WEBPACK_CONFIG, entry: entries };
+  // Only minimize the ejected bundle if not building for dev.
+  if (NODE_ENV !== 'development') {
+    config.optimization = {
+      minimizer: [
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            parse: {},
+            compress: {},
+            mangle: true,
+            // mangle: {
+            //   properties: { regex: /^\$\$/ },
+            // },
+            output: null,
+            toplevel: true,
+            nameCache: mangleCache,
+            ie8: false,
+            keep_fnames: false,
+          },
+        }),
+      ],
+    };
+  }
+  return config;
 }
 
 /**
@@ -161,7 +172,7 @@ function generateWebpackConfig() {
  * @returns {undefined}
  */
 async function logBundleSizeStats() {
-  const source = path.join(__dirname, '..', 'dist', 'foldr.min.js');
+  const source = path.join(DIST_DESTINATION, 'foldr.min.js');
   const contents = await fs.readFileAsync(source);
 
   const gzipped = await new Promise((resolve, reject) => zlib.gzip(contents, (err, results) => {
@@ -198,13 +209,17 @@ function validateBundles(stats) {
   throw new Error(stats.toJson().errors[0]);
 }
 
+/**
+ * Emits the new mangle-property cache.
+ * @returns {Promise} Resolves once the file has been written to disk.
+ */
 function outputMangleCache() {
   return fs.outputJsonAsync(mangeCacheSourcepath, mangleCache);
 }
 
 const transpile = compose(
-  outputMangleCache,
   logBundleSizeStats,
+  outputMangleCache,
   logTap(green.bold('Packages bundled successfully!')),
   validateBundles,
   webpackAsync,
@@ -212,7 +227,7 @@ const transpile = compose(
   logTap(cyan.bold('[BUNDLING PACKAGES]')),
 );
 
-transpile(PACKAGES_DIRECTORY).catch((e) => {
+transpile(PROJECT_PACKAGES_ROOT).catch((e) => {
   log(red.bold(e.stack));
   process.exit(1);
 });

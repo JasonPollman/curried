@@ -58,4 +58,4 @@ jobs:
         && npm run build:bundle
         && npm run build:docs
         && npm run build:versions
-        && npm run deploy:meta"
+        && npm run deploy"

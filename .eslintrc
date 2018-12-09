@@ -30,7 +30,7 @@
       "files": [
         "**/*.test.js",
         "**/bench.js",
-        "**/scripts/*.js"
+        "scripts/**/*.js"
       ],
       "rules": {
         "require-jsdoc": 0,

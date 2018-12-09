@@ -19,11 +19,12 @@ import {
   yellow,
 } from 'chalk';
 
+import { PROJECT_META_ROOT } from '../constants';
+
 import {
   log,
   logTap,
-  PROJECT_META_ROOT,
-} from './utils';
+} from '../utils';
 
 const execAsync = promisify(exec);
 

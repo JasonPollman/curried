@@ -4,46 +4,15 @@
  * @file
  */
 
-import os from 'os';
 import path from 'path';
 import glob from 'glob';
 import Promise from 'bluebird';
 import fs from 'fs-extra-promise';
+import { INTERNAL_PACKAGES } from './constants';
+import lernaConfig from '../lerna.json';
 
 export const { log } = console;
 export const globAsync = Promise.promisify(glob);
-
-/**
- * This project's root directory.
- * @type {string}
- */
-export const PROJECT_ROOT = path.join(__dirname, '..');
-
-/**
- * This project's /meta root directory.
- * @type {string}
- */
-export const PROJECT_META_ROOT = path.join(__dirname, '..', 'meta');
-
-/**
- * This absolute path to the /packages directory.
- * @type {string}
- */
-export const PACKAGES_DIRECTORY = path.join(PROJECT_ROOT, 'packages');
-
-/**
- * The maximum number of concurrent operations
- * to run at once when using Promise.map.
- * @type {number}
- */
-export const MAP_CONCURRENCY = os.cpus().length - 1;
-
-/**
- * Used to match package filepaths to determine if
- * they are internal packages or not.
- * @type {RegExp}
- */
-export const INTERNAL_PACKAGES = /^internal-/;
 
 /**
  * Curried nth function.
@@ -76,12 +45,11 @@ export const filterIgnoredAndInternalPackages = (ignored = []) => packages => (
  * @export
  */
 export async function getPackageFilelist(basepath) {
-  const [generated, categories] = await Promise.all([
-    globAsync(`${basepath}/generated/*`),
-    globAsync(`${basepath}/categories/*/*`),
-  ]);
+  const paths = await Promise.all(
+    lernaConfig.packages.map(pattern => globAsync(path.join(basepath, pattern))),
+  );
 
-  return generated.concat(categories);
+  return Array.prototype.concat.apply(paths.shift(), paths);
 }
 
 /**

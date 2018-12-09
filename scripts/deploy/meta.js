@@ -20,13 +20,16 @@ import {
 } from 'chalk';
 
 import {
-  log,
-  logTap,
-  getENV,
   PROJECT_ROOT,
   MAP_CONCURRENCY,
   PROJECT_META_ROOT,
-} from './utils';
+} from '../constants';
+
+import {
+  log,
+  logTap,
+  getENV,
+} from '../utils';
 
 const globAsync = promisify(glob);
 const AWS_REGION = getENV('AWS_REGION', 'us-east-1');

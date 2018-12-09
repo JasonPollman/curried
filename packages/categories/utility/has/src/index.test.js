@@ -1,6 +1,6 @@
 import has from '.';
 
-describe('identity', () => {
+describe('has', () => {
   it('Should be a function', () => {
     expect(typeof has).toBe('function');
   });

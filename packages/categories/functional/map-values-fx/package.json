@@ -2,7 +2,7 @@
   "name": "@foldr/map-values-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Maps an object's values.",
+  "description": "Functional, autocurried version of @foldr/map-values",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -23,7 +23,6 @@
   ],
   "dependencies": {
     "@foldr/internal-fmake": "^0.0.0",
-    "@foldr/internal-iteratee": "^0.0.0",
-    "@foldr/internal-iterator": "^0.0.0"
+    "@foldr/map-values": "^0.0.0"
   }
 }

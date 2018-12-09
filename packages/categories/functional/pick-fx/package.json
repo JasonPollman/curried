@@ -2,7 +2,7 @@
   "name": "@foldr/pick-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Creates an object from an existing one selecting only the specified keys.",
+  "description": "Functional, autocurried version of @foldr/pick",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,

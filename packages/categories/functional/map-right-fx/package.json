@@ -2,7 +2,7 @@
   "name": "@foldr/map-right-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Like Array#map, but for collections and iterates in reverse.",
+  "description": "Functional, autocurried version of @foldr/map-right",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -23,6 +23,6 @@
   ],
   "dependencies": {
     "@foldr/internal-fmake": "^0.0.0",
-    "@foldr/internal-iterator": "^0.0.0"
+    "@foldr/map-right": "^0.0.0"
   }
 }

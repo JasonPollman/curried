@@ -1,47 +1,16 @@
-import FunctionalFactory from '@foldr/internal-fmake';
+import nth from '@foldr/nth';
+import fmake from '@foldr/internal-fmake';
 
 /**
+ * **Functional, autocurried version of [nth](#nth).**
+ *
  * Returns the nth element in an array.
+ *
  * If the value of `n` is greater than zero, the nth element of `array` will be returned.
  * If `n` is less than zero, the nth value of the array starting from the end of the array
  * will be returned.
  *
- * @name nth
- * @param {Array} array The array to get the nth element of.
- * @param {number} index The index of the array to get the element of.
- * @returns {any} The value at the nth index of an array.
- *
- * @category array
- * @publishdoc
- * @since v0.0.0
- * @export
- * @example
- *
- * import { nth } from '@foldr/all';
- *
- * nth([1, 2, 3, 4], 1);  // => 2
- * nth([1, 2, 3, 4], -2); // => 3
- * nth([], 1);            // => undefined
- */
-export default function nth(array, index) {
-  if (!array) return undefined;
-
-  const n = +index;
-  const size = array.length;
-  const idx = n >= 0 ? n : (size + n);
-
-  return array && idx < size && idx > -1 ? array[idx] : undefined;
-}
-
-/**
- * Functional, autocurried version of [nth](#nth).
- *
- * Returns the nth element in an array.
- * If the value of `n` is greater than zero, the nth element of `array` will be returned.
- * If `n` is less than zero, the nth value of the array starting from the end of the array
- * will be returned.
- *
- * @name nth.f
+ * @name nthFx
  * @param {number} index The index of the array to get the element of.
  * @param {Array} array The array to get the nth element of.
  * @returns {any} The value at the nth index of an array.
@@ -54,11 +23,11 @@ export default function nth(array, index) {
  * @export
  * @example
  *
- * nth.f(1, [1, 2, 3, 4]);  // => 2
- * nth.f(-2)([1, 2, 3, 4]); // => 3
- * nth.f(1)([]);            // => undefined
+ * nthFx(1, [1, 2, 3, 4]);  // => 2
+ * nthFx(-2)([1, 2, 3, 4]); // => 3
+ * nthFx(1)([]);            // => undefined
  */
-export const f = FunctionalFactory(nth, {
+export default fmake(nth, {
   arity: 2,
   signature: [1, 0],
 });

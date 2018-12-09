@@ -1,40 +1,33 @@
-/**
- * Tests for the `nth` function.
- * @since 10/11/18
- * @file
- */
-
-import nth from '.';
+import nthFx from '.';
 
 describe('nth', () => {
   it('Should return the value at the nth index of an array', () => {
-    expect(nth([5, 6, 7], 0)).toEqual(5);
-    expect(nth([5, 6, 7], 1)).toEqual(6);
-    expect(nth([5, 6, 7], 2)).toEqual(7);
+    expect(nthFx(0)([5, 6, 7])).toEqual(5);
+    expect(nthFx(1)([5, 6, 7])).toEqual(6);
+    expect(nthFx(2)([5, 6, 7])).toEqual(7);
 
-    expect(nth(['a', 'b', 'c'], 2)).toEqual('c');
-    expect(nth('hello', 2)).toEqual('l');
+    expect(nthFx(2, ['a', 'b', 'c'])).toEqual('c');
+    expect(nthFx(2, 'hello')).toEqual('l');
   });
 
   it('Should return the value at the nth index of an array (negative index)', () => {
-    expect(nth([5, 6, 7], -0)).toEqual(5);
-    expect(nth([5, 6, 7], -1)).toEqual(7);
-    expect(nth([5, 6, 7], -2)).toEqual(6);
-    expect(nth([5, 6, 7], -3)).toEqual(5);
-    expect(nth([5, 6, 7], -4)).toEqual(undefined);
+    expect(nthFx(-0)([5, 6, 7])).toEqual(5);
+    expect(nthFx(-1)([5, 6, 7])).toEqual(7);
+    expect(nthFx(-2)([5, 6, 7])).toEqual(6);
+    expect(nthFx(-3)([5, 6, 7])).toEqual(5);
+    expect(nthFx(-4)([5, 6, 7])).toEqual(undefined);
 
-    expect(nth(['a', 'b', 'c'], -2)).toEqual('b');
+    expect(nthFx(-2, ['a', 'b', 'c'])).toEqual('b');
 
-    expect(nth('hello', -1)).toEqual('o');
-    expect(nth('hello', -2)).toEqual('l');
-    expect(nth('hello', -4)).toEqual('e');
-    expect(nth('hello', -5)).toEqual('h');
+    expect(nthFx(-1, 'hello')).toEqual('o');
+    expect(nthFx(-2, 'hello')).toEqual('l');
+    expect(nthFx(-4, 'hello')).toEqual('e');
+    expect(nthFx(-5, 'hello')).toEqual('h');
   });
 
   it('Should return undefined if param is not an array', () => {
-    expect(nth()).toEqual(undefined);
-    expect(nth(0)).toEqual(undefined);
-    expect(nth(null, 2)).toEqual(undefined);
-    expect(nth({}, 2)).toEqual(undefined);
+    expect(nthFx(0, () => {})).toEqual(undefined);
+    expect(nthFx(2, null)).toEqual(undefined);
+    expect(nthFx(2, {})).toEqual(undefined);
   });
 });

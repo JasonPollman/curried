@@ -2,7 +2,7 @@
   "name": "@foldr/map-keys-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Maps an object's keys.",
+  "description": "Functional, autocurried version of @foldr/map-keys",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -22,8 +22,7 @@
     "library"
   ],
   "dependencies": {
-    "@foldr/internal-fmake": "^0.0.0",
-    "@foldr/internal-iteratee": "^0.0.0",
-    "@foldr/internal-iterator": "^0.0.0"
+    "@foldr/map-keys": "^0.0.0",
+    "@foldr/internal-fmake": "^0.0.0"
   }
 }

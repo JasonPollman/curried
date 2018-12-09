@@ -1,18 +1,18 @@
-module.exports = ({ foldr, lodash }) => {
+module.exports = ({ foldr, fp }) => {
   const tests = {
-    foldr: ([x, y]) => foldr.has(x, y),
-    lodash: ([x, y]) => lodash.has(x, y),
+    foldr: ([x, y]) => foldr.hasFx(y)(x),
+    lodash: ([x, y]) => fp.has(y)(x),
   };
 
   return [
     {
-      name: 'Object Has Property (True)',
+      name: 'Object Has Property (Functional, True)',
       expect: (result, assert) => assert(result === true),
       setup: () => [{ foo: 'bar' }, 'foo'],
       tests,
     },
     {
-      name: 'Object Has Property (False)',
+      name: 'Object Has Property (Functional, False)',
       expect: (result, assert) => assert(result === false),
       setup: () => [{ foo: 'bar' }, 'baz'],
       tests,

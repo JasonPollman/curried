@@ -2,7 +2,7 @@
   "name": "@foldr/nary-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Limits the arity of a function to `n`.",
+  "description": "Functional, autocurried version of @foldr/nary",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -23,6 +23,6 @@
   ],
   "dependencies": {
     "@foldr/internal-fmake": "^0.0.0",
-    "@foldr/internal-symbol": "^0.0.0"
+    "@foldr/nary": "^0.0.0"
   }
 }

@@ -29,7 +29,7 @@ const EmptyObject = () => ({});
  *   return key.toUpperCase();
  * }
  *
- * mapKeys({ foo: 1, bar: 2, baz: 3 }, square); // => { FOO: 1, BAR: 2, BAZ: 3 }
+ * mapKeys({ foo: 1, bar: 2, baz: 3 }, uppercaseKey); // => { FOO: 1, BAR: 2, BAZ: 3 }
  *
  * // Using the shorthand string iteratee you can
  * // map an object to a property of the object.

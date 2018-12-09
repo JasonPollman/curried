@@ -1,37 +1,31 @@
-/**
- * Tests for the `has` function.
- * @since 10/23/18
- * @file
- */
+import hasFx from '.';
 
-import has from '.';
-
-describe('identity', () => {
+describe('hasFx', () => {
   it('Should be a function', () => {
-    expect(typeof has).toBe('function');
+    expect(typeof hasFx).toBe('function');
   });
 
   it('Should determine if an object has the specified property', () => {
-    expect(has({ foo: 'bar' }, 'foo')).toBe(true);
+    expect(hasFx('foo')({ foo: 'bar' })).toBe(true);
   });
 
   it('Should determine if an object doesn\'t has the specified property', () => {
-    expect(has({ foo: 'bar' }, 'bar')).toBe(false);
+    expect(hasFx('bar')({ foo: 'bar' })).toBe(false);
   });
 
   it('Should work with numeric properties', () => {
-    expect(has([1, 2, 3], 0)).toBe(true);
-    expect(has([1, 2, 3], '0')).toBe(true);
-    expect(has([1, 2, 3], 4)).toBe(false);
-    expect(has([1, 2, 3], '4')).toBe(false);
+    expect(hasFx(0, [1, 2, 3])).toBe(true);
+    expect(hasFx('0', [1, 2, 3])).toBe(true);
+    expect(hasFx(4, [1, 2, 3])).toBe(false);
+    expect(hasFx('4', [1, 2, 3])).toBe(false);
   });
 
   it('Should return false for nil values', () => {
-    expect(has(null, 5)).toBe(false);
+    expect(hasFx(5)(null)).toBe(false);
   });
 
   it('Should work for functions', () => {
     const foo = Object.assign(() => {}, { bar: 5 });
-    expect(has(foo, 'bar')).toBe(true);
+    expect(hasFx('bar')(foo)).toBe(true);
   });
 });

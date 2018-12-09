@@ -2,7 +2,7 @@
   "name": "@foldr/has-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "A utility function to test whether or not an object has a property",
+  "description": "Functional, autocurried version of @foldr/has",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -22,6 +22,7 @@
     "library"
   ],
   "dependencies": {
+    "@foldr/has": "^0.0.0",
     "@foldr/internal-fmake": "^0.0.0"
   }
 }

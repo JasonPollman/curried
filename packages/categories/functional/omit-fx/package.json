@@ -2,7 +2,7 @@
   "name": "@foldr/omit-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Creates an object from an existing one selecting omitting the specified keys.",
+  "description": "Functional, autocurried version of @foldr/omit",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -23,6 +23,6 @@
   ],
   "dependencies": {
     "@foldr/internal-fmake": "^0.0.0",
-    "@foldr/internal-iterator": "^0.0.0"
+    "@foldr/omit": "^0.0.0"
   }
 }

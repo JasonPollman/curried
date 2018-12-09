@@ -1,11 +1,3 @@
-/**
- * Exports the `isInteger` function.
- * @since 10/23/18
- * @file
- */
-
-/* eslint-disable no-bitwise */
-
 import isFinite from '@foldr/is-finite';
 
 // Use Math.trunc if it's available, since
@@ -16,7 +8,7 @@ import isFinite from '@foldr/is-finite';
 const floor = Math.trunc || Math.floor;
 
 /**
- * Determines if the given item is an integer.
+ * Determines if the given value is an integer.
  * This is based on the `Number.isInteger` polyfill from
  * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger#Polyfill).
  * @param {any} x The value to assert.
@@ -28,17 +20,20 @@ export function isIntegerPolyfill(x) {
 }
 
 /**
- * Determines if the given item is an integer.
+ * Determines if the given value is an integer.
  *
  * @name isInteger
  * @param {any} x The value to assert.
  * @returns {boolean} True if `x` is an integer, false otherwise.
  *
+ * @arity 1
  * @category types
  * @publishdoc
  * @since v0.0.0
  * @export
  * @example
+ *
+ * import { isInteger } from '@foldr/all';
  *
  * isInteger(1);    // => true
  * isInteger(1.01); // => false

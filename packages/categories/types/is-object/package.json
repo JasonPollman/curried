@@ -2,6 +2,23 @@
   "name": "@foldr/is-object",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "A foldr standalone module",
   "main": "dist",
-  "sideEffects": false
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ]
 }

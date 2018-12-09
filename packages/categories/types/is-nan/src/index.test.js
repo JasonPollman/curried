@@ -1,9 +1,3 @@
-/**
- * Tests for the `isNaN` function.
- * @since 10/23/18
- * @file
- */
-
 import { isNaNPolyfill } from '.';
 
 describe('isNaN', () => {

@@ -1,10 +1,26 @@
 {
   "name": "@foldr/find-last",
-  "description": "Like Array#find, but for collections and iteration is performed in reverse.",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "Like Array#find, but for collections and iteration is performed in reverse.",
   "main": "dist",
+  "author": "CloudVessel",
   "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
   "dependencies": {
     "@foldr/internal-iterator": "^0.0.0",
     "@foldr/internal-iteratee": "^0.0.0"

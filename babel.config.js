@@ -50,6 +50,8 @@ module.exports = {
       ],
     },
     commonjs: {
+      // So IDE's will pickup using IntelliSense.
+      comments: true,
       presets: [
         ['@babel/preset-env', {
           modules: 'commonjs',
@@ -59,6 +61,8 @@ module.exports = {
       ],
     },
     esm: {
+      // So IDE's will pickup using IntelliSense.
+      comments: true,
       presets: [
         ['@babel/preset-env', {
           modules: false,

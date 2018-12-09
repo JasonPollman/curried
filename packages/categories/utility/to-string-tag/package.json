@@ -1,8 +1,24 @@
 {
   "name": "@foldr/to-string-tag",
   "version": "0.0.0",
-  "description": "A convenience function for Object.toString.call",
   "license": "MIT",
+  "description": "A convenience function for Object.toString.call",
   "main": "dist",
-  "sideEffects": false
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ]
 }

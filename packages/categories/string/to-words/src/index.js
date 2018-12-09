@@ -23,8 +23,9 @@ const RE_TO_WORDS = new RegExp(`${UC.source}${LC.source}+|${LC.source}+|${UC.sou
  * @publishdoc
  * @since v0.0.0
  * @export
+ * @example
  *
- * import { toWords } from '@foldr/to-words';
+ * import { toWords } from '@foldr/all';
  *
  * toWords('foo bar')         // => ['foo', 'bar']
  * toWords('foo barBaz_quxx') // => ['foo', 'bar', 'Baz', 'quxx']

@@ -1,10 +1,26 @@
 {
   "name": "@foldr/compose-async",
   "version": "0.0.0",
-  "description": "Composes async functions",
   "license": "MIT",
+  "description": "Composes async functions",
   "main": "dist",
+  "author": "CloudVessel",
   "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
   "dependencies": {
     "@foldr/internal-symbol": "^0.0.0"
   }

@@ -1,9 +1,3 @@
-/**
- * Tests for the `isEqual` function.
- * @since 11/17/18
- * @file
- */
-
 import isEqual from '.';
 
 describe('isEqual', () => {

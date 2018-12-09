@@ -27,6 +27,8 @@ import iterator, { BREAK } from '@foldr/internal-iterator';
  * @export
  * @example
  *
+ * import { findLast } from '@foldr/all';
+ *
  * function isEven(x) {
  *   return x % 2 === 0;
  * }

@@ -14,7 +14,7 @@ import toString from '@foldr/to-string';
  * @export
  * @example
  *
- * import { toUpperCase } from '@foldr/all';
+ * import { toUpperFirst } from '@foldr/all';
  *
  * toUpperFirst('foobar'); // => 'Foobar'
  */

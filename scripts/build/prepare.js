@@ -1,6 +1,6 @@
 /**
  * Prepares each package by normalizing each package's package.json file
- * and copying over readme.md files, etc.
+ * and copying over readme.md files, .npmignore, etc.
  * @since 12/9/18
  * @file
  */
@@ -19,7 +19,6 @@ import {
 
 import constants from '../constants';
 import lernaConfig from '../../lerna.json';
-
 import packageJsonTemplate from '../../resources/templates/package.json';
 
 import {
@@ -38,7 +37,7 @@ const {
 
 const TEMPLATES_ROOT = path.join(PROJECT_RESOURCES_ROOT, 'templates');
 
-const docs = fs.readJsonSync(path.join(DOCS_DESTNATION, `${lernaConfig.version}.json`));
+const { docs } = fs.readJsonSync(path.join(DOCS_DESTNATION, `${lernaConfig.version}.json`));
 
 const readmeTemplate = handlebars.compile(
   fs.readFileSync(path.join(TEMPLATES_ROOT, 'readme.hbs'), 'utf8'),
@@ -77,17 +76,22 @@ async function preparePackage(pkg) {
 
   const formattedPackageJson = {
     name: `@foldr/${basename}`,
-    version: '0.0.0',
     ...packageJsonTemplate,
     ...packageJson,
   };
+
+  const example = ((docs[camelCasedName] || {}).examples || [])[0];
 
   const tokens = {
     constants,
     package: formattedPackageJson,
     docs: {
       ...docs[camelCasedName],
-      example: ((docs[camelCasedName] || {}).examples || [])[0],
+      example: example && example.trim().replace(
+        // For standalone readme.md's replace the import for that specific module.
+        new RegExp(`^import \\{ ${camelCasedName} \\} from '@foldr/all';\\s*$`, 'm'),
+        `import ${camelCasedName} from '${formattedPackageJson.name}';\n`,
+      ),
     },
     derived: {
       basename,
@@ -115,7 +119,9 @@ async function preparePackages(packages) {
 }
 
 function filterCategoriesOnly(paths) {
-  return paths.filter(filepath => /categories\//.test(filepath));
+  return paths
+    .filter(filepath => /categories\//.test(filepath))
+    .filter(filepath => !/internal/.test(filepath));
 }
 
 const prepare = compose(

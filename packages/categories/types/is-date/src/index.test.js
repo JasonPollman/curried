@@ -1,9 +1,3 @@
-/**
- * Tests for the `isDate` function.
- * @since 10/23/18
- * @file
- */
-
 import isDate from '.';
 
 describe('isDate', () => {

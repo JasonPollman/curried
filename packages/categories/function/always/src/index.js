@@ -11,6 +11,8 @@
  * @export
  * @example
  *
+ * import { always } from '@foldr/all';
+ *
  * const Null = always(null);
  * Null() // => null
  *

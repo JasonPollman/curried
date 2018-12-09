@@ -1,9 +1,3 @@
-/**
- * Tests for the `isBuffer` function.
- * @since 10/23/18
- * @file
- */
-
 import isBuffer from '.';
 
 describe('isBuffer', () => {

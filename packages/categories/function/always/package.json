@@ -1,8 +1,24 @@
 {
   "name": "@foldr/always",
-  "description": "Creates a function that always returns the same value",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "Creates a function that always returns the same value",
   "main": "dist",
-  "sideEffects": false
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ]
 }

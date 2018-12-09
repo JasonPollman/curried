@@ -1,9 +1,3 @@
-/**
- * Tests for the `isObject` function.
- * @since 10/23/18
- * @file
- */
-
 import isObject from '.';
 
 describe('isObject', () => {

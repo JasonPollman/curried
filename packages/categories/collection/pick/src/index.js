@@ -46,7 +46,7 @@ function preparePickIteratee(iteratee) {
  * @export
  * @example
  *
- * import { pick } from '@foldr/pick';
+ * import { pick } from '@foldr/all';
  *
  * const data = {
  *   foo: 'foo',

@@ -1,12 +1,6 @@
-/**
- * Tests for the `isUndefined` function.
- * @since 10/23/18
- * @file
- */
-
 import isUndefined from '.';
 
-describe('identity', () => {
+describe('isUndefined', () => {
   it('Should be a function', () => {
     expect(typeof isUndefined).toBe('function');
   });

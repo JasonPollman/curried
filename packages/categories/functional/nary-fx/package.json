@@ -1,10 +1,26 @@
 {
   "name": "@foldr/nary-fx",
-  "description": "Limits the arity of a function to `n`.",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "Limits the arity of a function to `n`.",
   "main": "dist",
+  "author": "CloudVessel",
   "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
   "dependencies": {
     "@foldr/internal-fmake": "^0.0.0",
     "@foldr/internal-symbol": "^0.0.0"

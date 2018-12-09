@@ -1,8 +1,10 @@
 {
   "version": "0.0.0",
   "license": "MIT",
-  "sideEffects": false,
+  "description": "A foldr standalone module",
+  "main": "dist",
   "author": "CloudVessel",
+  "sideEffects": false,
   "contributors": [
     {
       "name": "Jason James Pollman",

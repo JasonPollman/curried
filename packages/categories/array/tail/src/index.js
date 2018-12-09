@@ -12,7 +12,7 @@
  * @export
  * @example
  *
- * import { tail } from '@foldr/tail';
+ * import { tail } from '@foldr/all';
  *
  * tail([1, 2, 3, 4]); // => [2, 3, 4]
  * tail([1]);          // => []

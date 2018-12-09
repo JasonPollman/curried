@@ -1,10 +1,26 @@
 {
   "name": "@foldr/clamp-fx",
-  "description": "Functional, autocurried version of @foldr/clamp",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "Functional, autocurried version of @foldr/clamp",
   "main": "dist",
+  "author": "CloudVessel",
   "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
   "dependencies": {
     "@foldr/clamp": "^0.0.0",
     "@foldr/internal-fmake": "^0.0.0"

@@ -1,9 +1,3 @@
-/**
- * Tests for the `isObjectLike` function.
- * @since 10/23/18
- * @file
- */
-
 import isObjectLike from '.';
 
 describe('isObjectLike', () => {

@@ -82,7 +82,7 @@ function partialize(fn, partials) {
  * @export
  * @example
  *
- * import { partial } from '@foldr/partial';
+ * import { partial } from '@foldr/all';
  *
  * function pow(x, y) {
  *   return x ** y;

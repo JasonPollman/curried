@@ -1,9 +1,3 @@
-/**
- * Tests for the `isArrayLike` function.
- * @since 10/23/18
- * @file
- */
-
 import isArrayLike from '.';
 
 describe('isArrayLike', () => {

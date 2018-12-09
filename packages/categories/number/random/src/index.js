@@ -50,6 +50,8 @@ function randomBase(min, max, floating) {
  * @export
  * @example
  *
+ * import { random } from '@foldr/all';
+ *
  * random(0, 10);       // => Random number between 0..10, inclusive
  * random(5, 10);       // => Random number between 5..10, inclusive
  * random(5);           // => Random number between 0..5, inclusive

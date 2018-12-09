@@ -1,9 +1,3 @@
-/**
- * Tests for the `isFunction` function.
- * @since 10/23/18
- * @file
- */
-
 import isFunction from '.';
 
 describe('isFunction', () => {

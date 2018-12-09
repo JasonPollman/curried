@@ -32,6 +32,8 @@ export const ARITY = SafeSymbolFor('source-arity');
  * @export
  * @example
  *
+ * import { compose } from '@foldr/all';
+ *
  * function add(a, b) {
  *   return a + b;
  * }

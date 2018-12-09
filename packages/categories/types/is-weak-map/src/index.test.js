@@ -1,9 +1,3 @@
-/**
- * Tests for the `isWeakMap` function.
- * @since 10/23/18
- * @file
- */
-
 import isWeakMap from '.';
 
 describe('isWeakMap', () => {

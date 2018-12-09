@@ -1,9 +1,3 @@
-/**
- * Tests for the `isNull` function.
- * @since 10/23/18
- * @file
- */
-
 import isNull from '.';
 
 describe('isNull', () => {

@@ -1,9 +1,3 @@
-/**
- * Tests for the `isString` function.
- * @since 10/23/18
- * @file
- */
-
 import isString from '.';
 
 describe('isString', () => {

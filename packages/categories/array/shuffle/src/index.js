@@ -46,7 +46,7 @@ export function implementShuffle(arr) {
  * @export
  * @example
  *
- * import { shuffle } from '@foldr/shuffle';
+ * import { shuffle } from '@foldr/all';
  *
  * shuffle([1, 2, 3, 4]); // => [2, 4, 3, 1]
  * shuffle([1, 2, 3, 4]); // => [3, 4, 1, 2]

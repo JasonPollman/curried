@@ -1,9 +1,3 @@
-/**
- * Tests for the `isError` function.
- * @since 10/23/18
- * @file
- */
-
 import isError from '.';
 
 describe('isError', () => {

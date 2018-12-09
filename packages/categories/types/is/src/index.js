@@ -43,7 +43,7 @@ const isCheck = IS_NODE ? isNodeCheck : /* istanbul ignore next */ isBrowserChec
  * @export
  * @example
  *
- * import { is } from '@foldr/is';
+ * import { is } from '@foldr/all';
  *
  * is(Object, {});    // => true
  * is(String, 'foo'); // => true

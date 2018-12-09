@@ -1,10 +1,26 @@
 {
   "name": "@foldr/some",
-  "description": "Like Array#some, but for collections.",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "Like Array#some, but for collections.",
   "main": "dist",
+  "author": "CloudVessel",
   "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
   "dependencies": {
     "@foldr/internal-fmake": "^0.0.0",
     "@foldr/internal-iterator": "^0.0.0"

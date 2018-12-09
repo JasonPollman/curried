@@ -11,7 +11,7 @@ import iterator from '@foldr/internal-iterator';
  * - `key` is the key of the current item in the collection being iterated over
  * - `collection` is the passed in collection.
  *
- * @name foldRight
+ * @name reduceRight
  * @param {Array|Object|String|Arguments} collection The collection to reduce.
  * @param {function} reducer The reduction function to use while folding.
  * @param {any} initial The inital, "primer" value for folding.

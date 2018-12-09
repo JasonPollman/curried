@@ -20,7 +20,7 @@ import isArrayLike from '@foldr/is-array-like';
  * @export
  * @example
  *
- * import { zip } from '@foldr/zip';
+ * import { zip } from '@foldr/all';
  *
  * zip([1, 2, 3], ['a', 'b', 'c']); // => [[1, 'a'], [2, 'b'], [3, 'c']]
  * zip(['x', 1], ['y', 2]);         // => [['x', 'y'], [1, 2]]

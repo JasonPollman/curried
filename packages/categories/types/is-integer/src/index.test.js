@@ -1,9 +1,3 @@
-/**
- * Tests for the `isInteger` function.
- * @since 10/23/18
- * @file
- */
-
 import { isIntegerPolyfill } from '.';
 
 describe('isInteger', () => {

@@ -1,9 +1,3 @@
-/**
- * Tests for the `isSet` function.
- * @since 10/23/18
- * @file
- */
-
 import isSet from '.';
 
 describe('isSet', () => {

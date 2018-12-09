@@ -1,10 +1,26 @@
 {
   "name": "@foldr/random",
-  "description": "Generates a random number in the given range.",
   "version": "0.0.0",
   "license": "MIT",
+  "description": "Generates a random number in the given range.",
   "main": "dist",
+  "author": "CloudVessel",
   "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
   "dependencies": {
     "@foldr/to-finite": "^0.0.0"
   }

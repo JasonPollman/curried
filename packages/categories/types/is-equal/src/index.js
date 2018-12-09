@@ -1,12 +1,4 @@
 /**
- * Exports the `isEqual` function.
- * @since 11/17/18
- * @file
- */
-
-/* eslint-disable no-self-compare */
-
-/**
  * Determines is `x` is equal to `y` according to the SameValueZero comparison.
  * This is basically the equivalent of `===`, except that it accounts for
  * `NaN === NaN`, which returns `false` when using `===` and true according to the
@@ -18,11 +10,14 @@
  * @param {any} y The seconds value to compare.
  * @returns {boolean} True if `x` is equal to `y`.
  *
- * @category utility
+ * @arity 1
+ * @category types
  * @publishdoc
  * @since v0.0.0
  * @export
  * @example
+ *
+ * import { isEqual } from '@foldr/all';
  *
  * isEqual(1, 1);         // => true
  * isEqual(1, '1');       // => false
@@ -37,5 +32,6 @@
  * isEqual(obj, obj);     // => true
  */
 export default function isEqual(x, y) {
+  // eslint-disable-next-line no-self-compare
   return x === x ? x === y : y !== y;
 }

@@ -30,7 +30,7 @@ import iterator from '@foldr/internal-iterator';
  * @export
  * @example
  *
- * import { reduce } from '@foldr/reduce';
+ * import { reduce } from '@foldr/all';
  *
  * function square(acc, x) {
  *   return acc + x ** 2;

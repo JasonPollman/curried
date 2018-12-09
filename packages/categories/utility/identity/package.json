@@ -1,8 +1,24 @@
 {
   "name": "@foldr/identity",
   "version": "0.0.0",
-  "description": "The identity function.",
   "license": "MIT",
+  "description": "The identity function.",
   "main": "dist",
-  "sideEffects": false
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ]
 }

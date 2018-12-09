@@ -1,9 +1,3 @@
-/**
- * Tests for the `isSymbol` function.
- * @since 10/23/18
- * @file
- */
-
 import isSymbol from '.';
 
 describe('isSymbol', () => {

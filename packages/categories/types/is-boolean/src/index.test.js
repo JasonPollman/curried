@@ -1,9 +1,3 @@
-/**
- * Tests for the `isBoolean` function.
- * @since 10/23/18
- * @file
- */
-
 import isBoolean from '.';
 
 describe('isBoolean', () => {

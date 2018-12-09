@@ -1,6 +1,6 @@
 module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
-    foldr: x => foldr.init(x),
+    foldr: x => foldr.initial(x),
     lodash: x => lodash.initial(x),
     ramda: x => ramda.init(x),
   };

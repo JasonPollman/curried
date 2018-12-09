@@ -1,5 +1,5 @@
 {
-  "name": "@foldr/init",
+  "name": "@foldr/initial",
   "version": "0.0.0",
   "license": "MIT",
   "description": "Gets all elements of an array excluding the last element",

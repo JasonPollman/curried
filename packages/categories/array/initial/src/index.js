@@ -1,7 +1,7 @@
 /**
  * Returns a new array containing all elements of the provided array except the last.
  *
- * @name init
+ * @name initial
  * @param {Array} array The array to get all except for the last element of.
  * @returns {Array} A new array containing the elements [0..N) from the original array.
  *
@@ -12,13 +12,13 @@
  * @export
  * @example
  *
- * import { init } from '@foldr/all';
+ * import { initial } from '@foldr/all';
  *
- * init([1, 2, 3, 4]); // => [1, 2, 3]
- * init([1]);          // => []
- * init([]);           // => []
+ * initial([1, 2, 3, 4]); // => [1, 2, 3]
+ * initial([1]);          // => []
+ * initial([]);           // => []
  */
-export default function init(array) {
+export default function initial(array) {
   if (!array) return [];
 
   const len = array.length;

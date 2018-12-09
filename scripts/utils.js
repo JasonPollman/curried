@@ -103,3 +103,14 @@ export function camelize(string) {
     .replace(/^false$/, 'False')
     .replace(/^true$/, 'True');
 }
+
+/**
+ * Filters out auto-generated and internal packages from a package list.
+ * @param {Array<string>} paths The package list to filter.
+ * @returns {Array<string>} The filtered package list.
+ */
+export function filterCategoriesOnly(paths) {
+  return paths
+    .filter(filepath => /categories\//.test(filepath))
+    .filter(filepath => !/internal/.test(filepath));
+}

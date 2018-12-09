@@ -15,8 +15,8 @@
   ],
   "scripts": {
     "bench": "NODE_ENV=production npx babel-node ./scripts/bench",
-    "build": "npm run clean && npm run build:categories && npm run build:transpile && npm run link && npm run build:bundle && npm run build:docs && npm run build:prepare",
-    "build:categories": "npx babel-node ./scripts/build/categories.js",
+    "build": "npm run clean && npm run build:aggregates && npm run build:transpile && npm run link && npm run build:bundle && npm run build:docs && npm run build:prepare",
+    "build:aggregates": "npx babel-node ./scripts/build/aggregates.js",
     "build:bundle": "npx babel-node ./scripts/build/bundle.js",
     "build:docs": "npx babel-node ./scripts/build/docs.js",
     "build:prepare": "npx babel-node ./scripts/build/prepare.js",

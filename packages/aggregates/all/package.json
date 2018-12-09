@@ -1,8 +1,26 @@
 {
   "name": "@foldr/all",
   "version": "0.0.0",
+  "license": "MIT",
+  "description": "The entire foldr library collection",
   "main": "dist",
+  "author": "CloudVessel",
   "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
   "dependencies": {
     "@foldr/always": "^0.0.0",
     "@foldr/attempt": "^0.0.0",
@@ -38,7 +56,7 @@
     "@foldr/has-fx": "^0.0.0",
     "@foldr/head": "^0.0.0",
     "@foldr/identity": "^0.0.0",
-    "@foldr/init": "^0.0.0",
+    "@foldr/initial": "^0.0.0",
     "@foldr/interpolate": "^0.0.0",
     "@foldr/invoke": "^0.0.0",
     "@foldr/invoke-fx": "^0.0.0",

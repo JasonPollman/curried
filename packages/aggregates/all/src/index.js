@@ -7,6 +7,7 @@
  * @since 12/9/2018
  * @file
  */
+ 
 
 import always from '@foldr/always';
 import attempt from '@foldr/attempt';
@@ -42,7 +43,7 @@ import has from '@foldr/has';
 import hasFx from '@foldr/has-fx';
 import head from '@foldr/head';
 import identity from '@foldr/identity';
-import init from '@foldr/init';
+import initial from '@foldr/initial';
 import interpolate from '@foldr/interpolate';
 import invoke from '@foldr/invoke';
 import invokeFx from '@foldr/invoke-fx';
@@ -176,7 +177,7 @@ export {
   hasFx,
   head,
   identity,
-  init,
+  initial,
   interpolate,
   invoke,
   invokeFx,

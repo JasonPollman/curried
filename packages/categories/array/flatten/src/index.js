@@ -14,7 +14,7 @@
  * @export
  * @example
  *
- * import { flatten } from '@foldr/flatten';
+ * import { flatten } from '@foldr/all';
  *
  * flatten([1, 2, 3, 4]);       // => [1, 2, 3, 4]
  * flatten([1, [2, 3], 4]);     // => [1, 2, 3, 4]

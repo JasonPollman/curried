@@ -27,9 +27,10 @@ import packageJsonTemplate from '../../resources/templates/package.json';
 import {
   log,
   logTap,
-  getPackageFilelist,
-  getPackageDirectories,
   camelize,
+  getPackageFilelist,
+  filterCategoriesOnly,
+  getPackageDirectories,
 } from '../utils';
 
 const {
@@ -150,17 +151,6 @@ async function preparePackage(pkg) {
  */
 async function preparePackages(packages) {
   return Promise.map(packages, preparePackage, { concurrency: MAP_CONCURRENCY });
-}
-
-/**
- * Filters out auto-generated and internal packages from a package list.
- * @param {Array<string>} paths The package list to filter.
- * @returns {Array<string>} The filtered package list.
- */
-function filterCategoriesOnly(paths) {
-  return paths
-    .filter(filepath => /categories\//.test(filepath))
-    .filter(filepath => !/internal/.test(filepath));
 }
 
 const prepare = compose(

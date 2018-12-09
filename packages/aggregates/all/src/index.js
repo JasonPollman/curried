@@ -7,7 +7,6 @@
  * @since 12/9/2018
  * @file
  */
- 
 
 import always from '@foldr/always';
 import attempt from '@foldr/attempt';

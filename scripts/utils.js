@@ -8,7 +8,6 @@ import path from 'path';
 import glob from 'glob';
 import Promise from 'bluebird';
 import fs from 'fs-extra-promise';
-import { INTERNAL_PACKAGES } from './constants';
 import lernaConfig from '../lerna.json';
 
 export const { log } = console;
@@ -25,18 +24,6 @@ export const nth = n => x => x[n];
 export const getBasename = filepath => path.basename(filepath);
 export const isDirectory = data => nth(1)(data).isDirectory();
 export const toStatsTuple = pkg => fs.lstatAsync(pkg).then(stat => [pkg, stat]);
-
-/**
- * Creates a filter function to ignore non-internal and `ignored` packages.
- * @param {Array<string>=} ignored A set of packages to ignore.
- * @returns {function} A "package filtering" function.
- */
-export const filterIgnoredAndInternalPackages = (ignored = []) => packages => (
-  packages.filter((pkg) => {
-    const basename = getBasename(pkg);
-    return ignored.indexOf(basename) === -1 && !INTERNAL_PACKAGES.test(basename);
-  })
-);
 
 /**
  * Reads the /packages directory and returns a list of absolute paths contained within.

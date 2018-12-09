@@ -42,8 +42,6 @@ module.exports = Object.freeze({
   DIST_DESTINATION: path.join(PROJECT_ROOT, 'dist'),
   // The maximum number of concurrent operations to run at once when using `Promise.map`.
   MAP_CONCURRENCY: os.cpus().length - 1,
-  // Used to differentiate from internal/public packages.
-  INTERNAL_PACKAGES: /^internal-/,
   // Docs.json ouput destination directory.
   DOCS_DESTNATION: path.join(PROJECT_ROOT, 'meta', 'docs'),
   // The public URL to the documentation website
@@ -70,32 +68,6 @@ module.exports = Object.freeze({
          * This is an automatically generated file that aggregates all of the individual
          * packages in the @foldr mono-repo and exports them as a single requirable module.
          * Only "non-internal" packages and some other useful things (such as the curry/partial
-         * placeholder symbol) are exposed via this module.
-         * @since ${new Date().toLocaleDateString()}
-         * @file
-         */
-        `,
-      },
-      {
-        name: 'functional',
-        test: /function(al)?\//,
-        extras,
-        packageJsonConfigOverrides: {
-          description: 'The foldr functional collection',
-          keywords: [
-            'foldr',
-            'functional',
-            'utility',
-            'library',
-            'fp',
-          ],
-        },
-        banner: () => `
-        /**
-         * The @foldr functional library.
-         * This is an automatically generated file that aggregates all of the functional
-         * packages in the @foldr mono-repo and exports them as a single requirable module.
-         * Only functional packages and some other useful things (such as the curry/partial
          * placeholder symbol) are exposed via this module.
          * @since ${new Date().toLocaleDateString()}
          * @file

@@ -95,5 +95,11 @@ export function camelize(string) {
   return string
     .replace(/(?:^\w|[A-Z]|\b\w)/g, ($0, i) => (i === 0 ? $0.toLowerCase() : $0.toUpperCase()))
     .replace(/\s+/g, '')
-    .replace(/[^a-z]/ig, '');
+    .replace(/[^a-z]/ig, '')
+
+    // Edge case naming issues...
+    .replace(/Regexp/g, 'RegExp')
+    .replace(/Nan/g, 'NaN')
+    .replace(/^false$/, 'False')
+    .replace(/^true$/, 'True');
 }

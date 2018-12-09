@@ -18,7 +18,7 @@ import toPath from '@foldr/to-path';
  * @export
  * @example
  *
- * import { invoke } from '@foldr/invoke';
+ * import { invoke } from '@foldr/all';
  *
  * const object = {
  *   foo: {

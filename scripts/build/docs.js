@@ -107,7 +107,10 @@ function buildPackageDoc(docsMapping) {
   return async (pkg) => {
     const [filePackageJson, rawDocs] = await Promise.all([
       fs.readJsonAsync(path.join(pkg, 'package.json')),
-      jsdoc.explain({ files: [path.join(pkg, 'src', 'index.js')] }),
+      jsdoc.explain({
+        cache: false,
+        files: [path.join(pkg, 'src', 'index.js')],
+      }),
     ]);
 
     // Only document stuff with `@publishdoc`

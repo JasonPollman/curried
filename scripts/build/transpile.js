@@ -19,7 +19,10 @@ import {
   green,
 } from 'chalk';
 
-import { PROJECT_ROOT } from '../constants';
+import {
+  PROJECT_ROOT,
+  MAP_CONCURRENCY,
+} from '../constants';
 
 import {
   log,
@@ -96,7 +99,7 @@ function transpilePackage(pkg) {
  * @returns {Promise} Resolves once all packages have been transpiled.
  */
 async function transpilePackages(packages) {
-  return Promise.mapSeries(packages, transpilePackage);
+  return Promise.map(packages, transpilePackage, { concurrency: MAP_CONCURRENCY });
 }
 
 const transpile = compose(

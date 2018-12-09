@@ -1,6 +1,9 @@
 /**
  * Prepares each package by normalizing each package's package.json file
  * and copying over readme.md files, .npmignore, etc.
+ *
+ * IMPORTANT: This script requires that the `npm run build:docs` is run prior!
+ *
  * @since 12/9/18
  * @file
  */
@@ -31,41 +34,68 @@ import {
 
 const {
   PROJECT_ROOT,
+  MAP_CONCURRENCY,
   DOCS_DESTNATION,
   PROJECT_RESOURCES_ROOT,
 } = constants;
 
 const TEMPLATES_ROOT = path.join(PROJECT_RESOURCES_ROOT, 'templates');
 
+// Read in the most recently published docs.
 const { docs } = fs.readJsonSync(path.join(DOCS_DESTNATION, `${lernaConfig.version}.json`));
 
-const readmeTemplate = handlebars.compile(
-  fs.readFileSync(path.join(TEMPLATES_ROOT, 'readme.hbs'), 'utf8'),
-);
+// Compile the standalone package readme template
+const readmeTemplate = handlebars.compile(fs.readFileSync(path.join(TEMPLATES_ROOT, 'readme.hbs'), 'utf8'));
 
-const npmignoreTemplate = handlebars.compile(
-  fs.readFileSync(path.join(TEMPLATES_ROOT, 'npmignore.hbs'), 'utf8'),
-);
+// Compile the standalone package .npmignore template
+const npmignoreTemplate = handlebars.compile(fs.readFileSync(path.join(TEMPLATES_ROOT, 'npmignore.hbs'), 'utf8'));
 
-async function outputPackageJson(pkg, tokens) {
+/**
+ * Emits the "filled" in package.json for the specified package.
+ * @param {string} pkg The current package to write the package.json for.
+ * @param {Object} tokens Replacement tokens.
+ * @returns {Promise} Resolves once the package.json file has been written to disk.
+ */
+async function updatePackageJson(pkg, tokens) {
   const pkgJsonSourcepath = path.join(pkg, 'package.json');
   return fs.writeJsonAsync(pkgJsonSourcepath, tokens.package);
 }
 
-async function copyPackageReadme(pkg, tokens) {
+/**
+ * Renders and copies over the readme.md file for a package.
+ * If an existing readme.md file already exists for the package it will not be overwritten.
+ * @param {string} pkg The current package to write the readmd.md file for.
+ * @param {Object} tokens Replacement tokens.
+ * @returns {Promise} Resolves once the readme.md file has been written to disk.
+ */
+async function maybeCopyPackageReadme(pkg, tokens) {
   const destination = path.join(pkg, 'readme.md');
+
+  // Don't clobber existing readme.md files.
+  if (await fs.existsAsync(destination)) return Promise.resolve();
   return fs.writeFileAsync(destination, readmeTemplate(tokens));
 }
 
-async function copyPackageNPMIgnore(pkg, tokens) {
+/**
+ * Renders and copies over the .npmignore file for a package.
+ * If an existing .npmignore file already exists for the package it will not be overwritten.
+ * @param {string} pkg The current package to write the .npmignore file for.
+ * @param {Object} tokens Replacement tokens.
+ * @returns {Promise} Resolves once the .npmignore file has been written to disk.
+ */
+async function maybeCopyPackageNPMIgnore(pkg, tokens) {
   const destination = path.join(pkg, '.npmignore');
+
+  // Don't clobber existing .npmignore files.
+  if (await fs.existsAsync(destination)) return Promise.resolve();
   return fs.writeFileAsync(destination, npmignoreTemplate(tokens));
 }
 
 /**
- * Builds a single package.
+ * Prepares a standalone package by coping over boilerplate files (readme.md, .npmignore, etc.).
+ * This also "fills in" missing information from the package's package.json file.
  * @param {string} pkg The current working directory for the package.
- * @returns {Promise} Resolves once the package has been transpiled.
+ * @returns {Promise} Resolves once the package has been "prepared".
  */
 async function preparePackage(pkg) {
   const pkgJsonSourcepath = path.join(pkg, 'package.json');
@@ -82,13 +112,17 @@ async function preparePackage(pkg) {
 
   const example = ((docs[camelCasedName] || {}).examples || [])[0];
 
+  // Replacement tokens used when interpolating the handlebars
+  // templates for readme.md, .npmignore files, etc.
   const tokens = {
     constants,
     package: formattedPackageJson,
     docs: {
       ...docs[camelCasedName],
+      // For standalone readme.md's replace the import for that specific module.
+      // This can be overwritten by manually editing the readme.md file in the
+      // specific package. It will not be overwritten if the file already exists.
       example: example && example.trim().replace(
-        // For standalone readme.md's replace the import for that specific module.
         new RegExp(`^import \\{ ${camelCasedName} \\} from '@foldr/all';\\s*$`, 'm'),
         `import ${camelCasedName} from '${formattedPackageJson.name}';\n`,
       ),
@@ -100,9 +134,9 @@ async function preparePackage(pkg) {
   };
 
   return Promise.all([
-    outputPackageJson(pkg, tokens),
-    copyPackageReadme(pkg, tokens),
-    copyPackageNPMIgnore(pkg, tokens),
+    updatePackageJson(pkg, tokens),
+    maybeCopyPackageReadme(pkg, tokens),
+    maybeCopyPackageNPMIgnore(pkg, tokens),
   ]);
 }
 
@@ -115,9 +149,14 @@ async function preparePackage(pkg) {
  * @returns {Promise} Resolves once all packages have been transpiled.
  */
 async function preparePackages(packages) {
-  return Promise.mapSeries(packages, preparePackage);
+  return Promise.map(packages, preparePackage, { concurrency: MAP_CONCURRENCY });
 }
 
+/**
+ * Filters out auto-generated and internal packages from a package list.
+ * @param {Array<string>} paths The package list to filter.
+ * @returns {Array<string>} The filtered package list.
+ */
 function filterCategoriesOnly(paths) {
   return paths
     .filter(filepath => /categories\//.test(filepath))

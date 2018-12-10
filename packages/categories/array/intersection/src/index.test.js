@@ -38,6 +38,14 @@ describe('intersection', () => {
     expect(intersection([13, 14, 15], [13, 14, 15], [13, 14, 15])).toEqual([13, 14, 15]);
   });
 
+  it('Should return the intersection between arrays (6)', () => {
+    expect(intersection([1, 2, 3, 4, 5, 6], [1, 2, 3])).toEqual([1, 2, 3]);
+  });
+
+  it('Should return the intersection between arrays (7)', () => {
+    expect(intersection([1, 2, 3])).toEqual([1, 2, 3]);
+  });
+
   it('Should work for NaN', () => {
     expect(intersection(
       [13, 14, 15, NaN],

@@ -1,0 +1,30 @@
+{
+  "name": "@foldr/includes",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Determines if an array contains an item",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/filter": "^0.0.0",
+    "@foldr/index-of": "^0.0.0",
+    "@foldr/is-equal": "^0.0.0",
+    "@foldr/to-string-tag": "^0.0.0"
+  }
+}

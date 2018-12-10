@@ -12,6 +12,8 @@ import always from '@foldr/always';
 import attempt from '@foldr/attempt';
 import attemptFx from '@foldr/attempt-fx';
 import binary from '@foldr/binary';
+import castArray from '@foldr/cast-array';
+import castFunction from '@foldr/cast-function';
 import chunk from '@foldr/chunk';
 import chunkFx from '@foldr/chunk-fx';
 import clamp from '@foldr/clamp';
@@ -44,6 +46,7 @@ import has from '@foldr/has';
 import hasFx from '@foldr/has-fx';
 import head from '@foldr/head';
 import identity from '@foldr/identity';
+import includes from '@foldr/includes';
 import indexOf from '@foldr/index-of';
 import indexOfFx from '@foldr/index-of-fx';
 import initial from '@foldr/initial';
@@ -152,6 +155,8 @@ export {
   attempt,
   attemptFx,
   binary,
+  castArray,
+  castFunction,
   chunk,
   chunkFx,
   clamp,
@@ -184,6 +189,7 @@ export {
   hasFx,
   head,
   identity,
+  includes,
   indexOf,
   indexOfFx,
   initial,

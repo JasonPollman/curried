@@ -26,7 +26,7 @@ import fmake from '@foldr/internal-fmake';
  * @export
  * @example
  *
- * import { zipFx } from '@foldr/zip';
+ * import { zipFx } from '@foldr/all';
  *
  * zipFx(['a', 'b', 'c'], [1, 2, 3]); // => [[1, 'a'], [2, 'b'], [3, 'c']]
  * zipFx(['y', 2], ['x', 1]);         // => [['x', 'y'], [1, 2]]

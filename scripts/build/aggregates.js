@@ -199,7 +199,7 @@ const setup = compose(
 );
 
 const buildAggregate = async (aggregate, dependencies) => {
-  log(cyan.bold('Building aggregate "%s"', aggregate.name));
+  log(cyan.bold('Building aggregate "%s"'), aggregate.name);
   await updateAggregatePackageDependencies(aggregate, dependencies);
   await generateAggregatePackageIndexFile(aggregate, dependencies);
 };

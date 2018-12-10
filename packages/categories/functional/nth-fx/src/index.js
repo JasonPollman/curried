@@ -23,6 +23,8 @@ import fmake from '@foldr/internal-fmake';
  * @export
  * @example
  *
+ * import { nthFx } from '@foldr/all';
+ *
  * nthFx(1, [1, 2, 3, 4]);  // => 2
  * nthFx(-2)([1, 2, 3, 4]); // => 3
  * nthFx(1)([]);            // => undefined

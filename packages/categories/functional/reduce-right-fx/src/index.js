@@ -4,7 +4,7 @@ import reduceRight from '@foldr/reduce-right';
 /**
  * **Functional, autocurried version of [reduceRight](#reduce-right).**
  *
- * @name foldRightFx
+ * @name reduceRightFx
  * @param {Array|Object|String|Map|Set|Arguments} collection The collection to fold or "reduce".
  * @param {any} initial The inital, "primer" value for folding.
  * @param {function} reducer The reduction function to use while folding.

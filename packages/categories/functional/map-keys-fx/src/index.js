@@ -23,7 +23,7 @@ import mapKeys from '@foldr/map-keys';
  * @export
  * @example
  *
- * import { mapKeysFx } from '@foldr/mapKeysFx';
+ * import { mapKeysFx } from '@foldr/all';
  *
  * function uppercaseKey(key) {
  *   return key.toUpperCase();

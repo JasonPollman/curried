@@ -9,7 +9,7 @@ import fmake from '@foldr/internal-fmake';
  *
  * Finds the index of `value` in `array`.
  *
- * @name indexOf
+ * @name indexOfFx
  * @param {any} value The value to find the index of.
  * @param {Array} array The array use when finding the index of the given value.
  * @returns {number} The index of `value` in `array`, or `-1` if `value` doesn't

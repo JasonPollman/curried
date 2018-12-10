@@ -4,7 +4,7 @@ import reduce from '@foldr/reduce';
 /**
  * **Functional, autocurried version of [reduce](#reduce).**
  *
- * @name foldFx
+ * @name reduceFx
  * @param {Array|Object|String|Map|Set|Arguments} collection The collection to reduce.
  * @param {function} reducer The reduction function to use while reducing.
  * @param {any} initial The inital, "primer" value for reduction.

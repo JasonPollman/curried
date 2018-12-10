@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 12/9/2018
+ * @since 12/10/2018
  * @file
  */
 
@@ -48,6 +48,8 @@ import indexOf from '@foldr/index-of';
 import indexOfFx from '@foldr/index-of-fx';
 import initial from '@foldr/initial';
 import interpolate from '@foldr/interpolate';
+import intersection from '@foldr/intersection';
+import intersectionFx from '@foldr/intersection-fx';
 import invoke from '@foldr/invoke';
 import invokeFx from '@foldr/invoke-fx';
 import is from '@foldr/is';
@@ -186,6 +188,8 @@ export {
   indexOfFx,
   initial,
   interpolate,
+  intersection,
+  intersectionFx,
   invoke,
   invokeFx,
   is,

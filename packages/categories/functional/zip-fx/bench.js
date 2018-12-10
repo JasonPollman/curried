@@ -2,8 +2,8 @@ module.exports = ({ fp, foldr }) => [
   {
     name: 'Zips an Array (1, Functional)',
     tests: {
-      foldr: ([x, y]) => foldr.zipFx(y)(x),
-      lodash: ([x, y]) => fp.zip(y)(x),
+      foldr: ([x, y]) => foldr.zipFx(x)(y),
+      lodash: ([x, y]) => fp.zip(x)(y),
     },
     expect: (result, { deepEqual }) => deepEqual(result, [
       ['a', 1],

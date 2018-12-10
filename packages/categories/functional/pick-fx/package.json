@@ -23,6 +23,6 @@
   ],
   "dependencies": {
     "@foldr/internal-fmake": "^0.0.0",
-    "@foldr/internal-iterator": "^0.0.0"
+    "@foldr/pick": "^0.0.0"
   }
 }

@@ -7,6 +7,19 @@ describe('mapKeys', () => {
     expect(typeof mapKeys).toBe('function');
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(1);
+      return true;
+    }
+
+    expect(mapKeys.call(context, [1, 2, 3], iteratee)).toEqual({ true: 3 });
+  });
+
   it('Should map an array\'s values', () => {
     expect(mapKeys([1, 2, 3, 4], uppercaseKey)).toEqual({
       0: 1,

@@ -2,7 +2,7 @@ import filterFx from '.';
 
 const filterOdd = x => x % 2 === 0;
 
-describe('filter.f', () => {
+describe('filterFx', () => {
   it('Should be a function', () => {
     expect(typeof filterFx).toBe('function');
   });

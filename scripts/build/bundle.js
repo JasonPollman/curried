@@ -150,10 +150,9 @@ function generateWebpackConfig() {
           uglifyOptions: {
             parse: {},
             compress: {},
-            mangle: true,
-            // mangle: {
-            //   properties: { regex: /^\$\$/ },
-            // },
+            mangle: {
+              properties: { regex: /^\$\$/ },
+            },
             output: null,
             toplevel: true,
             nameCache: mangleCache,

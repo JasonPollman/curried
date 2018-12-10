@@ -7,6 +7,19 @@ describe('some', () => {
     expect(typeof some).toBe('function');
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(1);
+      return true;
+    }
+
+    expect(some.call(context, [1, 2, 3], iteratee)).toEqual(true);
+  });
+
   it('Should some an array', () => {
     expect(some([1, 2, 3, 4], isOdd)).toEqual(true);
     expect(some([1], isOdd)).toEqual(true);

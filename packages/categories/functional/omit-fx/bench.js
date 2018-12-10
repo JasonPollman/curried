@@ -10,7 +10,7 @@ module.exports = ({ fp, foldr }) => {
       expect: (result, { deepEqual }) => deepEqual(result, { c: 3 }),
       setup: () => [{ a: 1, b: 2, c: 3 }, x => x === 1 || x === 2],
       tests: {
-        foldr: ([input, values]) => foldr.omit.f(values, input),
+        foldr: ([input, values]) => foldr.omitFx(values, input),
         lodash: ([input, values]) => fp.omitBy(values, input),
       },
     },

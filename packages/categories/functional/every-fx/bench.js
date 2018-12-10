@@ -6,7 +6,7 @@ module.exports = ({
   const hasEven = x => x % 2 === 0;
 
   const tests = {
-    foldr: input => foldr.every.f(hasEven, input),
+    foldr: input => foldr.everyFx(hasEven, input),
     lodash: input => fp.every(hasEven, input),
     ramda: input => ramda.all(hasEven, input),
   };
@@ -35,7 +35,7 @@ module.exports = ({
       expect: (result, assert) => assert(result === false),
       setup: () => 'xyzabc',
       tests: {
-        foldr: input => foldr.every.f(x => x === 'a', input),
+        foldr: input => foldr.everyFx(x => x === 'a', input),
         lodash: input => fp.every(x => x === 'a', input),
       },
     },

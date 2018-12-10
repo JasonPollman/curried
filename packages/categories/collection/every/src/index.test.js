@@ -8,6 +8,19 @@ describe('every', () => {
     expect(typeof every).toBe('function');
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(1);
+      return true;
+    }
+
+    expect(every.call(context, [1, 2, 3], iteratee)).toEqual(true);
+  });
+
   it('Should ensure all elements pass the given predicate', () => {
     expect(every([1, 3, 5, 7], isOdd)).toEqual(true);
     expect(every([1], isOdd)).toEqual(true);

@@ -2,7 +2,7 @@
   "name": "@foldr/reduce-right-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Like Array#reduce, but for collections and iterates in reverse.",
+  "description": "Functional, autocurried version of @foldr/reduce-right",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -23,6 +23,6 @@
   ],
   "dependencies": {
     "@foldr/internal-fmake": "^0.0.0",
-    "@foldr/internal-iterator": "^0.0.0"
+    "@foldr/reduce-right": "^0.0.0"
   }
 }

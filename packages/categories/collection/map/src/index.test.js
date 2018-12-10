@@ -5,6 +5,19 @@ describe('map', () => {
     expect(typeof map).toBe('function');
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(1);
+      return true;
+    }
+
+    expect(map.call(context, [1, 2, 3], iteratee)).toEqual([true, true, true]);
+  });
+
   it('Should map over an array', () => {
     expect(map([1, 2, 3], x => x * 2)).toEqual([2, 4, 6]);
   });

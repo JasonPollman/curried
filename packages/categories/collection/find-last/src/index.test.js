@@ -11,6 +11,19 @@ describe('findLast', () => {
     expect(findLast([1, 2, 3, 2, 4], isTwo)).toEqual(2);
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(1);
+      return true;
+    }
+
+    expect(findLast.call(context, [1, 2, 3], iteratee)).toEqual(3);
+  });
+
   it('Should pass the proper values to the iteratee function', () => {
     const arr = [1, 2, 3, 4];
     const copy = [4, 3, 2, 1];

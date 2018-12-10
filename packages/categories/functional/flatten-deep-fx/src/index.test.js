@@ -3,7 +3,7 @@ import flattenDeepFx from '.';
 describe('flattenDeepFx', () => {
   it('Should flatten an array', () => {
     const array = [1, 2, 3, null, undefined, {}];
-    const flattend = flattenDeepFx(array);
+    const flattend = flattenDeepFx(Infinity)(array);
     expect(flattend).toEqual(array);
   });
 

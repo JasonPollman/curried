@@ -15,6 +15,19 @@ describe('findKey', () => {
     expect(findKey([{ x: true }, { x: false }], 'x')).toEqual(0);
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(1);
+      return true;
+    }
+
+    expect(findKey.call(context, [1, 2, 3], iteratee)).toEqual(0);
+  });
+
   it('Should work with shorthand array iteratees', () => {
     expect(findKey([{ value: 1 }, { value: 2 }, { value: 3 }], ['value', 2])).toEqual(1);
   });

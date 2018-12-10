@@ -12,6 +12,19 @@ describe('pick', () => {
     });
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(2);
+      return true;
+    }
+
+    expect(pick.call(context, [1, 2, 3], iteratee)).toEqual({ 0: 1, 1: 2, 2: 3 });
+  });
+
   it('Should pick an object\'s values', () => {
     expect(pick({}, null)).toEqual({});
     expect(pick({}, [])).toEqual({});

@@ -11,6 +11,19 @@ describe('find', () => {
     expect(find([1, 2, 3, 4], isTwo)).toEqual(2);
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(1);
+      return true;
+    }
+
+    expect(find.call(context, [1, 2, 3], iteratee)).toEqual(1);
+  });
+
   it('Should work with shorthand string iteratees', () => {
     expect(find([{ x: true }, { x: false }], 'x')).toEqual({ x: true });
   });

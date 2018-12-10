@@ -1,6 +1,6 @@
 import pickFx from '.';
 
-describe('pick.f', () => {
+describe('pickFx', () => {
   it('Should be a function', () => {
     expect(typeof pickFx).toBe('function');
   });

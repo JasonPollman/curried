@@ -7,6 +7,19 @@ describe('mapValues', () => {
     expect(typeof mapValues).toBe('function');
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee(x) {
+      expect(arguments.length).toBe(1);
+      return x;
+    }
+
+    expect(mapValues.call(context, [1, 2, 3], iteratee)).toEqual({ 0: 1, 1: 2, 2: 3 });
+  });
+
   it('Should map an array\'s values', () => {
     expect(mapValues([1, 2, 3, 4], square)).toEqual({
       0: 1,

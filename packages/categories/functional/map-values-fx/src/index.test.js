@@ -2,7 +2,7 @@ import mapValuesFx from '.';
 
 const square = x => x ** 2;
 
-describe('mapValues.f', () => {
+describe('mapValuesFx', () => {
   it('Should be a function', () => {
     expect(typeof mapValuesFx).toBe('function');
   });

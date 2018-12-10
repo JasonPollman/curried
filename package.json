@@ -31,7 +31,7 @@
     "deploy:meta": "npx babel-node ./scripts/deploy/meta.js",
     "link": "npx lerna link",
     "lint": "npx eslint packages/**/src packages/**/bench.js --fix",
-    "test": "NODE_ENV=test npx jest ./packages/*/*/${PKG:-**}/**/*.test.js",
+    "test": "NODE_ENV=test npx jest ./packages/.*/${PKG:-.*}/.*/*.test.js",
     "test:cover": "npm run test -- --coverage",
     "open:umd": "open ./resources/umd-loader.html",
     "open:coverage": "open ./coverage/lcov-report/index.html",

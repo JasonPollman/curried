@@ -4,7 +4,7 @@ module.exports = ({
   ramda,
 }) => {
   const tests = {
-    foldr: input => foldr.compose.f(...input)(1),
+    foldr: input => foldr.composFx(...input)(1),
     ramda: input => ramda.compose(...input)(1),
     lodash: input => fp.compose(...input)(1),
   };

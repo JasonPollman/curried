@@ -1,6 +1,7 @@
 import iterator from '@foldr/internal-iterator';
 
 const identity = x => x;
+const EmptyObject = () => ({});
 
 /**
  * Gets the pick iteratee.
@@ -61,10 +62,10 @@ function preparePickIteratee(iteratee) {
  * pick(data, (value, key) => value[0] === 'b'); // => { bar: 'bar', baz: 'baz' }
  */
 export default iterator({
-  Empty: () => ({}),
-  Results: () => ({}),
-  prepare: preparePickIteratee,
-  handler: (context, results, iteratee, i, value, key, collection) => {
+  $$empty: EmptyObject,
+  $$results: EmptyObject,
+  $$prepare: preparePickIteratee,
+  $$handler: (context, results, iteratee, i, value, key, collection) => {
     if (context && context.capped ? iteratee(value, key) : iteratee(value, key, collection)) {
       // eslint-disable-next-line no-param-reassign
       results[key] = value;

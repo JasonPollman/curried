@@ -51,7 +51,7 @@ export function functionalize(fn, config) {
  * @returns {function} The function version of `fn`.
  * @export
  */
-export default function FunctionalFactory(fn, options) {
+export default function fmake(fn, options) {
   const config = { curried: true, ...options };
 
   /**
@@ -71,9 +71,7 @@ export default function FunctionalFactory(fn, options) {
   }
 
   const functional = make(fn, {});
-
-  fn.make = make;
-  fn[config.namespace || 'f'] = functional;
+  functional.make = make;
 
   return functional;
 }

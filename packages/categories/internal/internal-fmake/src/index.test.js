@@ -1,6 +1,6 @@
 import fmake from '.';
 
-describe('internal-env', () => {
+describe('internal-fmake', () => {
   it('Should be a function', () => {
     expect(typeof fmake).toBe('function');
   });
@@ -23,29 +23,15 @@ describe('internal-env', () => {
 
     expect(ffn('a', 'b')).toBe('b-a');
     expect(() => ffn('a')('b')).toThrow("Cannot read property 'concat' of undefined");
-    expect(typeof fn.make).toBe('function');
+    expect(typeof ffn.make).toBe('function');
   });
 
-  it('Should add a `.f` property on the input function', () => {
+  it('Should add a `.make` function on the output function', () => {
     const fn = (x, y) => x.concat('-').concat(y);
     expect(fn('a', 'b')).toBe('a-b');
     const ffn = fmake(fn);
     expect(ffn('a')('b')).toBe('a-b');
-    expect(fn.f).toBe(ffn);
-    expect(typeof fn.make).toBe('function');
-  });
-
-  it('Should allow for a custom namespace', () => {
-    const fn = (x, y) => x.concat('-').concat(y);
-    expect(fn('a', 'b')).toBe('a-b');
-
-    const ffn = fmake(fn, {
-      namespace: 'foobar',
-    });
-
-    expect(ffn('a')('b')).toBe('a-b');
-    expect(fn.foobar).toBe(ffn);
-    expect(typeof fn.make).toBe('function');
+    expect(typeof ffn.make).toBe('function');
   });
 
   it('Should return a functional version of a function (changing arguments signature)', () => {
@@ -57,7 +43,7 @@ describe('internal-env', () => {
     });
 
     expect(ffn('a')('b')).toBe('b-a');
-    expect(typeof fn.make).toBe('function');
+    expect(typeof ffn.make).toBe('function');
   });
 
   it('Should set the function\'s context if `options.context` is supplied (as "config")', () => {
@@ -78,7 +64,7 @@ describe('internal-env', () => {
     });
 
     expect(ffn('a')('b')).toBe('b-a');
-    expect(typeof fn.make).toBe('function');
+    expect(typeof ffn.make).toBe('function');
   });
 
   it('Should set the function\'s context if `options.context` is supplied (as other)', () => {
@@ -93,7 +79,7 @@ describe('internal-env', () => {
     });
 
     expect(ffn('a')('b')).toBe('b-a');
-    expect(typeof fn.make).toBe('function');
+    expect(typeof ffn.make).toBe('function');
   });
 
   it('Should set `config.optimized` to allow for a context', () => {
@@ -108,7 +94,7 @@ describe('internal-env', () => {
     });
 
     expect(ffn.call('foo', 'a', 'b')).toBe('a-a');
-    expect(typeof fn.make).toBe('function');
+    expect(typeof ffn.make).toBe('function');
   });
 
   it('Should create a `make` function on the original function', () => {
@@ -123,9 +109,9 @@ describe('internal-env', () => {
     });
 
     expect(ffn.call('foo', 'a', 'b')).toBe('a-a');
-    expect(typeof fn.make).toBe('function');
+    expect(typeof ffn.make).toBe('function');
 
-    const ffn2 = fn.make({
+    const ffn2 = ffn.make({
       signature: [0, 1],
       optimized: false,
     });

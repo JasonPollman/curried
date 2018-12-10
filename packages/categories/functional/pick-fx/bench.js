@@ -1,6 +1,6 @@
 module.exports = ({ fp, foldr }) => {
   const tests = {
-    foldr: ([input, values]) => foldr.pick.f(values)(input),
+    foldr: ([input, values]) => foldr.pickFx(values)(input),
     lodash: ([input, values]) => fp.pick(values)(input),
   };
 
@@ -10,7 +10,7 @@ module.exports = ({ fp, foldr }) => {
       expect: (result, { deepEqual }) => deepEqual(result, { a: 1, b: 2 }),
       setup: () => [{ a: 1, b: 2, c: 3 }, x => x === 1 || x === 2],
       tests: {
-        foldr: ([input, values]) => foldr.pick.f(values)(input),
+        foldr: ([input, values]) => foldr.pickFx(values)(input),
         lodash: ([input, values]) => fp.pickBy(values)(input),
       },
     },

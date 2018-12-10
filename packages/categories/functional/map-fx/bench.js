@@ -6,7 +6,7 @@ module.exports = ({
   const double = x => x * 2;
 
   const tests = {
-    foldr: input => foldr.map.f(double, input),
+    foldr: input => foldr.mapFx(double, input),
     lodash: input => fp.map(double, input),
     ramda: input => ramda.map(double, input),
   };
@@ -29,7 +29,7 @@ module.exports = ({
       expect: (result, { deepEqual }) => deepEqual(result, ['aa', 'bb', 'cc']),
       setup: () => 'abc',
       tests: {
-        foldr: input => foldr.map.f(x => `${x}${x}`, input),
+        foldr: input => foldr.mapFx(x => `${x}${x}`, input),
         lodash: input => fp.map(x => `${x}${x}`, input),
         ramda: input => ramda.map(x => `${x}${x}`, input),
       },

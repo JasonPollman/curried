@@ -1,6 +1,6 @@
 import composeFx from '.';
 
-describe('compose.f', () => {
+describe('composeFx', () => {
   it('Should be a function', () => {
     expect(typeof composeFx).toBe('function');
   });

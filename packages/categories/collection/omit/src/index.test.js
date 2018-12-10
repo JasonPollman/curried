@@ -12,6 +12,19 @@ describe('omit', () => {
     });
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(2);
+      return false;
+    }
+
+    expect(omit.call(context, [1, 2, 3], iteratee)).toEqual({ 0: 1, 1: 2, 2: 3 });
+  });
+
   it('Should omit an object\'s values', () => {
     expect(omit({}, null)).toEqual({});
     expect(omit({}, [])).toEqual({});

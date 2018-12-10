@@ -1,6 +1,6 @@
 import clampFx from '.';
 
-describe('clamp.f', () => {
+describe('clampFx', () => {
   it('Should be a function', () => {
     expect(typeof clampFx).toBe('function');
   });

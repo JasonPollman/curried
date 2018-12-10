@@ -5,6 +5,19 @@ describe('mapRight', () => {
     expect(typeof mapRight).toBe('function');
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee(x) {
+      expect(arguments.length).toBe(1);
+      return x;
+    }
+
+    expect(mapRight.call(context, [1, 2, 3], iteratee)).toEqual([3, 2, 1]);
+  });
+
   it('Should mapRight over an array in reverse', () => {
     expect(mapRight([1, 2, 3], x => x * 2)).toEqual([6, 4, 2]);
   });

@@ -4,7 +4,7 @@ module.exports = ({
   ramda,
 }) => {
   const tests = {
-    foldr: ([array, n]) => foldr.nth.f(n)(array),
+    foldr: ([array, n]) => foldr.nthFx(n)(array),
     lodash: ([array, n]) => fp.nth(n)(array),
     ramda: ([array, n]) => ramda.nth(n)(array),
   };

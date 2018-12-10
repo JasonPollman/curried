@@ -15,6 +15,19 @@ describe('reduce', () => {
     expect(reduce([1, 2, 3, 4], sum, 0)).toEqual(10);
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee(x) {
+      expect(arguments.length).toBe(2);
+      return x + 1;
+    }
+
+    expect(reduce.call(context, [1, 2, 3], iteratee, 0)).toEqual(3);
+  });
+
   it('Should reduce an array (2)', () => {
     const arr = [1, 2, 3, 4];
     const keys = [];

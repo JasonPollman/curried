@@ -1,6 +1,6 @@
 import chunkFx from '.';
 
-describe('chunk.f', () => {
+describe('chunkFx', () => {
   it('Should be a function', () => {
     expect(typeof chunkFx).toBe('function');
   });

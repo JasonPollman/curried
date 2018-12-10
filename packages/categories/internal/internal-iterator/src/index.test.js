@@ -17,9 +17,9 @@ describe('internal-iterator', () => {
 
   it('Should return a instance of the Results if given a falsy collection', () => {
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
     };
@@ -32,9 +32,9 @@ describe('internal-iterator', () => {
 
   it('Should use `identity` if given a non-function iterator', () => {
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
     };
@@ -48,9 +48,9 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         results.push(iteratee(value));
       },
@@ -63,9 +63,9 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -79,10 +79,10 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      reverse: true,
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$reverse: true,
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         results.push(iteratee(value));
       },
@@ -95,10 +95,10 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      reverse: true,
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$reverse: true,
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(collection).toBe(array);
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
@@ -112,9 +112,9 @@ describe('internal-iterator', () => {
     const object = { foo: 1, bar: 2, baz: 3 };
 
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(['foo', 'bar', 'baz'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(object);
         results.push(iteratee(value));
@@ -126,9 +126,9 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (object, breaking)', () => {
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -139,10 +139,10 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (object, reverse)', () => {
     const options = {
-      Empty: () => [],
-      reverse: true,
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$reverse: true,
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
     };
@@ -154,10 +154,10 @@ describe('internal-iterator', () => {
     const object = { foo: 1, bar: 2, baz: 3 };
 
     const options = {
-      Empty: () => [],
-      reverse: true,
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => [],
+      $$reverse: true,
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(['foo', 'bar', 'baz'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(object);
         if (i === 1) return BREAK;
@@ -170,9 +170,9 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Set)', () => {
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         results.push(iteratee(value));
       },
     };
@@ -182,9 +182,9 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Set, breaking)', () => {
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -197,10 +197,10 @@ describe('internal-iterator', () => {
     const set = new Set([1, 2, 3]);
 
     const options = {
-      Empty: () => [],
-      reverse: true,
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => [],
+      $$reverse: true,
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect([0, 1, 2].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(set);
         results.push(iteratee(value));
@@ -212,10 +212,10 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Set, breaking, reverse)', () => {
     const options = {
-      Empty: () => [],
-      reverse: true,
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$reverse: true,
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -228,9 +228,9 @@ describe('internal-iterator', () => {
     const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
 
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(typeof key).toBe('string');
         expect(collection).toBe(map);
         results.push(iteratee(value));
@@ -242,9 +242,9 @@ describe('internal-iterator', () => {
 
   it('Should create an iterator function (Map, breaking)', () => {
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -257,10 +257,10 @@ describe('internal-iterator', () => {
     const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
 
     const options = {
-      Empty: () => [],
-      reverse: true,
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => [],
+      $$reverse: true,
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(['a', 'b', 'c', 'd'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(map);
         results.push(iteratee(value));
@@ -274,10 +274,10 @@ describe('internal-iterator', () => {
     const map = new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]]);
 
     const options = {
-      Empty: () => [],
-      reverse: true,
-      Results: () => [],
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => [],
+      $$reverse: true,
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         expect(['a', 'b', 'c', 'd'].indexOf(key)).toBeGreaterThan(-1);
         expect(collection).toBe(map);
         if (i === 1) return BREAK;
@@ -290,9 +290,9 @@ describe('internal-iterator', () => {
 
   it('Should return an empty set on unknown collection types', () => {
     const options = {
-      Empty: () => [],
-      Results: () => [],
-      handler: (context, results, iteratee, i, value) => {
+      $$empty: () => [],
+      $$results: () => [],
+      $$handler: (context, results, iteratee, i, value) => {
         if (i === 1) return BREAK;
         return results.push(iteratee(value));
       },
@@ -303,10 +303,10 @@ describe('internal-iterator', () => {
 
   it('Should provide the ability to "unwrap" results', () => {
     const options = {
-      Empty: () => false,
-      unwrap: results => results.passed,
-      Results: () => ({ passed: false }),
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => false,
+      $$unwrap: results => results.passed,
+      $$results: () => ({ passed: false }),
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         const passes = iteratee(value, key, collection);
         if (!passes) return undefined;
 
@@ -331,11 +331,11 @@ describe('internal-iterator', () => {
     }
 
     const options = {
-      Empty: () => false,
-      unwrap: results => results.passed,
-      Results: () => ({ passed: false }),
-      prepare: prep,
-      handler: (context, results, iter, i, value, key, collection) => {
+      $$empty: () => false,
+      $$unwrap: results => results.passed,
+      $$results: () => ({ passed: false }),
+      $$prepare: prep,
+      $$handler: (context, results, iter, i, value, key, collection) => {
         const passes = iter(value, key, collection);
         if (!passes) return undefined;
 
@@ -352,10 +352,10 @@ describe('internal-iterator', () => {
 
   it('Should provide the ability to "unwrap" results (invalid input)', () => {
     const options = {
-      Empty: () => false,
-      unwrap: results => results.passed,
-      Results: () => ({ passed: false }),
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: () => false,
+      $$unwrap: results => results.passed,
+      $$results: () => ({ passed: false }),
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         const passes = iteratee(value, key, collection);
         if (!passes) return undefined;
 
@@ -372,11 +372,10 @@ describe('internal-iterator', () => {
     const array = [1, 2, 3];
 
     const options = {
-      Empty: x => x,
-      inject: true,
-      unwrap: results => results.acc,
-      Results: acc => ({ acc }),
-      handler: (context, results, iteratee, i, value, key, collection) => {
+      $$empty: x => x,
+      $$unwrap: results => results.acc,
+      $$results: acc => ({ acc }),
+      $$handler: (context, results, iteratee, i, value, key, collection) => {
         // eslint-disable-next-line no-param-reassign
         results.acc = iteratee(results.acc, value, key, collection);
       },

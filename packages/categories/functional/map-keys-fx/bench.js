@@ -30,7 +30,7 @@ module.exports = ({ fp, foldr }) => {
         c: { name: 'C' },
       }),
       tests: {
-        foldr: input => foldr.mapKeys.f('name', input),
+        foldr: input => foldr.mapKeysFx('name', input),
         lodash: input => fp.mapKeys('name', input),
       },
     },

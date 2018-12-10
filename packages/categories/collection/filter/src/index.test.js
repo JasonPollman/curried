@@ -7,6 +7,19 @@ describe('filter', () => {
     expect(typeof filter).toBe('function');
   });
 
+  it('Should work for capped functions', () => {
+    const context = {
+      capped: true,
+    };
+
+    function iteratee() {
+      expect(arguments.length).toBe(1);
+      return true;
+    }
+
+    expect(filter.call(context, [1, 2, 3], iteratee)).toEqual([1, 2, 3]);
+  });
+
   it('Should filter an array', () => {
     expect(filter([1, 2, 3, 4], filterOdd)).toEqual([2, 4]);
   });

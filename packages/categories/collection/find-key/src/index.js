@@ -17,8 +17,8 @@ import iterator, { BREAK } from '@foldr/internal-iterator';
  * - `collection` is the passed in collection.
  *
  * @name findKey
- * @param {Array|Object|String|Arguments} collection The collection to iterate over.
- * @param {function} filterer The iteratee function to use while finding a key.
+ * @param {Array|Object|String|Map|Set|Arguments} collection The collection to iterate over.
+ * @param {function} iteratee The iteratee function to use while finding a key.
  * @returns {any} The found key (or undefined).
  *
  * @arity 2

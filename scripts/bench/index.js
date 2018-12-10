@@ -25,7 +25,7 @@ import {
 import lodash from 'lodash';
 import fp from 'lodash/fp';
 import * as ramda from 'ramda';
-import * as foldr from '../../packages/generated/all/dist';
+import * as foldr from '../../packages/aggregates/all/dist';
 
 import packageJson from '../../package.json';
 
@@ -228,8 +228,8 @@ function executeBenchmarkSuites(suites) {
  * @returns {Array<Object>} An array of the required suite schemas.
  */
 function globAndRequireBenchmarkFiles() {
-  const pattern = filteredPackages.length ? `+(${filteredPackages.join('|')})` : '!(all)';
-  const globString = path.join(__dirname, '..', 'packages', pattern, 'bench.js');
+  const pattern = filteredPackages.length ? `+(${filteredPackages.join('|')})` : '*';
+  const globString = path.join(__dirname, '..', '..', 'packages', 'categories', '*', pattern, 'bench.js');
 
   log(dim('Looking for benchmark files matching: "%s"'), globString);
 

@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/to-integer",
+  "name": "@foldr/index-of",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Converts a value to an integer",
+  "description": "Like Array#indexOf, but uses SameValueZero comparison",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -20,8 +20,5 @@
     "foldr",
     "utility",
     "library"
-  ],
-  "dependencies": {
-    "@foldr/to-number": "^0.0.0"
-  }
+  ]
 }

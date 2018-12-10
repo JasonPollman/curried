@@ -22,6 +22,8 @@ import composeAsync from '@foldr/compose-async';
 import composeFx from '@foldr/compose-fx';
 import curry from '@foldr/curry';
 import delay from '@foldr/delay';
+import difference from '@foldr/difference';
+import differenceFx from '@foldr/difference-fx';
 import escapeRegExp from '@foldr/escape-regexp';
 import every from '@foldr/every';
 import everyFx from '@foldr/every-fx';
@@ -42,6 +44,8 @@ import has from '@foldr/has';
 import hasFx from '@foldr/has-fx';
 import head from '@foldr/head';
 import identity from '@foldr/identity';
+import indexOf from '@foldr/index-of';
+import indexOfFx from '@foldr/index-of-fx';
 import initial from '@foldr/initial';
 import interpolate from '@foldr/interpolate';
 import invoke from '@foldr/invoke';
@@ -117,7 +121,7 @@ import stubString from '@foldr/stub-string';
 import tail from '@foldr/tail';
 import toCamelCase from '@foldr/to-camel-case';
 import toFinite from '@foldr/to-finite';
-import toIngeter from '@foldr/to-ingeter';
+import toInteger from '@foldr/to-integer';
 import toKebabCase from '@foldr/to-kebab-case';
 import toLowerCase from '@foldr/to-lower-case';
 import toNumber from '@foldr/to-number';
@@ -156,6 +160,8 @@ export {
   composeFx,
   curry,
   delay,
+  difference,
+  differenceFx,
   escapeRegExp,
   every,
   everyFx,
@@ -176,6 +182,8 @@ export {
   hasFx,
   head,
   identity,
+  indexOf,
+  indexOfFx,
   initial,
   interpolate,
   invoke,
@@ -251,7 +259,7 @@ export {
   tail,
   toCamelCase,
   toFinite,
-  toIngeter,
+  toInteger,
   toKebabCase,
   toLowerCase,
   toNumber,

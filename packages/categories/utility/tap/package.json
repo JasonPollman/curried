@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/invoke",
+  "name": "@foldr/tap",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Invokes a function on an object at the given path.",
+  "description": "A utility function that invokes the given function, but returns the first argument provided to it",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -20,8 +20,5 @@
     "foldr",
     "utility",
     "library"
-  ],
-  "dependencies": {
-    "@foldr/to-path": "^0.0.0"
-  }
+  ]
 }

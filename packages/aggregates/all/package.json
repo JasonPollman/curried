@@ -145,6 +145,7 @@
     "@foldr/stub-object": "^0.0.0",
     "@foldr/stub-string": "^0.0.0",
     "@foldr/tail": "^0.0.0",
+    "@foldr/tap": "^0.0.0",
     "@foldr/to-array": "^0.0.0",
     "@foldr/to-camel-case": "^0.0.0",
     "@foldr/to-finite": "^0.0.0",

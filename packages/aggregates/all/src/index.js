@@ -131,6 +131,7 @@ import stubArray from '@foldr/stub-array';
 import stubObject from '@foldr/stub-object';
 import stubString from '@foldr/stub-string';
 import tail from '@foldr/tail';
+import tap from '@foldr/tap';
 import toArray from '@foldr/to-array';
 import toCamelCase from '@foldr/to-camel-case';
 import toFinite from '@foldr/to-finite';
@@ -282,6 +283,7 @@ export {
   stubObject,
   stubString,
   tail,
+  tap,
   toArray,
   toCamelCase,
   toFinite,

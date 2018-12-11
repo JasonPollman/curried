@@ -1,0 +1,27 @@
+{
+  "name": "@foldr/pick",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Creates an object from an existing one selecting only the specified keys.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

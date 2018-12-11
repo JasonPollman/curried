@@ -1,0 +1,28 @@
+{
+  "name": "@foldr/reduce-right-fx",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Functional, autocurried version of @foldr/reduce-right",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/internal-fmake": "^0.0.0",
+    "@foldr/reduce-right": "^0.0.0"
+  }
+}

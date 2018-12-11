@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/is-undefined",
-  "description": "Determines is a value is exactly undefined.",
-  "version": "0.0.0",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

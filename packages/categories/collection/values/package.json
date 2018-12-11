@@ -1,0 +1,30 @@
+{
+  "name": "@foldr/values",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Like Object.values",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/map": "^0.0.0",
+    "@foldr/keys": "^0.0.0",
+    "@foldr/is-map": "^0.0.0",
+    "@foldr/is-set": "^0.0.0"
+  }
+}

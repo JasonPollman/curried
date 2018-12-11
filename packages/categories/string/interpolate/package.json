@@ -1,0 +1,29 @@
+{
+  "name": "@foldr/interpolate",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Creates interpolator functions.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/get": "^0.0.0",
+    "@foldr/escape-regexp": "^0.0.0",
+    "@foldr/internal-curry": "^0.0.0"
+  }
+}

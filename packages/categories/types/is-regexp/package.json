@@ -1,0 +1,27 @@
+{
+  "name": "@foldr/is-regexp",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Determines if a value is an instance of the RegExp constructor.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/is": "^0.0.0"
+  }
+}

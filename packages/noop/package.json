@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/noop",
-  "version": "0.0.0",
-  "description": "A no-operation utility function",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

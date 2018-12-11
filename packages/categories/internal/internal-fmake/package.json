@@ -1,0 +1,28 @@
+{
+  "name": "@foldr/internal-fmake",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Creates functional versions of @foldr methods—for internal use only.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/internal-curry": "^0.0.0",
+    "@foldr/internal-rearg": "^0.0.0"
+  }
+}

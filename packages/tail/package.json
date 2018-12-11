@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/tail",
-  "version": "0.0.0",
-  "description": "Gets all elements of an array excluding the first",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

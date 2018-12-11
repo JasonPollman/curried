@@ -1,0 +1,24 @@
+{
+  "name": "@foldr/is-function",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Determines if a value is a function.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ]
+}

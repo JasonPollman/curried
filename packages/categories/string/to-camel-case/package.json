@@ -1,0 +1,28 @@
+{
+  "name": "@foldr/to-camel-case",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Converts a string to camelCase",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/to-words": "^0.0.0",
+    "@foldr/to-upper-first": "^0.0.0"
+  }
+}

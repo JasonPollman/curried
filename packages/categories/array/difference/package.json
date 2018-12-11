@@ -1,0 +1,28 @@
+{
+  "name": "@foldr/difference",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Creates an array of values that exist in the first array, but not all others",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/index-of": "^0.0.0",
+    "@foldr/is-array-like": "^0.0.0"
+  }
+}

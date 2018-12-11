@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/internal-env",
-  "description": "Environment variables for @foldr internal use only.",
-  "version": "0.0.0",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

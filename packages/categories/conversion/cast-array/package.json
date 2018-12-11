@@ -1,0 +1,27 @@
+{
+  "name": "@foldr/cast-array",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Casts a value as an array",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/is-array": "^0.0.0"
+  }
+}

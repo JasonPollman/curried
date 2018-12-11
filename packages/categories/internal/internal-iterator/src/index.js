@@ -261,6 +261,7 @@ function iteratorFromOptions({
   $$prepare,
   mapping,
   arrayIterator,
+  objectIterator,
 }) {
   return function iterator(collection, userIteratee, initial) {
     if (!collection) return $$empty(initial);
@@ -274,7 +275,7 @@ function iteratorFromOptions({
     const iterate = collection.length >= 0 ? arrayIterator : mapping[toString.call(collection)];
     const results = $$results(initial);
 
-    (iterate || mapping['[object Object]'])(this, results, collection, $$handler, iteratee);
+    (iterate || objectIterator)(this, results, collection, $$handler, iteratee);
     return $$unwrap ? $$unwrap(results) : results;
   };
 }
@@ -294,17 +295,19 @@ function iteratorFromOptions({
  * @export
  */
 export default function IteratorFactory(options) {
-  return iteratorFromOptions({
+  const config = options.$$reverse ? {
     ...options,
+    mapping: ITERATOR_MAPPING_REVERSE,
+    arrayIterator: iterateArrayLikeReverse,
+    objectIterator: iterateObjectReverse,
+  } : {
+    ...options,
+    mapping: ITERATOR_MAPPING,
+    arrayIterator: iterateArrayLike,
+    objectIterator: iterateObject,
+  };
 
-    mapping: options.$$reverse
-      ? ITERATOR_MAPPING_REVERSE
-      : ITERATOR_MAPPING,
-
-    arrayIterator: options.$$reverse
-      ? iterateArrayLikeReverse
-      : iterateArrayLike,
-  });
+  return iteratorFromOptions(config);
 }
 
 IteratorFactory.BREAK = BREAK;

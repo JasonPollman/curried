@@ -1,5 +1,7 @@
 import iterator, { BREAK } from '@foldr/internal-iterator';
 
+let results = false;
+
 /**
  * This function is similar to `Array#some` except that is works for Array, Object, String,
  * Map, Set, and Arguments objects.
@@ -41,15 +43,14 @@ import iterator, { BREAK } from '@foldr/internal-iterator';
  */
 export default iterator({
   $$empty: () => false,
-  $$unwrap: results => results[0],
-  $$results: () => [false],
-  $$handler: (context, results, iteratee, i, value, key, collection) => {
+  $$unwrap: () => results,
+  $$results: () => { results = false; },
+  $$handler: (context, _, iteratee, i, value, key, collection) => {
     if (context && context.capped ? !iteratee(value) : !iteratee(value, key, collection)) {
       return undefined;
     }
 
-    // eslint-disable-next-line no-param-reassign
-    results[0] = true;
+    results = true;
     return BREAK;
   },
 });

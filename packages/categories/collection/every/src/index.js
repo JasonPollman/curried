@@ -1,5 +1,7 @@
 import iterator, { BREAK } from '@foldr/internal-iterator';
 
+let results;
+
 /**
  * This function is similar to `Array#every` except that it works for collections and
  * guards against bad input.
@@ -40,15 +42,14 @@ import iterator, { BREAK } from '@foldr/internal-iterator';
  */
 export default iterator({
   $$empty: () => true,
-  $$unwrap: results => results.x,
-  $$results: () => ({ x: true }),
-  $$handler: (context, results, iteratee, i, value, key, collection) => {
+  $$unwrap: () => results,
+  $$results: () => { results = true; },
+  $$handler: (context, _, iteratee, i, value, key, collection) => {
     if (context && context.capped ? iteratee(value) : iteratee(value, key, collection)) {
       return undefined;
     }
 
-    // eslint-disable-next-line no-param-reassign
-    results.x = false;
+    results = false;
     return BREAK;
   },
 });

@@ -19,6 +19,12 @@ module.exports = ({
       tests,
     },
     {
+      name: 'Somes an Array (2)',
+      expect: (result, assert) => assert(result === false),
+      setup: () => Array(1000).fill(1),
+      tests,
+    },
+    {
       name: 'Somes Invalid',
       expect: (result, assert) => assert(result === false),
       setup: () => null,

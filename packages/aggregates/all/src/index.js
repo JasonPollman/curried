@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 12/10/2018
+ * @since 12/11/2018
  * @file
  */
 
@@ -86,12 +86,19 @@ import isWeakMap from '@foldr/is-weak-map';
 import keys from '@foldr/keys';
 import last from '@foldr/last';
 import map from '@foldr/map';
+import mapAsync from '@foldr/map-async';
+import mapAsyncFx from '@foldr/map-async-fx';
+import mapAsyncLimitFx from '@foldr/map-async-limit-fx';
 import mapFx from '@foldr/map-fx';
 import mapKeys from '@foldr/map-keys';
 import mapKeysFx from '@foldr/map-keys-fx';
 import mapRight from '@foldr/map-right';
 import mapRightFx from '@foldr/map-right-fx';
+import mapSeriesAsync from '@foldr/map-series-async';
+import mapSeriesAsyncFx from '@foldr/map-series-async-fx';
 import mapValues from '@foldr/map-values';
+import mapValuesAsync from '@foldr/map-values-async';
+import mapValuesAsyncFx from '@foldr/map-values-async-fx';
 import mapValuesFx from '@foldr/map-values-fx';
 import memoize from '@foldr/memoize';
 import nary from '@foldr/nary';
@@ -124,6 +131,7 @@ import stubArray from '@foldr/stub-array';
 import stubObject from '@foldr/stub-object';
 import stubString from '@foldr/stub-string';
 import tail from '@foldr/tail';
+import toArray from '@foldr/to-array';
 import toCamelCase from '@foldr/to-camel-case';
 import toFinite from '@foldr/to-finite';
 import toInteger from '@foldr/to-integer';
@@ -229,12 +237,19 @@ export {
   keys,
   last,
   map,
+  mapAsync,
+  mapAsyncFx,
+  mapAsyncLimitFx,
   mapFx,
   mapKeys,
   mapKeysFx,
   mapRight,
   mapRightFx,
+  mapSeriesAsync,
+  mapSeriesAsyncFx,
   mapValues,
+  mapValuesAsync,
+  mapValuesAsyncFx,
   mapValuesFx,
   memoize,
   nary,
@@ -267,6 +282,7 @@ export {
   stubObject,
   stubString,
   tail,
+  toArray,
   toCamelCase,
   toFinite,
   toInteger,

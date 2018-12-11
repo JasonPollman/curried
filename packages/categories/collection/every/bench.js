@@ -13,6 +13,12 @@ module.exports = ({
 
   return [
     {
+      name: 'Every Item Passes Predicate (0)',
+      expect: (result, assert) => assert(result === false),
+      setup: () => Array(1000).fill(1),
+      tests,
+    },
+    {
       name: 'Every Item Passes Predicate (1)',
       expect: (result, assert) => assert(result === false),
       setup: () => [1, 2, 3],

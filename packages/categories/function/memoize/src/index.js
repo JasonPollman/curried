@@ -108,7 +108,7 @@ function emsg(arg) {
 }
 
 /**
- * Creates a memoized version of `fn`.
+ * Creates a [memoized](https://en.wikipedia.org/wiki/Memoization) version of `fn`.
  *
  * That is, a function that caches calls based on the "signature" of the provided arguments.
  * If the function is invoked multiple times with the same arguments signature, the results

@@ -1,6 +1,7 @@
 /**
- * Creates a new array with the values reversed. This is similar to
- * Array#reverse except that it does **not** mutate the original array.
+ * Creates a new array with the values reversed.
+ *
+ * This is similar to Array#reverse except that it does **not** mutate the original array.
  *
  * @name reverse
  * @param {Array} array The array to reverse.

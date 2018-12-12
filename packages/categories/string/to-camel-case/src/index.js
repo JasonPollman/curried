@@ -2,7 +2,7 @@ import toWords from '@foldr/to-words';
 import toUpperFirst from '@foldr/to-upper-first';
 
 /**
- * Converts a string to camel case.
+ * Converts a string to camelCase.
  *
  * @name toCamelCase
  * @param {string} string The string to convert to camel case.

@@ -3,6 +3,7 @@ import partial from '@foldr/partial';
 
 /**
  * Creates a function that wraps `fn` and invokes it with up to 1 argument.
+ *
  * Extraneous arguments passed to the wrapped function will be ignored.
  *
  * @param {function} fn The function to fix the arity of.

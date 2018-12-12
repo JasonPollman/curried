@@ -1,5 +1,6 @@
 /**
  * Returns the nth element in an array.
+ *
  * If the value of `n` is greater than zero, the nth element of `array` will be returned.
  * If `n` is less than zero, the nth value of the array starting from the end of the array
  * will be returned.

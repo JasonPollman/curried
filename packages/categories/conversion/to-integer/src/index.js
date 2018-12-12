@@ -4,6 +4,7 @@ const truncate = Math.trunc || /* istanbul ignore next */ Math.floor;
 
 /**
  * Converts `x` to an integer.
+ *
  * Internally, this calls [toNumber](#to-number).
  *
  * @name toInteger

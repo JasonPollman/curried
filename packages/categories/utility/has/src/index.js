@@ -2,7 +2,8 @@ const { hasOwnProperty } = Object.prototype;
 
 /**
  * Checks if `value` contains own property `property`.
- * > A variant of Object.prototype.hasOwnProperty.
+ *
+ * This is a variant of Object.prototype.hasOwnProperty.
  *
  * @name has
  * @param {Object} value The value to determine membership of `property`.

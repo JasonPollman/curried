@@ -1,6 +1,7 @@
 /**
  * Determines is `x` is an Array instance.
- * Note, this is based on the native `Array.isArray` method.
+ *
+ * *Note, this is based on the native `Array.isArray` method.*
  *
  * @name isArray
  * @param {any} x The thing to check.

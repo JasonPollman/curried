@@ -47,6 +47,7 @@ export function toNumber(x) {
 
 /**
  * Converts `x` to a number.
+ *
  * If `x` is a number, it will be returned, if `x` is a string it will be coerced to
  * a number using `+x`. If `x` is an object, it's `valueOf` method will be called, if
  * available.

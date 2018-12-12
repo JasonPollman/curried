@@ -1,7 +1,7 @@
 import is from '@foldr/is';
 
 /**
- * Determines if the given value is an instance of Set.
+ * Determines if the given value is an instance of `Set`.
  *
  * @name isSet
  * @param {any} thing The value to check.

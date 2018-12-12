@@ -1,7 +1,7 @@
 import is from '@foldr/is';
 
 /**
- * Determines if the given value is an instance of WeakMap.
+ * Determines if the given value is an instance of `WeakMap`.
  *
  * @name isWeakMap
  * @param {any} thing The value to check.

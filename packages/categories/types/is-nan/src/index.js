@@ -11,7 +11,7 @@ export function isNaNPolyfill(x) {
 }
 
 /**
- * Determines if the given value is NaN.
+ * Determines if the given value is `NaN`.
  *
  * @name isNaN
  * @param {any} x The value to check.

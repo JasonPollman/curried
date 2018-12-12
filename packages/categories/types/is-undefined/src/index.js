@@ -1,5 +1,5 @@
 /**
- * Determines if the given value is undefined.
+ * Determines if the given value is `undefined`.
  *
  * @name isUndefined
  * @param {any} x The value to assert undefined-ness.

@@ -67,9 +67,10 @@ function partialize(fn, partials) {
 }
 
 /**
- * Creates a function that "binds" arguments to the given function. This function
- * operates much like Function#bind, except that it does not alter the `this` value
- * and it provides the flexibility of using placeholder values to "skip" arguments
+ * Creates a function that "binds" arguments to the given function.
+ *
+ * This function operates much like Function#bind, except that it does not alter the `this`
+ * value and it provides the flexibility of using placeholder values to "skip" arguments
  * you don't want to apply.
  *
  * @param {function} fn The function to partialize.

@@ -8,9 +8,10 @@ const RE_TO_WORDS = new RegExp(`${UC.source}${LC.source}+|${LC.source}+|${UC.sou
 
 /**
  * Converts a string to an array of words.
- * This function uses the \p{Lower_Case_Letter}, \p{Upper_Case_Letter} \p{Decimal_Digit_Number}
- * unicode categories to match against the given string. Therefore all non-letter and
- * digit unicode characters will be omitted from the returned string.
+ *
+ * This function uses the `\p{Lower_Case_Letter}`, `\p{Upper_Case_Letter}`, and
+ * `\p{Decimal_Digit_Number}` unicode categories to match against the given string.
+ * Therefore, all non-letter and digit unicode characters will be omitted from the returned string.
  * @see https://www.regular-expressions.info/unicode.html for more information.
  *
  * @name toWords

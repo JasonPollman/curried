@@ -34,7 +34,8 @@ export function implementShuffle(arr) {
 }
 
 /**
- * Shuffles an array using the "Fisher-Yates" shuffle algorithm.
+ * Shuffles an array using the [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
+ * shuffle algorithm.
  *
  * @name shuffle
  * @param {Array} arr The array to be shuffled.

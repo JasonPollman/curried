@@ -1,5 +1,6 @@
 /**
  * The identity function.
+ *
  * Returns the value of the first argument provided to it.
  *
  * @param {any} x The value to passthrough.

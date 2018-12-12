@@ -10,7 +10,7 @@ const isPromiseBase = typeof Promise === 'function' ? is(Promise) : /* istanbul 
 const isThenable = x => typeof x.then === 'function' && typeof x.catch === 'function';
 
 /**
- * Determines if the given value is a Promise object.
+ * Determines if the given value is a `Promise` object.
  * That is, if it's a native Promise or it's `thenable` (contains `.then` and `.catch` functions).
  *
  * @name isPromise

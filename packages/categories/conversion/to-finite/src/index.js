@@ -6,6 +6,7 @@ const { MAX_VALUE } = Number;
 
 /**
  * Converts `x` to a finite number.
+ *
  * Note, this will also call `toNumber` on `x`.
  *
  * @name toFinite

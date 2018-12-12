@@ -9,7 +9,7 @@ import SafeSymbolFor from '@foldr/internal-symbol';
 export const ARITY = SafeSymbolFor('source-arity');
 
 /**
- * Function composition.
+ * *Function composition.*
  *
  * Creates a new function that returns the result of invoking
  * the given functions in successive order from right to left,

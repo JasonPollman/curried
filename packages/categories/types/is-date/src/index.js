@@ -1,7 +1,7 @@
 import is from '@foldr/is';
 
 /**
- * Determines if the given value is an instance of Date.
+ * Determines if the given value is an instance of `Date`.
  *
  * @name isDate
  * @param {any} thing The value to check.

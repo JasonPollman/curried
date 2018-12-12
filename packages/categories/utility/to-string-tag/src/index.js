@@ -2,6 +2,7 @@ const { toString } = Object.prototype;
 
 /**
  * Calls Object.prototype.toString on `x`.
+ *
  * This is primarily used internally, but could be useful as cross-frame compatible "instanceof"
  * checks, since `x instanceof Array`, for example, won't work across browser frames.
  *

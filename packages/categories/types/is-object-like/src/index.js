@@ -1,6 +1,7 @@
 /**
  * Determines if the given value is an object (and not `null`).
- * Unlike `isObject`, this will not return `true` for values of `x` that are functions.
+ *
+ * Unlike [isObject](#is-object), this will not return `true` for values of `x` that are functions.
  *
  * @name isObjectLike
  * @param {any} x The value to assert object-ness.

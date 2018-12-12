@@ -2,7 +2,7 @@ import fmake from '@foldr/internal-fmake';
 import mapValues from '@foldr/map-values';
 
 /**
- * **Functional, autocurried version of [mapValues](#mapValues).**
+ * **Functional, autocurried version of [mapValues](#map-values).**
  *
  * Creates a new object with the same keys as `collection` by mapping over `collection` and
  * calling `iteratee` for each value in the collection.

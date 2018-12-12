@@ -1,6 +1,7 @@
 /**
- * Determines if the given value is "array-like". An item is array-like,
- * if it is non-falsy and has a length property. This will be `true`
+ * Determines if the given value is "array-like".
+ *
+ * An item is array-like, if it is non-falsy and has a length property. This will be `true`
  * for arrays, arguments, strings, and other objects with a  `length` property.
  *
  * @name isArrayLike

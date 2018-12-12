@@ -1,7 +1,7 @@
 import is from '@foldr/is';
 
 /**
- * Determines if the given value is an instance of Map.
+ * Determines if the given value is an instance of `Map`.
  *
  * @name isMap
  * @param {any} thing The value to check.

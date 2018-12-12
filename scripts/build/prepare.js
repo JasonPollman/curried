@@ -64,31 +64,23 @@ async function updatePackageJson(pkg, tokens) {
 
 /**
  * Renders and copies over the readme.md file for a package.
- * If an existing readme.md file already exists for the package it will not be overwritten.
  * @param {string} pkg The current package to write the readmd.md file for.
  * @param {Object} tokens Replacement tokens.
  * @returns {Promise} Resolves once the readme.md file has been written to disk.
  */
 async function maybeCopyPackageReadme(pkg, tokens) {
   const destination = path.join(pkg, 'readme.md');
-
-  // Don't clobber existing readme.md files.
-  if (await fs.existsAsync(destination)) return Promise.resolve();
   return fs.writeFileAsync(destination, readmeTemplate(tokens));
 }
 
 /**
  * Renders and copies over the .npmignore file for a package.
- * If an existing .npmignore file already exists for the package it will not be overwritten.
  * @param {string} pkg The current package to write the .npmignore file for.
  * @param {Object} tokens Replacement tokens.
  * @returns {Promise} Resolves once the .npmignore file has been written to disk.
  */
 async function maybeCopyPackageNPMIgnore(pkg, tokens) {
   const destination = path.join(pkg, '.npmignore');
-
-  // Don't clobber existing .npmignore files.
-  if (await fs.existsAsync(destination)) return Promise.resolve();
   return fs.writeFileAsync(destination, npmignoreTemplate(tokens));
 }
 

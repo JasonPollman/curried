@@ -3,7 +3,7 @@ import is from '@foldr/is';
 const isSymbolCrossFrame = typeof Symbol === 'function' ? is(Symbol) : /* istanbul ignore next */ () => false;
 
 /**
- * Determines if the given value is an instance of Symbol.
+ * Determines if the given value is an instance of `Symbol`.
  *
  * @name isSymbol
  * @param {any} x The value to check.

@@ -19,12 +19,16 @@ const MAPPING = {
 /**
  * Determines if an object includes an item.
  *
+ * - For arrays, this is similar to `array.indexOf(item, index) > -1`.
+ * - For objects, this returns `true` if object contains a key with `value`.
+ * - For strings, this returns `true` if `value` is a substring of `x`.
+ *
  * @name includes
  * @param {Array} x The object to inspect.
  * @param {any} value The value to look for within `array`.
  * @param {number=} fromIndex For arrays and string, this will set the starting
  * position for searching the item.
- * @returns {Array} True if `array` contains `value`, false otherwise.
+ * @returns {boolean} True if `array` contains `value`, false otherwise.
  *
  * @arity 2
  * @category collection

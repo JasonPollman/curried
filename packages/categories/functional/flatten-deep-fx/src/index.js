@@ -5,6 +5,7 @@ import flattenDeep from '@foldr/flatten-deep';
  * **Functional, autocurried version of [flattenDeep](#flatten-deep).**
  *
  * Flattens an array to the specified depth (which defaults to `Infinity`).
+ *
  * This will iterate over the provided array pushing all items into a new array.
  * If the current item is an array, it's contents will also be pushed into the new array.
  *

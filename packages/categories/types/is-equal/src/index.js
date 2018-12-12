@@ -1,8 +1,10 @@
 /**
  * Determines is `x` is equal to `y` according to the SameValueZero comparison.
+ *
  * This is basically the equivalent of `===`, except that it accounts for
  * `NaN === NaN`, which returns `false` when using `===` and true according to the
  * SameValueZero comparison.
+ *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
  *
  * @name isEqual

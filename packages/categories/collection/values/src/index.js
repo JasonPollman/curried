@@ -16,7 +16,7 @@ const getValue = val => val;
  *
  * If an array is passed, a shallow copy of the array is made.
  *
- * Note, the order of the keys is not guaranteed.
+ * *Note, the order of keys is not guaranteed across platforms.*
  *
  * @name values
  * @param {any} x The thing to get the values of.

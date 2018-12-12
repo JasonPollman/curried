@@ -31,8 +31,8 @@ const hasObjectConstructor = IS_NODE
   : hasObjectConstructorBrowser;
 
 /**
- * Determines if the given value is a "plain object". That is an object that
- * is a direct (non-inherited) instance of the Object class.
+ * Determines if the given value is a "plain object". That is, an object
+ * that is a direct (non-inherited) instance of the Object class.
  *
  * @name isPlainObject
  * @param {any} x The value to determine whether or not it's a plain object.

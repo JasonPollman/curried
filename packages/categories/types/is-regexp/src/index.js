@@ -1,7 +1,7 @@
 import is from '@foldr/is';
 
 /**
- * Determines if the given value is an instance of RegExp.
+ * Determines if the given value is an instance of `RegExp`.
  *
  * @name isRegExp
  * @param {any} thing The value to check.

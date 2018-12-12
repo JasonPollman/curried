@@ -3,7 +3,8 @@ import isArrayLike from '@foldr/is-array-like';
 import toStringTag from '@foldr/to-string-tag';
 
 /**
- * Gets the size of an object.
+ * Gets the *size* of an object.
+ *
  * That is, the number of the object's own enumerable properties.
  *
  * @name size

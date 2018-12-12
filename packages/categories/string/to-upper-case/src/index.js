@@ -1,7 +1,7 @@
 import toString from '@foldr/to-string';
 
 /**
- * Converts a string to uppercase like String#toUpperCase, but guards against nil input.
+ * Converts a string to uppercase like `String#toUpperCase`, but guards against nil input.
  *
  * @name toUpperCase
  * @param {string} str The string to conver to uppercase.

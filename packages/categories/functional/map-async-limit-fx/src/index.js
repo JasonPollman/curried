@@ -14,7 +14,7 @@ import mapAsync from '@foldr/map-async';
  * Iteratee functions are invoked with the signature: `iteratee(value)`, where:
  * - `value` is the current item in the collection being iterated over.
  *
- * @name mapAsyncFx
+ * @name mapAsyncLimitFx
  * @param {function} iteratee The callback function to invoke once per item in the collection.
  * @param {Array|Object|Map|Set|Arguments} collection The collection to map.
  * @returns {Promise<Array>} Resolves with the mapped array.

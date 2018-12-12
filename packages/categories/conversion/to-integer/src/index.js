@@ -1,6 +1,4 @@
-import toNumber from '@foldr/to-number';
-
-const truncate = Math.trunc || /* istanbul ignore next */ Math.floor;
+import toFinite from '@foldr/to-finite';
 
 /**
  * Converts `x` to an integer.
@@ -30,5 +28,6 @@ const truncate = Math.trunc || /* istanbul ignore next */ Math.floor;
  * }) // => 5
  */
 export default function toInteger(x) {
-  return truncate(toNumber(x));
+  x = toFinite(x); // eslint-disable-line no-param-reassign
+  return x - (x % 1);
 }

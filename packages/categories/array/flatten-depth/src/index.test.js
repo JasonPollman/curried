@@ -1,37 +1,37 @@
-import flattenDeepFx from '.';
+import flattenDepth from '.';
 
-describe('flattenDeepFx', () => {
+describe('flattenDepth', () => {
   it('Should flatten an array', () => {
     const array = [1, 2, 3, null, undefined, {}];
-    const flattend = flattenDeepFx(Infinity)(array);
+    const flattend = flattenDepth(array);
     expect(flattend).toEqual(array);
   });
 
-  it('Should flatten an array with nested arrays', () => {
+  it('Should flatten an array with nested arrays (default depth)', () => {
     const array = [1, 2, 3, [4, 5, 6], 7, [8, [9, 10]]];
-    const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const flattend = flattenDeepFx(Infinity)(array);
+    const expected = [1, 2, 3, 4, 5, 6, 7, 8, [9, 10]];
+    const flattend = flattenDepth(array);
     expect(flattend).toEqual(expected);
   });
 
   it('Should flatten an array with nested arrays (specified depth)', () => {
     const array = [1, 2, 3, [4, 5, 6], 7, [8, [9, 10]]];
     const expected = [1, 2, 3, 4, 5, 6, 7, 8, [9, 10]];
-    const flattend = flattenDeepFx(1, array);
+    const flattend = flattenDepth(array, 1);
     expect(flattend).toEqual(expected);
   });
 
   it('Should flatten an array with nested arrays (specified depth, 2)', () => {
     const array = [1, 2, 3, [4, 5, 6], 7, [8, [9, 10]]];
     const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const flattend = flattenDeepFx(2)(array);
+    const flattend = flattenDepth(array, 2);
     expect(flattend).toEqual(expected);
   });
 
   it('Should flatten an array with nested arrays (specified depth, 3)', () => {
     const array = [1, 2, 3, [4, 5, 6], 7, [8, [9, [10]]]];
     const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, [10]];
-    const flattend = flattenDeepFx(2)(array);
+    const flattend = flattenDepth(array, 2);
     expect(flattend).toEqual(expected);
   });
 
@@ -39,15 +39,15 @@ describe('flattenDeepFx', () => {
     const ogArray = [1, [2, [3, [undefined]]], null, [8, [9, 10]], '', undefined];
     const expected = [1, 2, 3, undefined, null, 8, 9, 10, '', undefined];
 
-    const flattend = flattenDeepFx(null)(ogArray);
+    const flattend = flattenDepth(ogArray, Infinity);
     expect(flattend).toEqual(expected);
   });
 
   it('Should properly handle non-array values', () => {
-    expect(flattenDeepFx(1, null)).toEqual([]);
-    expect(flattenDeepFx(1, undefined)).toEqual([]);
-    expect(flattenDeepFx(1, false)).toEqual([]);
-    expect(flattenDeepFx(1, true)).toEqual([]);
-    expect(flattenDeepFx(1, {})).toEqual([]);
+    expect(flattenDepth(null)).toEqual([]);
+    expect(flattenDepth(undefined)).toEqual([]);
+    expect(flattenDepth(false)).toEqual([]);
+    expect(flattenDepth(true)).toEqual([]);
+    expect(flattenDepth({})).toEqual([]);
   });
 });

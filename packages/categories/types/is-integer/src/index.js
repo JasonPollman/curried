@@ -1,11 +1,6 @@
 import isFinite from '@foldr/is-finite';
 
-// Use Math.trunc if it's available, since
-// it behaves more like a bitwise operation
-// but work for both 32 and 64 bit numbers.
-
-/* istanbul ignore next */
-const floor = Math.trunc || Math.floor;
+const { floor } = Math;
 
 /**
  * Determines if the given value is an integer.

@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/flatten-deep-fx",
+  "name": "@foldr/repeat-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Functional, autocurried version of @foldr/flatten-deep",
+  "description": "Functional, autocurried version of @foldr/repeat",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -22,7 +22,7 @@
     "library"
   ],
   "dependencies": {
-    "@foldr/flatten-deep": "^0.0.0",
+    "@foldr/repeat": "^0.0.0",
     "@foldr/internal-fmake": "^0.0.0"
   }
 }

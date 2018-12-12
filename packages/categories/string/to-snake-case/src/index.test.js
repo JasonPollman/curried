@@ -1,6 +1,6 @@
 import toSnakeCase from '.';
 
-describe('t', () => {
+describe('toSnakeCase', () => {
   it('Should be a function', () => {
     expect(typeof toSnakeCase).toBe('function');
   });

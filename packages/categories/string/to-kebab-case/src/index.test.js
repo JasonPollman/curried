@@ -1,6 +1,6 @@
 import toKebabCase from '.';
 
-describe('t', () => {
+describe('toKebabCase', () => {
   it('Should be a function', () => {
     expect(typeof toKebabCase).toBe('function');
   });

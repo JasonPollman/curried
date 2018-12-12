@@ -4,8 +4,8 @@ module.exports = ({
   ramda,
 }) => {
   const tests = {
-    foldr: input => foldr.flattenDeepFx(10)(input),
-    lodash: input => fp.flattenDeep(input),
+    foldr: input => foldr.flattenDepthFx(10)(input),
+    lodash: input => fp.flattenDepth(input, 10),
     ramda: input => ramda.flatten(input),
   };
 

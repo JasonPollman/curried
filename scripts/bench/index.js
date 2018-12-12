@@ -118,7 +118,7 @@ function handleCycleComplete(options) {
     // Get the average operations per second for the current package/library.
     stats[pkg][lib].avg = Math.trunc(stats[pkg][lib].ops / (stats[pkg][lib].passed || 1));
 
-    log('%s  %s', name, error ? red.bold(`[Error: ${error.message}]`) : green(toFixedLocale(ops)));
+    log('%s  %s', name, error ? red.bold(`[Error: ${error.stack}]`) : green(toFixedLocale(ops)));
   };
 }
 

@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 12/11/2018
+ * @since 2018-12-11
  * @file
  */
 
@@ -38,6 +38,7 @@ import findLast from '@foldr/find-last';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
 import flattenDeepFx from '@foldr/flatten-deep-fx';
+import flattenDepth from '@foldr/flatten-depth';
 import forEach from '@foldr/for-each';
 import forEachRight from '@foldr/for-each-right';
 import get from '@foldr/get';
@@ -121,6 +122,8 @@ import reduce from '@foldr/reduce';
 import reduceFx from '@foldr/reduce-fx';
 import reduceRight from '@foldr/reduce-right';
 import reduceRightFx from '@foldr/reduce-right-fx';
+import repeat from '@foldr/repeat';
+import repeatFx from '@foldr/repeat-fx';
 import reverse from '@foldr/reverse';
 import sample from '@foldr/sample';
 import shuffle from '@foldr/shuffle';
@@ -190,6 +193,7 @@ export {
   flatten,
   flattenDeep,
   flattenDeepFx,
+  flattenDepth,
   forEach,
   forEachRight,
   get,
@@ -273,6 +277,8 @@ export {
   reduceFx,
   reduceRight,
   reduceRightFx,
+  repeat,
+  repeatFx,
   reverse,
   sample,
   shuffle,

@@ -14,6 +14,13 @@ describe('flattenDepth', () => {
     expect(flattend).toEqual(expected);
   });
 
+  it('Should flatten an array with nested arrays (0 depth)', () => {
+    const array = [1, 2, 3, [4, 5, 6], 7, [8, [9, 10]]];
+    const expected = [1, 2, 3, [4, 5, 6], 7, [8, [9, 10]]];
+    const flattend = flattenDepth(array, 0);
+    expect(flattend).toEqual(expected);
+  });
+
   it('Should flatten an array with nested arrays (specified depth)', () => {
     const array = [1, 2, 3, [4, 5, 6], 7, [8, [9, 10]]];
     const expected = [1, 2, 3, 4, 5, 6, 7, 8, [9, 10]];

@@ -1,5 +1,7 @@
 import isArray from '@foldr/is-array';
 
+/* eslint-disable no-param-reassign */
+
 /**
  * Base recursive functionality for `flattenDepth`.
  * @param {Array} array The array to deeply flatten.
@@ -56,5 +58,9 @@ function flattenDepthBase(array, maxDepth, results, depth) {
  */
 export default function flattenDepth(array, maxDepth) {
   if (!array || !array.length) return [];
-  return flattenDepthBase(array, +maxDepth || 1, [], 0);
+
+  maxDepth = +maxDepth;
+  maxDepth = maxDepth === 0 ? 0 : maxDepth || 1;
+
+  return flattenDepthBase(array, maxDepth, [], 0);
 }

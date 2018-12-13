@@ -131,27 +131,25 @@ function handleSuiteComplete(options) {
   return () => {
     const { pkg } = options;
     const stat = stats[options.pkg];
-
-    let fastest;
-
-    let bestAverage = 0;
-    let foldrAverage = 0;
+    const ranked = [];
 
     // Determines which library was fastest
     // for this particular package suite run.
-    each(stat, ({ avg }, library) => {
-      if (library === 'foldr') foldrAverage = avg;
+    each(stat, ({ avg }, library) => ranked.push({ avg, library }));
+    ranked.sort((a, b) => b.avg - a.avg);
 
-      if (avg > bestAverage) {
-        bestAverage = avg;
-        fastest = library;
-      }
-    });
+    const foldrStat = ranked.find(rank => rank.library === 'foldr');
+    const best = ranked[0];
 
-    if (fastest !== 'foldr') {
-      const diff = Math.round(Math.abs(1 - (foldrAverage / bestAverage)) * 100);
+    if (best.library !== 'foldr') {
+      const diff = Math.round(Math.abs(1 - (foldrStat.avg / best.avg)) * 100);
       const msg = '\n[PERFORMANCE WARNING]\nPackage "%s": %s was %s% faster than foldr!';
-      log(yellow.bold(msg), pkg, fastest, diff);
+      log(yellow.bold(msg), pkg, best.library, diff);
+    } else {
+      const next = ranked[1];
+      const diff = Math.round(Math.abs(1 - (next.avg / foldrStat.avg)) * 100);
+      const msg = '\n[PERFORMANCE SUCCESS]\nPackage "%s": Foldr was %s% faster than %s!';
+      log(green.bold(msg), pkg, diff, next.library);
     }
   };
 }

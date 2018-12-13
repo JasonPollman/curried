@@ -1,6 +1,6 @@
 module.exports = ({ foldr, fp }) => {
   const tests = {
-    foldr: ([x, y]) => foldr.repeat(y)(x),
+    foldr: ([x, y]) => foldr.repeatFx(y)(x),
     lodash: ([x, y]) => fp.repeat(y)(x),
   };
 

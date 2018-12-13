@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2018-12-11
+ * @since 12/12/2018
  * @file
  */
 
@@ -112,6 +112,9 @@ import nullary from '@foldr/nullary';
 import omit from '@foldr/omit';
 import omitFx from '@foldr/omit-fx';
 import once from '@foldr/once';
+import pad from '@foldr/pad';
+import padCharsFx from '@foldr/pad-chars-fx';
+import padFx from '@foldr/pad-fx';
 import partial from '@foldr/partial';
 import pick from '@foldr/pick';
 import pickFx from '@foldr/pick-fx';
@@ -267,6 +270,9 @@ export {
   omit,
   omitFx,
   once,
+  pad,
+  padCharsFx,
+  padFx,
   partial,
   pick,
   pickFx,

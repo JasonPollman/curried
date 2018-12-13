@@ -113,8 +113,14 @@ import omit from '@foldr/omit';
 import omitFx from '@foldr/omit-fx';
 import once from '@foldr/once';
 import pad from '@foldr/pad';
+import padCharsEndFx from '@foldr/pad-chars-end-fx';
 import padCharsFx from '@foldr/pad-chars-fx';
+import padCharsStartFx from '@foldr/pad-chars-start-fx';
+import padEnd from '@foldr/pad-end';
+import padEndFx from '@foldr/pad-end-fx';
 import padFx from '@foldr/pad-fx';
+import padStart from '@foldr/pad-start';
+import padStartFx from '@foldr/pad-start-fx';
 import partial from '@foldr/partial';
 import pick from '@foldr/pick';
 import pickFx from '@foldr/pick-fx';
@@ -271,8 +277,14 @@ export {
   omitFx,
   once,
   pad,
+  padCharsEndFx,
   padCharsFx,
+  padCharsStartFx,
+  padEnd,
+  padEndFx,
   padFx,
+  padStart,
+  padStartFx,
   partial,
   pick,
   pickFx,

@@ -6,9 +6,22 @@ describe('pad', () => {
   });
 
   it('Should pad a string (empty string)', () => {
-    expect(pad('', 1)).toBe('');
-    expect(pad(undefined, 1)).toBe('');
-    expect(pad(null, 1)).toBe('');
+    expect(pad('')).toBe('');
+    expect(pad('', 0, '?')).toBe('');
+    expect(pad('', 0)).toBe('');
+    expect(pad('', 1, '?')).toBe('?');
+    expect(pad('', 1)).toBe(' ');
+    expect(pad('', 3)).toBe('   ');
+    expect(pad('', -3)).toBe('');
+    expect(pad(undefined, 1)).toBe(' ');
+    expect(pad(null, 1)).toBe(' ');
+  });
+
+  it('Should allow for left and right pad', () => {
+    expect(pad('', 1, '<>')).toBe('<');
+    expect(pad('', 2, '<>')).toBe('<>');
+    expect(pad('', 3, '<>')).toBe('<><');
+    expect(pad('', 4, '<>')).toBe('<><>');
   });
 
   it('Should pad a string', () => {

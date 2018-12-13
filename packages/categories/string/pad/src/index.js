@@ -55,10 +55,12 @@ function repeat(string, n) {
  */
 export default function pad(string, length, chars) {
   string = toString(string);
-  if (!string) return '';
-
   length = toNumber(length);
+
   if (!length) return string;
+
+  let paddingSize = length - string.length;
+  if (paddingSize < 0) return string;
 
   // Uses a whitespace character for `null` and `undefined`.
   // All others are passed to `toString`, which will yield
@@ -66,8 +68,22 @@ export default function pad(string, length, chars) {
   chars = chars == null ? ' ' : toString(chars);
   if (!chars) return string;
 
-  let paddingSize = length - string.length;
-  if (paddingSize < 0) return string;
+  const charsSize = chars.length;
+
+  let n = 0;
+  let i = 0;
+  let results = '';
+
+  // Nothing to put into the middle, so we can't split
+  // the padding up like we're doing below...
+  if (!string) {
+    results = repeat(chars, floor(length / charsSize));
+    const remaining = length - results.length;
+    while (i++ < remaining) results += chars[n++ % charsSize];
+    return results;
+  }
+
+  let padded;
 
   // If n is odd, make it even, so division by 2 results in an integer.
   // This also allows us to create the same padding on the left and right at once
@@ -75,10 +91,6 @@ export default function pad(string, length, chars) {
   const hasOddSizedPadding = paddingSize % 2;
   if (hasOddSizedPadding) paddingSize -= 1;
 
-  let results = '';
-  let padded;
-
-  const charsSize = chars.length;
   const halfOfPaddingSize = paddingSize / 2;
 
   // Optimization to circumvent floor and the while loop below.
@@ -91,10 +103,7 @@ export default function pad(string, length, chars) {
   // Repeat the padding characters as many times necessary
   // to reach half the padding size, but don't exceed it.
   const repeatSize = floor(halfOfPaddingSize / charsSize);
-  padded = repeat(chars, repeatSize);
-
-  let n = 0;
-  let i = 0;
+  padded = repeatSize ? repeat(chars, repeatSize) : '';
 
   // Apply remaining padding characters to the padding
   // that weren't captured by the repeat above.

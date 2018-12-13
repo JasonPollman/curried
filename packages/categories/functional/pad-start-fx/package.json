@@ -1,11 +1,15 @@
 {
-  "name": "@foldr/flatten-deep-fx",
+  "name": "@foldr/pad-start-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Functional, autocurried version of @foldr/flatten-deep",
+  "description": "Functional, autocurried version of @foldr/pad-start",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
   "contributors": [
     {
       "name": "Jason James Pollman",
@@ -22,7 +26,7 @@
     "library"
   ],
   "dependencies": {
-    "@foldr/flatten-deep": "^0.0.0",
-    "@foldr/internal-fmake": "^0.0.0"
+    "@foldr/internal-fmake": "^0.0.0",
+    "@foldr/pad-start": "^0.0.0"
   }
 }

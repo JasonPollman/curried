@@ -1,6 +1,6 @@
 import toCamelCase from '.';
 
-describe('t', () => {
+describe('toCamelCase', () => {
   it('Should be a function', () => {
     expect(typeof toCamelCase).toBe('function');
   });

@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 12/11/2018
+ * @since 12/12/2018
  * @file
  */
 
@@ -38,6 +38,7 @@ import findLast from '@foldr/find-last';
 import flatten from '@foldr/flatten';
 import flattenDeep from '@foldr/flatten-deep';
 import flattenDeepFx from '@foldr/flatten-deep-fx';
+import flattenDepth from '@foldr/flatten-depth';
 import forEach from '@foldr/for-each';
 import forEachRight from '@foldr/for-each-right';
 import get from '@foldr/get';
@@ -55,6 +56,8 @@ import intersection from '@foldr/intersection';
 import intersectionFx from '@foldr/intersection-fx';
 import invoke from '@foldr/invoke';
 import invokeFx from '@foldr/invoke-fx';
+import invokeTimes from '@foldr/invoke-times';
+import invokeTimesFx from '@foldr/invoke-times-fx';
 import is from '@foldr/is';
 import isArguments from '@foldr/is-arguments';
 import isArray from '@foldr/is-array';
@@ -111,6 +114,15 @@ import nullary from '@foldr/nullary';
 import omit from '@foldr/omit';
 import omitFx from '@foldr/omit-fx';
 import once from '@foldr/once';
+import pad from '@foldr/pad';
+import padCharsEndFx from '@foldr/pad-chars-end-fx';
+import padCharsFx from '@foldr/pad-chars-fx';
+import padCharsStartFx from '@foldr/pad-chars-start-fx';
+import padEnd from '@foldr/pad-end';
+import padEndFx from '@foldr/pad-end-fx';
+import padFx from '@foldr/pad-fx';
+import padStart from '@foldr/pad-start';
+import padStartFx from '@foldr/pad-start-fx';
 import partial from '@foldr/partial';
 import pick from '@foldr/pick';
 import pickFx from '@foldr/pick-fx';
@@ -121,6 +133,8 @@ import reduce from '@foldr/reduce';
 import reduceFx from '@foldr/reduce-fx';
 import reduceRight from '@foldr/reduce-right';
 import reduceRightFx from '@foldr/reduce-right-fx';
+import repeat from '@foldr/repeat';
+import repeatFx from '@foldr/repeat-fx';
 import reverse from '@foldr/reverse';
 import sample from '@foldr/sample';
 import shuffle from '@foldr/shuffle';
@@ -190,6 +204,7 @@ export {
   flatten,
   flattenDeep,
   flattenDeepFx,
+  flattenDepth,
   forEach,
   forEachRight,
   get,
@@ -207,6 +222,8 @@ export {
   intersectionFx,
   invoke,
   invokeFx,
+  invokeTimes,
+  invokeTimesFx,
   is,
   isArguments,
   isArray,
@@ -263,6 +280,15 @@ export {
   omit,
   omitFx,
   once,
+  pad,
+  padCharsEndFx,
+  padCharsFx,
+  padCharsStartFx,
+  padEnd,
+  padEndFx,
+  padFx,
+  padStart,
+  padStartFx,
   partial,
   pick,
   pickFx,
@@ -273,6 +299,8 @@ export {
   reduceFx,
   reduceRight,
   reduceRightFx,
+  repeat,
+  repeatFx,
   reverse,
   sample,
   shuffle,

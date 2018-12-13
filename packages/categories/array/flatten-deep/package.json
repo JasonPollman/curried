@@ -2,10 +2,14 @@
   "name": "@foldr/flatten-deep",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "A foldr standalone module",
+  "description": "Flattens an array to depth `Infinity`",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
   "contributors": [
     {
       "name": "Jason James Pollman",
@@ -22,6 +26,7 @@
     "library"
   ],
   "dependencies": {
-    "@foldr/is-array": "^0.0.0"
+    "@foldr/is-array": "^0.0.0",
+    "@foldr/flatten-depth": "^0.0.0"
   }
 }

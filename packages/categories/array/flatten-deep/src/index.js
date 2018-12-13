@@ -1,45 +1,15 @@
-import isArray from '@foldr/is-array';
+import flattenDepth from '@foldr/flatten-depth';
 
 /**
- * Base recursive functionality for `flattenDeep`.
- * @param {Array} array The array to deeply flatten.
- * @param {number} maxDepth The maximum depth to flatten to.
- * @param {Array} results A results "collection" array.
- * @param {number} depth The current flattening depth.
- * @returns {Array} The flattened array.
- */
-function flattenDeepBase(array, maxDepth, results, depth) {
-  const size = array.length;
-  const delta = depth + 1;
-
-  let i = 0;
-  let current;
-
-  while (i < size) {
-    current = array[i++];
-
-    if (delta <= maxDepth && isArray(current)) {
-      flattenDeepBase(current, maxDepth, results, delta);
-    } else {
-      results[results.length] = current; // eslint-disable-line no-param-reassign
-    }
-  }
-
-  return results;
-}
-
-/**
- * Flattens an array to the specified depth (which defaults to `Infinity`).
+ * Flattens an array to depth `Infinity`.
  *
- * This will iterate over the provided array pushing all items into a new array.
- * If the current item is an array, it's contents will also be pushed into the new array.
+ * Internally this uses [flattenDepth](#flatten-depth).
  *
  * @name flattenDeep
  * @param {Array} array The array to deeply flatten.
- * @param {number=} [maxDepth=Infinity] The maximum depth to flatten to.
  * @returns {Array} A newly flattened array.
  *
- * @arity 2
+ * @arity 1
  * @category array
  * @publishdoc
  * @since v0.0.0
@@ -52,7 +22,6 @@ function flattenDeepBase(array, maxDepth, results, depth) {
  * flattenDeep([1, [2, [3, 4, [5, 6]], [7]]); // => [1, 2, 3, 4, 5, 6, 7]
  * flattenDeep([[1], [2], [3], 4]);           // => [1, 2, 3, 4]
  */
-export default function flattenDeep(array, maxDepth) {
-  if (!array || !array.length) return [];
-  return flattenDeepBase(array, +maxDepth || Infinity, [], 0);
+export default function flattenDeep(array) {
+  return flattenDepth(array, Infinity);
 }

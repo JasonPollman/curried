@@ -6,6 +6,10 @@
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
   "contributors": [
     {
       "name": "Jason James Pollman",
@@ -22,6 +26,6 @@
     "library"
   ],
   "dependencies": {
-    "@foldr/to-number": "^0.0.0"
+    "@foldr/to-finite": "^0.0.0"
   }
 }

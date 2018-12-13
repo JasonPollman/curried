@@ -70,6 +70,8 @@
     "@foldr/intersection-fx": "^0.0.0",
     "@foldr/invoke": "^0.0.0",
     "@foldr/invoke-fx": "^0.0.0",
+    "@foldr/invoke-times": "^0.0.0",
+    "@foldr/invoke-times-fx": "^0.0.0",
     "@foldr/is": "^0.0.0",
     "@foldr/is-arguments": "^0.0.0",
     "@foldr/is-array": "^0.0.0",

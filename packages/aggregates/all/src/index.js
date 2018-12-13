@@ -56,6 +56,8 @@ import intersection from '@foldr/intersection';
 import intersectionFx from '@foldr/intersection-fx';
 import invoke from '@foldr/invoke';
 import invokeFx from '@foldr/invoke-fx';
+import invokeTimes from '@foldr/invoke-times';
+import invokeTimesFx from '@foldr/invoke-times-fx';
 import is from '@foldr/is';
 import isArguments from '@foldr/is-arguments';
 import isArray from '@foldr/is-array';
@@ -220,6 +222,8 @@ export {
   intersectionFx,
   invoke,
   invokeFx,
+  invokeTimes,
+  invokeTimesFx,
   is,
   isArguments,
   isArray,

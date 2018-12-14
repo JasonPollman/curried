@@ -21,17 +21,20 @@
  * compact(['', 0, 4]);              // => [4]
  */
 export default function compact(array) {
-  const arr = [];
-  const len = array == null ? 0 : array.length;
+  const results = [];
+  if (array == null) return results;
+
+  const len = array.length;
+  if (!len) return results;
 
   let i = 0;
   let index = -1;
 
   while (++index < len) {
     if (array[index]) {
-      arr[i++] = array[index];
+      results[i++] = array[index];
     }
   }
 
-  return arr;
+  return results;
 }

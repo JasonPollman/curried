@@ -22,11 +22,11 @@ import flattenDepth from '@foldr/flatten-depth';
  * @export
  * @example
  *
- * import { flattenDeepFx } from '@foldr/all';
+ * import { flattenDepthFx } from '@foldr/all';
  *
- * flattenDeepFx(1)([1, 2, 3, 4]);                  // => [1, 2, 3, 4]
- * flattenDeepFx(10)([1, [2, [3, 4, [5, 6]], [7]]); // => [1, 2, 3, 4, 5, 6, 7]
- * flattenDeepFx(Infinity)([[1], [2], [3], 4]);     // => [1, 2, 3, 4]
+ * flattenDepthFx(1)([1, 2, 3, 4]);                  // => [1, 2, 3, 4]
+ * flattenDepthFx(10)([1, [2, [3, 4, [5, 6]], [7]]); // => [1, 2, 3, 4, 5, 6, 7]
+ * flattenDepthFx(Infinity)([[1], [2], [3], 4]);     // => [1, 2, 3, 4]
  */
 export default fmake(flattenDepth, {
   arity: 2,

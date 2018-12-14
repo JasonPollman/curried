@@ -1,5 +1,5 @@
 {
-  "name": "@foldr/flatten-deep-fx",
+  "name": "@foldr/flatten-depth-fx",
   "version": "0.0.0",
   "license": "MIT",
   "description": "Functional, autocurried version of @foldr/flatten-deep",

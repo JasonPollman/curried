@@ -51,8 +51,8 @@
     "@foldr/find-last": "^0.0.0",
     "@foldr/flatten": "^0.0.0",
     "@foldr/flatten-deep": "^0.0.0",
-    "@foldr/flatten-deep-fx": "^0.0.0",
     "@foldr/flatten-depth": "^0.0.0",
+    "@foldr/flatten-depth-fx": "^0.0.0",
     "@foldr/for-each": "^0.0.0",
     "@foldr/for-each-right": "^0.0.0",
     "@foldr/get": "^0.0.0",
@@ -178,6 +178,7 @@
     "@foldr/trinary": "^0.0.0",
     "@foldr/true": "^0.0.0",
     "@foldr/unary": "^0.0.0",
+    "@foldr/unique": "^0.0.0",
     "@foldr/values": "^0.0.0",
     "@foldr/zip": "^0.0.0",
     "@foldr/zip-fx": "^0.0.0"

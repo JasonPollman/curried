@@ -52,16 +52,15 @@ function pipe() {
   }
 
   const size = funcs.length;
+  const first = funcs[0];
 
   function receiver() {
-    let value = funcs[0].apply(this, arguments);
+    let value = first.apply(this, arguments);
     let len = 0;
 
     while (++len < size) value = funcs[len].call(this, value);
     return value;
   }
-
-  const first = funcs[0];
 
   // So we can apply function transformations to piped functions
   // we stash the arity here. For example, currying a composed function.

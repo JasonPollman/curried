@@ -12,9 +12,10 @@ module.exports = {
     'json',
     'lcov',
     'text',
+    'text-summary',
   ],
   collectCoverageFrom: [
-    'packages/**/src/**/*.js'
+    'packages/**/src/**/*.js',
   ],
   transform: {
     '^.+\\.jsx?$': 'babel-jest',

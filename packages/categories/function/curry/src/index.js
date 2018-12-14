@@ -36,7 +36,6 @@ import internalCurry, { _ } from '@foldr/internal-curry';
  * triples(1)(_)(2)(_)(3) // => [1, 2, 3]
  * triples(1)(_, 3)(2)    // => [1, 2, 3]
  * triples(_, 2)(1)(3)    // => [1, 2, 3]
- *
  */
 export default function curry(fn, options = {}) {
   if (typeof fn !== 'function') {

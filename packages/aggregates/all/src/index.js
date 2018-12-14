@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 12/13/2018
+ * @since 12/14/2018
  * @file
  */
 
@@ -22,7 +22,10 @@ import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import composeAsync from '@foldr/compose-async';
 import composeFx from '@foldr/compose-fx';
+import concat from '@foldr/concat';
+import concatFx from '@foldr/concat-fx';
 import curry from '@foldr/curry';
+import debounce from '@foldr/debounce';
 import delay from '@foldr/delay';
 import difference from '@foldr/difference';
 import differenceFx from '@foldr/difference-fx';
@@ -189,7 +192,10 @@ export {
   compose,
   composeAsync,
   composeFx,
+  concat,
+  concatFx,
   curry,
+  debounce,
   delay,
   difference,
   differenceFx,

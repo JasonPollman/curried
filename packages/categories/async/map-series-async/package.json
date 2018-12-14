@@ -1,0 +1,31 @@
+{
+  "name": "@foldr/map-series-async",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Maps an array to a promise returning function, serially, in order, one after the next",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/reduce": "^0.0.0"
+  }
+}

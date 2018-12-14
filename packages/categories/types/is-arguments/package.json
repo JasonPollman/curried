@@ -1,0 +1,31 @@
+{
+  "name": "@foldr/is-arguments",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Determines if a value is an arguments object.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/to-string-tag": "^0.0.0"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@foldr/filter-fx",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Functional, autocurried version of @foldr/filter",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/filter": "^0.0.0",
+    "@foldr/internal-fmake": "^0.0.0"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@foldr/nullary",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Limits the arity of a function to 0.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/nary": "^0.0.0",
+    "@foldr/partial": "^0.0.0"
+  }
+}

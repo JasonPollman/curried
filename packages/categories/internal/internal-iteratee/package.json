@@ -1,0 +1,27 @@
+{
+  "name": "@foldr/internal-iteratee",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Internal Use Only. Gets an iteratee function, given a variety of things.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/is-equal": "^0.0.0"
+  }
+}

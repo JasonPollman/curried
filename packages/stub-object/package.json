@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/stub-object",
-  "description": "A function that always creates a new, empty object.",
-  "version": "0.0.0",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

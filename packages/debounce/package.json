@@ -1,6 +1,0 @@
-{
-  "name": "@foldr/debounce",
-  "version": "0.0.0",
-  "license": "ISC",
-  "main": "dist/index.js"
-}

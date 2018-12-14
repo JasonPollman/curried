@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/to-string",
-  "description": "Converts things to a string.",
-  "version": "0.0.0",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

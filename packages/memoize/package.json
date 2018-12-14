@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/memoize",
-  "version": "0.0.0",
-  "description": "Memoizes functions.",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

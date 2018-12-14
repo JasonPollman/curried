@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/internal-symbol",
-  "description": "A Symbol-like polyfill for @foldr internal use only.",
-  "version": "0.0.0",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

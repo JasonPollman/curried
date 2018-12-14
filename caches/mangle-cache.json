@@ -1,0 +1,18 @@
+{
+  "vars": {
+    "props": {
+      "$b": "u",
+      "$c": "n"
+    }
+  },
+  "props": {
+    "props": {
+      "$$$reverse": "u",
+      "$$$empty": "e",
+      "$$$results": "f",
+      "$$$unwrap": "a",
+      "$$$handler": "A",
+      "$$$prepare": "C"
+    }
+  }
+}

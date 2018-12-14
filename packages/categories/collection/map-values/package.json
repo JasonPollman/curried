@@ -1,0 +1,32 @@
+{
+  "name": "@foldr/map-values",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Maps an object's values",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/internal-iteratee": "^0.0.0",
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

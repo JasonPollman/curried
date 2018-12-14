@@ -1,8 +1,0 @@
-{
-  "name": "@foldr/stub-string",
-  "description": "A function that always returns an empty string.",
-  "version": "0.0.0",
-  "license": "MIT",
-  "main": "dist",
-  "sideEffects": false
-}

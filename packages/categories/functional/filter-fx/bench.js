@@ -29,7 +29,7 @@ module.exports = ({
       expect: (result, { deepEqual }) => deepEqual(result, ['a']),
       setup: () => 'abc',
       tests: {
-        foldr: input => foldr.filteFx(x => x === 'a', input),
+        foldr: input => foldr.filterFx(x => x === 'a', input),
         lodash: input => fp.filter(x => x === 'a', input),
         ramda: input => ramda.filter(x => x === 'a', input),
       },

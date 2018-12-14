@@ -9,6 +9,7 @@ import toFinite from '@foldr/to-finite';
 /* eslint-disable no-bitwise, no-param-reassign */
 
 const rand = Math.random;
+const { floor } = Math;
 
 /**
  * Base functionality for `random` function.
@@ -18,8 +19,8 @@ const rand = Math.random;
  * @returns {random} A random number.
  */
 function randomBase(min, max, floating) {
-  const value = (rand() * (max - min)) + min;
-  return floating ? value : (value | 0);
+  const value = (rand() * (max - min + (floating ? 0 : 1))) + min;
+  return floating ? value : floor(value);
 }
 
 /**
@@ -66,7 +67,8 @@ export default function random(lower, upper, floating) {
       return randomBase(0, 1, false);
 
     case 1:
-      return randomBase(0, toFinite(lower), lower % 1);
+      lower = toFinite(lower);
+      return randomBase(0, lower, lower % 1);
 
     case 2:
       lower = toFinite(lower);

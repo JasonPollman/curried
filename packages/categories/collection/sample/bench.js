@@ -12,6 +12,18 @@ module.exports = ({ foldr, lodash }) => {
       tests,
     },
     {
+      name: 'Samples An Array (Empty)',
+      expect: (result, assert) => assert(result === undefined),
+      setup: () => [],
+      tests,
+    },
+    {
+      name: 'Samples An Array (Null)',
+      expect: (result, assert) => assert(result === undefined),
+      setup: () => null,
+      tests,
+    },
+    {
       name: 'Samples An Object',
       expect: (result, assert) => assert(result > 0 && result < 5),
       setup: () => ({

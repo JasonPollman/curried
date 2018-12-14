@@ -6,6 +6,18 @@ module.exports = ({ foldr, lodash }) => {
 
   return [
     {
+      name: 'Compacts an Array: Null',
+      expect: (result, { deepEqual }) => deepEqual(result, []),
+      setup: () => null,
+      tests,
+    },
+    {
+      name: 'Compacts an Array: Empty',
+      expect: (result, { deepEqual }) => deepEqual(result, []),
+      setup: () => [],
+      tests,
+    },
+    {
       name: 'Compacts an Array: Nothing to Compact',
       expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
       setup: () => [1, 2, 3],

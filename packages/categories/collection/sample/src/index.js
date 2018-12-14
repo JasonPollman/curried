@@ -1,6 +1,7 @@
-import random from '@foldr/random';
 import values from '@foldr/values';
 import isArray from '@foldr/is-array';
+
+const rand = Math.random;
 
 /**
  * Gets a random element from the provided collection.
@@ -30,6 +31,7 @@ import isArray from '@foldr/is-array';
 export default function sample(collection) {
   if (!collection) return undefined;
 
-  const items = isArray(collection) ? collection : values(collection);
-  return items[random(items.length - 1)];
+  // eslint-disable-next-line no-param-reassign
+  collection = isArray(collection) ? collection : values(collection);
+  return collection.length ? collection[(rand() * collection.length) | 0] : undefined;
 }

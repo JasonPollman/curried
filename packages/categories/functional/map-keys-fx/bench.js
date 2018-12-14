@@ -1,9 +1,9 @@
 module.exports = ({ fp, foldr }) => {
-  const identity = x => x.toUpperCase();
+  const toUpperCase = x => x.toUpperCase();
 
   const tests = {
-    foldr: input => foldr.mapKeysFx(identity, input),
-    lodash: input => fp.mapKeys(identity, input),
+    foldr: input => foldr.mapKeysFx(toUpperCase, input),
+    lodash: input => fp.mapKeys(toUpperCase, input),
   };
 
   return [
@@ -30,8 +30,8 @@ module.exports = ({ fp, foldr }) => {
         c: { name: 'C' },
       }),
       tests: {
-        foldr: input => foldr.mapKeysFx('name', input),
-        lodash: input => fp.mapKeys('name', input),
+        foldr: input => foldr.mapKeysFx('name')(input),
+        lodash: input => fp.mapKeys('name')(input),
       },
     },
   ];

@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/sample",
+  "name": "@foldr/unique",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Gets a random element from a collection",
+  "description": "Creates a new array with all unique values",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -24,9 +24,5 @@
     "foldr",
     "utility",
     "library"
-  ],
-  "dependencies": {
-    "@foldr/values": "^0.0.0",
-    "@foldr/is-array": "^0.0.0"
-  }
+  ]
 }

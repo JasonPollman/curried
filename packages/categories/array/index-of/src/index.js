@@ -70,6 +70,8 @@ export default function indexOf(array, value, fromIndex) {
   if (!array || !array.length) return -1;
   const start = +fromIndex || 0;
 
+  if (array[0] === value && start === 0) return 0;
+
   // eslint-disable-next-line no-self-compare
   return value !== value ? indexOfNaN(array, start) : indexOfStandard(array, value, start);
 }

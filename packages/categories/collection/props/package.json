@@ -1,0 +1,31 @@
+{
+  "name": "@foldr/props",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Merges objects together like Object.assign, but doesn't mutate.",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/for-each": "^0.0.0"
+  }
+}

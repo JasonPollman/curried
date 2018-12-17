@@ -20,16 +20,13 @@
  * reverse(items); // => ['baz', 'bar', 'foo']
  */
 export default function reverse(array) {
-  const results = [];
+  const size = array ? array.length || 0 : 0;
+  if (!size) return [];
 
-  if (!array || !array.length) return results;
-
-  let i = array.length;
+  let i = size;
   let n = 0;
 
-  while (--i >= 0) {
-    results[n++] = array[i];
-  }
-
+  const results = new Array(size);
+  while (--i >= 0) results[n++] = array[i];
   return results;
 }

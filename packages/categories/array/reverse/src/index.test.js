@@ -29,4 +29,9 @@ describe('reverse', () => {
       expect(reverse(arguments)).toEqual([3, 2, 1]);
     }(1, 2, 3));
   });
+
+  it('Should handle bad inputs', () => {
+    expect(reverse(undefined)).toEqual([]);
+    expect(reverse({})).toEqual([]);
+  });
 });

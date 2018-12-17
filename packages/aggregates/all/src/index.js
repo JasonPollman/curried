@@ -130,6 +130,8 @@ import partial from '@foldr/partial';
 import pick from '@foldr/pick';
 import pickFx from '@foldr/pick-fx';
 import pipe from '@foldr/pipe';
+import props from '@foldr/props';
+import propsRight from '@foldr/props-right';
 import random from '@foldr/random';
 import rearg from '@foldr/rearg';
 import reduce from '@foldr/reduce';
@@ -303,6 +305,8 @@ export {
   pick,
   pickFx,
   pipe,
+  props,
+  propsRight,
   random,
   rearg,
   reduce,

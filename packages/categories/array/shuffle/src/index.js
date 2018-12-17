@@ -4,10 +4,10 @@
  * @returns {Array} The newly cloned array.
  */
 export function cloneArray(arr) {
-  const clone = [];
-  let ind = arr.length;
+  let size = arr.length;
+  const clone = new Array(size);
 
-  while (ind--) clone[ind] = arr[ind];
+  while (size--) clone[size] = arr[size];
   return clone;
 }
 

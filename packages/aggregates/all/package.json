@@ -144,6 +144,8 @@
     "@foldr/pick": "^0.0.0",
     "@foldr/pick-fx": "^0.0.0",
     "@foldr/pipe": "^0.0.0",
+    "@foldr/props": "^0.0.0",
+    "@foldr/props-right": "^0.0.0",
     "@foldr/random": "^0.0.0",
     "@foldr/rearg": "^0.0.0",
     "@foldr/reduce": "^0.0.0",

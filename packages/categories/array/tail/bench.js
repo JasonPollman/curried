@@ -13,6 +13,12 @@ module.exports = ({ foldr, lodash, ramda }) => {
       tests,
     },
     {
+      name: 'Gets Array Tail (Large)',
+      expect: (result, { deepEqual }) => deepEqual(result, Array(999).fill(0)),
+      setup: () => Array(1000).fill(0),
+      tests,
+    },
+    {
       name: 'Gets Array Tail (Empty)',
       expect: (result, { deepEqual }) => deepEqual(result, []),
       setup: () => [],

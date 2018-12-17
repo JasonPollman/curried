@@ -19,12 +19,11 @@
  * tail([]);           // => []
  */
 export default function tail(array) {
-  const results = [];
-  if (!array) return results;
+  let size = array ? array.length || 0 : 0;
+  if (size < 2) return [];
 
-  let size = array.length;
-  if (size < 2) return results;
-
+  const results = new Array(size - 1);
   while (--size) results[size - 1] = array[size];
+
   return results;
 }

@@ -273,7 +273,7 @@ function iteratorFromOptions({
     // over array-like objects, this prevents the `toString.apply` call
     // for arrays, strings, and arguments objects.
     const iterate = collection.length >= 0 ? arrayIterator : mapping[toString.call(collection)];
-    const results = $$results(initial);
+    const results = $$results(initial, collection);
 
     (iterate || objectIterator)(this, results, collection, $$handler, iteratee);
     return $$unwrap ? $$unwrap(results) : results;

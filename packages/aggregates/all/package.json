@@ -83,10 +83,19 @@
     "@foldr/is-buffer": "^0.0.0",
     "@foldr/is-date": "^0.0.0",
     "@foldr/is-equal": "^0.0.0",
+    "@foldr/is-equal-fx": "^0.0.0",
     "@foldr/is-error": "^0.0.0",
     "@foldr/is-finite": "^0.0.0",
     "@foldr/is-function": "^0.0.0",
+    "@foldr/is-greater-than": "^0.0.0",
+    "@foldr/is-greater-than-fx": "^0.0.0",
+    "@foldr/is-greater-than-or-equal": "^0.0.0",
+    "@foldr/is-greater-than-or-equal-fx": "^0.0.0",
     "@foldr/is-integer": "^0.0.0",
+    "@foldr/is-less-than": "^0.0.0",
+    "@foldr/is-less-than-fx": "^0.0.0",
+    "@foldr/is-less-than-or-equal": "^0.0.0",
+    "@foldr/is-less-than-or-equal-fx": "^0.0.0",
     "@foldr/is-map": "^0.0.0",
     "@foldr/is-nan": "^0.0.0",
     "@foldr/is-nil": "^0.0.0",
@@ -172,6 +181,7 @@
     "@foldr/to-kebab-case": "^0.0.0",
     "@foldr/to-lower-case": "^0.0.0",
     "@foldr/to-number": "^0.0.0",
+    "@foldr/to-pairs": "^0.0.0",
     "@foldr/to-path": "^0.0.0",
     "@foldr/to-snake-case": "^0.0.0",
     "@foldr/to-string": "^0.0.0",
@@ -189,6 +199,8 @@
     "@foldr/unique": "^0.0.0",
     "@foldr/values": "^0.0.0",
     "@foldr/zip": "^0.0.0",
-    "@foldr/zip-fx": "^0.0.0"
+    "@foldr/zip-fx": "^0.0.0",
+    "@foldr/zip-object": "^0.0.0",
+    "@foldr/zip-object-fx": "^0.0.0"
   }
 }

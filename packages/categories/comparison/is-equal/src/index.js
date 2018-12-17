@@ -9,11 +9,11 @@
  *
  * @name isEqual
  * @param {any} x The first value to compare.
- * @param {any} y The seconds value to compare.
+ * @param {any} y The second value to compare.
  * @returns {boolean} True if `x` is equal to `y`.
  *
- * @arity 1
- * @category types
+ * @arity 2
+ * @category comparison
  * @publishdoc
  * @since v0.0.0
  * @export

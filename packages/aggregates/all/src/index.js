@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 12/16/2018
+ * @since 2018-12-17
  * @file
  */
 
@@ -69,10 +69,19 @@ import isBoolean from '@foldr/is-boolean';
 import isBuffer from '@foldr/is-buffer';
 import isDate from '@foldr/is-date';
 import isEqual from '@foldr/is-equal';
+import isEqualFx from '@foldr/is-equal-fx';
 import isError from '@foldr/is-error';
 import isFinite from '@foldr/is-finite';
 import isFunction from '@foldr/is-function';
+import isGreaterThan from '@foldr/is-greater-than';
+import isGreaterThanFx from '@foldr/is-greater-than-fx';
+import isGreaterThanOrEqual from '@foldr/is-greater-than-or-equal';
+import isGreaterThanOrEqualFx from '@foldr/is-greater-than-or-equal-fx';
 import isInteger from '@foldr/is-integer';
+import isLessThan from '@foldr/is-less-than';
+import isLessThanFx from '@foldr/is-less-than-fx';
+import isLessThanOrEqual from '@foldr/is-less-than-or-equal';
+import isLessThanOrEqualFx from '@foldr/is-less-than-or-equal-fx';
 import isMap from '@foldr/is-map';
 import isNaN from '@foldr/is-nan';
 import isNil from '@foldr/is-nil';
@@ -158,6 +167,7 @@ import toInteger from '@foldr/to-integer';
 import toKebabCase from '@foldr/to-kebab-case';
 import toLowerCase from '@foldr/to-lower-case';
 import toNumber from '@foldr/to-number';
+import toPairs from '@foldr/to-pairs';
 import toPath from '@foldr/to-path';
 import toSnakeCase from '@foldr/to-snake-case';
 import toString from '@foldr/to-string';
@@ -176,6 +186,8 @@ import unique from '@foldr/unique';
 import values from '@foldr/values';
 import zip from '@foldr/zip';
 import zipFx from '@foldr/zip-fx';
+import zipObject from '@foldr/zip-object';
+import zipObjectFx from '@foldr/zip-object-fx';
 
 const { _ } = curry;
 const VERSION = '0.0.0';
@@ -244,10 +256,19 @@ export {
   isBuffer,
   isDate,
   isEqual,
+  isEqualFx,
   isError,
   isFinite,
   isFunction,
+  isGreaterThan,
+  isGreaterThanFx,
+  isGreaterThanOrEqual,
+  isGreaterThanOrEqualFx,
   isInteger,
+  isLessThan,
+  isLessThanFx,
+  isLessThanOrEqual,
+  isLessThanOrEqualFx,
   isMap,
   isNaN,
   isNil,
@@ -333,6 +354,7 @@ export {
   toKebabCase,
   toLowerCase,
   toNumber,
+  toPairs,
   toPath,
   toSnakeCase,
   toString,
@@ -351,4 +373,6 @@ export {
   values,
   zip,
   zipFx,
+  zipObject,
+  zipObjectFx,
 };

@@ -15,6 +15,12 @@ module.exports = ({ foldr, lodash, ramda }) => {
       tests,
     },
     {
+      name: 'Maps an Array (Large)',
+      expect: (result, { deepEqual }) => deepEqual(result, Array(5000).fill(4)),
+      setup: () => Array(5000).fill(2),
+      tests,
+    },
+    {
       name: 'Maps Invalid',
       expect: (result, { deepEqual }) => deepEqual(result, []),
       setup: () => null,

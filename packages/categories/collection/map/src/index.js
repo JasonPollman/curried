@@ -35,7 +35,13 @@ import iterator from '@foldr/internal-iterator';
  */
 export default iterator({
   $$empty: () => [],
-  $$results: () => [],
+  $$results: (initial, collection) => {
+    // Yes, there is a distinct difference here.
+    // If we know the size `new Array` is faster, otherwise `[]` is.
+    // For arrays and strings, we know the result set size, for objects we don't.
+    const size = collection.length;
+    return size ? new Array(size) : [];
+  },
   $$handler: (context, results, iteratee, i, value, key, collection) => {
     // eslint-disable-next-line no-param-reassign
     results[i] = context && context.capped ? iteratee(value) : iteratee(value, key, collection);

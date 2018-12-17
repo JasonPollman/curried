@@ -22,7 +22,7 @@ describe('repeatFx', () => {
     expect(repeatFx(1)(undefined)).toBe('');
     expect(repeatFx(1)([])).toBe('');
     expect(repeatFx(1)({})).toBe('[object Object]');
-    expect(repeatFx(1)(() => {})).toBe('function(){}');
+    expect(repeatFx(1)(() => {})).toMatch(/function\s{0,1}\(\)\{\}/);
     expect(repeatFx(1)(NaN)).toBe('NaN');
   });
 

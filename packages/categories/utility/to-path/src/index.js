@@ -3,6 +3,8 @@ import isArray from '@foldr/is-array';
 import toString from '@foldr/to-string';
 
 const MAX_ITEMS = 100;
+const PATH_RE = /[[.]/;
+
 export const cache = new memoize.Cache();
 
 /**
@@ -25,6 +27,7 @@ function toStringPath(path) {
   const size = path.length;
 
   if (!path || !size) return results;
+  if (!PATH_RE.test(path)) return [path];
 
   let i = 0;
   let n = 0;
@@ -148,5 +151,20 @@ const toStringPathMemoized = memoize(toStringPath, resolver, cache);
  * toPath('foo[0][1]["bar"].baz'); // => ['foo', '0', '1', 'bar', 'baz']
  */
 export default function toPath(value) {
-  return isArray(value) ? value : toStringPathMemoized(toString(value));
+  if (isArray(value)) return value;
+  const type = typeof value;
+
+  // Got a plain old string...
+  if (value && type === 'string') return toStringPathMemoized(value);
+
+  // Got a number, just convert it to a string.
+  // eslint-disable-next-line prefer-template
+  if (type === 'number') return [value + ''];
+  if (value == null) return [];
+
+  // Got a symbol. We *can* do gets, etc. on a symbol.
+  if (type === 'symbol') return [value];
+
+  // Convert to a string and then compute/memoize
+  return toStringPathMemoized(toString(value));
 }

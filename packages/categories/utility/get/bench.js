@@ -9,6 +9,14 @@ module.exports = ({ foldr, lodash }) => [
     },
   },
   {
+    name: 'Gets A Property (Nil)',
+    expect: (result, assert) => assert(result === 'bar'),
+    tests: {
+      foldr: () => foldr.get(null, 'foo', 'bar'),
+      lodash: () => lodash.get(null, 'foo', 'bar'),
+    },
+  },
+  {
     name: 'Gets A Property (Nested)',
     expect: (result, assert) => assert(result === 1),
     setup: () => ({ foo: { bar: { baz: 1 } } }),
@@ -20,7 +28,7 @@ module.exports = ({ foldr, lodash }) => [
   {
     name: 'Gets A Property (Array)',
     expect: (result, assert) => assert(result === 2),
-    setup: () => ([0, 1, 2, 3, 4, 5]),
+    setup: () => [0, 1, 2, 3, 4, 5],
     tests: {
       foldr: input => foldr.get(input, 2),
       lodash: input => lodash.get(input, 2),

@@ -9,6 +9,12 @@ describe('get', () => {
     expect(get({ foo: 'bar' }, 'foo')).toBe('bar');
   });
 
+  it('Should return `fallback` if nothing is passed', () => {
+    expect(get(0, 'foo', 'fallback')).toBe('fallback');
+    expect(get(null, 'foo', 'fallback')).toBe('fallback');
+    expect(get(undefined, 'foo')).toBe(undefined);
+  });
+
   it('Should get a property by path (depth 2)', () => {
     expect(get({ foo: { bar: 5 } }, 'foo.bar')).toBe(5);
   });
@@ -70,5 +76,35 @@ describe('get', () => {
     expect(get([0, [0, [0, 1, { foo: 'bar' }]]], '1[1].2')).toEqual({ foo: 'bar' });
     expect(get([0, [0, [0, 1, { foo: 'bar' }]]], '1[1][2]')).toEqual({ foo: 'bar' });
     expect(get([0, [0, [0, 1, { foo: 'bar' }]]], '[1][1][2]')).toEqual({ foo: 'bar' });
+  });
+
+  it('Should work for Symbols', () => {
+    const sym = Symbol('foo');
+    const obj = {
+      [sym]: 'symbol value',
+    };
+
+    expect(get(obj, sym)).toBe('symbol value');
+  });
+
+  it('Should work for Symbols (2)', () => {
+    const sym = Symbol('foo');
+    const obj = {
+      [sym]: {
+        [sym]: 'symbol value',
+      },
+    };
+
+    expect(get(obj, [sym, sym])).toBe('symbol value');
+  });
+
+  it('Should work for booleans (false)', () => {
+    const obj = { false: 5 };
+    expect(get(obj, false)).toBe(5);
+  });
+
+  it('Should work for booleans (true)', () => {
+    const obj = { true: 5 };
+    expect(get(obj, true)).toBe(5);
   });
 });

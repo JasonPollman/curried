@@ -19,7 +19,7 @@ describe('toPath', () => {
     cache.clear();
 
     for (let i = 0; i < 102; i++) {
-      expect(toPath(i)).toEqual([i.toString()]);
+      expect(toPath(`${i}.foo`)).toEqual([i.toString(), 'foo']);
       expect(cache.size).toBe(i === 101 ? 1 : i + 1);
     }
 
@@ -79,5 +79,31 @@ describe('toPath', () => {
     expect(toPath('foo[]')).toEqual(['foo']);
     expect(toPath('foo[...]')).toEqual(['foo', '...']);
     expect(toPath('foo".".bar".baz"')).toEqual(['foo"."', 'bar".baz"']);
+  });
+
+  it('Should work for numbers', () => {
+    expect(toPath(0)).toEqual(['0']);
+    expect(toPath(1)).toEqual(['1']);
+    expect(toPath(-1)).toEqual(['-1']);
+  });
+
+  it('Should work for Symbols', () => {
+    const sym = Symbol('foo');
+    expect(toPath(sym)).toEqual([sym]);
+  });
+
+  it('Should work for booleans', () => {
+    expect(toPath(false)).toEqual(['false']);
+    expect(toPath(true)).toEqual(['true']);
+  });
+
+  it('Should work for objects', () => {
+    const x = {
+      toString() {
+        return 'x.y';
+      },
+    };
+
+    expect(toPath(x)).toEqual(['x', 'y']);
   });
 });

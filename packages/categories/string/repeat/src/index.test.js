@@ -22,7 +22,7 @@ describe('repeat', () => {
     expect(repeat(undefined)).toBe('');
     expect(repeat([])).toBe('');
     expect(repeat({}, 1)).toBe('[object Object]');
-    expect(repeat(() => {}, 1)).toBe('function(){}');
+    expect(repeat(() => {}, 1)).toMatch(/function\s{0,1}\(\)\{\}/);
     expect(repeat(NaN, 1)).toBe('NaN');
     expect(repeat(Symbol('foo'), 1)).toBe('Symbol(foo)');
   });

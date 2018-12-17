@@ -30,7 +30,7 @@
     "deploy": "npm run deploy:meta",
     "deploy:meta": "npx babel-node ./scripts/deploy/meta.js",
     "link": "npx lerna link",
-    "lint": "npx eslint packages/**/src/** packages/**/bench.js --fix",
+    "lint": "npx eslint packages/**/src/**/*.js packages/**/bench.js --fix",
     "test": "NODE_ENV=test npx jest ./packages/.*/${PKG:-.*}/.*/*.test.js",
     "test:cover": "npm run test -- --coverage",
     "open:umd": "open ./resources/umd-loader.html",

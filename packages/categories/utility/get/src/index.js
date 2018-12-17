@@ -33,10 +33,12 @@ import toPath from '@foldr/to-path';
  * get(thing, 'foo.xxx', 'fallback'); // => 'fallback'
  */
 export default function get(object, path, fallback) {
+  if (!object) return fallback;
+
   const props = toPath(path);
   const size = props.length;
 
-  if (!size || !object) return fallback;
+  if (!size) return fallback;
 
   let current = object;
   let i = 0;

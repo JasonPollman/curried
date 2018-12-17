@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 12/14/2018
+ * @since 12/16/2018
  * @file
  */
 
@@ -164,6 +164,9 @@ import toTitleCase from '@foldr/to-title-case';
 import toUpperCase from '@foldr/to-upper-case';
 import toUpperFirst from '@foldr/to-upper-first';
 import toWords from '@foldr/to-words';
+import trim from '@foldr/trim';
+import trimCharsFx from '@foldr/trim-chars-fx';
+import trimFx from '@foldr/trim-fx';
 import trinary from '@foldr/trinary';
 import True from '@foldr/true';
 import unary from '@foldr/unary';
@@ -334,6 +337,9 @@ export {
   toUpperCase,
   toUpperFirst,
   toWords,
+  trim,
+  trimCharsFx,
+  trimFx,
   trinary,
   True,
   unary,

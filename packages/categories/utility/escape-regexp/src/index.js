@@ -2,7 +2,10 @@ import toString from '@foldr/to-string';
 
 /* eslint-disable no-param-reassign */
 
-const ESCAPE_RE = /[\\^$.*+?()[\]{}|]/g;
+const ESCAPE_RE = /[\\^$.*+?()[\]{}|]/;
+const ESCAPE_RE_G = /[\\^$.*+?()[\]{}|]/g;
+
+const test = ESCAPE_RE.test.bind(ESCAPE_RE);
 
 /**
  * Escapes characters that have special meaning in regular expressions. That is:
@@ -25,5 +28,5 @@ const ESCAPE_RE = /[\\^$.*+?()[\]{}|]/g;
  */
 export default function escapeRegExp(string) {
   string = toString(string);
-  return string && ESCAPE_RE.test(string) ? string.replace(ESCAPE_RE, '\\$&') : string;
+  return string && test(string) ? string.replace(ESCAPE_RE_G, '\\$&') : string;
 }

@@ -10,5 +10,13 @@ module.exports = ({ foldr, lodash }) => {
       expect: (result, { deepEqual }) => deepEqual(result, []),
       tests,
     },
+    {
+      name: 'Returns `[]`',
+      expect: (result, { deepEqual }) => deepEqual(result, []),
+      tests: {
+        foldr: () => foldr.stubArray('x'),
+        lodash: () => lodash.stubArray('x'),
+      },
+    },
   ];
 };

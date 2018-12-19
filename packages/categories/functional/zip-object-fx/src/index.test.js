@@ -6,13 +6,13 @@ describe('zipObjectFx', () => {
   });
 
   it('Should always return an object', () => {
-    expect(zipObjectFx(undefined)).toEqual({});
-    expect(zipObjectFx(null)).toEqual({});
-    expect(zipObjectFx(NaN)).toEqual({});
-    expect(zipObjectFx(Infinity)).toEqual({});
-    expect(zipObjectFx(0)).toEqual({});
-    expect(zipObjectFx(Symbol('foo'))).toEqual({});
-    expect(zipObjectFx(-1)).toEqual({});
+    expect(zipObjectFx(undefined)(undefined)).toEqual({});
+    expect(zipObjectFx(null)(null)).toEqual({});
+    expect(zipObjectFx(NaN)(NaN)).toEqual({});
+    expect(zipObjectFx(Infinity)(Infinity)).toEqual({});
+    expect(zipObjectFx(0)(0)).toEqual({});
+    expect(zipObjectFx(Symbol('foo'))('foo')).toEqual({});
+    expect(zipObjectFx(-1)(1)).toEqual({});
   });
 
   it('Should zip an object', () => {

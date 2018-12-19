@@ -6,6 +6,12 @@ module.exports = ({ foldr, lodash }) => {
 
   return [
     {
+      name: 'Escapes Regular Expressions (0)',
+      expect: (result, assert) => assert(result === ''),
+      setup: () => '',
+      tests,
+    },
+    {
       name: 'Escapes Regular Expressions (1)',
       expect: (result, assert) => assert(result === 'foo\\$bar'),
       setup: () => 'foo$bar',

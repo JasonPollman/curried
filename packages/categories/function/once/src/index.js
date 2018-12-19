@@ -47,7 +47,6 @@ export default function once(fn) {
 
     amt++;
     res = fn.apply(this, arguments);
-
     return res;
   }
 

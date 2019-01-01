@@ -1,5 +1,5 @@
 {
-  "name": "@foldr/nth",
+  "name": "@foldr/slice",
   "version": "0.0.0",
   "license": "MIT",
   "description": "Gets the nth element from an array",
@@ -24,5 +24,8 @@
     "foldr",
     "utility",
     "library"
-  ]
+  ],
+  "dependencies": {
+    "@foldr/to-integer": "^0.0.0"
+  }
 }

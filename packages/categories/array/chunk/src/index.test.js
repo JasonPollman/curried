@@ -76,4 +76,18 @@ describe('chunk', () => {
     expect(results).toEqual([[1, 2, 3], [4]]);
     expect(results).not.toBe(array);
   });
+
+  it('Should handle bad inputs', () => {
+    expect(chunk(null)).toEqual([]);
+    expect(chunk(undefined)).toEqual([]);
+    expect(chunk(false)).toEqual([]);
+    expect(chunk(true)).toEqual([]);
+    expect(chunk({})).toEqual([]);
+    expect(chunk(NaN)).toEqual([]);
+    expect(chunk(Symbol('foo'))).toEqual([]);
+    expect(chunk(undefined)).toEqual([]);
+    expect(chunk(Infinity)).toEqual([]);
+    expect(chunk(0)).toEqual([]);
+    expect(chunk(null)).toEqual([]);
+  });
 });

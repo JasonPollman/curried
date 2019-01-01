@@ -17,5 +17,10 @@ describe('tail', () => {
     expect(tail(null)).toEqual([]);
     expect(tail()).toEqual([]);
     expect(tail({})).toEqual([]);
+    expect(tail(true)).toEqual([]);
+    expect(tail(false)).toEqual([]);
+    expect(tail(NaN)).toEqual([]);
+    expect(tail(Symbol('foo'))).toEqual([]);
+    expect(tail(undefined)).toEqual([]);
   });
 });

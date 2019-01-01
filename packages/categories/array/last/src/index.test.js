@@ -11,5 +11,10 @@ describe('last', () => {
     expect(last(null)).toEqual(undefined);
     expect(last()).toEqual(undefined);
     expect(last({})).toEqual(undefined);
+    expect(last(true)).toEqual(undefined);
+    expect(last(false)).toEqual(undefined);
+    expect(last(NaN)).toEqual(undefined);
+    expect(last(Symbol('foo'))).toEqual(undefined);
+    expect(last(undefined)).toEqual(undefined);
   });
 });

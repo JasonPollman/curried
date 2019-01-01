@@ -12,4 +12,15 @@ describe('head', () => {
     expect(head()).toEqual(undefined);
     expect(head({})).toEqual(undefined);
   });
+
+  it('Should handle bad input', () => {
+    expect(head(true)).toEqual(undefined);
+    expect(head(false)).toEqual(undefined);
+    expect(head(NaN)).toEqual(undefined);
+    expect(head(Symbol('foo'))).toEqual(undefined);
+    expect(head(undefined)).toEqual(undefined);
+    expect(head(Infinity)).toEqual(undefined);
+    expect(head(0)).toEqual(undefined);
+    expect(head(null)).toEqual(undefined);
+  });
 });

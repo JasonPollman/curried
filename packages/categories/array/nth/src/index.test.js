@@ -26,6 +26,10 @@ describe('nth', () => {
   });
 
   it('Should return undefined if param is not an array', () => {
+    expect(nth(true)).toEqual(undefined);
+    expect(nth(false)).toEqual(undefined);
+    expect(nth(Symbol('foo'))).toEqual(undefined);
+    expect(nth(NaN)).toEqual(undefined);
     expect(nth()).toEqual(undefined);
     expect(nth(0)).toEqual(undefined);
     expect(nth(null, 2)).toEqual(undefined);

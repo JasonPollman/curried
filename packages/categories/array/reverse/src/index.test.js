@@ -31,6 +31,10 @@ describe('reverse', () => {
   });
 
   it('Should handle bad inputs', () => {
+    expect(reverse(true)).toEqual([]);
+    expect(reverse(false)).toEqual([]);
+    expect(reverse(NaN)).toEqual([]);
+    expect(reverse(Symbol('foo'))).toEqual([]);
     expect(reverse(undefined)).toEqual([]);
     expect(reverse({})).toEqual([]);
   });

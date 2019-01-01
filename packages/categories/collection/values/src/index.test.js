@@ -10,6 +10,9 @@ describe('values', () => {
     expect(values(null)).toEqual([]);
     expect(values(NaN)).toEqual([]);
     expect(values(undefined)).toEqual([]);
+    expect(values(true)).toEqual([]);
+    expect(values(false)).toEqual([]);
+    expect(values(Symbol('foo'))).toEqual([]);
     expect(values(0)).toEqual([]);
     expect(values('')).toEqual([]);
   });

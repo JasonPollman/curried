@@ -46,4 +46,15 @@ describe('zip', () => {
   it('Should zip arrays (strings given)', () => {
     expect(zip('foo', 'bar')).toEqual([['f', 'b'], ['o', 'a'], ['o', 'r']]);
   });
+
+  it('Should handle bad input', () => {
+    expect(zip(true)).toEqual([]);
+    expect(zip(false)).toEqual([]);
+    expect(zip(NaN)).toEqual([]);
+    expect(zip(Symbol('foo'))).toEqual([]);
+    expect(zip(undefined)).toEqual([]);
+    expect(zip(Infinity)).toEqual([]);
+    expect(zip(0)).toEqual([]);
+    expect(zip(null)).toEqual([]);
+  });
 });

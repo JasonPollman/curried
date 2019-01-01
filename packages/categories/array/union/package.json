@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/nth",
+  "name": "@foldr/union",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Gets the nth element from an array",
+  "description": "Creates an array of the unique values that exist in all of the given arrays",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -24,5 +24,9 @@
     "foldr",
     "utility",
     "library"
-  ]
+  ],
+  "dependencies": {
+    "@foldr/index-of": "^0.0.0",
+    "@foldr/is-array-like": "^0.0.0"
+  }
 }

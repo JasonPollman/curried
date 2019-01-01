@@ -15,6 +15,9 @@ describe('initial', () => {
   });
 
   it('Should return an empty array for edge cases', () => {
+    expect(initial(undefined)).toEqual([]);
+    expect(initial(false)).toEqual([]);
+    expect(initial(true)).toEqual([]);
     expect(initial(null)).toEqual([]);
     expect(initial()).toEqual([]);
     expect(initial({})).toEqual([]);

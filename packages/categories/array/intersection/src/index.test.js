@@ -75,4 +75,18 @@ describe('intersection', () => {
       Array(1000).fill(0),
     )).toEqual([0]);
   });
+
+  it('Should handle bad inputs', () => {
+    expect(intersection(null)).toEqual([]);
+    expect(intersection(undefined)).toEqual([]);
+    expect(intersection(false)).toEqual([]);
+    expect(intersection(true)).toEqual([]);
+    expect(intersection({})).toEqual([]);
+    expect(intersection(NaN)).toEqual([]);
+    expect(intersection(Symbol('foo'))).toEqual([]);
+    expect(intersection(undefined)).toEqual([]);
+    expect(intersection(Infinity)).toEqual([]);
+    expect(intersection(0)).toEqual([]);
+    expect(intersection(null)).toEqual([]);
+  });
 });

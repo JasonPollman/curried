@@ -45,4 +45,18 @@ describe('compact', () => {
     expect(compact('')).toEqual([]);
     expect(compact({ foo: 'bar' })).toEqual([]);
   });
+
+  it('Should handle bad inputs', () => {
+    expect(compact(null)).toEqual([]);
+    expect(compact(undefined)).toEqual([]);
+    expect(compact(false)).toEqual([]);
+    expect(compact(true)).toEqual([]);
+    expect(compact({})).toEqual([]);
+    expect(compact(NaN)).toEqual([]);
+    expect(compact(Symbol('foo'))).toEqual([]);
+    expect(compact(undefined)).toEqual([]);
+    expect(compact(Infinity)).toEqual([]);
+    expect(compact(0)).toEqual([]);
+    expect(compact(null)).toEqual([]);
+  });
 });

@@ -27,6 +27,8 @@ const { ceil } = Math;
  * chunk([1, 2, 3, 4, 5], 3); // => [[1, 2], [3, 4], [5]]
  */
 export default function chunk(array, chunkSize) {
+  if (!array) return [];
+
   const size = array.length;
   if (!size) return [];
 

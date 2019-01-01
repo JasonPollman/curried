@@ -10,6 +10,10 @@ describe('size', () => {
     expect(size(null)).toEqual(0);
     expect(size(NaN)).toEqual(0);
     expect(size(undefined)).toEqual(0);
+    expect(size(true)).toEqual(0);
+    expect(size(false)).toEqual(0);
+    expect(size(Symbol('foo'))).toEqual(0);
+    expect(size(Infinity)).toEqual(0);
     expect(size(0)).toEqual(0);
     expect(size('')).toEqual(0);
   });

@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 12/18/2018
+ * @since 2019-1-1
  * @file
  */
 
@@ -153,6 +153,7 @@ import reverse from '@foldr/reverse';
 import sample from '@foldr/sample';
 import shuffle from '@foldr/shuffle';
 import size from '@foldr/size';
+import slice from '@foldr/slice';
 import some from '@foldr/some';
 import someFx from '@foldr/some-fx';
 import stubArray from '@foldr/stub-array';
@@ -182,8 +183,11 @@ import trimFx from '@foldr/trim-fx';
 import trinary from '@foldr/trinary';
 import True from '@foldr/true';
 import unary from '@foldr/unary';
+import union from '@foldr/union';
+import unionFx from '@foldr/union-fx';
 import unique from '@foldr/unique';
 import values from '@foldr/values';
+import walk from '@foldr/walk';
 import zip from '@foldr/zip';
 import zipFx from '@foldr/zip-fx';
 import zipObject from '@foldr/zip-object';
@@ -340,6 +344,7 @@ export {
   sample,
   shuffle,
   size,
+  slice,
   some,
   someFx,
   stubArray,
@@ -369,8 +374,11 @@ export {
   trinary,
   True,
   unary,
+  union,
+  unionFx,
   unique,
   values,
+  walk,
   zip,
   zipFx,
   zipObject,

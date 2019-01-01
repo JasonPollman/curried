@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/nth",
+  "name": "@foldr/walk",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Gets the nth element from an array",
+  "description": "Walks an object and calls a function for each item in the object.",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -24,5 +24,9 @@
     "foldr",
     "utility",
     "library"
-  ]
+  ],
+  "dependencies": {
+    "@foldr/keys": "^0.0.0",
+    "@foldr/is-object": "^0.0.0"
+  }
 }

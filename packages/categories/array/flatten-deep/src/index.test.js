@@ -28,5 +28,11 @@ describe('flattenDeep', () => {
     expect(flattenDeep(false)).toEqual([]);
     expect(flattenDeep(true)).toEqual([]);
     expect(flattenDeep({})).toEqual([]);
+    expect(flattenDeep(NaN)).toEqual([]);
+    expect(flattenDeep(Symbol('foo'))).toEqual([]);
+    expect(flattenDeep(undefined)).toEqual([]);
+    expect(flattenDeep(Infinity)).toEqual([]);
+    expect(flattenDeep(0)).toEqual([]);
+    expect(flattenDeep(null)).toEqual([]);
   });
 });

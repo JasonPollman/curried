@@ -30,4 +30,15 @@ describe('indexOf', () => {
     expect(indexOf([1, 2, NaN, 3], NaN)).toBe(2);
     expect(indexOf([1, 2, 3], NaN)).toBe(-1);
   });
+
+  it('Should handle bad input', () => {
+    expect(indexOf(true)).toEqual(-1);
+    expect(indexOf(false)).toEqual(-1);
+    expect(indexOf(NaN)).toEqual(-1);
+    expect(indexOf(Symbol('foo'))).toEqual(-1);
+    expect(indexOf(undefined)).toEqual(-1);
+    expect(indexOf(Infinity)).toEqual(-1);
+    expect(indexOf(0)).toEqual(-1);
+    expect(indexOf(null)).toEqual(-1);
+  });
 });

@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/nth",
+  "name": "@foldr/union-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Gets the nth element from an array",
+  "description": "Functional, autocurried version of @foldr/union",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -24,5 +24,9 @@
     "foldr",
     "utility",
     "library"
-  ]
+  ],
+  "dependencies": {
+    "@foldr/union": "^0.0.0",
+    "@foldr/internal-fmake": "^0.0.0"
+  }
 }

@@ -16,4 +16,17 @@ describe('concat', () => {
   it('Should default to empty array given no arguments', () => {
     expect(concat()).toEqual([]);
   });
+
+  it('Should handle bad inputs', () => {
+    expect(concat(null)).toEqual([null]);
+    expect(concat(undefined)).toEqual([undefined]);
+    expect(concat(false)).toEqual([false]);
+    expect(concat(true)).toEqual([true]);
+    expect(concat({})).toEqual([{}]);
+    expect(concat(NaN)).toEqual([NaN]);
+    expect(concat(undefined)).toEqual([undefined]);
+    expect(concat(Infinity)).toEqual([Infinity]);
+    expect(concat(0)).toEqual([0]);
+    expect(concat(null)).toEqual([null]);
+  });
 });

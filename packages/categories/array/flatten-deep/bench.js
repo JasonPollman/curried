@@ -23,6 +23,18 @@ module.exports = ({
       tests,
     },
     {
+      name: 'Flattens an Array: Nothing to flatten (Large)',
+      expect: (result, { deepEqual }) => deepEqual(result, new Array(10000).fill(0)),
+      setup: () => new Array(10000).fill(0),
+      tests,
+    },
+    {
+      name: 'Flattens an Array (Large, Deeeep)',
+      expect: (result, { deepEqual }) => deepEqual(result, new Array(10000).fill(0)),
+      setup: () => new Array(10000).fill([[[[0]]]]),
+      tests,
+    },
+    {
       name: 'Flattens an Array: Frequent',
       expect: (result, { deepEqual }) => deepEqual(result, [1, 1, 2, 1, 2, 3]),
       setup: () => [[1], [1, 2], [1, 2, 3], []],

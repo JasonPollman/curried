@@ -1,0 +1,31 @@
+{
+  "name": "@foldr/partition",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Partitions a collection into two groups: one for which `iteratee` returns truthy for and one for which `iteratee` returns falsy for",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/internal-iterator": "^0.0.0"
+  }
+}

@@ -7,31 +7,37 @@ module.exports = ({ foldr, lodash, ramda }) => {
 
   return [
     {
-      name: 'Gets Values (1)',
+      name: 'Gets Values (Null)',
       expect: (result, { deepEqual }) => deepEqual(result, []),
       tests,
       setup: () => null,
     },
     {
-      name: 'Gets Values (2)',
+      name: 'Gets Values (Array)',
       expect: (result, { deepEqual }) => deepEqual(result, [1, 2, 3]),
       tests,
       setup: () => [1, 2, 3],
     },
     {
-      name: 'Gets Values (3)',
+      name: 'Gets Values (Array, Large)',
+      expect: (result, { deepEqual }) => deepEqual(result, new Array(10000).fill(1)),
+      tests,
+      setup: () => new Array(10000).fill(1),
+    },
+    {
+      name: 'Gets Values (Empty Array)',
       expect: (result, { deepEqual }) => deepEqual(result, []),
       tests,
       setup: () => [],
     },
     {
-      name: 'Gets Values (4)',
+      name: 'Gets Values (Object)',
       expect: (result, { deepEqual }) => deepEqual(result, ['bar', 'quxx']),
       tests,
       setup: () => ({ foo: 'bar', baz: 'quxx' }),
     },
     {
-      name: 'Gets Values (5)',
+      name: 'Gets Values (String)',
       expect: (result, { deepEqual }) => deepEqual(result, ['f', 'o', 'o', 'b', 'a', 'r']),
       tests,
       setup: () => 'foobar',

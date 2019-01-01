@@ -10,6 +10,7 @@
  * @param {number} index The index of the array to get the element of.
  * @returns {any} The value at the nth index of an array.
  *
+ * @arity 1
  * @category array
  * @publishdoc
  * @since v0.0.0

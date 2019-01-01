@@ -44,6 +44,7 @@ import flattenDepth from '@foldr/flatten-depth';
 import flattenDepthFx from '@foldr/flatten-depth-fx';
 import forEach from '@foldr/for-each';
 import forEachRight from '@foldr/for-each-right';
+import fromPairs from '@foldr/from-pairs';
 import get from '@foldr/get';
 import getFx from '@foldr/get-fx';
 import has from '@foldr/has';
@@ -136,6 +137,8 @@ import padFx from '@foldr/pad-fx';
 import padStart from '@foldr/pad-start';
 import padStartFx from '@foldr/pad-start-fx';
 import partial from '@foldr/partial';
+import partition from '@foldr/partition';
+import partitionFx from '@foldr/partition-fx';
 import pick from '@foldr/pick';
 import pickFx from '@foldr/pick-fx';
 import pipe from '@foldr/pipe';
@@ -235,6 +238,7 @@ export {
   flattenDepthFx,
   forEach,
   forEachRight,
+  fromPairs,
   get,
   getFx,
   has,
@@ -327,6 +331,8 @@ export {
   padStart,
   padStartFx,
   partial,
+  partition,
+  partitionFx,
   pick,
   pickFx,
   pipe,

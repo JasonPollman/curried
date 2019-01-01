@@ -17,6 +17,7 @@ const EmptyArray = () => [];
  * - `key` is the key of the current item in the collection being iterated over.
  * - `collection` is the passed in collection.
  *
+ * @name filter
  * @param {Array|Object|String|Map|Set|Arguments} collection The collection to iterate over.
  * @param {function} filterFn The iteratee function to use while filtering.
  * @returns {Array} The results of mapping `collection` to `filterFn`.

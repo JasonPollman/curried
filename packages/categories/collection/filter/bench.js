@@ -19,6 +19,24 @@ module.exports = ({
       tests,
     },
     {
+      name: 'Filters an Array (2)',
+      expect: (result, { deepEqual }) => deepEqual(result, [2, 4, 6, 8, 2]),
+      setup: () => [1, 2, 3, 4, 5, 6, 7, 8, 9, 2],
+      tests,
+    },
+    {
+      name: 'Filters an Array (Large)',
+      expect: (result, { deepEqual }) => deepEqual(result, []),
+      setup: () => new Array(10000).fill(1),
+      tests,
+    },
+    {
+      name: 'Filters an Array (Large, 2)',
+      expect: (result, { deepEqual }) => deepEqual(result, new Array(10000).fill(2)),
+      setup: () => new Array(10000).fill(2),
+      tests,
+    },
+    {
       name: 'Filters Invalid',
       expect: (result, { deepEqual }) => deepEqual(result, []),
       setup: () => null,

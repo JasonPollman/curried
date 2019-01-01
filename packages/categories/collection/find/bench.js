@@ -25,6 +25,18 @@ module.exports = ({
       tests,
     },
     {
+      name: 'Finds (Array Large, 1)',
+      expect: (result, assert) => assert(result === undefined),
+      setup: () => new Array(10000).fill(1),
+      tests,
+    },
+    {
+      name: 'Finds (Array Large, 2)',
+      expect: (result, assert) => assert(result === 2),
+      setup: () => new Array(10000).fill(2),
+      tests,
+    },
+    {
       name: 'Finds (Array of Strings)',
       expect: (result, assert) => assert(result === undefined),
       setup: () => ['a', 'b', 'c'],

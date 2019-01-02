@@ -5,7 +5,7 @@ module.exports = ({
 }) => {
   const tests = {
     foldr: input => foldr.flattenDepthFx(10)(input),
-    lodash: input => fp.flattenDepth(10, input),
+    lodash: input => fp.flattenDepth(10)(input),
     ramda: input => ramda.flatten(input),
   };
 

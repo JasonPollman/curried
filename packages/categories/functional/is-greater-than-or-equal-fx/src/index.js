@@ -29,4 +29,3 @@ export default fmake(isGreaterThanOrEqual, {
   arity: 2,
   signature: [1, 0],
 });
-

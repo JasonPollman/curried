@@ -1,5 +1,5 @@
-import spread from '.';
 import SafeSymbolFor from '@foldr/internal-symbol';
+import spread from '.';
 
 const ARITY = SafeSymbolFor('source-arity');
 

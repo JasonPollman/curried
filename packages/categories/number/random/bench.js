@@ -5,7 +5,7 @@ module.exports = ({ foldr, lodash }) => [
     tests: {
       foldr: () => foldr.random(),
       lodash: () => lodash.random(),
-    }
+    },
   },
   {
     name: 'Gets a random number (1)',
@@ -13,7 +13,7 @@ module.exports = ({ foldr, lodash }) => [
     tests: {
       foldr: () => foldr.random(0, 10),
       lodash: () => lodash.random(0, 10),
-    }
+    },
   },
   {
     name: 'Gets a random number (3)',
@@ -21,7 +21,7 @@ module.exports = ({ foldr, lodash }) => [
     tests: {
       foldr: () => foldr.random(10),
       lodash: () => lodash.random(10),
-    }
+    },
   },
   {
     name: 'Gets a random number (4)',
@@ -29,7 +29,7 @@ module.exports = ({ foldr, lodash }) => [
     tests: {
       foldr: () => foldr.random(-10, 10),
       lodash: () => lodash.random(-10, 10),
-    }
+    },
   },
   {
     name: 'Gets a random number (5)',
@@ -37,7 +37,7 @@ module.exports = ({ foldr, lodash }) => [
     tests: {
       foldr: () => foldr.random(10, 10),
       lodash: () => lodash.random(10, 10),
-    }
+    },
   },
   {
     name: 'Gets a random number (6)',
@@ -45,6 +45,6 @@ module.exports = ({ foldr, lodash }) => [
     tests: {
       foldr: () => foldr.random(10, 11, true),
       lodash: () => lodash.random(10, 11, true),
-    }
+    },
   },
 ];

@@ -145,6 +145,7 @@ import partitionFx from '@foldr/partition-fx';
 import pick from '@foldr/pick';
 import pickFx from '@foldr/pick-fx';
 import pipe from '@foldr/pipe';
+import pipeAsync from '@foldr/pipe-async';
 import props from '@foldr/props';
 import propsRight from '@foldr/props-right';
 import random from '@foldr/random';
@@ -343,6 +344,7 @@ export {
   pick,
   pickFx,
   pipe,
+  pipeAsync,
   props,
   propsRight,
   random,

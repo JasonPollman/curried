@@ -1,7 +1,8 @@
-module.exports = ({ foldr, lodash }) => {
+module.exports = ({ foldr, lodash, ramda }) => {
   const tests = {
     foldr: input => foldr.isGreaterThanOrEqual(...input),
     lodash: input => lodash.gte(...input),
+    ramda: input => ramda.gte(...input),
   };
 
   return [

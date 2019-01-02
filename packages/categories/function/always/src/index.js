@@ -5,6 +5,7 @@
  * @param {any} value The value that the newly created function will return.
  * @returns {function} The literal boolean `false`.
  *
+ * @arity 1
  * @category function
  * @publishdoc
  * @since v0.0.0

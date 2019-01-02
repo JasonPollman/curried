@@ -260,19 +260,18 @@ function iteratorFromOptions({
   arrayIterator,
   objectIterator,
 }) {
-  return function iterator(collection, userIteratee, initial) {
-    if (!collection) return $$empty(initial);
+  return function iterator(collection, iteratee, initial) {
+    if (!collection) return $$empty(initial, collection);
 
-    let iteratee = $$prepare ? $$prepare(userIteratee) : userIteratee;
-    if (typeof iteratee !== 'function') iteratee = identity;
+    // eslint-disable-next-line no-param-reassign
+    if ($$prepare) iteratee = $$prepare(iteratee);
 
-    // This is an optimization, since most "iterator" functions iterate
-    // over array-like objects, this prevents the `toString.apply` call
-    // for arrays, strings, and arguments objects.
-    const iterate = collection.length >= 0 ? arrayIterator : mapping[toString.call(collection)];
+    const iterate = collection.length >= 0 ? arrayIterator : (
+      mapping[toString.call(collection)] || objectIterator
+    );
+
     const results = $$results(initial, collection);
-
-    (iterate || objectIterator)(this, results, collection, $$handler, iteratee);
+    iterate(this, results, collection, $$handler, typeof iteratee !== 'function' ? identity : iteratee);
     return $$unwrap ? $$unwrap(results) : results;
   };
 }

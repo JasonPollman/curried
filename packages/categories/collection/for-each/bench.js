@@ -10,7 +10,12 @@ module.exports = ({ foldr, lodash, ramda }) => {
   return [
     {
       name: 'Iterates over each item (Array)',
-      setup: () => [1, 2, 3],
+      setup: () => [1, 2, 3, 4, 5, 6],
+      tests,
+    },
+    {
+      name: 'Iterates over each item (Array, Large)',
+      setup: () => new Array(10000).fill(0),
       tests,
     },
     {

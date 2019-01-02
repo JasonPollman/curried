@@ -216,7 +216,7 @@ function outputMangleCache() {
   return fs.outputJsonAsync(mangeCacheSourcepath, mangleCache);
 }
 
-const transpile = compose(
+const bundle = compose(
   logBundleSizeStats,
   outputMangleCache,
   logTap(green.bold('Packages bundled successfully!')),
@@ -226,7 +226,7 @@ const transpile = compose(
   logTap(cyan.bold('[BUNDLING PACKAGES]')),
 );
 
-transpile(PROJECT_PACKAGES_ROOT).catch((e) => {
+bundle(PROJECT_PACKAGES_ROOT).catch((e) => {
   log(red.bold(e.stack));
   process.exit(1);
 });

@@ -33,6 +33,7 @@
     "lint": "npx eslint packages/**/src/**/*.js packages/**/bench.js --fix",
     "test": "NODE_ENV=test npx jest ./packages/.*/${PKG:-.*}/.*/*.test.js",
     "test:cover": "npm run test -- --coverage",
+    "test:shake": "npx babel-node ./scripts/shake",
     "open:umd": "open ./resources/umd-loader.html",
     "open:coverage": "open ./coverage/lcov-report/index.html",
     "serve": "serve . -p 3000"

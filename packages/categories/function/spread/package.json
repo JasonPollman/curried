@@ -1,0 +1,33 @@
+{
+  "name": "@foldr/spread",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Turns a function that receives a list of arguments into a unary array receiving function",
+  "main": "dist",
+  "author": "CloudVessel",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CloudVessel/foldr"
+  },
+  "contributors": [
+    {
+      "name": "Jason James Pollman",
+      "email": "jasonjpollman@gmail.com"
+    },
+    {
+      "name": "Brodey Newman",
+      "email": "brodeynewman@gmail.com"
+    }
+  ],
+  "keywords": [
+    "foldr",
+    "utility",
+    "library"
+  ],
+  "dependencies": {
+    "@foldr/to-integer": "^0.0.0",
+    "@foldr/internal-symbol": "^0.0.0",
+    "@foldr/is-object-like": "^0.0.0"
+  }
+}

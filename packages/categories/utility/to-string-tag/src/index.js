@@ -25,5 +25,5 @@ const { toString } = Object.prototype;
  * toStringTag('foo'); // => '[object String]'
  */
 export default function toStringTag(x) {
-  return toString.apply(x);
+  return toString.call(x);
 }

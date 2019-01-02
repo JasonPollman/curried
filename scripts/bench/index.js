@@ -40,6 +40,10 @@ import {
   globAsync,
 } from '../utils';
 
+// See https://benchmarkjs.com/docs#options_minSamples
+// Note: the default is 5.
+Benchmark.options.minSamples = 25;
+
 const LIBRARIES = {
   fp,
   foldr,
@@ -217,7 +221,7 @@ function executeBenchmarkSuites(suites) {
   }
 
   return Promise.mapSeries(suites, suite => (
-    Promise.delay(100).then(() => executeBenchmarkSuite(suite))
+    Promise.delay(1000).then(() => executeBenchmarkSuite(suite))
   ));
 }
 

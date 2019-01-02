@@ -25,9 +25,21 @@ module.exports = ({ foldr, lodash, ramda }) => {
       tests,
     },
     {
-      name: 'Gets a Value\'s Index (2)',
+      name: 'Gets a Value\'s Index (4)',
       expect: (result, assert) => assert(result === 1),
       setup: () => [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 2],
+      tests,
+    },
+    {
+      name: 'Gets a Value\'s Index (Large)',
+      expect: (result, assert) => assert(result === 0),
+      setup: () => [new Array(10000).fill(0), 0],
+      tests,
+    },
+    {
+      name: 'Gets a Value\'s Index (Large, 2)',
+      expect: (result, assert) => assert(result === -1),
+      setup: () => [new Array(10000).fill(0), 1],
       tests,
     },
     {

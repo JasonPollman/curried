@@ -86,12 +86,15 @@ function iterateeForArray(tuple) {
  * @export
  */
 export default function getShorthandIteratee(given) {
-  if (!given) return identity;
+  if (given == null) return identity;
 
   switch (given.constructor) {
     case Function: return given;
     case Array: return iterateeForArray(given);
-    case String: return iterateeForString(given);
+
+    case String:
+    case Number: return iterateeForString(given);
+
     case Object: return iterateeForObject(given);
     default: return identity;
   }

@@ -83,7 +83,7 @@ function formatDoc(pkg, { name, version }, docsMapping) {
       package: { name, version },
       info: description,
       description: marked(description),
-      arity: tags.find(tag => tag.title === 'arity') || 'Infinity',
+      arity: (tags.find(tag => tag.title === 'arity') || { value: 'Infinity' }).value,
       categories: tags.filter(tag => tag.title === 'category').map(x => x.value),
       params: walkRecursiveInlineMarkdownRender(params),
       returns: walkRecursiveInlineMarkdownRender(returns),

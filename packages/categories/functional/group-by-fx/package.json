@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/find",
+  "name": "@foldr/group-by-fx",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Like Array#find, but for collections",
+  "description": "Functional, autocurried version of @foldr/group-by",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -26,7 +26,7 @@
     "library"
   ],
   "dependencies": {
-    "@foldr/internal-iterator": "^0.0.0",
-    "@foldr/internal-iteratee": "^0.0.0"
+    "@foldr/group-by": "^0.0.0",
+    "@foldr/internal-fmake": "^0.0.0"
   }
 }

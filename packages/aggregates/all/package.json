@@ -61,6 +61,8 @@
     "@foldr/from-pairs": "^0.0.0",
     "@foldr/get": "^0.0.0",
     "@foldr/get-fx": "^0.0.0",
+    "@foldr/group-by": "^0.0.0",
+    "@foldr/group-by-fx": "^0.0.0",
     "@foldr/has": "^0.0.0",
     "@foldr/has-fx": "^0.0.0",
     "@foldr/head": "^0.0.0",

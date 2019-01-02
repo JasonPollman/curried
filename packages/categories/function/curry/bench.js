@@ -41,7 +41,7 @@ module.exports = ({ foldr, lodash, ramda }) => {
       },
     },
     {
-      name: 'Curried Function Invocation (Pleacholders)',
+      name: 'Curried Function Invocation (Placeholders)',
       expect: (result, assert) => assert(result === 3),
       tests: {
         foldr: () => fsum(foldr._, 2)(1),

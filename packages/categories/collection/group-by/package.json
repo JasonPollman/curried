@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/find",
+  "name": "@foldr/group-by",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Like Array#find, but for collections",
+  "description": "Groups a collection's values into an object of arrays keyed by an iteratee function",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,

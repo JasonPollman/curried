@@ -47,6 +47,8 @@ import forEachRight from '@foldr/for-each-right';
 import fromPairs from '@foldr/from-pairs';
 import get from '@foldr/get';
 import getFx from '@foldr/get-fx';
+import groupBy from '@foldr/group-by';
+import groupByFx from '@foldr/group-by-fx';
 import has from '@foldr/has';
 import hasFx from '@foldr/has-fx';
 import head from '@foldr/head';
@@ -241,6 +243,8 @@ export {
   fromPairs,
   get,
   getFx,
+  groupBy,
+  groupByFx,
   has,
   hasFx,
   head,

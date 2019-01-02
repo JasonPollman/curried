@@ -30,6 +30,13 @@ describe('internal-env', () => {
     expect(getIteratee('name')()).toEqual(undefined);
   });
 
+  it('Should return the correct iteratee for numbers', () => {
+    expect(getIteratee(0)({ 0: 'test' })).toEqual('test');
+    expect(getIteratee(1)({ 1: 'test' })).toEqual('test');
+    expect(getIteratee(0)({ 1: 'test' })).toEqual(undefined);
+    expect(getIteratee(10)()).toEqual(undefined);
+  });
+
   it('Should return the correct iteratee for arrays', () => {
     expect(getIteratee([])()).toEqual(true);
     expect(getIteratee([])({ name: 'test' })).toEqual(true);

@@ -6,25 +6,39 @@ module.exports = ({ foldr, lodash }) => {
 
   return [
     {
-      name: 'Chunks an Array (1)',
-      expect: (result, { deepEqual }) => deepEqual(result, [[1, 2], [3, 4], [5, 6]]),
-      setup: () => [[1, 2, 3, 4, 5, 6], 2],
-      tests,
-    },
-    {
-      name: 'Chunks an Array (2)',
+      name: 'Chunks an Array (Null)',
       expect: (result, { deepEqual }) => deepEqual(result, []),
-      setup: () => [[1, 2, 3, 4, 5, 6], 0],
+      setup: () => [null, 2],
       tests,
     },
     {
-      name: 'Chunks an Array (3)',
+      name: 'Chunks an Array (Empty)',
       expect: (result, { deepEqual }) => deepEqual(result, []),
       setup: () => [[], 2],
       tests,
     },
     {
-      name: 'Chunks an Array (4)',
+      name: 'Chunks an Array (Large)',
+      expect: (result, { deepEqual }) => (
+        deepEqual(result, new Array(1000).fill([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
+      ),
+      setup: () => [new Array(10000).fill(0), 10],
+      tests,
+    },
+    {
+      name: 'Chunks an Array (2 size)',
+      expect: (result, { deepEqual }) => deepEqual(result, [[1, 2], [3, 4], [5, 6]]),
+      setup: () => [[1, 2, 3, 4, 5, 6], 2],
+      tests,
+    },
+    {
+      name: 'Chunks an Array (0 size)',
+      expect: (result, { deepEqual }) => deepEqual(result, []),
+      setup: () => [[1, 2, 3, 4, 5, 6], 0],
+      tests,
+    },
+    {
+      name: 'Chunks an Array (3 size)',
       expect: (result, { deepEqual }) => deepEqual(result, [[1, 2, 3], [4, 5, 6], [7, 8]]),
       setup: () => [[1, 2, 3, 4, 5, 6, 7, 8], 3],
       tests,

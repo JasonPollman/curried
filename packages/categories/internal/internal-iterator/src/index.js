@@ -144,7 +144,6 @@ function iterateSetReverse(context, results, set, handler, iteratee) {
 
   while (--i >= 0) {
     if (handler(context, results, iteratee, n++, entries[i][0], i, set) === BREAK) break;
-    next = iteratorForEntries.next();
   }
 }
 
@@ -200,8 +199,6 @@ function iterateMapReverse(context, results, set, handler, iteratee) {
     if (handler(context, results, iteratee, n++, entries[i][1], entries[i][0], set) === BREAK) {
       break;
     }
-
-    next = iteratorForEntries.next();
   }
 }
 

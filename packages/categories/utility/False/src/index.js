@@ -1,5 +1,7 @@
 /**
  * A function that always returns `false`.
+ *
+ * @name False
  * @returns {boolean} The literal boolean `false`.
  *
  * @arity 0

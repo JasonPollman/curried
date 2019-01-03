@@ -1,5 +1,7 @@
 /**
  * A function that always returns `true`.
+ *
+ * @name True
  * @returns {boolean} The literal boolean `true`.
  *
  * @arity 0

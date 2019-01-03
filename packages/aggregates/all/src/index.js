@@ -18,6 +18,7 @@ import chunk from '@foldr/chunk';
 import chunkFx from '@foldr/chunk-fx';
 import clamp from '@foldr/clamp';
 import clampFx from '@foldr/clamp-fx';
+import clone from '@foldr/clone';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import composeAsync from '@foldr/compose-async';
@@ -217,6 +218,7 @@ export {
   chunkFx,
   clamp,
   clampFx,
+  clone,
   compact,
   compose,
   composeAsync,

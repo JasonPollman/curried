@@ -1,12 +1,12 @@
 import cloneDepth from '@foldr/clone-depth';
 
 /**
- * Shallow clones an object.
+ * Deeply clones an object.
  *
  * This method is a convenience method for [cloneDepth](#clone-depth),
- * with the `depth` set to `0`.
+ * with the `depth` set to `Infinity`.
  *
- * @name clone
+ * @name cloneDeep
  * @param {any} x The item to clone.
  * @returns {any} The cloned version of `x`.
  *
@@ -17,13 +17,13 @@ import cloneDepth from '@foldr/clone-depth';
  * @export
  * @example
  *
- * import { clone } from '@foldr/all';
+ * import { cloneDeep } from '@foldr/all';
  *
- * clone('foo');
+ * cloneDeep('foo');
  * // => 'foo'
  *
- * clone({ foo: 'bar' });
- * // => A shallow clone of { foo: 'bar' }
+ * cloneDeep({ foo: 'bar' });
+ * // => A clone of { foo: 'bar' }
  *
  * const object = {
  *   x: {
@@ -33,12 +33,12 @@ import cloneDepth from '@foldr/clone-depth';
  *   },
  * };
  *
- * const cloned = clone(object);
+ * const cloned = cloneDeep(object);
  * // => cloned !== object
- * // => cloned.x === object.x
- * // => cloned.x.y === object.x.y
- * // => cloned.x.y.z === object.x.y.z
+ * // => cloned.x !== object.x
+ * // => cloned.x.y !== object.x.y
+ * // => cloned.x.y.z !== object.x.y.z
  */
-export default function clone(x) {
-  return x && cloneDepth(x, 0);
+export default function cloneDeep(x) {
+  return x && cloneDepth(x, Infinity);
 }

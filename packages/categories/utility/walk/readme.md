@@ -7,8 +7,9 @@ Recursively walks an object, invoking `invokee` for each non-object property
 of `object`.
 
 Note: `invokee` is called with two arguments:
-1. The current value of the property belonging to the object being iterated over.
-2. An array of the "path" to that property.
+1. The current `value` of the property belonging to the object being iterated over.
+2. The parent object of `value`.
+3. An array of strings representing the "path" to that property.
 
 ```js
 import walk from '@foldr/walk';
@@ -31,7 +32,7 @@ const object = {
 
 let sum = 0;
 
-walk(object, (value, path) => {
+walk(object, (value, parent, path) => {
   // Path is an array to the path of `value` from `object`.
   // For example, if the value is `4`, the path would be ['bar', 'quxx']
   sum += value;

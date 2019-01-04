@@ -5,28 +5,29 @@ See the [documentation](http://foldr.com/0.0.0/clone) or [package source](https:
 
 Shallow clones an object.
 
-Supports cloning Array, Object, Date, RegExp, Buffer, Boolean, String, Number, Map, and Set
-objects.
-
-This is loosely based on the [Structured Clone Algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm).
-
-**With the caveats...**
-
-- The `lastIndex` field of RegExp objects are preserved.
-- Functions will be cloned as plain objects who's own properties are retained.
-- Arguments objects will be cloned as a plain objects, but will have a non-enumerable
-  `length` property assigned to them.
-- Cloning `Symbol` object is supported, but it creates a new Symbol with the same label value.
+This method is a convenience method for [cloneDepth](#clone-depth),
+with the `depth` set to `0`.
 
 ```js
 import clone from '@foldr/clone';
 
-clone('foo');         // => 'foo'
-clone({ foo: 'bar' }) // => Shallow copy of { foo: 'bar' }
+clone('foo');
+// => 'foo'
 
-const regexp = /foo/;
-const clonedRegExp = clone(regexp);
+clone({ foo: 'bar' });
+// => A shallow clone of { foo: 'bar' }
 
-console.log(regexp === clonedRegExp)               // => false
-console.log(regexp.source === clonedRegExp.source) // => true
+const object = {
+  x: {
+    y: {
+      z: {},
+    },
+  },
+};
+
+const cloned = clone(object);
+// => cloned !== object
+// => cloned.x === object.x
+// => cloned.x.y === object.x.y
+// => cloned.x.y.z === object.x.y.z
 ```

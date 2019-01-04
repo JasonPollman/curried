@@ -3,14 +3,14 @@ import isObject from '@foldr/is-object';
 
 /**
  * Recursively walks an object.
- * @param {object} thing The thing to walk.
+ * @param {object} parent The thing to walk.
  * @param {function} invokee A function to execute for each property of `thing`.
  * @param {Array<string>} path The current "parent" path of thing respective to its parent.
  * @param {Set} visited Cache for preventing circular recursion.
  * @returns {undefined}
  */
-function recursivelyWalk(thing, invokee, path, visited) {
-  const props = keys(thing);
+function recursivelyWalk(parent, invokee, path, visited) {
+  const props = keys(parent);
   const size = props.length;
   const pathSize = path.length;
 
@@ -18,14 +18,14 @@ function recursivelyWalk(thing, invokee, path, visited) {
   let n;
   let k;
 
+  let child;
   let subpath;
-  let current;
 
   while (i < size) {
     n = pathSize;
     k = props[i++];
 
-    current = thing[k];
+    child = parent[k];
 
     // Have to shallow copy this at each iteration to prevent mutation side-effects.
     // Or maybe just freeze it in the future for performance, eh?
@@ -34,11 +34,11 @@ function recursivelyWalk(thing, invokee, path, visited) {
 
     while (--n >= 0) subpath[n] = path[n];
 
-    if (visited && isObject(current) && !visited.has(current)) {
-      visited.add(current);
-      recursivelyWalk(current, invokee, subpath, visited);
+    if (visited && isObject(child) && !visited.has(child)) {
+      visited.add(child);
+      recursivelyWalk(child, invokee, subpath, visited);
     } else {
-      invokee(current, subpath);
+      invokee(child, parent, subpath);
     }
   }
 }
@@ -48,8 +48,9 @@ function recursivelyWalk(thing, invokee, path, visited) {
  * of `object`.
  *
  * Note: `invokee` is called with two arguments:
- * 1. The current value of the property belonging to the object being iterated over.
- * 2. An array of the "path" to that property.
+ * 1. The current `value` of the property belonging to the object being iterated over.
+ * 2. The parent object of `value`.
+ * 3. An array of strings representing the "path" to that property.
  *
  * @name walk
  * @param {Object} object The object to "walk".
@@ -83,7 +84,7 @@ function recursivelyWalk(thing, invokee, path, visited) {
  *
  * let sum = 0;
  *
- * walk(object, (value, path) => {
+ * walk(object, (value, parent, path) => {
  *   // Path is an array to the path of `value` from `object`.
  *   // For example, if the value is `4`, the path would be ['bar', 'quxx']
  *   sum += value;

@@ -12,8 +12,8 @@ describe('walk', () => {
     };
 
     const expected = [
-      [1, ['x']],
-      [2, ['y']],
+      [1, object, ['x']],
+      [2, object, ['y']],
     ];
 
     let calls = 0;
@@ -41,9 +41,9 @@ describe('walk', () => {
     };
 
     const expected = [
-      [1, ['x']],
-      [2, ['y']],
-      [7, ['a', 'b', 'c', 'd']],
+      [1, object, ['x']],
+      [2, object, ['y']],
+      [7, object.a.b.c, ['a', 'b', 'c', 'd']],
     ];
 
     let calls = 0;
@@ -79,15 +79,15 @@ describe('walk', () => {
     };
 
     const expected = [
-      [1, ['x']],
-      [2, ['y']],
-      [7, ['a', 'b', 'c', 'd']],
-      [1, ['p', 'q', 'w', '0']],
-      [2, ['p', 'q', 'w', '1']],
-      [3, ['p', 'q', 'w', '2']],
-      [4, ['p', 'q', 'x', '0']],
-      [5, ['p', 'q', 'x', '1']],
-      ['foo', ['p', 'q', 'x', '2', 'z']],
+      [1, object, ['x']],
+      [2, object, ['y']],
+      [7, object.a.b.c, ['a', 'b', 'c', 'd']],
+      [1, object.p.q.w, ['p', 'q', 'w', '0']],
+      [2, object.p.q.w, ['p', 'q', 'w', '1']],
+      [3, object.p.q.w, ['p', 'q', 'w', '2']],
+      [4, object.p.q.x, ['p', 'q', 'x', '0']],
+      [5, object.p.q.x, ['p', 'q', 'x', '1']],
+      ['foo', object.p.q.x[2], ['p', 'q', 'x', '2', 'z']],
     ];
 
     let calls = 0;
@@ -108,8 +108,8 @@ describe('walk', () => {
     ];
 
     const expected = [
-      [1, ['0', 'foo']],
-      [0, ['1', 'bar']],
+      [1, object[0], ['0', 'foo']],
+      [0, object[1], ['1', 'bar']],
     ];
 
     let calls = 0;
@@ -127,12 +127,12 @@ describe('walk', () => {
     const object = 'foobar';
 
     const expected = [
-      ['f', ['0']],
-      ['o', ['1']],
-      ['o', ['2']],
-      ['b', ['3']],
-      ['a', ['4']],
-      ['r', ['5']],
+      ['f', object, ['0']],
+      ['o', object, ['1']],
+      ['o', object, ['2']],
+      ['b', object, ['3']],
+      ['a', object, ['4']],
+      ['r', object, ['5']],
     ];
 
     let calls = 0;

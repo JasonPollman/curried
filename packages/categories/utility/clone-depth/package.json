@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/clone",
+  "name": "@foldr/clone-depth",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Shallow clones objects",
+  "description": "Clones objects to the specified depth",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,
@@ -24,8 +24,5 @@
     "foldr",
     "utility",
     "library"
-  ],
-  "dependencies": {
-    "@foldr/clone-depth": "^0.0.0"
-  }
+  ]
 }

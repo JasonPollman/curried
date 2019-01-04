@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2019-1-2
+ * @since 2019-1-4
  * @file
  */
 
@@ -19,6 +19,9 @@ import chunkFx from '@foldr/chunk-fx';
 import clamp from '@foldr/clamp';
 import clampFx from '@foldr/clamp-fx';
 import clone from '@foldr/clone';
+import cloneDeep from '@foldr/clone-deep';
+import cloneDepth from '@foldr/clone-depth';
+import cloneDepthFx from '@foldr/clone-depth-fx';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import composeAsync from '@foldr/compose-async';
@@ -219,6 +222,9 @@ export {
   clamp,
   clampFx,
   clone,
+  cloneDeep,
+  cloneDepth,
+  cloneDepthFx,
   compact,
   compose,
   composeAsync,

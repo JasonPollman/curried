@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/clone",
+  "name": "@foldr/clone-deep",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Shallow clones objects",
+  "description": "Deeply clones objects",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,

@@ -1,6 +1,6 @@
 module.exports = ({ foldr, lodash }) => {
   const tests = {
-    foldr: input => foldr.propsRight(...input),
+    foldr: input => foldr.defaults(...input),
     lodash: input => lodash.defaults(...input),
   };
 

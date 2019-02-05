@@ -14,6 +14,7 @@ import isArrayLike from '@foldr/is-array-like';
  * @param {...Array} The arrays to zip.
  * @returns {Array<Array>} The (grouped) arrays.
  *
+ * @arity Infinity
  * @category array
  * @publishdoc
  * @since v0.0.0

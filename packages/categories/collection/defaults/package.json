@@ -1,8 +1,8 @@
 {
-  "name": "@foldr/props",
+  "name": "@foldr/defaults",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Merges objects together like Object.assign, but doesn't mutate.",
+  "description": "Merges objects together like Object.assign, but doesn't mutate (right to left).",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,

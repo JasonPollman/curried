@@ -1,6 +1,6 @@
 module.exports = ({ foldr, lodash }) => {
   const tests = {
-    foldr: input => foldr.props(...input),
+    foldr: input => foldr.combine(...input),
     lodash: input => lodash.assign(...input),
   };
 

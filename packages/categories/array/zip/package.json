@@ -2,7 +2,7 @@
   "name": "@foldr/zip",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "A function that always returns `false`.",
+  "description": "Combines arrays into tuples",
   "main": "dist",
   "author": "CloudVessel",
   "sideEffects": false,

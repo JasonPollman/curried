@@ -1,7 +1,7 @@
-# @foldr/props
+# @foldr/combine
 
-**The `props` foldr method as a standalone module.**    
-See the [documentation](http://foldr.com/0.0.0/props) or [package source](https:/github.com/CloudVessel/foldr/blob/master/packages/categories/props/src/index.js) for details.
+**The `combine` foldr method as a standalone module.**    
+See the [documentation](http://foldr.com/0.0.0/combine) or [package source](https:/github.com/CloudVessel/foldr/blob/master/packages/categories/combine/src/index.js) for details.
 
 Combines the properties of objects together like Object#assign, but doesn't mutate
 any of the input collections.
@@ -14,8 +14,8 @@ against bad input.
 Properties in subsequent objects will overwrite previous ones.
 
 ```js
-import props from '@foldr/props';
+import combine from '@foldr/combine';
 
-props({ x: 1 }, { y: 2 }); // => { x: 1, y: 2 }
-props('foo', ['F']);       // => { 0: 'F', 1: 'o', 2: 'o' }
+combine({ x: 1 }, { y: 2 }); // => { x: 1, y: 2 }
+combine('foo', ['F']);       // => { 0: 'F', 1: 'o', 2: 'o' }
 ```

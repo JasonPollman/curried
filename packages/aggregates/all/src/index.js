@@ -4,7 +4,7 @@
  * packages in the @foldr mono-repo and exports them as a single requirable module.
  * Only "non-internal" packages and some other useful things (such as the curry/partial
  * placeholder symbol) are exposed via this module.
- * @since 2019-1-4
+ * @since 2/4/2019
  * @file
  */
 
@@ -22,6 +22,7 @@ import clone from '@foldr/clone';
 import cloneDeep from '@foldr/clone-deep';
 import cloneDepth from '@foldr/clone-depth';
 import cloneDepthFx from '@foldr/clone-depth-fx';
+import combine from '@foldr/combine';
 import compact from '@foldr/compact';
 import compose from '@foldr/compose';
 import composeAsync from '@foldr/compose-async';
@@ -31,6 +32,7 @@ import concatFx from '@foldr/concat-fx';
 import cond from '@foldr/cond';
 import curry from '@foldr/curry';
 import debounce from '@foldr/debounce';
+import defaults from '@foldr/defaults';
 import delay from '@foldr/delay';
 import difference from '@foldr/difference';
 import differenceFx from '@foldr/difference-fx';
@@ -150,8 +152,6 @@ import pick from '@foldr/pick';
 import pickFx from '@foldr/pick-fx';
 import pipe from '@foldr/pipe';
 import pipeAsync from '@foldr/pipe-async';
-import props from '@foldr/props';
-import propsRight from '@foldr/props-right';
 import random from '@foldr/random';
 import rearg from '@foldr/rearg';
 import reduce from '@foldr/reduce';
@@ -225,6 +225,7 @@ export {
   cloneDeep,
   cloneDepth,
   cloneDepthFx,
+  combine,
   compact,
   compose,
   composeAsync,
@@ -234,6 +235,7 @@ export {
   cond,
   curry,
   debounce,
+  defaults,
   delay,
   difference,
   differenceFx,
@@ -353,8 +355,6 @@ export {
   pickFx,
   pipe,
   pipeAsync,
-  props,
-  propsRight,
   random,
   rearg,
   reduce,
